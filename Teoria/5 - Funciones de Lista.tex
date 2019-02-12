@@ -1,0 +1,357 @@
+\documentclass[12pt,a4paper,oneside,spanish]{book}
+\usepackage[T1]{fontenc}
+\usepackage[latin9]{inputenc}
+\setcounter{secnumdepth}{3}
+\setcounter{tocdepth}{3}
+\setcounter{chapter}{4}
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+\makeatletter
+\makeatother
+\usepackage{babel}
+\addto\shorthandsspanish{\spanishdeactivate{~<>.}}
+
+\begin{document}
+	\chapter{Funciones de lista}
+		\section{Definiciones}
+			\subsection{Lista}
+				Una lista es una secuencia ordenada y finita de cero o mas elementos de $\mathbb{N}_{0}$.
+				\paragraph{Notación}
+				
+				\begin{itemize}
+					\item $\left[x_{1},x_{2},\ldots,x_{k}\right]$ para una lista de longitud $k$.
+					\item $\left[\right]$ para la lista vaciá.
+					\item Notaremos con $\mathcal{L}$ al conjunto de todas las listas.
+					\item Con $\mathcal{L}^{n}$ indicaremos el conjunto de listas que poseen exactamente $n$ elementos.
+					\item Con $\mathcal{L}^{\geq n}$ indicaremos el conjunto de listas con al menos $n$ elementos.
+				\end{itemize}
+
+			\subsection{Concatenación}
+				Dadas dos listas $X=\left[x_{1},\ldots,x_{m}\right]$ e $Y=\left[y_{1},\ldots,y_{n}\right]$ llamamos concatenación de $X$ e $Y$ a la lista $\left[x_{1},\ldots,x_{m},y_{1},\ldots,y_{n}\right]$ y lo notaremos $\left[X,Y\right]$.
+				Para distinguir ciertos elementos de intereses escribiremos $\left[a,X,b,Y\right]$.
+				La concatenación es una operación asociativa cuyo elemento neutro es la lista vaciá.
+				
+			\subsection{Funciones de lista}
+				Las funciones de listas son funciones que van de $\mathcal{L}$ en $\mathcal{L}$. Para indicar que una función $F$ asigna a la lista $X$, la lista $Y$ escribimos $F\left[X\right]=Y$ o bien $FX=Y$.
+				Nótese la omisión de los paréntesis sobre los argumentos.
+				\paragraph{Observación}
+				Podemos pensar a las funciones numéricas $f:\mathbb{N}_{0}^{k}\to\mathbb{N}_{0}$ como funciones de listas $F:\mathcal{L}^{k}\to\mathcal{L}^{1}$.
+
+			\subsection{Funciones base}
+				Llamaremos funciones base a las siguientes 6 funciones:
+				
+				\begin{itemize}
+					\item Cero a izquierda: $0_{i}\left[x_{1},x_{2},\ldots,x_{k}\right]=\left[\boldsymbol{0},x_{1},x_{2},\ldots,x_{k}\right]$.
+					\item Cero a derecha: $0_{d}\left[x_{1},x_{2},\ldots,x_{k}\right]=\left[x_{1},x_{2},\ldots,x_{k},\boldsymbol{0}\right]$.
+					\item Borrar a izquierda: $\square_{i}\left[\boldsymbol{x_{1}},x_{2},\ldots,x_{k}\right]=\left[x_{2},\ldots,x_{k}\right]$.
+					\item Borrar a derecha: $\square_{d}\left[x_{1},x_{2},\ldots,\boldsymbol{x_{k}}\right]=\left[x_{1},x_{2},\ldots,x_{k-1}\right]$.
+					\item Sucesor a izquierda: $S_{i}\left[x_{1},x_{2},\ldots,x_{k}\right]=\left[\boldsymbol{x_{1}+1},x_{2},\ldots,x_{k}\right]$.
+					\item Sucesor a derecha: $S_{d}\left[x_{1},x_{2},\ldots,x_{k}\right]=\left[x_{1},x_{2},\ldots,\boldsymbol{x_{k}+1}\right]$.
+				\end{itemize}
+
+				\paragraph{Observación}
+				Nótese que $dom\left(0_{i}\right)=dom\left(0_{d}\right)=\mathcal{L}$ y que\\
+				$dom\left(\square_{i}\right)=dom\left(\square_{d}\right)=dom\left(S_{i}\right)=dom\left(S_{d}\right)=\mathcal{L}^{\geq1}$.
+
+			\subsection{Operadores}
+				Definiremos dos operadores que nos permitirán construir nuevas funciones:
+	
+				\begin{itemize}
+				\item El operador de composición que dadas dos funciones $F$ y $G$ construye la función $H=F\circ G$ que notaremos simplemente $H=FG$ definida como $HX=G\left[FX\right]$. Nótese que contrariamente a lo usual, primero se aplica la función $F$ y al resultado se aplica la función $G$.
+				
+\pagebreak{}		
+		
+				\item El operador de repetición que dada una función $F$ construye la función $\left\langle F\right\rangle $ definida como:
+				
+					\[
+						\left\langle F\right\rangle \left[x,Y,z\right]=
+						\begin{cases}
+							\left[x,Y,z\right] & x=z\\
+							F\left\langle F\right\rangle \left[x,Y,z\right] & x\neq z
+						\end{cases}
+					\]
+					
+					es decir que la función $\left\langle F\right\rangle $ actúa aplicando $F$ hasta que el primer y ultimo elemento de su argumento sean iguales.
+				\end{itemize}
+
+				\paragraph{Dominio}
+				El dominio de la composición es $dom\left(FG\right)=\left\{ X\in\mathcal{L}/X\in dom\left(F\right)\land FX\in dom\left(G\right)\right\} $.
+				Observemos que $\left\langle F\right\rangle $ esta definida sobre listas de la forma $\left[x,Y,z\right]$, es decir, que tienen al menos dos elementos. Mas precisamente $X\in dom\left(\left\langle F\right\rangle \right)$ si en la sucesión $\left\{ X,FX,FFX,FFFX,\ldots\right\} $ existe una lista cuyo primer y ultimo elemento son iguales.
+
+			\subsection{Definición inductiva}
+				Definimos inductivamente el conjunto de funciones recursivas de listas ($FRL$) como el menor conjunto tal que:
+				
+				\begin{itemize}
+					\item Las funciones base pertenecen a $FRL$.
+					\item Las funciones obtenidas aplicando un numero finito de operaciones de composición y repetición sobre elementos de $FRL$ también pertenecen a $FRL$.
+				\end{itemize}
+
+		\section{Ejemplos}
+			\subsection{Pasar a izquierda}
+				La función $\triangleleft=0_{i}\left\langle S_{i}\right\rangle \square_{d}$ pasa el elemento de la derecha a la izquierda. Observemos una traza:
+	 
+				\begin{center}
+					\begin{tabular}{c|c}
+						 & $\left[X,y\right]$\tabularnewline
+						\hline 
+						$0_{i}$ & $\left[0,X,y\right]$\tabularnewline
+						\hline 
+						$\left\langle S_{i}\right\rangle $ & $\left[y,X,y\right]$\tabularnewline
+						\hline 
+						$\square_{d}$ & $\left[y,X\right]$\tabularnewline
+					\end{tabular}
+				\par\end{center}
+
+			\subsection{Pasar a derecha}
+				La función $\triangleright=0_{d}\left\langle S_{d}\right\rangle \square_{i}$ pasa el elemento de la izquierda a la derecha.
+
+			\subsection{Duplicar a izquierda}
+				La función $D_{i}=0_{d}\left\langle S_{d}\right\rangle \triangleleft$ duplica el elemento de la izquierda (a la izquierda). Observemos una traza:
+	
+				\begin{center}
+				 %
+					\begin{tabular}{c|c}
+						 & $\left[y,X\right]$\tabularnewline
+						\hline 
+						$0_{d}$ & $\left[y,X,0\right]$\tabularnewline
+						\hline 
+						$\left\langle S_{d}\right\rangle $ & $\left[y,X,y\right]$\tabularnewline
+						\hline 
+						$\triangleleft$ & $\left[y,y,X\right]$\tabularnewline
+					\end{tabular}
+				\par\end{center}
+
+			\subsection{Duplicar a derecha}
+				La función $D_{d}=0_{i}\left\langle S_{i}\right\rangle \triangleright$ duplica el elemento de la derecha (a la derecha). 
+
+			\subsection{Intercambiar extremos}
+				La función $\leftrightarrow=\triangleright0_{i}\triangleleft0_{i}\left\langle S_{i}\triangleright\triangleright S_{i}\triangleleft\triangleleft\right\rangle \square_{d}\square_{i}\triangleright$ intercambia los extremos de una lista. Observemos una traza:
+	 
+				\begin{center}
+					\begin{tabular}{c|c}
+						 & $\left[x,Y,z\right]$\tabularnewline
+						\hline 
+						$\triangleright$ & $\left[Y,z,x\right]$\tabularnewline
+						\hline 
+						$0_{i}$ & $\left[0,Y,z,x\right]$\tabularnewline
+						\hline 
+						$\triangleleft$ & $\left[x,0,Y,z\right]$\tabularnewline
+						\hline 
+						$0_{i}$ & $\left[0,x,0,Y,z\right]$\tabularnewline
+						\hline 
+						$\left\langle S_{i}\triangleright\triangleright S_{i}\triangleleft\triangleleft\right\rangle $ & $\left[z,x,z,Y,z\right]$\tabularnewline
+						\hline 
+						$\square_{d}$ & $\left[z,x,z,Y\right]$\tabularnewline
+						\hline 
+						$\square_{i}$ & $\left[x,z,Y\right]$\tabularnewline
+						\hline 
+						$\triangleright$ & $\left[z,Y,x\right]$\tabularnewline
+					\end{tabular}
+				\par\end{center}
+
+		\section{Representación de $FR$ mediante $FRL$}
+			Observemos que las funciones recursivas y las funciones de listas tienen distintos dominios y codominios, por lo que resultara necesario establecer una correspondencia entre ambas.
+
+			\subsection{Representabilidad}
+				Sea $g:\mathbb{N}_{0}^{k}\to\mathbb{N}_{0}$ una función recursiva entonces si existe una función de listas $F_{g}$ tal que $\forall X^{k}\in Dom\left(g\right)$ y $\forall Y$ resulta $F_{g}\left[X,Y\right]=\left[g\left(X\right),X,Y\right]$ diremos entonces que $F_{g}$ representa a la función recursiva $g$ como función de listas.
+				
+\pagebreak{}
+
+			\subsection{Casos base}
+				\paragraph{Enunciado}
+				Para toda función recursiva base $g$ existe una función de listas $F_{g}$ que la representa.
+				\paragraph{Demostración}
+				
+				\begin{itemize}
+					\item Funciones cero $c^{(n)}:$ son iguales a $0_{i}$.
+					\item Funciones proyección $p_{k}^{(n)}$: son iguales a $\triangleright^{k-1}D_{i}\left(\leftrightarrow\triangleleft\right)^{k-1}$.
+					\item Función sucesor: es igual a $D_{i}S_{i}$.
+				\end{itemize}
+
+			\subsection{Composición}
+				\paragraph{Enunciado}
+				Dadas las funciones recursivas $f^{(n)}$ y $\left\{ g_{i}^{(k)}\right\} _{i=1}^{n}$ con representaciones en $FRL$ dadas por $F_{f}$ y $\left\{ F_{gi}^{(k)}\right\} _{i=1}^{n}$, la composición $h=\Phi\left(f,g_{1},\ldots,g_{n}\right)$ también tiene representación en funciones de listas.
+				\paragraph{Demostración}
+				Veamos que $F_{h}=F_{g1}\triangleright F_{g2}\triangleright\ldots F_{gn}\triangleleft^{n-1}F_{f}\triangleright\square_{i}^{n}\triangleleft$ representa dicha composición:
+				
+				\begin{center}
+					\begin{tabular}{c|c}
+						 & $\left[X,Y\right]$\tabularnewline
+						\hline 
+						$F_{g1}$ & $\left[\boldsymbol{g_{1}\left(X\right)},X,Y\right]$\tabularnewline
+						\hline 
+						$\triangleright$ & $\left[X,Y,\boldsymbol{g_{1}\left(X\right)}\right]$\tabularnewline
+						\hline 
+						$F_{g2}$ & $\left[\boldsymbol{g_{2}\left(X\right)},X,Y,g_{1}\left(X\right)\right]$\tabularnewline
+						\hline 
+						$\triangleright$ & $\left[X,Y,g_{1}\left(X\right),\boldsymbol{g_{2}\left(X\right)}\right]$\tabularnewline
+						\hline 
+						$\ldots F_{gn}$ & $\left[\boldsymbol{G_{n}\left(X\right)},X,Y,g_{1}\left(X\right),g_{2}\left(X\right),\boldsymbol{\ldots},\boldsymbol{g_{n-1}\left(X\right)}\right]$\tabularnewline
+						\hline 
+						$\triangleleft^{n-1}$ & $\left[\boldsymbol{g_{1}\left(X\right),g_{2}\left(X\right),\boldsymbol{\ldots},g_{n}\left(X\right)},X,Y\right]$\tabularnewline
+						\hline 
+						$F_{f}$ & $\left[\boldsymbol{f\left\{ g_{1}\left(X\right),\ldots,g_{n}\left(X\right)\right\} },g_{1}\left(X\right),\ldots,g_{n}\left(X\right),X,Y\right]$\tabularnewline
+						\hline 
+						$=$ & $\left[\boldsymbol{h\left(X\right)},g_{1}\left(X\right),\ldots,g_{n}\left(X\right),X,Y\right]$\tabularnewline
+						\hline 
+						$\triangleright$ & $\left[g_{1}\left(X\right),\ldots,g_{n}\left(X\right),X,Y,\boldsymbol{h\left(X\right)}\right]$\tabularnewline
+						\hline 
+						$\square_{i}^{n}$ & $\left[X,Y,h\left(X\right)\right]$\tabularnewline
+						\hline 
+						$\triangleleft$ & $\left[h\left(X\right),X,Y\right]$\tabularnewline
+					\end{tabular}
+				\par\end{center}
+				
+\pagebreak{}
+
+			\subsection{Recursion}
+				\paragraph{Enunciado}
+					Sean las funciones recursivas $g^{(k)}$ y $h^{(k+2)}$ con representaciones en $FRL$ dadas por $F_{g}$ y $F_{h}$, entonces la función $f^{(k+1)}=R\left(g,h\right)$ también tiene representación en $FRL$.
+				\paragraph{Demostración}
+					Veamos que $F_{f}=\triangleright F_{g}0_{i}\left\langle \triangleright\leftrightarrow\triangleleft F_{h}\triangleright\square_{i}S_{i}\leftrightarrow\triangleleft\right\rangle \square_{i}\leftrightarrow\triangleleft$ representa dicha recursion. Aplicando el primer bloque de funciones:
+					
+					\begin{center}
+						\begin{tabular}{c|c}
+							 & $\left[y,X,Y\right]$\tabularnewline
+							\hline 
+							$\triangleright$ & $\left[X,Y,y\right]$\tabularnewline
+							\hline 
+							$F_{g}$ & $\left[\boldsymbol{g\left(X\right)},X,Y,y\right]$\tabularnewline
+							\hline 
+							$0_{i}$ & $\left[\boldsymbol{0},g\left(X\right),X,Y,y\right]$\tabularnewline
+							\hline 
+							 & $\left[0,\boldsymbol{f\left(0,X\right)},X,Y,y\right]$\tabularnewline
+						\end{tabular}
+					\par\end{center}
+
+					A partir de aquí hay 2 casos:
+					
+					\begin{enumerate}
+						\item $y=0$:\\
+						\\
+						
+						\begin{tabular}{c|c}
+							 & $\left[0,f\left(0,X\right),X,Y,y\right]$\tabularnewline
+							\hline 
+							$\left\langle \ldots\right\rangle $ & $\left[0,f\left(0,X\right),X,Y,0\right]$\tabularnewline
+							\hline 
+							$\square_{i}$ & $\left[f\left(0,X\right),X,Y,0\right]$\tabularnewline
+							\hline 
+							$\leftrightarrow$ & $\left[0,X,Y,f\left(0,X\right)\right]$\tabularnewline
+							\hline 
+							$\triangleleft$ & $\left[f\left(y,X\right),y,X,Y\right]$\tabularnewline
+						\end{tabular}
+						
+						\item $y\neq0$:\\
+						\\
+						
+						\begin{tabular}{c|c}
+							 & $\left[0,f\left(0,X\right),X,Y,y\right]$\tabularnewline
+							\hline 
+							$\left\langle \triangleright\right.$ & $\left[f\left(0,X\right),X,Y,y,\boldsymbol{0}\right]$\tabularnewline
+							\hline 
+							$\leftrightarrow$ & $\left[\boldsymbol{0},X,Y,y,\boldsymbol{f\left(0,X\right)}\right]$\tabularnewline
+							\hline 
+							$\triangleleft$ & $\left[\boldsymbol{f\left(0,X\right)},0,X,Y,y\right]$\tabularnewline
+							\hline 
+							$F_{h}$ & $\left[\boldsymbol{h\left(f\left(0,X\right),0,X\right)},f\left(0,X\right),0,X,Y,y\right]$\tabularnewline
+							\hline 
+							$\left(*\right)$ & $\left[\boldsymbol{f\left(1,X\right)},f\left(0,X\right),0,X,Y,y\right]$\tabularnewline
+							\hline 
+							$\triangleright$ & $\left[f\left(0,X\right),0,X,Y,y,\boldsymbol{f\left(1,X\right)}\right]$\tabularnewline
+							\hline 
+							$\square_{i}$ & $\left[0,X,Y,y,f\left(1,X\right)\right]$\tabularnewline
+							\hline 
+							$S_{i}$ & $\left[\boldsymbol{1},X,Y,y,f\left(1,X\right)\right]$\tabularnewline
+							\hline 
+							$\leftrightarrow$ & $\left[\boldsymbol{f\left(1,X\right)},X,Y,y,\boldsymbol{1}\right]$\tabularnewline
+							\hline 
+							$\left.\triangleleft\right\rangle $ & $\left[\boldsymbol{1},f\left(1,X\right),X,Y,y\right]$\tabularnewline
+						\end{tabular}\\
+						
+\pagebreak{}
+
+						A partir de aquí podemos ver que el resultado de la repetición sera $\left[y,f\left(y,X\right),X,Y,y\right]$. Luego aplicando el ultimo bloque de funciones:\\
+						\\
+						\begin{tabular}{c|c}
+							 & $\left[y,f\left(y,X\right),X,Y,y\right]$\tabularnewline
+							\hline 
+							$\square_{i}$ & $\left[f\left(y,X\right),X,Y,y\right]$\tabularnewline
+							\hline 
+							$\leftrightarrow$ & $\left[\boldsymbol{y},X,Y,\boldsymbol{f\left(y,X\right)}\right]$\tabularnewline
+							\hline 
+							$\triangleleft$ & $\left[\boldsymbol{f\left(y,X\right)},y,X,Y\right]$\tabularnewline
+						\end{tabular}
+					\end{enumerate}
+
+			\subsection{Minimizacion}
+				\paragraph{Enunciado}
+				Sea la función recursiva $h^{(n+1)}$ y $F_{h}$ su representación en $FRL$ entonces la función $g^{(n)}=M\left[h\right]$ también tiene representación en $FRL$.
+				\paragraph{Demostración}
+				Veamos que $F_{g}=0_{i}F_{h}0_{d}\left\langle \square_{i}S_{i}F_{h}\right\rangle \square_{i}\square_{d}$ representa dicha minimizacion. Aplicando el primer bloque de funciones:
+				
+								\begin{center}
+				\begin{tabular}{c|c}
+					 & $\left[X,Y\right]$\tabularnewline
+					\hline 
+					$0_{i}$ & $\left[\boldsymbol{0},X,Y\right]$\tabularnewline
+					\hline 
+					$F_{h}$ & $\left[\boldsymbol{h\left(0,X\right)},0,X,Y\right]$\tabularnewline
+					\hline 
+					$0_{d}$ & $\left[h\left(0,X\right),0,X,Y,0\right]$\tabularnewline
+					\end{tabular}
+				\par\end{center}
+
+				A partir de aquí hay 2 casos:
+				
+				\begin{enumerate}
+					\item $h\left(0,X\right)=0$:\\
+					\\
+						\begin{tabular}{c|c}
+							 & $\left[h\left(0,X\right),0,X,Y,0\right]$\tabularnewline
+							\hline 
+							$\left\langle \ldots\right\rangle $ & $\left[h\left(0,X\right),0,X,Y,0\right]$\tabularnewline
+							\hline 
+							$\square_{i}$ & $\left[h\left(0,X\right),X,Y,0\right]$\tabularnewline
+							\hline 
+							$\square_{d}$ & $\left[h\left(0,X\right),X,Y\right]$\tabularnewline
+							\hline 
+							 & $\left[\mu_{t}\left(h\left(t,X\right)=0\right),X,Y\right]$\tabularnewline
+							\hline 
+							 & $\left[g\left(X\right),X,Y\right]$\tabularnewline
+						\end{tabular}
+					\item $h\left(0,X\right)\neq0$:\\
+					\\
+						\begin{tabular}{c|c}
+							 & $\left[h\left(0,X\right),0,X,Y,0\right]$\tabularnewline
+							\hline 
+							$\left\langle \square_{i}\right.$ & $\left[0,X,Y,0\right]$\tabularnewline
+							\hline 
+							$S_{i}$ & $\left[\boldsymbol{1},X,Y,0\right]$\tabularnewline
+							\hline 
+							$\left.F_{h}\right\rangle $ & $\left[\boldsymbol{h\left(1,X\right)},1,X,Y,0\right]$\tabularnewline
+						\end{tabular}\\
+						
+\pagebreak{}
+
+					Vemos que en general, el efecto de la repetición es transformar $\left[h\left(t,X\right),t,X,Y,0\right]$ en $\left[h\left(t+1,X\right),t+1,X,Y,0\right]$. La repetición se	aplicara un numero $k$ de veces hasta que $h\left(k,X\right)=0$ y a partir de ahí aplicando el ultimo bloque de funciones:\\
+					\\
+					\begin{tabular}{c|c}
+						 & $\left[h\left(k,X\right),k,X,Y,0\right]$\tabularnewline
+						\hline 
+						 & $\left[0,k,X,Y,0\right]$\tabularnewline
+						\hline 
+						$\square_{i}$ & $\left[k,X,Y,0\right]$\tabularnewline
+						\hline 
+						$\square_{d}$ & $\left[k,X,Y\right]$\tabularnewline
+						\hline 
+						 & $\left[\mu_{t}\left(h\left(t,X\right)=0\right),X,Y\right]$\tabularnewline
+						\hline 
+						 & $\left[g\left(X\right),X,Y\right]$\tabularnewline
+					\end{tabular}
+				\end{enumerate}
+				
+			\subsection{Conclusión}
+				Con todo lo anterior hemos demostrado que toda función recursiva puede ser representada por una función de listas, con lo que las $FRL$ son un modelo de calculo tan poderoso como el de las $FR$.
+\end{document}

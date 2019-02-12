@@ -1,0 +1,1034 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\begin_preamble
+\renewcommand{\headrulewidth}{1pt}
+\renewcommand{\footrulewidth}{0.5pt}
+\fancyheadoffset[L]{-16pt}
+\end_preamble
+\use_default_options true
+\begin_modules
+customHeadersFooters
+enumitem
+\end_modules
+\maintain_unincluded_children false
+\language spanish-mexico
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize 12
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 2cm
+\rightmargin 2cm
+\headheight 0cm
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style french
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle fancy
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+\begin_inset Note Comment
+status open
+
+\begin_layout Plain Layout
+Lógica y Algoritmos
+\end_layout
+
+\begin_layout Plain Layout
+Práctica 3 - Funciones recursivas primitivas
+\end_layout
+
+\begin_layout Plain Layout
+Primera versión: 04/07 (Fede Olmedo)
+\end_layout
+
+\begin_layout Plain Layout
+Última Revisión: 07/04/08 (Dante Zanarini)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Left Header
+
+\noun on
+Lenguajes Formales y Computabilidad
+\end_layout
+
+\begin_layout Right Header
+2018
+\end_layout
+
+\begin_layout Center Footer
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+thepage
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+
+\size larger
+PRÁCTICA 3: 
+\emph on
+Funciones Recursivas Primitivas
+\end_layout
+
+\begin_layout Standard
+
+\size footnotesize
+Pablo Verdes
+\begin_inset space \hspace*{\fill}
+\end_inset
+
+Dante Zanarini
+\begin_inset space \hspace*{\fill}
+\end_inset
+
+Pamela Viale
+\begin_inset space \hspace*{\fill}
+\end_inset
+
+Alejandro Hernandez
+\begin_inset space \hspace*{\fill}
+\end_inset
+
+Mauro Lucci
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset line
+LatexCommand rule
+offset "0.5ex"
+width "100col%"
+height "1pt"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+
+\series bold
+Funciones recursivas primitivas
+\end_layout
+
+\begin_layout Enumerate
+Mostrar que para cada 
+\begin_inset Formula $n\in\mathbb{N}$
+\end_inset
+
+, la función 
+\begin_inset Formula $g_{n}\left(x\right)=n$
+\end_inset
+
+ para todo 
+\begin_inset Formula $x\in\mathbb{N}$
+\end_inset
+
+ es recursiva primitiva.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Agregue este ejercicio para que los alumnos comiencen a familiarizarse con
+ el comportamiento de los operadores de FRP.
+\end_layout
+
+\end_inset
+
+Realice una traza de las siguientes funciones:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset Formula $dos^{\left(2\right)}\left(17,3\right)=\Phi\left(s^{\left(1\right)},\Phi\left(s^{\left(1\right)},c^{\left(2\right)}\right)\right)\left(17,3\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $Mas2^{\left(1\right)}\left(5\right)=\Phi\left(s^{\left(1\right)},s^{\left(1\right)}\right)\left(5\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\Sigma^{\left(2\right)}\left(2,3\right)=R\left(p_{1}^{\left(1\right)},\Phi\left(s^{\left(1\right)},p_{3}^{\left(3\right)}\right)\right)\left(2,3\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $Pd^{\left(1\right)}\left(412\right)=R\left(c^{\left(0\right)},p_{1}^{\left(2\right)}\right)\left(412\right)$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Elimine los ejercicios de suma y predecesor puesto que ya fueron introducidos
+ en el ejercicio anterior.
+\end_layout
+
+\begin_layout Plain Layout
+Considero que esto no es una desventaja pues, son las dos funciones mas
+ sencillas y ademas son exactamente las mismas dos que ya están resueltas
+ en la teoría.
+\end_layout
+
+\end_inset
+
+Mostrar que las siguientes funciones son 
+\begin_inset Formula $FRP$
+\end_inset
+
+:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset Formula $\Pi\left(y,x\right)=y\times x$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $Fac\left(x\right)=x!$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $Exp\left(y,x\right)=x^{y}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+La función planteada anteriormente suele resultar difícil por la necesidad
+ de necesitar hacer la recursión sobre el segundo argumento.
+\end_layout
+
+\begin_layout Plain Layout
+Aquí propongo una versión sencilla (con los argumentos al revés) y luego
+ añado un ejercicio que los guie en la técnica para realizar recursión sobre
+ otro argumento.
+\end_layout
+
+\end_inset
+
+La función 
+\emph on
+diferencia
+\emph default
+, definida por:
+\begin_inset Formula 
+\[
+\widetilde{d}\left(y,x\right)=\begin{cases}
+0 & x<y\\
+x-y & x\geq y
+\end{cases}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Notamos generalmente 
+\begin_inset Formula $\widetilde{d}\left(y,x\right)$
+\end_inset
+
+ como 
+\begin_inset Formula $x\dot{-}y$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+La función 
+\emph on
+distinguidora del cero
+\emph default
+, definida por:
+\begin_inset Formula 
+\[
+D_{0}\left(y\right)=\begin{cases}
+0 & y\neq0\\
+1 & y=0
+\end{cases}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $k\left(x,y\right)=\left|x-y\right|$
+\end_inset
+
+.
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+La función 
+\begin_inset Formula $E^{\left(2\right)}$
+\end_inset
+
+ definida por:
+\begin_inset Formula 
+\[
+E\left(x,y\right)=\begin{cases}
+1 & x=y\\
+0 & x\neq y
+\end{cases}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Agregue estos sencillos ejercicios que pueden ser de utilidad para definir
+ otras funciones.
+\end_layout
+
+\end_inset
+
+ La función 
+\begin_inset Formula $\neg E^{\left(2\right)}$
+\end_inset
+
+ definida por:
+\begin_inset Formula 
+\[
+\neg E\left(x,y\right)=\begin{cases}
+0 & x=y\\
+1 & x\neq y
+\end{cases}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+La función 
+\emph on
+signo
+\emph default
+, definida por:
+\begin_inset Formula 
+\[
+Sgn\left(y\right)=\begin{cases}
+0 & y=0\\
+1 & y\geq1
+\end{cases}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Agregue este ejercicio que ejemplifica la técnica para hacer recursion sobre
+ otro argumento distinto al primero.
+\end_layout
+
+\end_inset
+
+Defina la siguiente función: 
+\begin_inset Formula $\hat{d}\left(x,y\right)=\begin{cases}
+0 & x<y\\
+x-y & x\geq y
+\end{cases}$
+\end_inset
+
+.
+ Sugerencia: utilice la función 
+\begin_inset Formula $\widetilde{d}$
+\end_inset
+
+ definida en el ejercicio anterior.
+\end_layout
+
+\begin_layout Enumerate
+Sumatorias y productorias:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Sea 
+\begin_inset Formula $f^{\left(2\right)}$
+\end_inset
+
+ una 
+\begin_inset Formula $FRP$
+\end_inset
+
+ de dos variables.
+ Definimos dos nuevas funciones 
+\begin_inset Formula $F^{\left(2\right)}$
+\end_inset
+
+ y 
+\begin_inset Formula $G^{\left(2\right)}$
+\end_inset
+
+ de la siguiente manera:
+\begin_inset Formula 
+\[
+F^{\left(2\right)}\left(y,x\right)=\sum_{z=0}^{y}f^{\left(2\right)}\left(z,x\right)
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+G^{\left(2\right)}\left(y,x\right)=\prod_{z=0}^{y}f^{\left(2\right)}\left(z,x\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Mostrar que 
+\begin_inset Formula $F$
+\end_inset
+
+ y 
+\begin_inset Formula $G$
+\end_inset
+
+ son 
+\begin_inset Formula $FRP$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Mas generalmente, sea 
+\begin_inset Formula $f^{\left(k+1\right)}$
+\end_inset
+
+ una 
+\begin_inset Formula $FRP$
+\end_inset
+
+ de 
+\begin_inset Formula $k+1$
+\end_inset
+
+ variables.
+ Definimos dos nuevas funciones 
+\begin_inset Formula $F^{\left(k+1\right)}$
+\end_inset
+
+ y 
+\begin_inset Formula $G^{\left(k+1\right)}$
+\end_inset
+
+ de la siguiente manera:
+\begin_inset Formula 
+\[
+F\left(y,X\right)=\sum_{z=0}^{y}f\left(z,X\right)
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+G\left(y,X\right)=\prod_{z=0}^{y}f\left(z,X\right)
+\]
+
+\end_inset
+
+donde 
+\begin_inset Formula $X$
+\end_inset
+
+ representa una k-upla.
+ Mostrar que 
+\begin_inset Formula $F$
+\end_inset
+
+ y 
+\begin_inset Formula $G$
+\end_inset
+
+ son 
+\begin_inset Formula $FRP$
+\end_inset
+
+.
+ Mostrar que 
+\begin_inset Formula $F$
+\end_inset
+
+ y 
+\begin_inset Formula $G$
+\end_inset
+
+ son 
+\begin_inset Formula $FRP$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Sea 
+\begin_inset Formula $f^{\left(1\right)}:\mathbb{N}\to\mathbb{N}$
+\end_inset
+
+.
+ Definimos una nueva función 
+\begin_inset Formula $F^{\left(2\right)}$
+\end_inset
+
+ llamada función 
+\emph on
+potencia
+\emph default
+ de 
+\begin_inset Formula $f$
+\end_inset
+
+ como
+\begin_inset Formula 
+\[
+F\left(y,x\right)=\begin{cases}
+x & y=0\\
+f\left[F\left(y-1,x\right)\right] & y>0
+\end{cases}
+\]
+
+\end_inset
+
+Notamos generalmente 
+\begin_inset Formula $F\left(y,x\right)$
+\end_inset
+
+ como 
+\begin_inset Formula $f^{y}\left(x\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Mostrar que 
+\begin_inset Formula $\Sigma\left(y,x\right)=s^{y}\left(x\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Mostrar que si 
+\begin_inset Formula $f$
+\end_inset
+
+ es una 
+\begin_inset Formula $FRP$
+\end_inset
+
+, entonces 
+\begin_inset Formula $F$
+\end_inset
+
+ resulta una 
+\begin_inset Formula $FRP$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Escribir la función diferencia 
+\begin_inset Formula $\hat{d}$
+\end_inset
+
+ utilizando potencias.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\align center
+
+\series bold
+Conjuntos recursivos primitivos
+\end_layout
+
+\begin_layout Enumerate-Resume
+Mostrar que todo subconjunto unitario de 
+\begin_inset Formula $\mathbb{N}$
+\end_inset
+
+ es un 
+\begin_inset Formula $CRP$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate-Resume
+Probar que si 
+\begin_inset Formula $A,B\subseteq\mathbb{N}$
+\end_inset
+
+ son 
+\begin_inset Formula $CRP$
+\end_inset
+
+, entonces 
+\begin_inset Formula $\neg A$
+\end_inset
+
+, 
+\begin_inset Formula $A\cup B$
+\end_inset
+
+ y 
+\begin_inset Formula $A\cap B$
+\end_inset
+
+ son 
+\begin_inset Formula $CRP$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate-Resume
+Mostrar que todos los subconjuntos finitos de 
+\begin_inset Formula $\mathbb{N}$
+\end_inset
+
+ son 
+\begin_inset Formula $CRP$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate-Resume
+Repetir los tres ejercicios anteriores considerando ahora subconjuntos de
+ 
+\begin_inset Formula $\mathbb{N}^{k}$
+\end_inset
+
+ con 
+\begin_inset Formula $k\in\mathbb{N}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate-Resume
+Mostrar que el conjunto de los números pares es un 
+\begin_inset Formula $CRP$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate-Resume
+Mostrar que el conjunto de los múltiplos de 3 es un 
+\begin_inset Formula $CRP$
+\end_inset
+
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+
+\emph on
+Sugerencia
+\emph default
+: Probar que la función 
+\begin_inset Formula $r_{3}:\mathbb{N}\to\mathbb{N}$
+\end_inset
+
+ que toma un natural y devuelve el resto de la división entera por 3 es
+ una 
+\begin_inset Formula $FRP$
+\end_inset
+
+, y usarla para escribir la función característica de los múltiplos de 3.
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\align center
+
+\series bold
+Relaciones recursivas primitivas
+\end_layout
+
+\begin_layout Standard
+Una relación 
+\begin_inset Formula $R\subseteq\mathbb{N}\times\mathbb{N}$
+\end_inset
+
+ se dice 
+\emph on
+recursiva primitiva
+\emph default
+ (RRP) si es un CRP.
+\end_layout
+
+\begin_layout Enumerate-Resume
+Mostrar que 
+\begin_inset Formula $=,\neq,\leq$
+\end_inset
+
+ y 
+\begin_inset Formula $>$
+\end_inset
+
+ son 
+\begin_inset Formula $RRP$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate-Resume
+Probar que si 
+\begin_inset Formula $R,S\subseteq\mathbb{N}\times\mathbb{N}$
+\end_inset
+
+ son 
+\begin_inset Formula $RRP$
+\end_inset
+
+, entonces también lo son las relaciones 
+\begin_inset Formula $T,U$
+\end_inset
+
+ y 
+\begin_inset Formula $\neg R$
+\end_inset
+
+, donde
+\begin_inset Formula 
+\[
+\begin{array}{ccc}
+xTy & = & xRy\land xSy\\
+xUy & = & xRy\lor xSy\\
+x\left(\neg R\right)y & = & \neg\left(xRy\right)
+\end{array}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate-Resume
+Teniendo en cuenta los resultados del ultimo ítem, ¿como podríamos haber
+ probado que 
+\begin_inset Formula $\neq$
+\end_inset
+
+ y 
+\begin_inset Formula $>$
+\end_inset
+
+ son 
+\begin_inset Formula $RRP$
+\end_inset
+
+?
+\end_layout
+
+\begin_layout Enumerate-Resume
+Sea 
+\begin_inset Formula $R\subseteq\mathbb{N}\times\mathbb{N}$
+\end_inset
+
+.
+ Definimos 
+\begin_inset Formula $\bigwedge R$
+\end_inset
+
+ y 
+\begin_inset Formula $\bigvee R$
+\end_inset
+
+ de la siguiente manera:
+\begin_inset Formula 
+\[
+x\left(\bigwedge R\right)y\iff\forall k\in\mathbb{N}/0\leq k\leq y\text{ se tiene }xRk
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+x\left(\bigvee R\right)y\iff\exists k\in\mathbb{N}/0\leq k\leq y\text{ para el cual }xRk
+\]
+
+\end_inset
+
+Probar que si 
+\begin_inset Formula $R$
+\end_inset
+
+ es una 
+\begin_inset Formula $RRP$
+\end_inset
+
+, entonces 
+\begin_inset Formula $\bigwedge R$
+\end_inset
+
+ y 
+\begin_inset Formula $\bigvee R$
+\end_inset
+
+ también son 
+\begin_inset Formula $RRP$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\align center
+
+\series bold
+Varios
+\end_layout
+
+\begin_layout Enumerate-Resume
+Probar que la relación de divisibilidad entre naturales es una 
+\begin_inset Formula $RRP$
+\end_inset
+
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+
+\emph on
+Sugerencia
+\emph default
+: Defina la familia de funciones 
+\begin_inset Formula $r_{a}^{\left(1\right)},a=1,2,\ldots;$
+\end_inset
+
+ donde 
+\begin_inset Formula $r_{a}^{\left(1\right)}\left(n\right)$
+\end_inset
+
+ devuelve el resto de dividir 
+\begin_inset Formula $n$
+\end_inset
+
+ por 
+\begin_inset Formula $a$
+\end_inset
+
+, y escriba la función característica de la relación en términos de estas
+ funciones.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate-Resume
+Probar que las siguientes funciones son 
+\begin_inset Formula $FRP$
+\end_inset
+
+:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate-Resume
+\begin_inset Formula $f\left(x\right)=\begin{cases}
+x^{2} & \text{si }x\text{ es multiplo de }3\\
+x+3 & \text{si }x\text{ tiene resto }1\text{ en la division por }3\\
+x! & \text{si }x\text{ tiene resto }2\text{ en la division por }3
+\end{cases}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate-Resume
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Agregue este ejercicio que muestra que a veces la dificultad no esta en
+ la definición como FRP, si no en el razonamiento matemático.
+\end_layout
+
+\begin_layout Plain Layout
+Puesto que puede resultar complicado, podría eliminarse sin problemas.
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula $max\left(x,y\right)=\begin{cases}
+y & x\leq y\\
+x & y\leq x
+\end{cases}$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Propongo agregar un ejercicio que ejemplifique el minimizador acotado.
+ Serviría de nexo con el siguiente tema, al mismo tiempo que ilustra como
+ algunas funciones que parecen ser FR son en realidad FRP.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

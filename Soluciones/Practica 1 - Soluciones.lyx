@@ -1,0 +1,1709 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\begin_preamble
+\renewcommand{\headrulewidth}{1pt}
+\renewcommand{\footrulewidth}{0.5pt}
+\fancyheadoffset[L]{-16pt}
+\end_preamble
+\use_default_options true
+\begin_modules
+customHeadersFooters
+\end_modules
+\maintain_unincluded_children false
+\language spanish-mexico
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize 12
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 2cm
+\rightmargin 2cm
+\headheight 0cm
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style french
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle fancy
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Left Header
+
+\noun on
+Lenguajes Formales y Computabilidad
+\end_layout
+
+\begin_layout Right Header
+2018
+\end_layout
+
+\begin_layout Center Footer
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+thepage
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+
+\size larger
+PRÁCTICA 1: 
+\emph on
+Soluciones
+\end_layout
+
+\begin_layout Standard
+
+\size footnotesize
+Pablo Verdes
+\begin_inset space \hspace*{\fill}
+\end_inset
+
+Dante Zanarini
+\begin_inset space \hspace*{\fill}
+\end_inset
+
+Pamela Viale
+\begin_inset space \hspace*{\fill}
+\end_inset
+
+Alejandro Hernandez
+\begin_inset space \hspace*{\fill}
+\end_inset
+
+Mauro Lucci
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset line
+LatexCommand rule
+offset "0.5ex"
+width "100col%"
+height "1pt"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Sea 
+\begin_inset Formula $f:\mathbb{N}\to P$
+\end_inset
+
+ definida por 
+\begin_inset Formula $f\left(x\right)=2x$
+\end_inset
+
+:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $f$
+\end_inset
+
+ es inyectiva: 
+\begin_inset Formula $\text{\ensuremath{f\left(x_{1}\right)=f\left(x_{2}\right)\iff2x_{1}=2x_{2}\iff x_{1}=x_{2}}}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $f$
+\end_inset
+
+ es sobreyectiva: Sea 
+\begin_inset Formula $y\in P$
+\end_inset
+
+ luego 
+\begin_inset Formula $y=2k$
+\end_inset
+
+.
+ Para 
+\begin_inset Formula $x=k$
+\end_inset
+
+ resultará 
+\begin_inset Formula $f\left(x\right)=2k=y$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Sea 
+\begin_inset Formula $f:A\to B$
+\end_inset
+
+.
+ Puesto que 
+\begin_inset Formula $B$
+\end_inset
+
+ es un conjunto unitario resultara necesariamente 
+\begin_inset Formula $f\left(x\right)=7$
+\end_inset
+
+ para cualquier 
+\begin_inset Formula $x\in A$
+\end_inset
+
+.
+ Luego 
+\begin_inset Formula $f\left(1\right)=f\left(2\right)=7$
+\end_inset
+
+ pero 
+\begin_inset Formula $1\neq2$
+\end_inset
+
+ (
+\begin_inset Formula $f$
+\end_inset
+
+ no es inyectiva).
+\end_layout
+
+\begin_layout Enumerate
+Sean 
+\begin_inset Formula $C=\left[a,b\right]$
+\end_inset
+
+ y 
+\begin_inset Formula $D=\left[c,d\right]$
+\end_inset
+
+, definiremos una función lineal 
+\begin_inset Formula $\text{\ensuremath{f:\left[a,b\right]\to\left[c,d\right]}}$
+\end_inset
+
+ que pase por los puntos 
+\begin_inset Formula $\left(a,c\right)$
+\end_inset
+
+ y 
+\begin_inset Formula $\left(b,d\right)$
+\end_inset
+
+.
+ Sea 
+\begin_inset Formula $f\left(x\right)=mx+h$
+\end_inset
+
+, luego 
+\begin_inset Formula $m=\frac{d-c}{b-a}$
+\end_inset
+
+.
+ Ahora como 
+\begin_inset Formula $f\left(a\right)=c$
+\end_inset
+
+ resulta:
+\begin_inset Formula 
+\[
+c=\left(\frac{d-c}{b-a}\right)a+h\iff c-\left(\frac{d-c}{b-a}\right)a=h
+\]
+
+\end_inset
+
+es decir,
+\begin_inset Formula 
+\[
+f\left(x\right)=\left(\frac{d-c}{b-a}\right)x+c-\left(\frac{d-c}{b-a}\right)a=\left(\frac{d-c}{b-a}\right)\left(x-a\right)+c
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $f$
+\end_inset
+
+ es inyectiva: 
+\begin_inset Formula 
+\[
+\text{\ensuremath{f\left(x_{1}\right)=f\left(x_{2}\right)\iff mx_{1}+h=mx_{2}+h\iff mx_{1}=mx_{2}}}\iff x_{1}=x_{2}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $f$
+\end_inset
+
+ es sobreyectiva: Sea 
+\begin_inset Formula $y\in D$
+\end_inset
+
+ definimos 
+\begin_inset Formula $x=\left(y-c\right)\left(\frac{b-a}{d-c}\right)+a$
+\end_inset
+
+.
+ Luego:
+\begin_inset Formula 
+\begin{align*}
+f\left(x\right) & =\left(\frac{d-c}{b-a}\right)\left[\left(y-c\right)\left(\frac{b-a}{d-c}\right)+a-a\right]+c=\\
+ & =\left(\frac{d-c}{b-a}\right)\left(y-c\right)\left(\frac{b-a}{d-c}\right)+c=y-c+c=y
+\end{align*}
+
+\end_inset
+
+Ademas 
+\begin_inset Formula $x\in C$
+\end_inset
+
+ pues: 
+\begin_inset Formula 
+\[
+\begin{array}{ccccc}
+c & \leq & y & \leq & d\\
+0 & \leq & y-c & \leq & d-c\\
+0 & \leq & \left(y-c\right)\left(\frac{b-a}{d-c}\right) & \leq & \left(d-c\right)\left(\frac{b-a}{d-c}\right)=b-a\\
+a & \leq & x & \leq & b
+\end{array}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+La función biyectiva 
+\begin_inset Formula $f:\mathbb{R}\to\left(0,\infty\right)$
+\end_inset
+
+ definida por 
+\begin_inset Formula $f\left(x\right)=e^{x}$
+\end_inset
+
+ prueba que 
+\begin_inset Formula $\text{\left(-\infty,\infty\right)\sim\left(0,\infty\right)}$
+\end_inset
+
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Consideremos ahora la función biyectiva 
+\begin_inset Formula $g:\left(-\frac{\pi}{2},\frac{\pi}{2}\right)\to\mathbb{R}$
+\end_inset
+
+ definida por 
+\begin_inset Formula $g\left(x\right)=tan\left(x\right)$
+\end_inset
+
+.
+ La función 
+\begin_inset Formula $g\left(\pi x\right)$
+\end_inset
+
+ tiene como dominio el intervalo 
+\begin_inset Formula $\left(-\frac{1}{2},\frac{1}{2}\right)$
+\end_inset
+
+ mientras que la función biyectiva 
+\begin_inset Formula $g\left(\pi x-\frac{\pi}{2}\right)$
+\end_inset
+
+ tendrá el dominio 
+\begin_inset Formula $\left(0,1\right)$
+\end_inset
+
+, por lo que podemos concluir que 
+\begin_inset Formula $\text{\left(0,1\right)\sim\left(-\infty,\infty\right)}$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Enumerate
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Sea 
+\begin_inset Formula $\begin{array}{ccc}
+f:A & \to & B\\
+x\in A & \to & f\left(x\right)=x
+\end{array}$
+\end_inset
+
+ luego 
+\begin_inset Formula $f$
+\end_inset
+
+ es inyectiva pues 
+\begin_inset Formula $\text{\ensuremath{f\left(x_{1}\right)\neq f\left(x_{2}\right)\iff x_{1}\neq x_{2}}}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Observemos que 
+\begin_inset Formula $A-B\subseteq A$
+\end_inset
+
+ luego por el ítem anterior 
+\begin_inset Formula $A-B\preceq A$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Sea 
+\begin_inset Formula $\begin{array}{ccc}
+f:A & \to & A\times\left\{ b\right\} \\
+x\in A & \to & f\left(x\right)=\left(x,b\right)
+\end{array}$
+\end_inset
+
+ entonces:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $f$
+\end_inset
+
+ es inyectiva: 
+\begin_inset Formula $f\left(x_{1}\right)\neq f\left(x_{2}\right)\iff\left(x_{1},b\right)\neq\left(x_{2},b\right)\iff x_{1}\neq x_{2}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $f$
+\end_inset
+
+ es biyectiva: Sea 
+\begin_inset Formula $y=\left(x,b\right)\in A\times\left\{ b\right\} $
+\end_inset
+
+, luego para 
+\begin_inset Formula $x\in A$
+\end_inset
+
+ resulta 
+\begin_inset Formula $f\left(x\right)=y$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Sea 
+\begin_inset Formula $\begin{array}{ccc}
+f:A\times B\times C & \to & A\times\left(B\times C\right)\\
+\left(x,y,z\right)\in A\times B\times C & \to & f\left(x,y,z\right)=\left(x,\left(y,z\right)\right)
+\end{array}$
+\end_inset
+
+ entonces:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $f$
+\end_inset
+
+ es inyectiva: 
+\begin_inset Formula $\text{\ensuremath{\left(x,\left(y,z\right)\right)=\left(a,\left(b,c\right)\right)\iff x=a\land y=b\land z=c\iff\left(x,y,z\right)=\left(a,b,c\right)}}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $f$
+\end_inset
+
+ es biyectiva: Sea 
+\begin_inset Formula $y=\left(a,\left(b,c\right)\right)\in A\times\left(B\times C\right)$
+\end_inset
+
+, luego para 
+\begin_inset Formula $x=\left(a,b,c\right)\in A\times B\times C$
+\end_inset
+
+ resulta 
+\begin_inset Formula $f\left(x\right)=y$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Sea 
+\begin_inset Formula $\begin{array}{ccc}
+f:A\times B & \to & B\times A\\
+\left(x,y\right)\in A\times B & \to & f\left(x,y\right)=\left(y,x\right)
+\end{array}$
+\end_inset
+
+ entonces:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $f$
+\end_inset
+
+ es inyectiva: 
+\begin_inset Formula $\left(y_{1},x_{1}\right)=\left(y_{2},x_{2}\right)\iff y_{1}=y_{2}\land x_{1}=y_{2}\iff\left(x_{1},y_{1}\right)=\left(x_{2},y_{2}\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $f$
+\end_inset
+
+ es biyectiva: Sea 
+\begin_inset Formula $y=\left(a,\left(b,c\right)\right)\in A\times\left(B\times C\right)$
+\end_inset
+
+, luego para 
+\begin_inset Formula $x=\left(a,b,c\right)\in A\times B\times C$
+\end_inset
+
+ resulta 
+\begin_inset Formula $f\left(x\right)=y$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Sabemos que existe una función inyectiva 
+\begin_inset Formula $f:B\to C$
+\end_inset
+
+ luego la función
+\begin_inset Formula 
+\[
+\begin{array}{ccc}
+g:A\times B & \to & A\times C\\
+\left(x,y\right)\in A\times B & \to & g\left(x,y\right)=\left(x,f\left(y\right)\right)
+\end{array}
+\]
+
+\end_inset
+
+ resulta inyectiva pues: 
+\begin_inset Formula 
+\[
+\left(x_{1},y_{1}\right)\neq\left(x_{2},y_{2}\right)\Rightarrow x_{1}\neq x_{2}\lor y_{1}\neq y_{2}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Si 
+\begin_inset Formula $x_{1}\neq x_{2}$
+\end_inset
+
+ entonces 
+\begin_inset Formula $\text{\ensuremath{g\left(x_{1},y_{1}\right)=\left(x_{1},f\left(y_{1}\right)\right)\neq\left(x_{2},f\left(y_{2}\right)\right)=g\left(x_{2},y_{2}\right)}}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Si 
+\begin_inset Formula $y_{1}\neq y_{2}$
+\end_inset
+
+ entonces 
+\begin_inset Formula $\text{\ensuremath{g\left(x_{1},y_{1}\right)=\left(x_{1},f\left(y_{1}\right)\right)\neq\left(x_{2},f\left(y_{2}\right)\right)=g\left(x_{2},y_{2}\right)}}$
+\end_inset
+
+ pues como 
+\begin_inset Formula $f$
+\end_inset
+
+ es inyectiva resulta 
+\begin_inset Formula $f\left(y_{1}\right)\neq f\left(y_{2}\right)$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Para cada 
+\begin_inset Formula $H\subseteq A$
+\end_inset
+
+ definimos 
+\begin_inset Formula $\chi_{H}:A\to B=\left\{ 0,1\right\} $
+\end_inset
+
+ tal que: 
+\begin_inset Formula 
+\[
+\chi_{H}=\begin{cases}
+0 & x\notin H\\
+1 & x\in H
+\end{cases}
+\]
+
+\end_inset
+
+Cada subconjunto 
+\begin_inset Formula $H$
+\end_inset
+
+ de 
+\begin_inset Formula $A$
+\end_inset
+
+ determina una única función 
+\begin_inset Formula $\chi_{H}$
+\end_inset
+
+ (y viceversa), de manera tal de que el problema de determinar cuantos subconjun
+tos tiene 
+\begin_inset Formula $A$
+\end_inset
+
+ (
+\begin_inset Formula $card\left(\mathcal{P}\left(A\right)\right)$
+\end_inset
+
+) es equivalente al de determinar cuantas funciones hay de 
+\begin_inset Formula $A$
+\end_inset
+
+ en 
+\begin_inset Formula $B$
+\end_inset
+
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Sea 
+\begin_inset Formula $A=\left\{ a_{1},a_{2},\ldots,a_{n}\right\} $
+\end_inset
+
+ luego cada función 
+\begin_inset Formula $\chi:A\to B$
+\end_inset
+
+ se identifica con la tupla 
+\begin_inset Formula $\left(\chi(a_{1}),\chi(a_{2}),\ldots,\chi(a_{n})\right)\in\underbrace{B\times B\times\ldots\times B}_{n}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Luego 
+\begin_inset Formula $card\left(\mathcal{P}\left(A\right)\right)=card\left(B\times B\times\ldots\times B\right)=2^{n}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Paragraph
+Argumento combinatorio
+\end_layout
+
+\begin_layout Itemize
+Subconjuntos de 0 elementos hay: 
+\begin_inset Formula ${n \choose 0}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Subconjuntos de 
+\begin_inset Formula $1$
+\end_inset
+
+ elementos hay: 
+\begin_inset Formula ${n \choose 1}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Subconjuntos de 
+\begin_inset Formula $2$
+\end_inset
+
+ elementos hay: 
+\begin_inset Formula ${n \choose 2}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\vdots$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Subconjuntos de 
+\begin_inset Formula $n$
+\end_inset
+
+ elementos hay: 
+\begin_inset Formula ${n \choose n}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Puede probarse por inducción que 
+\begin_inset Formula ${\displaystyle \sum_{i=0}^{n}}{n \choose i}=2^{n}=card\left(\mathcal{P}\left(A\right)\right)$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Enumerate
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Reflexividad: Para todo conjunto 
+\begin_inset Formula $A$
+\end_inset
+
+, la función identidad es biyectiva, luego 
+\begin_inset Formula $A\sim A$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Transitividad: Si 
+\begin_inset Formula $A\sim B$
+\end_inset
+
+ y 
+\begin_inset Formula $B\sim C$
+\end_inset
+
+ entonces existen funciones biyectivas 
+\begin_inset Formula $f$
+\end_inset
+
+ y 
+\begin_inset Formula $g$
+\end_inset
+
+, luego la función 
+\begin_inset Formula $f\circ g$
+\end_inset
+
+ es una biyeccion de 
+\begin_inset Formula $A$
+\end_inset
+
+ a 
+\begin_inset Formula $C$
+\end_inset
+
+.
+ Por lo tanto 
+\begin_inset Formula $A\sim C$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Simetria: Si 
+\begin_inset Formula $A\sim B$
+\end_inset
+
+ entonces existe una funcion biyectiva 
+\begin_inset Formula $f$
+\end_inset
+
+, luego la función 
+\begin_inset Formula $f^{-1}$
+\end_inset
+
+ es una biyeccion de 
+\begin_inset Formula $B$
+\end_inset
+
+ a 
+\begin_inset Formula $A$
+\end_inset
+
+.
+ Por lo tanto 
+\begin_inset Formula $B\sim A$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Reflexividad: Análogo.
+\end_layout
+
+\begin_layout Itemize
+Transitividad: Análogo.
+\end_layout
+
+\begin_layout Itemize
+Antisimetria: Si 
+\begin_inset Formula $A\preceq B$
+\end_inset
+
+ y 
+\begin_inset Formula $B\preceq A$
+\end_inset
+
+ entonces existen funciones inyectivas de 
+\begin_inset Formula $A$
+\end_inset
+
+ a 
+\begin_inset Formula $B$
+\end_inset
+
+ y de 
+\begin_inset Formula $B$
+\end_inset
+
+ a 
+\begin_inset Formula $A$
+\end_inset
+
+ y por el teorema de Cantor-Schroder-Bernstein existe una biyeccion de 
+\begin_inset Formula $A$
+\end_inset
+
+ a 
+\begin_inset Formula $B$
+\end_inset
+
+ por lo que 
+\begin_inset Formula $A\sim B$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Enumerate
+Sabemos existen 
+\begin_inset Formula $f:A\to B$
+\end_inset
+
+ y 
+\begin_inset Formula $g:C\to D$
+\end_inset
+
+ biyectivas, luego la función 
+\begin_inset Formula 
+\[
+\begin{array}{ccc}
+h:A\times C & \to & B\times D\\
+\left(x,y\right)\in A\times C & \to & h\left(x,y\right)=\left(f\left(x\right),g\left(y\right)\right)
+\end{array}
+\]
+
+\end_inset
+
+es biyectiva pues:
+\begin_inset Formula 
+\[
+\left(x_{1},y_{1}\right)\neq\left(x_{2},y_{2}\right)\Rightarrow x_{1}\neq x_{2}\lor y_{1}\neq y_{2}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Si 
+\begin_inset Formula $x_{1}\neq x_{2}$
+\end_inset
+
+ entonces 
+\begin_inset Formula $\text{\ensuremath{h\left(x_{1},y_{1}\right)=\left(f\left(x_{1}\right),g\left(y_{1}\right)\right)\neq\left(f\left(x_{2}\right),g\left(y_{2}\right)\right)=h\left(x_{2},y_{2}\right)}}$
+\end_inset
+
+ por ser 
+\begin_inset Formula $f$
+\end_inset
+
+ biyectiva.
+\end_layout
+
+\begin_layout Itemize
+Si 
+\begin_inset Formula $y_{1}\neq y_{2}$
+\end_inset
+
+ entonces 
+\begin_inset Formula $\text{\ensuremath{h\left(x_{1},y_{1}\right)=\left(f\left(x_{1}\right),g\left(y_{1}\right)\right)\neq\left(f\left(x_{2}\right),g\left(y_{2}\right)\right)=h\left(x_{2},y_{2}\right)}}$
+\end_inset
+
+ por ser 
+\begin_inset Formula $g$
+\end_inset
+
+ biyectiva.
+\end_layout
+
+\begin_layout Standard
+La afirmación reciproca no vale pues basta considerar 
+\begin_inset Formula $A=D=\left\{ 1\right\} $
+\end_inset
+
+ y 
+\begin_inset Formula $B=C=\left\{ 1,2\right\} $
+\end_inset
+
+.
+ De esta manera 
+\begin_inset Formula $A\times C=\left\{ \left(1,1\right),\left(1,2\right)\right\} $
+\end_inset
+
+ y 
+\begin_inset Formula $B\times D=\left\{ \left(1,1\right),\left(2,1\right)\right\} $
+\end_inset
+
+ de donde 
+\begin_inset Formula $A\times C\sim B\times D$
+\end_inset
+
+ pero claramente 
+\begin_inset Formula $A\nsim B$
+\end_inset
+
+ ni 
+\begin_inset Formula $C\nsim D$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Sabemos que existen 
+\begin_inset Formula $f:A\to B$
+\end_inset
+
+ y 
+\begin_inset Formula $g:C\to D$
+\end_inset
+
+ inyectivas, luego la funcion
+\begin_inset Formula 
+\[
+\begin{array}{ccc}
+h:A\cup C & \to & B\cup D\\
+x\in A\cup C & \to & h\left(x\right)=\begin{cases}
+f\left(x\right) & x\in A\\
+g\left(x\right) & x\in C-A
+\end{cases}
+\end{array}
+\]
+
+\end_inset
+
+es inyectiva.
+ En efecto sean 
+\begin_inset Formula $x_{1},x_{2}\in A\cup B/x_{1}\neq x_{2}$
+\end_inset
+
+ luego:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Si 
+\begin_inset Formula $x_{1},x_{2}\in A$
+\end_inset
+
+: 
+\begin_inset Formula $x_{1}\neq x_{2}\Rightarrow h\left(x_{1}\right)=f\left(x_{1}\right)\neq f\left(x_{2}\right)=h\left(x_{2}\right)$
+\end_inset
+
+ pues 
+\begin_inset Formula $f$
+\end_inset
+
+ es inyectiva.
+\end_layout
+
+\begin_layout Itemize
+Si 
+\begin_inset Formula $x_{1},x_{2}\in C\land x_{1},x_{2}\notin C$
+\end_inset
+
+: 
+\begin_inset Formula $x_{1}\neq x_{2}\Rightarrow h\left(x_{1}\right)=g\left(x_{1}\right)\neq g\left(x_{2}\right)=h\left(x_{2}\right)$
+\end_inset
+
+ pues 
+\begin_inset Formula $g$
+\end_inset
+
+ es inyectiva.
+\end_layout
+
+\begin_layout Itemize
+Si 
+\begin_inset Formula $x_{1}\in A\land x_{2}\notin A\land x_{2}\in C:$
+\end_inset
+
+ 
+\begin_inset Formula $h\left(x_{1}\right)=f\left(x_{1}\right)\in B$
+\end_inset
+
+ y 
+\begin_inset Formula $h\left(x_{2}\right)=g\left(x_{2}\right)\in D$
+\end_inset
+
+ luego debera ser 
+\begin_inset Formula $h\left(x_{1}\right)\neq h\left(x_{2}\right)$
+\end_inset
+
+ pues de lo contrario resultaria 
+\begin_inset Formula $B\cap D\neq\emptyset$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Las funciones 
+\begin_inset Formula $f\left(x\right)=\frac{1}{2}x$
+\end_inset
+
+ y 
+\begin_inset Formula $g\left(x\right)=x$
+\end_inset
+
+ son inyectivas y por el teorema citado, existe una biyeccion entre dichos
+ conjuntos, por lo tanto son equipotentes.
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $P_{0}=\mathbb{N}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $P_{3}=\left\{ \alpha_{0}+\alpha_{1}x+\alpha_{2}x^{2}+\alpha_{3}x^{3}/\alpha_{0},\alpha_{1},\alpha_{2},\alpha_{3}\in\mathbb{Z}\right\} $
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $P_{n}=\left\{ \alpha_{0}+\alpha_{1}x^{1}+\ldots+\alpha_{n}x^{n}/\alpha_{i}\in\mathbb{Z}\right\} $
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+\begin_inset Formula $P=P_{0}\cup P_{1}\cup P_{2}\cup\ldots={\displaystyle \bigcup_{i\in\mathbb{N}}}P_{i}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Sea 
+\begin_inset Formula $\begin{array}{ccc}
+f:P_{i} & \to & \mathbb{Z}^{i+1}\\
+p\in P_{i} & \to & f\left(p\right)=\left(\alpha_{0},\ldots,\alpha_{i}\right)
+\end{array}$
+\end_inset
+
+.
+ Puesto que en 
+\begin_inset Formula $P_{i}$
+\end_inset
+
+ todos los polinomios tienen el mismo grado, dos polinomios serán diferentes
+ si alguno de sus coeficientes es diferentes y en consecuencia también lo
+ serán sus imágenes.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $D_{i}\preceq\mathbb{Z}^{i+1}\sim\mathbb{N}^{i+1}\sim\mathbb{N}$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Observemos que 
+\begin_inset Formula $A\subseteq X=\left\{ \frac{\sqrt[m]{m}}{n}:m,n\in\mathbb{N}\right\} $
+\end_inset
+
+.
+ Ademas podemos escribir a 
+\begin_inset Formula $X$
+\end_inset
+
+ como 
+\begin_inset Formula ${\displaystyle \bigcup_{i\in\mathbb{N}}}\left\{ \frac{\sqrt[m]{m}}{i}:m\in\mathbb{N}\right\} $
+\end_inset
+
+, luego 
+\begin_inset Formula $A\preceq X\preceq\mathbb{N}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Podemos escribir a 
+\begin_inset Formula $B$
+\end_inset
+
+ como 
+\begin_inset Formula ${\displaystyle \bigcup_{i\in\mathbb{Z}}}\left\{ \left\langle i,i+r,i+2r,\ldots,i+nr,\ldots\right\rangle /r\in\mathbb{Z}\right\} $
+\end_inset
+
+ y por ser unión numerable de conjuntos numerables resulta 
+\begin_inset Formula $B\sim\mathbb{N}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Sea 
+\begin_inset Formula $f:C\to\mathbb{Z}\times\mathbb{Z}$
+\end_inset
+
+ dada por 
+\begin_inset Formula $f\left(\left[a,b\right]\right)=\left(a,b\right)$
+\end_inset
+
+, es fácil ver que esta función es inyectiva.
+ Luego 
+\begin_inset Formula $C\preceq\mathbb{Z}\times\mathbb{Z}\sim\mathbb{N}\times\mathbb{N}\sim\mathbb{N}$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Sea 
+\begin_inset Formula $\frac{p}{q}\in\mathbb{Q}$
+\end_inset
+
+ luego para 
+\begin_inset Formula $P\left(x\right)=qx-p$
+\end_inset
+
+ resulta 
+\begin_inset Formula $P\left(\frac{p}{q}\right)=q\frac{p}{q}-p=0$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\mathbb{Q}\preceq\mathbb{A}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+En efecto para 
+\begin_inset Formula $P\left(x\right)=x^{2}-2$
+\end_inset
+
+ resulta 
+\begin_inset Formula $P\left(\sqrt{2}\right)=\sqrt{2}^{2}-2=0$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+En efecto para 
+\begin_inset Formula $P\left(x\right)=x^{2}+1$
+\end_inset
+
+ resulta 
+\begin_inset Formula $P\left(i\right)=\sqrt{-1}^{2}+1=0$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Observemos que 
+\begin_inset Formula $\mathbb{A}={\displaystyle \bigcup_{p\in P}\left\{ x\in\mathbb{C}:p\left(x\right)=0\right\} }$
+\end_inset
+
+.
+ Cada uno de estos conjuntos es numerables pues cada polinomio tiene una
+ cantidad finita de raíces.
+ Luego, por ser unión numerable de conjuntos numerables, resulta 
+\begin_inset Formula $\mathbb{A}\sim\mathbb{N}$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Supongamos lo contrario, luego 
+\begin_inset Formula $\mathbb{A}=\mathbb{C}\sim\mathbb{N}$
+\end_inset
+
+.
+ Contradicción.
+\end_layout
+
+\begin_layout Enumerate
+Supongamos lo contrario, es decir 
+\begin_inset Formula $\mathbb{T}\sim\mathbb{N}$
+\end_inset
+
+ luego como 
+\begin_inset Formula $\mathbb{C}=\mathbb{A}\cup\mathbb{T}$
+\end_inset
+
+ resulta ser unión numerable de conjuntos numerables por lo que 
+\begin_inset Formula $\mathbb{R}\sim\mathbb{N}$
+\end_inset
+
+.
+ Contradicción.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Claramente 
+\begin_inset Formula $B$
+\end_inset
+
+ no es numerable (
+\begin_inset Formula $B\succeq\aleph_{1}$
+\end_inset
+
+) pues si lo fuera, 
+\begin_inset Formula $B\cup A$
+\end_inset
+
+ sería unión numerable de conjuntos numerables y resultaría 
+\begin_inset Formula $\text{\ensuremath{card\left(B\cup A\right)=\aleph_{0}}}$
+\end_inset
+
+.
+ Luego como 
+\begin_inset Formula $B\subseteq A\cup B$
+\end_inset
+
+ debe ser 
+\begin_inset Formula $B\preceq A\cup B$
+\end_inset
+
+, es decir 
+\begin_inset Formula $B\preceq\aleph_{1}$
+\end_inset
+
+ por lo que 
+\begin_inset Formula $card\left(B\right)=\aleph_{1}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Sean 
+\begin_inset Formula $\Sigma_{i}$
+\end_inset
+
+ los conjuntos de cadenas de longitud exactamente 
+\begin_inset Formula $i$
+\end_inset
+
+, luego 
+\begin_inset Formula $card\left(\Sigma_{i}\right)=card\left(\Sigma\right)^{i}\in\mathbb{N}$
+\end_inset
+
+.
+ Luego el conjunto de todas las cadenas sobre el alfabeto es 
+\begin_inset Formula $\Sigma^{*}={\displaystyle \bigcup_{i\in\mathbb{N}}\Sigma_{i}}$
+\end_inset
+
+ que por ser unión numerable de conjuntos numerables, resulta también ser
+ numerable.
+\end_layout
+
+\begin_layout Enumerate
+Como 
+\begin_inset Formula $card\left(\Sigma^{*}\right)=\aleph_{0}$
+\end_inset
+
+ y un lenguaje es un elemento de 
+\begin_inset Formula $\mathcal{P}\left(\Sigma^{*}\right)$
+\end_inset
+
+ entonces existen 
+\begin_inset Formula $\aleph_{1}$
+\end_inset
+
+ lenguajes sobre 
+\begin_inset Formula $\Sigma$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Mauro tiene una demostración mucho mas prolija y entendible que esta.
+\end_layout
+
+\end_inset
+
+Sean 
+\begin_inset Formula $B=\{0,1\},$
+\end_inset
+
+ 
+\begin_inset Formula $\mathcal{F}(A,B)$
+\end_inset
+
+ el conjunto de todas las funciones de 
+\begin_inset Formula $A$
+\end_inset
+
+ en 
+\begin_inset Formula $B$
+\end_inset
+
+ y para cada 
+\begin_inset Formula $S\in P(A)$
+\end_inset
+
+ consideremos la función:
+\begin_inset Formula 
+\[
+\begin{aligned}\chi_{S}:A\to & B\\
+x\to & \chi_{S}(x)=\begin{cases}
+1 & x\in S\\
+0 & x\notin S
+\end{cases}
+\end{aligned}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Definimos:
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\begin{aligned}f:\mathcal{P}(A)\to & \mathcal{F}(A,B)\\
+S\to & f(S)=\chi_{S}
+\end{aligned}
+$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\begin{aligned}g:\mathcal{F}(A,B)\to & \mathcal{P}(A)\\
+F\to & g(F)=F^{-1}\left(\left\{ 1\right\} \right)
+\end{aligned}
+$
+\end_inset
+
+ 
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+(donde 
+\begin_inset Formula $F^{-1}\left(\left\{ 1\right\} \right)$
+\end_inset
+
+ es el conjunto de todas las preimagenes de 
+\begin_inset Formula $1$
+\end_inset
+
+ a través de 
+\begin_inset Formula $F$
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Paragraph
+Demostración
+\end_layout
+
+\begin_layout Standard
+Analicemos la función 
+\begin_inset Formula $\chi_{F^{-1}\left(\left\{ 1\right\} \right)}$
+\end_inset
+
+.
+ Tenemos:
+\begin_inset Formula 
+\[
+\chi_{F^{-1}\left(\left\{ 1\right\} \right)}\left(x\right)=\begin{cases}
+1 & x\in F^{-1}\left(\left\{ 1\right\} \right)\\
+0 & x\notin F^{-1}\left(\left\{ 1\right\} \right)
+\end{cases}=\begin{cases}
+1 & F(x)=1\\
+0 & F(x)=0
+\end{cases}=F(x)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Ahora 
+\begin_inset Formula $\left(f\circ g\right)\left(F\right)=f\left[F^{-1}\left(\left\{ 1\right\} \right)\right]=\chi_{F^{-1}\left(\left\{ 1\right\} \right)}=F$
+\end_inset
+
+ es decir: 
+\begin_inset Formula $\left(f\circ g\right)$
+\end_inset
+
+ es la identidad en 
+\begin_inset Formula $\mathcal{F}(A,B)$
+\end_inset
+
+.
+ 
+\emph on
+(*)
+\end_layout
+
+\begin_layout Standard
+Sabemos que la preimagen de 
+\begin_inset Formula $\{1\}$
+\end_inset
+
+ a través de 
+\begin_inset Formula $\chi_{S}$
+\end_inset
+
+ es justamente 
+\begin_inset Formula $S$
+\end_inset
+
+.
+ Por lo tanto:
+\begin_inset Formula 
+\[
+\forall S\in\mathcal{P}(A):\left(g\circ f\right)(S)=g\left[f\left(S\right)\right]=g\left(\chi_{S}\right)=\chi_{S}^{-1}\left(\left\{ 1\right\} \right)=S
+\]
+
+\end_inset
+
+luego 
+\begin_inset Formula $\left(g\circ f\right)$
+\end_inset
+
+ es la identidad en 
+\begin_inset Formula $\mathcal{P}(A)$
+\end_inset
+
+.
+ 
+\emph on
+(**)
+\end_layout
+
+\begin_layout Standard
+De 
+\emph on
+(*)
+\emph default
+ y 
+\emph on
+(**)
+\emph default
+ resulta que 
+\begin_inset Formula $f$
+\end_inset
+
+ y 
+\begin_inset Formula $g$
+\end_inset
+
+ son biyectivas, es decir, existen la misma cantidad de subconjuntos de
+ 
+\begin_inset Formula $A$
+\end_inset
+
+ que de funciones de 
+\begin_inset Formula $A$
+\end_inset
+
+ en 
+\begin_inset Formula $B$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Resulta trivial de definir una inyección de 
+\begin_inset Formula $\left\{ f/f:\mathbb{N}\to\left\{ 0,1\right\} \right\} $
+\end_inset
+
+ en 
+\begin_inset Formula $\left\{ f/f:\mathbb{N}\to\mathbb{N}\right\} $
+\end_inset
+
+ que extienda el dominio de las primeras.
+\end_layout
+
+\begin_layout Enumerate
+  
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Por el ítem 
+\begin_inset Formula $a$
+\end_inset
+
+: 
+\begin_inset Formula $\text{\ensuremath{card\left(\left\{ f/f:\mathbb{N}\to\left\{ 0,1\right\} \right\} \right)=card\left(\mathcal{P}\left(\mathbb{N}\right)\right)=\aleph_{1}}}$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Itemize
+Tenemos entonces: 
+\begin_inset Formula $\aleph_{0}\prec\mathcal{P}\left(\mathbb{N}\right)\sim\aleph_{1}\sim card\left(\left\{ f/f:\mathbb{N}\to\left\{ 0,1\right\} \right\} \right)\preceq card\left(\left\{ f/f:\mathbb{N}\to\mathbb{N}\right\} \right)$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Del ejercicio 
+\begin_inset Formula $9$
+\end_inset
+
+ sabemos que para cualquier alfabeto, existen 
+\begin_inset Formula $\aleph_{0}$
+\end_inset
+
+ cadenas (programas) sobre dicho alfabeto.
+\end_layout
+
+\begin_layout Enumerate
+Podemos concluir que puesto que existen mas funciones naturales que programas,
+ existen funciones que ningún programa puede calcular.
+\end_layout
+
+\end_deeper
+\end_body
+\end_document

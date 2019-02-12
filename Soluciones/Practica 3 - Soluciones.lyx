@@ -1,0 +1,1057 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\begin_preamble
+\renewcommand{\headrulewidth}{1pt}
+\renewcommand{\footrulewidth}{0.5pt}
+\fancyheadoffset[L]{-16pt}
+\end_preamble
+\use_default_options true
+\begin_modules
+customHeadersFooters
+enumitem
+\end_modules
+\maintain_unincluded_children false
+\language spanish-mexico
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize 12
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 2cm
+\rightmargin 2cm
+\headheight 0cm
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style french
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle fancy
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Left Header
+
+\noun on
+Lenguajes Formales y Computabilidad
+\end_layout
+
+\begin_layout Right Header
+2018
+\end_layout
+
+\begin_layout Center Footer
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+thepage
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+
+\size larger
+PRÁCTICA 3: 
+\emph on
+Soluciones
+\end_layout
+
+\begin_layout Standard
+
+\size footnotesize
+Pablo Verdes
+\begin_inset space \hspace*{\fill}
+\end_inset
+
+Dante Zanarini
+\begin_inset space \hspace*{\fill}
+\end_inset
+
+Pamela Viale
+\begin_inset space \hspace*{\fill}
+\end_inset
+
+Alejandro Hernandez
+\begin_inset space \hspace*{\fill}
+\end_inset
+
+Mauro Lucci
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset line
+LatexCommand rule
+offset "0.5ex"
+width "100col%"
+height "1pt"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Caso base: 
+\begin_inset Formula $g_{0}^{\left(1\right)}=c^{\left(1\right)}\in FRP$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Caso inductivo: Supongamos 
+\begin_inset Formula $g_{n}^{\left(1\right)}\in FRP$
+\end_inset
+
+ (H.I.).
+ Luego: 
+\begin_inset Formula 
+\[
+g_{n+1}\left(x\right)=n+1=\Phi\left(s^{\left(1\right)},\underbrace{g_{n}^{\left(1\right)}}_{H.I.}\right)\left(x\right)\in FRP
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset Formula $\Phi\left(s^{\left(1\right)},\Phi\left(s^{\left(1\right)},c^{\left(2\right)}\right)\right)\left(17,3\right)=s^{\left(1\right)}\left(\Phi\left(s^{\left(1\right)},c^{\left(2\right)}\right)\left(17,3\right)\right)=s^{\left(1\right)}\left(s^{\left(1\right)}\left(c^{\left(2\right)}\left(17,3\right)\right)\right)=$
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Formula $s^{\left(1\right)}\left(s^{\left(1\right)}\left(0\right)\right)=s^{\left(1\right)}\left(1\right)=2$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+\begin_inset Formula $Mas2^{\left(1\right)}\left(5\right)=\Phi\left(s^{\left(1\right)},s^{\left(1\right)}\right)\left(5\right)=s^{\left(1\right)}\left(s^{\left(1\right)}\left(5\right)\right)=s^{\left(1\right)}\left(6\right)=7$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $R\left(p_{1}^{\left(1\right)},\Phi\left(s^{\left(1\right)},p_{3}^{\left(3\right)}\right)\right)\left(2,3\right)\underbrace{=}_{2>0}\Phi\left(s^{\left(1\right)},p_{3}^{\left(3\right)}\right)\left(1,3,R\left(p_{1}^{\left(1\right)},\Phi\left(s^{\left(1\right)},p_{3}^{\left(3\right)}\right)\right)\left(1,3\right)\right)=$
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Formula $\Phi\left(s^{\left(1\right)},p_{3}^{\left(3\right)}\right)\left(1,3,R\left(p_{1}^{\left(1\right)},\Phi\left(s^{\left(1\right)},p_{3}^{\left(3\right)}\right)\right)\left(1,3\right)\right)=s^{\left(1\right)}\left(p_{3}^{\left(3\right)}\left(1,3,R\left(p_{1}^{\left(1\right)},\Phi\left(s^{\left(1\right)},p_{3}^{\left(3\right)}\right)\right)\left(1,3\right)\right)\right)=$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $s^{\left(1\right)}\left(R\left(p_{1}^{\left(1\right)},\Phi\left(s^{\left(1\right)},p_{3}^{\left(3\right)}\right)\right)\left(1,3\right)\right)\underbrace{=}_{1>0}s^{\left(1\right)}\left(\Phi\left(s^{\left(1\right)},p_{3}^{\left(3\right)}\right)\left(0,3,R\left(p_{1}^{\left(1\right)},\Phi\left(s^{\left(1\right)},p_{3}^{\left(3\right)}\right)\right)\left(0,3\right)\right)\right)=$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $s^{\left(1\right)}\left(s^{\left(1\right)}\left(p_{3}^{\left(3\right)}\left(\left(0,3,R\left(p_{1}^{\left(1\right)},\Phi\left(s^{\left(1\right)},p_{3}^{\left(3\right)}\right)\right)\left(0,3\right)\right)\right)\right)\right)=s^{\left(1\right)}\left(s^{\left(1\right)}\left(R\left(p_{1}^{\left(1\right)},\Phi\left(s^{\left(1\right)},p_{3}^{\left(3\right)}\right)\right)\left(0,3\right)\right)\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\underbrace{=}_{0=0}s^{\left(1\right)}\left(s^{\left(1\right)}\left(p_{1}^{\left(1\right)}\left(3\right)\right)\right)=s^{\left(1\right)}\left(s^{\left(1\right)}\left(3\right)\right)=s^{\left(1\right)}\left(4\right)=5$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+\begin_inset Formula $R\left(c^{\left(0\right)},p_{1}^{\left(2\right)}\right)\left(412\right)=p_{1}^{\left(2\right)}\left(411,R\left(c^{\left(0\right)},p_{1}^{\left(2\right)}\right)\left(411\right)\right)=411$
+\end_inset
+
+.
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $\Pi^{(2)}\left(0,x\right)=0x=0=c^{(1)}\left(x\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\begin{aligned}\Pi^{(2)}\left(y,x\right) & =yx=\left(y-1\right)x+x=\Sigma^{(2)}\left[x,\Pi\left(y-1,x\right)\right]=\\
+ & =\Sigma^{(2)}\left\{ p_{2}^{(3)}\left[y-1,x,\Pi^{(2)}\left(y-1,x\right)\right],p_{3}^{(3)}\left[y-1,x,\Pi^{(2)}\left(y-1,x\right)\right]\right\} =\\
+ & =\Phi\left(\Sigma^{(2)},p_{2}^{(3)},p_{3}^{(3)}\right)\left(y-1,x,\Pi^{(2)}\left(y-1,x\right)\right).
+\end{aligned}
+$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\Pi^{(2)}\left(y,x\right)=R\left[c^{(1)},\Phi\left(\Sigma^{(2)},p_{2}^{(3)},p_{3}^{(3)}\right)\right]\left(y,x\right)$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $Fac^{(1)}\left(0\right)=0!=1=0+1=s^{(1)}\left[c^{(0)}\left(\right)\right]=\Phi\left(s^{(1)},c^{(0)}\right)\left(\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\begin{aligned}Fac^{(1)}\left(y\right) & =y!=y\left(y-1\right)!=\left[y-1\right]!\left[\left(y-1\right)+1\right]=\\
+ & =\Pi^{(2)}\left\{ p_{2}^{(2)}\left(y-1,Fac^{(1)}\left(y-1\right)\right),\Phi\left(s^{(1)},p_{1}^{(2)}\right)\left(y-1,Fac^{(1)}\left(y-1\right)\right)\right\} =\\
+ & =\Phi\left[\Pi^{(2)},p_{2}^{(2)},\Phi\left(s^{(1)},p_{1}^{(2)}\right)\right]\left(y-1,Fac^{(1)}\left(y-1\right)\right).
+\end{aligned}
+$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $Fac^{(1)}\left(y\right)=R\left\{ \Phi\left(s^{(1)},c^{(0)}\right),\Phi\left[\Pi^{(2)},p_{2}^{(2)},\Phi\left(s^{(1)},p_{1}^{(2)}\right)\right]\right\} \left(y\right)$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $Exp^{\left(2\right)}\left(0,x\right)=x^{0}=1=0+1=s^{(1)}\left[c^{(1)}\left(x\right)\right]=\Phi\left(s^{(1)},c^{(1)}\right)\left(x\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\begin{aligned}Exp^{\left(2\right)}\left(y,x\right) & =x^{y}=x^{y-1}x=\Pi^{\left(2\right)}\left[x,Exp^{\left(2\right)}\left(y-1,x\right)\right]=\\
+=\Pi^{(2)} & \left[p_{2}^{(3)}\left(y-1,x,Exp^{\left(2\right)}\left(y-1,x\right)\right),p_{3}^{\left(3\right)}\left(y-1,x,Exp^{\left(2\right)}\left(y-1,x\right)\right)\right]\\
+ & =\Phi\left(\Pi^{(2)},p_{2}^{(3)},p_{3}^{(3)}\right)\left(y-1,x,Exp^{\left(2\right)}\left(y-1,x\right)\right).
+\end{aligned}
+=$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $Exp^{(2)}\left(y,x\right)=R\left[\Phi\left(s^{(1)},c^{(1)}\right),\Phi\left(\Pi^{(2)},p_{2}^{(3)},p_{3}^{(3)}\right)\right]\left(y,x\right)$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $\widetilde{d}^{\left(2\right)}\left(0,x\right)=x\dot{-}0=x=p_{1}^{(1)}\left(x\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\begin{aligned}\widetilde{d}^{\left(2\right)}\left(y,x\right)= & x\dot{-}y=\left[x\dot{-}\left(y-1\right)\right]-1=Pd^{\left(1\right)}\left[\widetilde{d}^{\left(2\right)}\left(y-1,x\right)\right]=\\
+= & Pd^{\left(1\right)}\left[p_{3}^{\left(3\right)}\left(y-1,x,\widetilde{d}^{\left(2\right)}\left(y-1,x\right)\right)\right]=\\
+= & \Phi\left(Pd^{\left(1\right)},p_{3}^{\left(3\right)}\right)\left(y-1,x,\widetilde{d}^{\left(2\right)}\left(y-1,x\right)\right).
+\end{aligned}
+$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\widetilde{d}^{\left(2\right)}\left(y,x\right)=R\left[p_{1}^{\left(1\right)},\Phi\left(Pd^{\left(1\right)},p_{3}^{\left(3\right)}\right)\right]\left(y,x\right)$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $D_{0}^{(1)}\left(0\right)=1=0+1=s^{(1)}\left[c^{(0)}\left(\right)\right]=\Phi\left(s^{(1)},c^{(0)}\right)\left(\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $D_{0}^{(1)}\left(y\right)=0=c^{(2)}$
+\end_inset
+
+
+\begin_inset Formula $\left(y-1,D_{0}^{(1)}\left(y-1\right)\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $D_{0}^{(1)}\left(y\right)=R\left[\Phi\left(s^{(1)},c^{(0)}\right),c^{(2)}\right]\left(y\right)$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+\begin_inset Formula $\begin{aligned}k^{(2)}\left(x,y\right)= & \begin{cases}
+x\dot{-}y & x>y\\
+y\dot{-}x & x\leq y
+\end{cases}=\left(x\dot{-}y\right)+\left(y\dot{-}x\right)=\widetilde{d}^{\left(2\right)}\left(p_{2}^{\left(2\right)},p_{1}^{\left(2\right)}\right)\left(x,y\right)+\widetilde{d}^{\left(2\right)}\left(p_{1}^{\left(2\right)},p_{2}^{\left(2\right)}\right)\left(x,y\right)=\\
+= & \Phi\left(\widetilde{d}^{\left(2\right)},p_{2}^{\left(2\right)},p_{1}^{\left(2\right)}\right)\left(x,y\right)+\Phi\left(\widetilde{d}^{\left(2\right)},p_{1}^{\left(2\right)},p_{2}^{\left(2\right)}\right)\left(x,y\right)=\\
+= & \Phi\left[\Sigma^{\left(2\right)},\Phi\left(\widetilde{d}^{\left(2\right)},p_{2}^{\left(2\right)},p_{1}^{\left(2\right)}\right),\Phi\left(\widetilde{d}^{\left(2\right)},p_{1}^{\left(2\right)},p_{2}^{\left(2\right)}\right)\right]\left(x,y\right).
+\end{aligned}
+$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $E^{\left(2\right)}\left(x,y\right)=D_{0}^{\left(1\right)}\left[k^{\left(2\right)}\left(x,y\right)\right]=\Phi\left(D_{0}^{\left(1\right)},k^{\left(2\right)}\right)\left(x,y\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\neg E^{\left(2\right)}\left(x,y\right)=\Phi\left(D_{0}^{\left(1\right)},E^{\left(2\right)}\right)\left(x,y\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $sgn\left(y\right)=\Phi\left(D_{0}^{\left(1\right)},D_{0}^{\left(1\right)}\right)\left(y\right)$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+\begin_inset Formula $\hat{d}^{\left(2\right)}\left(x,y\right)=\Phi\left(\tilde{d}^{\left(2\right)},p_{2}^{\left(2\right)},p_{1}^{\left(2\right)}\right)\left(x,y\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $F^{\left(2\right)}\left(0,x\right)={\displaystyle \sum_{z=0}^{0}}f^{\left(2\right)}\left(z,x\right)=f^{\left(2\right)}\left(0,x\right)=\Phi\left(f^{\left(2\right)},c^{\left(1\right)},p_{1}^{\left(1\right)}\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\begin{aligned}F^{\left(2\right)}\left(y,x\right)= & {\displaystyle \sum_{z=0}^{y}}f^{\left(2\right)}\left(z,x\right)=\underbrace{{\displaystyle \sum_{z=0}^{y-1}}f^{\left(2\right)}\left(z,x\right)}_{p_{3}^{\left(3\right)}}+f^{\left(2\right)}\left(y,x\right)=\\
+= & \Phi\left\{ \Sigma^{\left(2\right)},p_{3}^{\left(3\right)},\Phi\left[f^{\left(2\right)},\Phi\left(s^{\left(1\right)},p_{1}^{\left(3\right)}\right),p_{2}^{\left(3\right)}\right]\right\} \left(y-1,x,F^{\left(2\right)}\left(y-1,x\right)\right)
+\end{aligned}
+$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $F^{\left(2\right)}=R\left[\Phi\left(f^{\left(2\right)},c^{\left(1\right)},p_{1}^{\left(1\right)}\right),\Phi\left\{ \Sigma^{\left(2\right)},p_{3}^{\left(3\right)},\Phi\left[f^{\left(2\right)},\Phi\left(s^{\left(1\right)},p_{1}^{\left(3\right)}\right),p_{2}^{\left(3\right)}\right]\right\} \right]$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $G^{\left(2\right)}=R\left[\Phi\left(f^{\left(2\right)},c^{\left(1\right)},p_{1}^{\left(1\right)}\right),\Phi\left\{ \Pi^{\left(2\right)},p_{3}^{\left(3\right)},\Phi\left[f^{\left(2\right)},\Phi\left(s^{\left(1\right)},p_{1}^{\left(3\right)}\right),p_{2}^{\left(3\right)}\right]\right\} \right]$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+COMPLETAR.
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Caso base 
+\begin_inset Formula $y=0$
+\end_inset
+
+: 
+\begin_inset Formula $\Sigma^{\left(2\right)}\left(0,x\right)=x=F^{\left(2\right)}\left(0,x\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Caso inductivo 
+\begin_inset Formula $y=k$
+\end_inset
+
+: Supongamos que 
+\begin_inset Formula $\Sigma^{\left(2\right)}\left(k,x\right)=F^{\left(2\right)}\left(k,x\right)$
+\end_inset
+
+.
+ Por definición de 
+\begin_inset Formula $F^{\left(2\right)}$
+\end_inset
+
+ tenemos 
+\begin_inset Formula $F^{\left(2\right)}\left(k+1,x\right)=s^{\left(1\right)}\left(F^{\left(2\right)}\left(k,x\right)\right)\underbrace{=}_{H.I.}s^{\left(1\right)}\left(\Sigma^{\left(2\right)}\left(k,x\right)\right)\underbrace{=}_{def\Sigma}\Sigma^{\left(2\right)}\left(k+1,x\right)$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $F^{\left(2\right)}\left(0,x\right)=x=p_{1}^{\left(1\right)}\left(x\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $F^{\left(2\right)}\left(y,x\right)=f^{\left(1\right)}\left[F^{\left(2\right)}\left(y-1,x\right)\right]=\Phi\left(f^{\left(1\right)},p_{3}^{\left(3\right)}\right)\left(y-1,x,F^{\left(2\right)}\left(y-1,x\right)\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $F^{\left(2\right)}=R\left[p_{1}^{\left(1\right)},\Phi\left(f^{\left(1\right)},p_{3}^{\left(3\right)}\right)\right]$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+\begin_inset Formula $\hat{d}\left(x,y\right)=x\underbrace{-1-\ldots-1}_{y\text{ veces}}=Pd^{y}\left(x\right)$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\align center
+
+\series bold
+Conjuntos recursivos primitivos
+\end_layout
+
+\begin_layout Enumerate-Resume
+Sea 
+\begin_inset Formula $A=\left\{ n\right\} $
+\end_inset
+
+, luego 
+\begin_inset Formula $\chi_{A}^{\left(1\right)}=\Phi\left(E^{\left(2\right)},f_{n}^{\left(1\right)},p_{1}^{\left(1\right)}\right)$
+\end_inset
+
+ donde 
+\begin_inset Formula $f_{n}^{\left(1\right)}\left(x\right)=n$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate-Resume
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $\chi_{\neg A}^{\left(1\right)}=\Phi\left(D_{0}^{\left(1\right)},\chi_{A}^{\left(1\right)}\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\chi_{A\cap B}^{\left(1\right)}=\Phi\left(\Pi^{\left(2\right)},\chi_{A}^{\left(1\right)},\chi_{B}^{\left(1\right)}\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\chi_{A\cup B}^{\left(1\right)}=\Phi\left[Sgn^{\left(1\right)},\Phi\left(\Sigma^{\left(2\right)},\chi_{A}^{\left(1\right)},\chi_{B}^{\left(1\right)}\right)\right]$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate-Resume
+Lo demostraremos por inducción en el cardinal del conjunto:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Caso base 
+\begin_inset Formula $c=0$
+\end_inset
+
+:  
+\begin_inset Formula $\chi_{A}^{\left(1\right)}=c^{\left(1\right)}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Caso inductivo 
+\begin_inset Formula $c=k$
+\end_inset
+
+: Supongamos que los conjuntos de 
+\begin_inset Formula $k$
+\end_inset
+
+ elementos son CRP.
+ Sea 
+\begin_inset Formula $A/\left|A\right|=k+1$
+\end_inset
+
+.
+ Para cualquier 
+\begin_inset Formula $x\in A$
+\end_inset
+
+ resulta 
+\begin_inset Formula $\left|A-\left\{ x\right\} \right|=k$
+\end_inset
+
+ y por hipotesis inductiva este conjunto es CRP.
+ Como 
+\begin_inset Formula $\left\{ x\right\} $
+\end_inset
+
+ es CRP y 
+\begin_inset Formula $A=\left(A-\left\{ x\right\} \right)\cup\left\{ x\right\} $
+\end_inset
+
+, por el ejercicio anterior sabemos que 
+\begin_inset Formula $A$
+\end_inset
+
+ es CRP.
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate-Resume
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Lo demostraremos por inducción en la aridad del conjunto:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Caso base 
+\begin_inset Formula $n=1$
+\end_inset
+
+: Trivial por ejercicio 7.
+\end_layout
+
+\begin_layout Itemize
+Caso inductivo 
+\begin_inset Formula $n=k$
+\end_inset
+
+: Supongamos que todos los conjuntos unitarios de 
+\begin_inset Formula $\mathbb{N}^{k}$
+\end_inset
+
+ son CRP.
+ Veamos que pasa para los conjuntos unitarios de 
+\begin_inset Formula $\mathbb{N}^{k+1}$
+\end_inset
+
+.
+ Sean 
+\begin_inset Formula $A=\left\{ \left(a_{1},\ldots,a_{k}\right)\right\} $
+\end_inset
+
+ y 
+\begin_inset Formula $B=\left\{ \left(a_{1},\ldots,a_{k},b\right)\right\} $
+\end_inset
+
+.
+ Por hipotesis inductiva 
+\begin_inset Formula $A$
+\end_inset
+
+ es FRP, luego:
+\begin_inset Formula 
+\[
+\chi_{B}^{(k+1)}=\Phi\left[\Pi^{\left(2\right)},\Phi\left(\chi_{A}^{\left(k\right)},p_{1}^{(k+1)},\ldots,p_{k}^{(k+1)}\right),\Phi\left(E^{\left(2\right)},p_{k+1}^{(k+1)},f_{b}^{(k+1)}\right)\right]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+COMPLETAR.
+\end_layout
+
+\begin_layout Itemize
+COMPLETAR.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate-Resume
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $\chi_{P}^{\left(1\right)}\left(0\right)=1=s^{\left(1\right)}\left(c^{\left(0\right)}\left(\right)\right)=\Phi\left(s^{\left(1\right)},c^{\left(0\right)}\right)\left(\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\chi_{P}^{\left(1\right)}\left(y\right)=D_{0}\left[\chi_{P}^{\left(1\right)}\left(y-1\right)\right]=\Phi\left(D_{0}^{\left(1\right)},p_{2}^{\left(2\right)}\right)\left(y-1,\chi_{P}^{\left(1\right)}\left(y-1\right)\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\chi_{P}^{\left(1\right)}=R\left[\Phi\left(s^{\left(1\right)},c^{\left(0\right)}\right),\Phi\left(D_{0}^{\left(1\right)},p_{2}^{\left(2\right)}\right)\right]$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate-Resume
+Observemos que 
+\begin_inset Formula $r_{3}\left(x\right)=r_{3}\left(x-1\right)+1$
+\end_inset
+
+ salvo cuando 
+\begin_inset Formula $r_{3}\left(x-1\right)+1=3$
+\end_inset
+
+ en cuyo caso debe ser 
+\begin_inset Formula $0$
+\end_inset
+
+.
+ Luego:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $r_{3}^{\left(1\right)}\left(0\right)=0=c^{\left(0\right)}\left(\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\begin{aligned}r_{3}^{\left(1\right)}\left(x\right)= & \Pi^{\left(2\right)}\left\{ \left[r_{3}^{\left(1\right)}\left(x-1\right)+1\right],\neg E^{\left(2\right)}\left[r_{3}^{\left(1\right)}\left(x-1\right)+1,3\right]\right\} =\\
+= & \Phi\left\{ \Pi^{\left(2\right)},\Phi\left[s^{\left(1\right)},p_{2}^{\left(2\right)}\right],\Phi\left[\neg E^{\left(2\right)},\Phi\left(s^{\left(1\right)},p_{2}^{\left[2\right]}\right),f_{3}^{\left(2\right)}\right]\right\} 
+\end{aligned}
+$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\chi_{3}^{\left(1\right)}=\Phi\left(D_{0}^{\left(1\right)},r_{3}^{\left(1\right)}\right)$
+\end_inset
+
+.
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+
+\series bold
+Relaciones recursivas primitivas
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate-Resume
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $\chi_{=}^{\left(2\right)}=E^{\left(2\right)}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\chi_{\neq}^{\left(2\right)}=\Phi\left(D_{0}^{\left(1\right)},E^{\left(2\right)}\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\chi_{\leq}^{\left(2\right)}\left(x,y\right)=\begin{cases}
+1 & x\leq y\\
+0 & x>y
+\end{cases}=\Phi\left(D_{0}^{\left(1\right)},\hat{d}^{\left(2\right)}\right)\left(x,y\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\chi_{>}^{\left(2\right)}=\Phi\left(D_{0}^{\left(1\right)},\chi_{\leq}^{\left(2\right)}\right)$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate-Resume
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $X_{T}^{\left(2\right)}=\Phi\left(\Pi^{\left(2\right)},\chi_{R}^{\left(2\right)},\chi_{S}^{\left(2\right)}\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $X_{U}^{\left(2\right)}=\Phi\left[Sgn^{\left(1\right)},\Phi\left(\Sigma^{\left(2\right)},\chi_{R}^{\left(2\right)},\chi_{S}^{\left(2\right)}\right)\right]$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $X_{\neg R}^{\left(2\right)}=\Phi\left(D_{0}^{\left(1\right)},\chi_{R}^{\left(2\right)}\right)$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate-Resume
+Puesto que 
+\begin_inset Formula $=$
+\end_inset
+
+ y 
+\begin_inset Formula $\leq$
+\end_inset
+
+ son RRP, tambien deben serlo 
+\begin_inset Formula $\neg=$
+\end_inset
+
+ y 
+\begin_inset Formula $\neg\leq$
+\end_inset
+
+; es decir: 
+\begin_inset Formula $\neq$
+\end_inset
+
+ y 
+\begin_inset Formula $>$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate-Resume
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $\chi_{\land R}^{\left(2\right)}\left(x,y\right)=\chi_{R}^{\left(2\right)}\left(x,0\right)\chi_{R}^{\left(2\right)}\left(x,1\right)\cdots\chi_{R}^{\left(2\right)}\left(x,k\right)={\displaystyle \prod_{k=0}^{y}}\chi_{R}\left(x,k\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\chi_{\lor R}^{\left(2\right)}\left(x,y\right)=Sgn^{\left(1\right)}\left[{\displaystyle \sum_{k=0}^{y}}\chi_{R}\left(x,k\right)\right]$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\align center
+
+\series bold
+Varios
+\end_layout
+
+\begin_layout Enumerate-Resume
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $r\left(a,n\right)=r_{n}\left(a\right)=R\left(c^{\left(1\right)},\Phi\left\{ \Pi^{\left(2\right)},\Phi\left[s^{\left(1\right)},p_{3}^{\left(3\right)}\right],\Phi\left[\neg E^{\left(2\right)},\Phi\left(s^{\left(1\right)},p_{3}^{\left(3\right)}\right),p_{2}^{\left(3\right)}\right]\right\} \right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\chi_{|}^{\left(2\right)}=\Phi\left[D_{0}^{\left(1\right)},\Phi\left(r^{\left(2\right)},p_{2}^{\left(2\right)},p_{1}^{\left(2\right)}\right)\right]$
+\end_inset
+
+.
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate-Resume
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate-Resume
+\begin_inset Formula $f\left(x\right)=x^{2}D_{0}\left[r_{3}\left(x\right)\right]+\left(x-3\right)D_{1}\left[r_{3}\left(x\right)\right]+Fac\left(x\right)D_{2}\left[r_{3}\left(x\right)\right]$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate-Resume
+Puesto que:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $x>y\Rightarrow\left(x\dot{-}y\right)+y=x-y+y=x$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $x<y\Rightarrow\left(x\dot{-}y\right)+y=0+y=y$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $x=y\Rightarrow\left(x\dot{-}y\right)+y=0+y=y=x$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+resulta:
+\begin_inset Formula 
+\[
+max^{\left(2\right)}\left(y,x\right)=\left(x\dot{-}y\right)+y=\widetilde{d}^{\left(2\right)}\left(y,x\right)+y=\Phi\left(\Sigma^{\left(2\right)},\widetilde{d}^{\left(2\right)},p_{1}^{\left(2\right)}\right)\left(y,x\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\end_deeper
+\end_body
+\end_document

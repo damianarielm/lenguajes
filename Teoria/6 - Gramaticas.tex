@@ -1,0 +1,219 @@
+\documentclass[12pt,a4paper,oneside,spanish]{book}
+\usepackage[T1]{fontenc}
+\usepackage[latin9]{inputenc}
+\setcounter{secnumdepth}{3}
+\setcounter{tocdepth}{3}
+\setcounter{chapter}{5}
+\usepackage{amsmath}
+
+\makeatletter
+\makeatother
+\usepackage{babel}
+\addto\shorthandsspanish{\spanishdeactivate{~<>.}}
+
+\begin{document}
+	\chapter{Gramáticas}
+		\section{Definiciones}
+			\subsection{Alfabeto}
+				Un alfabeto es un conjunto finito y no vacío, cuyos elementos reciben el nombre de símbolos, letras o caracteres.
+				Notaremos a los alfabetos con la letra sigma, por ejemplo $\Sigma=\left\{ l_{1},l_{2},\ldots,l_{k}\right\} $.
+
+			\subsection{Cadena}
+				Una cadena o palabra sobre un alfabeto $\Sigma$ es una secuencia finita de símbolos de $\Sigma$. Mas precisamente se la define como la función $p:\left\{ 1,\ldots,n\right\} \to\Sigma$ donde el entero positivo $n$ es la longitud de la palabra, que se denota también como $\left|p\right|$.
+				Ademas definimos la palabra especial $\lambda:\left\{ \right\} \to\Sigma$ llamada nula, o vaciá, considerada de longitud $0$.
+				Dada la palabra $p:\left\{ 1,\ldots,n\right\} \to\Sigma$ por simplicidad de notación escribiremos la cadena $p$ como $p\left(1\right)p\left(2\right)\ldots p\left(n\right)=l_{1}l_{2}\ldots l_{n}$.
+				
+			\subsection{Clausuras de Kleene}
+				Dado un alfabeto $\Sigma$ definimos $\Sigma^{0}=\left\{ \lambda\right\} $ y $\Sigma^{n}=\left\{ p/p:\left\{ 1,\ldots,n\right\} \to\Sigma\right\} $ para todo $n\geq1$, es decir, el conjunto de todas las palabra de una determinada longitud.
+				Definimos ademas dos operadores: $\Sigma^{*}={\displaystyle \bigcup_{n\geq0}\Sigma^{n}}$ y $\Sigma^{+}={\displaystyle \bigcup_{n\geq1}\Sigma^{n}}$, es decir que $\Sigma^{*}$ es el conjunto de todas las palabras sobre un alfabeto $\Sigma$, incluyendo la palabra vacía.
+				
+\pagebreak{}
+
+				\paragraph{Observaciones}
+				\begin{itemize}
+					\item Dado un conjunto $A=\emptyset$ resulta $A^{*}=\left\{ \lambda\right\} $.
+					\item Si $A\neq\emptyset$ resulta $A^{*}$ es infinito numerable pues es 	u.n.c.n.
+				\end{itemize}
+
+			\subsection{Concatenación}
+				Dado un alfabeto $\Sigma$ y dos palabras $p:\left\{ 1,\ldots,m\right\} \to\Sigma$ y $\text{\ensuremath{q:\left\{ 1,\ldots,n\right\} \to\Sigma}}$ definimos la concatenación de $p$ y $q$ (denotada $pq$) como la palabra $\mbox{\ensuremath{pq:\left\{ 1,\ldots,m+n\right\} \to\Sigma}}$ tal que:
+				
+				\[
+					pq\left(i\right)=
+					\begin{cases}
+						p\left(i\right) & 1\leq i\leq m\\
+						q\left(i-m\right) & m+1\leq i\leq m+n
+					\end{cases}
+				\]
+
+				\paragraph{Observaciones}
+				
+				\begin{itemize}
+					\item En particular $p\lambda=\lambda p=p$.
+					\item Es fácil ver que $p\left(qr\right)=\left(qp\right)r$ pero $pq\neq qr$, es decir, la concatenación es asociativa pero no conmutativa.
+				\end{itemize}
+
+			\subsection{Cadena potencia}
+				Dada una palabra $p\in\Sigma^{*}$ definimos su potencia $p^{n}$ como:
+				
+				\[
+					p^{n}=
+					\begin{cases}
+						\lambda & n=0\\
+						p^{n-1}p & n\geq1
+					\end{cases}
+				\]
+
+			\subsection{Cadena reversa}
+				Dada una palabra $p\in\Sigma^{*}$ y un caracter $c\in\Sigma$ definimos inductivamente la cadena reversa $p^{R}$ como:
+				
+				\[
+					\begin{array}{cc}
+						\lambda^{R}= & \lambda\\
+						\left(pc\right)^{R}= & cp^{R}
+					\end{array}
+				\]
+				
+\pagebreak{}
+
+			\subsection{Subcadenas}
+				Diremos que:
+				
+				\begin{itemize}
+					\item $s$ es \emph{subcadena} de $p$ si existen $q,r\in\Sigma^{*}$ tales que: $p=qsr$.
+					\item $s$ es \emph{prefijo} de $p$ si es una subcadena tal que: $p=\lambda sr$.
+					\item $s$ es sufijo de $p$ si es una subcadena tal que: $p=qs\lambda$.
+					\item $s$ es \emph{subcadena propia} de $p$ si es subcadena de $p$ y ademas $s\neq p$.
+				\end{itemize}
+
+		\section{Lenguajes}
+			\subsection{Definición}
+				Un lenguaje sobre un alfabeto $\Sigma$ es un subconjunto de $\Sigma^{*}$.
+				Para cada alfabeto $\Sigma$ llamaremos $\mathcal{L}$ al conjunto de todos los lenguajes sobre $\Sigma$, es decir, $\mathcal{L}=\mathcal{P}\left(\Sigma^{*}\right)$.
+				\paragraph{Observación}
+				Para cualquier alfabeto, sabemos que $\#\Sigma^{*}=\aleph_{0}$ y en consecuencia $\#\mathcal{L}=\#\mathcal{P}\left(\Sigma^{*}\right)=\aleph_{1}$.
+			\subsection{Unión}
+				Dados dos lenguajes $L_{1}$ y $L_{2}$ sobre $\Sigma$ definimos la unión de los lenguajes como: $L_{1}\cup L_{2}=\left\{ p\in\Sigma^{*}/p\in L_{1}\lor p\in L_{2}\right\} $.
+
+			\subsection{Intersección}
+				Dados dos lenguajes $L_{1}$ y $L_{2}$ sobre $\Sigma$ definimos la intersección de los lenguajes como: $L_{1}\cap L_{2}=\left\{ p\in\Sigma^{*}/p\in L_{1}\land p\in L_{2}\right\} $.
+				
+			\subsection{Diferencia}
+				Dados dos lenguajes $L_{1}$ y $L_{2}$ sobre $\Sigma$ definimos la diferencia de los lenguajes como: $L_{1}-L_{2}=\left\{ p\in\Sigma^{*}/p\in L_{1}\land p\notin L_{2}\right\} $.
+
+			\subsection{Complemento}
+				Para cada lenguaje $L$, definimos el lenguaje complemento como: $\mbox{\ensuremath{\bar{L}=\Sigma^{*}-L}}$.
+
+			\subsection{Concatenación}
+				Dados dos lenguajes $L_{1}$ y $L_{2}$ sobre $\Sigma$ definimos la concatenación de los lenguajes como: $L_{1}L_{2}=\left\{ p\in\Sigma^{*}/\exists q\in L_{1},\exists r\in L_{2},p=qr\right\} $.
+				\paragraph{Observaciones}
+				
+				\begin{itemize}
+					\item $L\emptyset=\emptyset L=\emptyset$.
+					\item $L\left\{ \lambda\right\} =\left\{ \lambda\right\} L=L$.
+					\item En general $L_{1}L_{2}\neq L_{2}L_{1}$.
+				\end{itemize}
+
+			\subsection{Potencia}
+				Dado un lenguaje $L$ definimos inductivamente su potencia $L^{n}$ como:
+				
+				\[
+					\begin{array}{cc}
+						L^{0}= & \left\{ \lambda\right\} \\
+						L^{n+1}= & L^{n}L
+					\end{array}
+				\]
+
+			\subsection{Clausuras de Kleene}
+				Dados un alfabeto $\Sigma$ y un lenguaje $L$ sobre $\Sigma$ definimos: $L^{*}={\displaystyle \bigcup_{n\geq0}L^{n}}$ y $L^{+}={\displaystyle \bigcup_{n\geq1}L^{n}}$, es decir que $L^{*}$ es la unión infinita:
+				
+				\[
+					L^{*}=L^{0}\cup L^{1}\cup L^{2}\cup\cdots\cup L^{n}\cup\cdots=\left\{ \lambda\right\} \cup L\cup L^{2}\cup\cdots\cup L^{n}\cup\cdots
+				\]
+				
+				mientras que $L^{+}$ es la unión infinita:
+				
+				\[
+					L^{+}=L^{1}\cup L^{2}\cup\cdots\cup L^{n}\cup\cdots=L\cup L^{2}\cup\cdots\cup L^{n}\cup\cdots
+				\]
+
+				\paragraph{Observaciones}
+				
+				\begin{itemize}
+					\item Tanto $L^{*}$ como $L^{+}$ contienen a $L$.
+					\item Dado que $L^{0}=\left\{ \lambda\right\} $ resulta que $L^{*}=L^{+}\cup\left\{ \lambda\right\} $.
+					\item $\emptyset^{*}=\left\{ \lambda\right\} $.
+					\item $L^{+}=L^{*}L$.
+					\item $\left(L^{*}\right)^{*}=L^{*}$.
+					\item $L^{*}L^{*}=L^{*}$.
+				\end{itemize}
+				
+				Al contrario que con los operadores anteriores, las clausuras de Kleene construyen siempre lenguajes infinitos.
+
+		\section{Gramáticas}
+			\subsection{Definición}
+				Una gramática es una tupla $\left(N,T,P,\sigma\right)$ donde:
+				
+				\begin{itemize}
+					\item $N$ es un conjunto finito de símbolos llamados \emph{no terminales}.
+					\item $T$ es un conjunto finito de símbolos llamados \emph{terminales}, o alfabeto, tal que $N\cap T=\emptyset$.
+					\item $P$ es un conjunto finito de \emph{reglas de producción} donde $\text{\ensuremath{P\subseteq\left[\left(N\cup T\right)^{*}-T^{*}\right]\times\left[N\cup T\right]^{*}}}$.
+					\item $\sigma\in N$ es el llamado \emph{símbolo inicial}.
+				\end{itemize}
+
+				\paragraph{Observaciones}
+				
+				\begin{itemize}
+					\item Nótese que $\left[\left(N\cup T\right)^{*}-T^{*}\right]$ es el conjunto de cadenas de no terminales y terminales que contienen al menos un no terminal. Dado que $\lambda\notin\left[\left(N\cup T\right)^{*}-T^{*}\right]$ no puede haber reglas del tipo $\left(\lambda,\beta\right)$.
+					\item A una regla de producción $\left(\alpha,\beta\right)$ la notaremos: $\alpha\to\beta$.
+					\item Una regla del tipo $\alpha\to\lambda$ recibe el nombre de regla $\lambda$.
+				\end{itemize}
+
+			\subsection{Derivación}
+				Si $\alpha\to\beta$ es una regla de producción y $\gamma\alpha\delta\in\left[\left(N\cup T\right)^{*}-T^{*}\right]$, entonces diremos que $\gamma\beta\delta$ deriva directamente de $\gamma\alpha\delta$ o que $\gamma\alpha\delta$ produce directamente $\gamma\beta\delta$ y lo notaremos: $\gamma\alpha\delta\Rightarrow\gamma\beta\delta$.
+				Si vale que $\alpha_{1}\Rightarrow\alpha_{2}\Rightarrow\ldots\Rightarrow a_{n-1}\Rightarrow\alpha_{n}$ donde $\alpha_{i}\in\left[\left(N\cup T\right)^{*}-T^{*}\right]$ y $\alpha_{n}\in\left[N\cup T\right]^{*}$ diremos que $\alpha_{n}$ deriva de $\alpha_{1}$ o que $\alpha_{1}$ produce $\alpha_{n}$ y lo notaremos: $\alpha_{1}\Rightarrow^{*}\alpha_{n}$.
+
+			\subsection{Lenguajes generados}
+				Definimos el lenguaje generado por una gramática $G=\left(N,T,P,\sigma\right)$ como $L\left(G\right)=\left\{ p\in T^{*}/\sigma\Rightarrow^{*}p\right\} $.
+
+			\subsection{Gramáticas regulares}
+				Las gramáticas regulares (también llamadas del tipo 3 o lineales) pueden ser clasificadas como derechas o izquierdas.
+				Las reglas de producción de una gramática regular derecha tienen las siguientes restricciones:
+				
+				\begin{enumerate}
+					\item El lado izquierdo debe consistir en un solo no terminal.
+					\item El lado derecho esta formado por un símbolo terminal que puede estar seguido o no, por un símbolo no terminal o la cadena vacía.
+				\end{enumerate}
+				
+				Es decir que las producciones de una gramática regular derecha tienen la forma $A\to a$, $A\to aB$ o $A\to\lambda$, donde $A,B\in N$ y $a\in T$.
+				Alternativamente, en una gramática regular izquierda las reglas de producción son de la forma: $A\to a$, $A\to Ba$ o $A\to\lambda$.
+
+				\paragraph{Observaciones}
+				Toda gramática regular derecha puede ser convertida en una gramática regular izquierda (y viceversa). Algunas definiciones permiten reemplazar $a$ por una cadena de uno o mas terminales, siendo ambas definiciones equivalentes.
+
+				\subsection{Gramáticas libres de contexto}
+					Las gramáticas libres o independientes del contexto son iguales a las regulares, pero sin restricciones sobre el lado derecho. Es decir que las reglas de producción tienen la forma $A\to\alpha$ donde $A\in N$ y $\alpha\in\left(N\cup T\right)^{*}$.
+					\paragraph{Observaciones}
+					
+					\begin{itemize}
+						\item Estas gramáticas reciben ese nombre debido a que en el lado izquierdo el no terminal aparece solo, por lo que la regla se puede aplicar sin importar el contexto en el que aparece dicho no terminal, al contrario de reglas de la forma $\gamma N\delta\to\gamma\alpha\delta$ donde el no terminal $N$ solo se puede reemplazar por $\alpha$ cuando se encuentre en el contexto de $\gamma$ y $\delta$.
+						\item Dado que no existen restricciones sobre el lado derecho, podría ocurrir que en el aparezcan mas de uno como en $A\to XY$. En esta situación el enfoque mas común consiste en reemplazar en el paso siguiente el no terminal situado mas a la izquierda.\pagebreak{}
+						\item Alternativamente se podría reemplazar no terminales desde la derecha o algún otro patrón pues resultara que el orden en el que se apliquen las reglas, no afecta la determinación de si una cadena puede ser generada por la gramática.
+					\end{itemize}
+
+			\subsection{Gramáticas sensibles al contexto}
+				Las reglas de producción de una gramática dependiente del contexto son del tipo $\alpha A\beta\to\alpha\delta\beta$ donde $A\in N$, $\alpha,\beta\in\left[N\cup T\right]^{*}$ y $\delta\in\left[N\cup T\right]^{+}$.
+				Adicionalmente se permite la regla $\sigma\to\lambda$ donde $\sigma$ es el símbolo inicial siempre que $\sigma$ no aparezca en el lado derecho de otra producción.
+				Quizás a simple vista podría parecer que las gramáticas sensibles al contexto son mas restrictivas que las libre de contexto, sin embargo basta tomar $\alpha=\lambda=\beta$ para ver que las sensibles al contexto abarcan a las libres de contexto.
+
+			\subsection{Gramáticas estructuradas por frases}
+				Finalmente las gramáticas estructuradas por frases o irrestrictas, son aquellas que no tienen restricciones sobre la forma de las reglas de producción. Es decir que sus reglas son de la forma $\alpha\to\beta$ donde $\alpha\in\left[\left(N\cup T\right)^{*}-T^{*}\right]$ y $\beta\in\left[N\cup T\right]^{*}$.
+				\paragraph{Observación}
+				Dado que $\lambda\notin\left[\left(N\cup T\right)^{*}-T^{*}\right]$ no puede haber reglas del tipo $\lambda\to\beta$.
+
+			\subsection{Relación entre gramáticas}
+				Llamando $\mathcal{G}_{i}=\left\{ G/G\text{ es del tipo }i\right\} $ con $i=0,1,2,3$, se tiene que: $\mbox{\ensuremath{\mathcal{G}_{3}\subset\mathcal{G}_{2}\subset\mathcal{G}_{1}\subset\mathcal{G}_{0}}}$.
+
+			\subsection{Tipos de lenguajes}
+				Diremos que un lenguaje $L$ es de tipo $i$ (con $i=0,1,2,3$) si y solo si existe una gramática $G$ del tipo $i$ tal que $L\left(G\right)=L$.
+\end{document}

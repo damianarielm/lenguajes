@@ -1,0 +1,1525 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\begin_preamble
+\renewcommand{\headrulewidth}{1pt}
+\renewcommand{\footrulewidth}{0.5pt}
+\fancyheadoffset[L]{-16pt}
+\end_preamble
+\use_default_options true
+\begin_modules
+customHeadersFooters
+enumitem
+multicol
+\end_modules
+\maintain_unincluded_children false
+\language spanish-mexico
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize 12
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 2cm
+\rightmargin 2cm
+\headheight 0cm
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style french
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle fancy
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Left Header
+
+\noun on
+Lenguajes Formales y Computabilidad
+\end_layout
+
+\begin_layout Right Header
+2018
+\end_layout
+
+\begin_layout Center Footer
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+thepage
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+
+\size larger
+PRÁCTICA 6: 
+\emph on
+Lenguajes Formales y Gramáticas
+\end_layout
+
+\begin_layout Standard
+
+\size footnotesize
+Pablo Verdes
+\begin_inset space \hspace*{\fill}
+\end_inset
+
+Dante Zanarini
+\begin_inset space \hspace*{\fill}
+\end_inset
+
+Pamela Viale
+\begin_inset space \hspace*{\fill}
+\end_inset
+
+Alejandro Hernandez
+\begin_inset space \hspace*{\fill}
+\end_inset
+
+Mauro Lucci
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset line
+LatexCommand rule
+offset "0.5ex"
+width "100col%"
+height "1pt"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Me parece que esta practica quedo demasiado larga, recomiendo quitar algunos
+ ejercicios para tener mas tiempo disponible en otros temas.
+\end_layout
+
+\end_inset
+
+Definición 1
+\end_layout
+
+\begin_layout Standard
+Una gramática se dice:
+\end_layout
+
+\begin_layout Standard
+
+\emph on
+regular
+\emph default
+ si cada producción es de la forma
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+Algunas definiciones permiten reemplazar 
+\begin_inset Formula $a$
+\end_inset
+
+ por una cadena de uno o más terminales; se puede mostrar (ver ejercicio
+ 6) que las dos definiciones son equivalentes.
+\end_layout
+
+\end_inset
+
+:
+\begin_inset Formula 
+\[
+A\to a\text{ o }A\to aB\text{ o }A\to\lambda\text{ donde }A,B\in N\text{ y }a\in T
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\emph on
+libre (o independiente) de contexto
+\emph default
+ si cada producción es de la forma:
+\begin_inset Formula 
+\[
+A\to\delta\text{ donde }A\in N\text{ y }\delta\in\left(N\cup T\right)^{*}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\emph on
+sensible al contexto
+\emph default
+ si cada producción es de la forma:
+\begin_inset Formula 
+\[
+\alpha A\beta\to\alpha\delta\beta\text{ donde }A\in N,\text{ }\alpha,\beta\in\left(N\cup T\right)^{*}\text{ y }\delta\in\left(N\cup T\right)^{+}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\emph on
+estructurada por frases o irrestricta
+\emph default
+ si no tiene restricciones sobre la forma de sus producciones, es decir
+ si son de la forma:
+\begin_inset Formula 
+\[
+\alpha\to\delta\text{ donde }\alpha\in\left(N\cup T\right)^{*}-T^{*}\text{ y }\delta\in\left(N\cup T\right)^{*}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Clasifique cada una de las siguientes gramáticas (dando su tipo más restrictivo)
+:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset Formula $T=\left\{ a,b\right\} $
+\end_inset
+
+, 
+\begin_inset Formula $N=\left\{ \sigma,A\right\} $
+\end_inset
+
+, símbolo inicial 
+\begin_inset Formula $\sigma$
+\end_inset
+
+, y producciones:
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Flex Multiple Columns
+status open
+
+\begin_layout Enumerate
+\begin_inset Formula $\sigma\to b\sigma$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\sigma\to aA$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\sigma\to b$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $A\to a\sigma$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $A\to bA$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $A\to a$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+\begin_inset Formula $T=\left\{ a,b,c\right\} $
+\end_inset
+
+, 
+\begin_inset Formula $N=\left\{ \sigma,A,B\right\} $
+\end_inset
+
+, símbolo inicial 
+\begin_inset Formula $\sigma$
+\end_inset
+
+, y producciones:
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Flex Multiple Columns
+status open
+
+\begin_layout Enumerate
+\begin_inset Formula $\sigma\to AB$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $AB\to BA$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $A\to aA$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $B\to Bb$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $A\to a$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $B\to b$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+\begin_inset Formula $T=\left\{ a,b\right\} $
+\end_inset
+
+, 
+\begin_inset Formula $N=\left\{ \sigma,A,B\right\} $
+\end_inset
+
+, símbolo inicial 
+\begin_inset Formula $\sigma$
+\end_inset
+
+, y producciones:
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Flex Multiple Columns
+status open
+
+\begin_layout Enumerate
+\begin_inset Formula $\sigma\to A$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\sigma\to AAB$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $Aa\to ABa$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $A\to aa$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $Bb\to ABb$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $AB\to ABB$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $B\to b$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+\begin_inset Formula $T=\left\{ a,b,c\right\} $
+\end_inset
+
+, 
+\begin_inset Formula $N=\left\{ \sigma,A,B\right\} $
+\end_inset
+
+, símbolo inicial 
+\begin_inset Formula $\sigma$
+\end_inset
+
+, y producciones:
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Flex Multiple Columns
+status open
+
+\begin_layout Enumerate
+\begin_inset Formula $\sigma\to BAB$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\sigma\to ABA$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $A\to AB$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $B\to BA$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $A\to aA$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $A\to ab$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $B\to b$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Enumerate
+De una derivación de las siguientes cadenas en las gramáticas especificadas:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Cadena 
+\begin_inset Formula $bbabbab$
+\end_inset
+
+ en la gramática 
+\begin_inset Formula $1a$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Cadena 
+\begin_inset Formula $abab$
+\end_inset
+
+ en la gramática 
+\begin_inset Formula $1b$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Cadena 
+\begin_inset Formula $aabaab$
+\end_inset
+
+ en la gramática 
+\begin_inset Formula $1c$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Cadena 
+\begin_inset Formula $abbabb$
+\end_inset
+
+ en la gramática 
+\begin_inset Formula $1d$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Muestre que la cadena 
+\begin_inset Formula $abbbabaaba$
+\end_inset
+
+ no esta en el lenguaje generado por la gramática 
+\begin_inset Formula $\text{\ensuremath{G=\left(N,T,P,\sigma\right)}}$
+\end_inset
+
+, donde 
+\begin_inset Formula $N=\left\{ \sigma,A,B\right\} $
+\end_inset
+
+, 
+\begin_inset Formula $T=\left\{ a,b\right\} $
+\end_inset
+
+, símbolo inicial 
+\begin_inset Formula $\sigma$
+\end_inset
+
+, y producciones:
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+\begin_inset Formula $\sigma\to aaBA$
+\end_inset
+
+, 
+\begin_inset Formula $\sigma\to ABB$
+\end_inset
+
+, 
+\begin_inset Formula $A\to aaB$
+\end_inset
+
+, 
+\begin_inset Formula $A\to\lambda$
+\end_inset
+
+, 
+\begin_inset Formula $aBa\to A$
+\end_inset
+
+, 
+\begin_inset Formula $Aaa\to B$
+\end_inset
+
+, 
+\begin_inset Formula $B\to AabaB$
+\end_inset
+
+, 
+\begin_inset Formula $B\to bbb$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\emph on
+Sugerencia
+\emph default
+: Piense en toda derivación como una secuencia de cadenas sobre el alfabeto
+ 
+\begin_inset Formula $T\cup N$
+\end_inset
+
+ y halle un invariante, verificado por la cadena 
+\begin_inset Formula $\sigma$
+\end_inset
+
+, que se preserve en la aplicación de todas las reglas de producción pero
+ no sea verificado por la cadena propuesta.
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+De una gramática del tipo pedido que genere los siguientes lenguajes:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Gramática regular:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Cadenas sobre el alfabeto 
+\begin_inset Formula $\left\{ a,b\right\} $
+\end_inset
+
+ que comiencen con 
+\begin_inset Formula $a$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Cadenas sobre el alfabeto 
+\begin_inset Formula $\left\{ a,b\right\} $
+\end_inset
+
+ que contengan exactamente una 
+\begin_inset Formula $a$
+\end_inset
+
+ y terminen con al menos una 
+\begin_inset Formula $b$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Cadenas sobre el alfabeto 
+\begin_inset Formula $\left\{ a,b\right\} $
+\end_inset
+
+ que terminen con 
+\begin_inset Formula $ba$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Cadenas sobre el alfabeto 
+\begin_inset Formula $\left\{ a,b\right\} $
+\end_inset
+
+ que contengan 
+\begin_inset Formula $ba$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Cadenas sobre el alfabeto 
+\begin_inset Formula $\left\{ a,b\right\} $
+\end_inset
+
+ que no terminen con 
+\begin_inset Formula $ab$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Gramática independiente de contexto:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate-Resume
+Cadenas sobre el alfabeto 
+\begin_inset Formula $\left\{ a,b\right\} $
+\end_inset
+
+ de la forma 
+\begin_inset Formula $a^{n}b^{n}$
+\end_inset
+
+ para 
+\begin_inset Formula $n\geq0$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate-Resume
+Cadenas sobre el alfabeto 
+\begin_inset Formula $\left\{ true,p,q,\land,\lor,\neg,(,)\right\} $
+\end_inset
+
+ definido inductivamente como el menor conjunto tal que:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset Formula $true\in\mathcal{L}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $p\in\mathcal{L}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $q\in\mathcal{L}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Si 
+\begin_inset Formula $A\in\mathcal{L}$
+\end_inset
+
+, entonces 
+\begin_inset Formula $\left(\neg A\right)\in\mathcal{L}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Si 
+\begin_inset Formula $A,B\in\mathcal{L}$
+\end_inset
+
+, entonces 
+\begin_inset Formula $\left(A\land B\right)\in\mathcal{L}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Si 
+\begin_inset Formula $A,B\in\mathcal{L}$
+\end_inset
+
+, entonces 
+\begin_inset Formula $\left(A\lor B\right)\in\mathcal{L}$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate-Resume
+Cadenas palindromos
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+Una cadena 
+\begin_inset Formula $x_{1}x_{2}\ldots x_{n}$
+\end_inset
+
+ es palindromo sii 
+\begin_inset Formula $x_{1}x_{2}\ldots x_{n}=x_{n}\ldots x_{2}x_{1}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+ sobre el alfabeto 
+\begin_inset Formula $\left\{ a,b\right\} $
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate-Resume
+\begin_inset Formula $\left\{ a^{n}b^{n}c^{k}/n,k\in\mathbb{N}\right\} $
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate-Resume
+Cadenas sobre el alfabeto 
+\begin_inset Formula $\left\{ a,b\right\} $
+\end_inset
+
+ que empiezan y terminan con el mismo símbolo.
+\end_layout
+
+\begin_layout Enumerate-Resume
+Cadenas sobre el alfabeto 
+\begin_inset Formula $\left\{ a,b\right\} $
+\end_inset
+
+ de longitud impar.
+\end_layout
+
+\begin_layout Enumerate-Resume
+Cadenas sobre el alfabeto 
+\begin_inset Formula $\left\{ a,b,c\right\} $
+\end_inset
+
+ de longitud impar y cuyo símbolo central es una 
+\begin_inset Formula $c$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate-Resume
+\begin_inset Formula $\left\{ a^{n}b^{2n}c^{m}/n,m\in\mathbb{N}_{0}\right\} $
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate-Resume
+\begin_inset Formula $\left\{ a^{n}b^{m}c^{m}/n,m\in\mathbb{N}_{0}\right\} $
+\end_inset
+
+.
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Enumerate
+Sea 
+\begin_inset Formula $\mathcal{L}$
+\end_inset
+
+ el conjunto de cadenas sobre 
+\begin_inset Formula $\left\{ a,b\right\} $
+\end_inset
+
+ que contienen la misma cantidad de símbolos 
+\begin_inset Formula $a$
+\end_inset
+
+ y 
+\begin_inset Formula $b$
+\end_inset
+
+.
+ Analice si cada una de las siguientes gramáticas genera 
+\begin_inset Formula $\mathcal{L}$
+\end_inset
+
+.
+ En caso negativo, de un contraejemplo (es decir, una cadena generada por
+ la gramática pero que no esta en 
+\begin_inset Formula $\mathcal{L},$
+\end_inset
+
+ o una cadena que esta en 
+\begin_inset Formula $\mathcal{L}$
+\end_inset
+
+ pero no es generada por la gramática).
+ En todas las gramáticas el símbolo inicial es 
+\begin_inset Formula $S$
+\end_inset
+
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset Formula $S\to aSb|bSa|\lambda$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $S\to aSb|bSa|\lambda|SS$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $S\to aB|bA|\lambda$
+\end_inset
+
+, 
+\begin_inset Formula $B\to b|bA$
+\end_inset
+
+, 
+\begin_inset Formula $A\to a|aB$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $S\to aSb|baS|abS|bSa|\lambda$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $S\to aB|bA$
+\end_inset
+
+, 
+\begin_inset Formula $A\to a|Sa$
+\end_inset
+
+, 
+\begin_inset Formula $B\to b|SB$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+\begin_inset space ~
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Muestre que si cada producción de una gramática 
+\begin_inset Formula $G$
+\end_inset
+
+ es de la forma 
+\begin_inset Formula $A\to\alpha$
+\end_inset
+
+, 
+\begin_inset Formula $A\to\alpha B$
+\end_inset
+
+ o 
+\begin_inset Formula $A\to\lambda$
+\end_inset
+
+ donde 
+\begin_inset Formula $A,B\in N$
+\end_inset
+
+ y 
+\begin_inset Formula $\alpha\in T^{+}$
+\end_inset
+
+ entonces existe una gramática regular 
+\begin_inset Formula $G'$
+\end_inset
+
+ equivalente (es decir, tal que 
+\begin_inset Formula $L\left(G'\right)=L\left(G\right)$
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Enumerate
+Aplique el apartado anterior para modificar la gramática siguiente (símbolo
+ inicial: 
+\begin_inset Formula $S$
+\end_inset
+
+) de manera de formar una gramática regular equivalente:
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Flex Multiple Columns
+status open
+
+\begin_layout Itemize
+\begin_inset Formula $S\to yX$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $X\to xxX$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $X\to yY$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $Y\to\lambda$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Enumerate
+Muestre que un lenguaje regular que no contiene a 
+\begin_inset Formula $\lambda$
+\end_inset
+
+ puede ser generado por una gramática que no contiene reglas de la forma
+ 
+\begin_inset Formula $A\to\lambda$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Paragraph
+Definición 2
+\end_layout
+
+\begin_layout Standard
+Una gramática se dice que está en forma normal de Chomsky sii toda producción
+ es de la forma:
+\begin_inset Formula 
+\[
+A\to BC\text{ o }A\to a\text{ o }S\to\lambda
+\]
+
+\end_inset
+
+donde 
+\begin_inset Formula $A,B,C\in N$
+\end_inset
+
+, 
+\begin_inset Formula $a\in T$
+\end_inset
+
+, 
+\begin_inset Formula $S$
+\end_inset
+
+ es el no terminal inicial y 
+\begin_inset Formula $B$
+\end_inset
+
+ y 
+\begin_inset Formula $C$
+\end_inset
+
+ son distintos de 
+\begin_inset Formula $S$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate-Resume
+Convierta a una gramática equivalente que este en forma normal de Chomsky:
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Flex Multiple Columns
+status open
+
+\begin_layout Itemize
+\begin_inset Formula $S\to xSy$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $S\to wNz$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $N\to S$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $N\to\lambda$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate-Resume
+\begin_inset space ~
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Se puede probar que el lenguaje 
+\begin_inset Formula $\mathcal{L}=\left\{ a^{n}b^{n}c^{n}|n\in\mathbb{N}\right\} $
+\end_inset
+
+ no es independiente de contexto.
+ Usando este resultado probar que el conjunto de los lenguajes independientes
+ de contexto no es cerrado bajo la operación de intersección, hallando dos
+ lenguajes que sean independientes de contexto cuya intersección sea 
+\begin_inset Formula $\mathcal{L}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Probar que el conjunto de los lenguajes independientes de contexto no es
+ cerrado bajo la operación de complemento.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate-Resume
+Se puede probar que la intersección de un lenguaje independiente del contexto
+ y uno regular es independiente de contexto.
+ Usar este resultado y el enunciado del ejercicio 
+\begin_inset Formula $9a$
+\end_inset
+
+ para probar que el lenguaje 
+\begin_inset Formula $\left\{ w\in\left\{ a,b,c\right\} ^{*}/N_{a}\left(w\right)=N_{b}\left(w\right)=N_{c}\left(w\right)\right\} $
+\end_inset
+
+ no es independiente del contexto.
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+
+\emph on
+Notación
+\emph default
+: 
+\begin_inset Formula $N_{x}\left(w\right)$
+\end_inset
+
+ denota la cantidad de ocurrencias del símbolo 
+\begin_inset Formula $x$
+\end_inset
+
+ en la cadena 
+\begin_inset Formula $w$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate-Resume
+Probar que si 
+\begin_inset Formula $\mathcal{L}$
+\end_inset
+
+ es un lenguaje independiente de contexto, entonces 
+\begin_inset Formula $\mathcal{L}^{R}$
+\end_inset
+
+ también es independiente de contexto.
+\end_layout
+
+\begin_layout Enumerate-Resume
+Sea la gramática con producciones:
+\begin_inset Formula 
+\[
+S\to aS|Sb|a|b
+\]
+
+\end_inset
+
+y símbolo inicial 
+\begin_inset Formula $S$
+\end_inset
+
+.
+ Pruebe, por inducción sobre el numero de pasos en la derivación, que toda
+ cadena generada por la gramática no contiene la subcadena 
+\begin_inset Formula $ba$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate-Resume
+Sea la gramática con producciones
+\begin_inset Formula 
+\[
+S\to aSbS|bSaS|\lambda
+\]
+
+\end_inset
+
+y símbolo inicial 
+\begin_inset Formula $S$
+\end_inset
+
+.
+ Pruebe por inducción sobre el numero de pasos en la derivación, que toda
+ cadena generada por la gramática tiene la misma cantidad de 
+\begin_inset Formula $a$
+\end_inset
+
+'s y 
+\begin_inset Formula $b$
+\end_inset
+
+'s.
+\end_layout
+
+\begin_layout Enumerate-Resume
+Probar que la gramática
+\begin_inset Formula 
+\[
+S\to\lambda|0|1|0S0|1S1
+\]
+
+\end_inset
+
+con símbolo inicial 
+\begin_inset Formula $S$
+\end_inset
+
+ genera el lenguaje formado por las cadenas palindromos sobre el alfabeto
+ 
+\begin_inset Formula $\left\{ 0,1\right\} $
+\end_inset
+
+.
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+El siguiente ejercicio pretende incorporar conocimientos que se verán mas
+ adelante en la materia A.L.P.
+ Puede que sea necesario explicar con un poco mas de detalle lo que es un
+ árbol de parseo.
+\end_layout
+
+\end_inset
+
+Definición 3
+\end_layout
+
+\begin_layout Standard
+Un árbol es un árbol de parseo de una gramática libre de contexto 
+\begin_inset Formula $G=\left(N,T,P,S\right)$
+\end_inset
+
+ si:
+\end_layout
+
+\begin_layout Itemize
+Cada nodo tiene una etiqueta en 
+\begin_inset Formula $N\cup T\cup\left\{ \lambda\right\} $
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+La etiqueta de la raíz es 
+\begin_inset Formula $S$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Las etiquetas de los nodos interiores están en 
+\begin_inset Formula $N$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Si el nodo 
+\begin_inset Formula $n$
+\end_inset
+
+ tiene etiqueta 
+\begin_inset Formula $A$
+\end_inset
+
+ e hijos 
+\begin_inset Formula $n_{1},\ldots,n_{k}$
+\end_inset
+
+ (de izquierda a derecha) con etiquetas 
+\begin_inset Formula $X_{1},\ldots,X_{k}$
+\end_inset
+
+; entonces 
+\begin_inset Formula $A\to X_{1}\ldots X_{k}$
+\end_inset
+
+ es una producción en 
+\begin_inset Formula $P$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Si un nodo 
+\begin_inset Formula $n$
+\end_inset
+
+ tiene etiqueta 
+\begin_inset Formula $\lambda$
+\end_inset
+
+, entonces 
+\begin_inset Formula $n$
+\end_inset
+
+ es una hoja y es hijo único.
+\end_layout
+
+\begin_layout Standard
+Una gramática libre de contexto 
+\begin_inset Formula $G$
+\end_inset
+
+ es ambigua si alguna palabra en 
+\begin_inset Formula $L\left(G\right)$
+\end_inset
+
+ tiene mas de un árbol de parseo.
+\end_layout
+
+\begin_layout Standard
+Un lenguaje libre de contexto para el que toda gramática es ambigua, es
+ inherentemente ambiguo.
+\end_layout
+
+\begin_layout Enumerate-Resume
+Dada la gramática libre de contexto 
+\begin_inset Formula $G=\left(\left\{ E,V\right\} ,\left\{ +,*,(,),x,y,z\right\} ,P,E\right)$
+\end_inset
+
+ donde 
+\begin_inset Formula $P$
+\end_inset
+
+ consiste de las producciones:
+\begin_inset Formula 
+\[
+E\to E+E|E*E|V|\left(E\right)
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+V\to x|y|z
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate-Resume
+Probar que la gramática es ambigua.
+\end_layout
+
+\begin_layout Enumerate-Resume
+Dar una gramática libre de contexto equivalente que resuelva la ambigüedad
+ mediante la precedencia usual entre la multiplicación y la suma.
+\end_layout
+
+\end_deeper
+\end_body
+\end_document

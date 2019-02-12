@@ -1,0 +1,5681 @@
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 508
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass book
+\begin_preamble
+\usepackage{multicol}
+\usepackage{tikz}
+\usetikzlibrary{automata,positioning,calc}
+\end_preamble
+\use_default_options true
+\maintain_unincluded_children false
+\language spanish-mexico
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize 12
+\spacing single
+\use_hyperref false
+\papersize a4paper
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language french
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Chapter
+Maquinas de Turing
+\end_layout
+
+\begin_layout Section
+Descripción
+\end_layout
+
+\begin_layout Standard
+Al igual que los demás autómatas que hemos estudiado, la maquina de Turing
+ contiene un mecanismo de control que en cualquier momento puede encontrarse
+ en uno de entre un numero finito de estados.
+ Uno de estos estados se denomina estado inicial y representa el estado
+ en el cual la maquina comienza los cálculos.
+ Por convención lo notaremos 
+\begin_inset Formula $q_{1}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Otro de los estados se conoce como estado de parada; una vez que la maquina
+ llega a ese estado, terminan todos los cálculos.
+ De esta manera, el estado de parada de una maquina de Turing difiere de
+ los estados de aceptación de los autómatas de estados finito y los autómatas
+ de pila en que estos pueden continuar sus cálculos después de llegar a
+ un estado de aceptación, mientras que en una maquina de Turing debe detenerse
+ en el momento en que llegue a su estado de parada.
+ Notaremos a este estado como 
+\begin_inset Formula $q_{0}$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+Nótese que con base en la definición anterior, el estado inicial de una
+ maquina de Turing no puede ser a la vez el estado de parada; por lo tanto,
+ toda maquina de Turing debe tener cuanto menos dos estados.
+\end_layout
+
+\begin_layout Standard
+Una diferencia mas importante entre una maquina de Turing y los autómatas
+ de los capítulos anteriores es que la maquina de Turing puede leer y escribir
+ en su medio de entrada.
+ Para ser mas precisos, la maquina de Turing esta equipada con un cabezal
+ que puede emplearse para leer y escribir símbolos en la cinta de la maquina,
+ que es infinita a izquierda y derecha, pero se conviene que solo un conjunto
+ finito de casillas no están vaciás.
+ Así una maquina de Turing puede emplear su cinta como almacenamiento auxiliar
+ tal como lo hacen los autómatas de pila.
+ Sin embargo con este almacenamiento una maquina de Turing no se limita
+ a las operaciones de inserción y extracción, sino que puede rastrear los
+ datos de la cinta y modificar las celdas que desee sin alterar las demás.
+\end_layout
+
+\begin_layout Standard
+Al utilizar la cinta para fines de almacenamiento auxiliar, es conveniente
+ que una maquina de Turing emplee marcas especiales para distinguir porciones
+ de la cinta.
+ Para esto, permitimos que una maquina de Turing lea y escriba símbolos
+ que no aparecen en los datos de entrada; es decir, hacemos una distinción
+ entre el conjunto (finito) de símbolos, llamado alfabeto de la maquina,
+ en el que deben estar codificados los datos de entrada iniciales, y un
+ conjunto, posiblemente mayor (también finito), de símbolos de la cinta,
+ que la maquina puede leer y escribir.
+ Esta distinción es similar a la que se establece entre el alfabeto de un
+ autómata y sus símbolos de pila.
+ El símbolo blanco es un símbolo de la cinta que esta en cualquier celda
+ de la cinta que no este ocupada.
+ Notaremos a este símbolo como 
+\begin_inset Formula $\square$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Las acción especifica que realiza una maquina de Turing consiste en tres
+ operaciones consecutivas:
+\end_layout
+
+\begin_layout Enumerate
+Substituye el símbolo apuntado por el cabezal por otro del alfabeto de la
+ cinta que eventualmente podrá ser el mismo.
+\end_layout
+
+\begin_layout Enumerate
+Mueve el cabezal hacia la derecha, izquierda o permanece en la misma posición
+ (notaremos 
+\begin_inset Formula $d,i,n$
+\end_inset
+
+ respectivamente).
+\end_layout
+
+\begin_layout Enumerate
+Cambia el estado en que se encuentra por otro perteneciente al conjunto
+ de estados que eventualmente podrá ser el mismo.
+\end_layout
+
+\begin_layout Standard
+La acción que se ejecutara en un momento dado dependerá del símbolo apuntado
+ por el cabezal así como del estado actual del mecanismo de control de la
+ maquina.
+ Si representamos con 
+\begin_inset Formula $\Gamma$
+\end_inset
+
+ al conjunto de símbolos de la cinta, con 
+\begin_inset Formula $S$
+\end_inset
+
+ al conjunto de estados y 
+\begin_inset Formula $S'=S-\left\{ q_{0}\right\} $
+\end_inset
+
+ entonces es posible representar las transiciones de la maquina mediante
+ una función 
+\begin_inset Formula $f:S'\times\Gamma\to\Gamma\times\left\{ d,i,n\right\} \times S$
+\end_inset
+
+.
+ Podemos entonces interpretar 
+\begin_inset Formula $f\left(q_{r},\alpha\right)=\left(\beta,d,q_{n}\right)$
+\end_inset
+
+ como 
+\begin_inset Quotes fld
+\end_inset
+
+si el estado actual es 
+\begin_inset Formula $q_{r}$
+\end_inset
+
+ y el símbolo actual es 
+\begin_inset Formula $\alpha$
+\end_inset
+
+: reemplazar 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ por 
+\begin_inset Formula $\beta$
+\end_inset
+
+, mover el cabezal a la derecha y pasar al estado 
+\begin_inset Formula $q_{n}$
+\end_inset
+
+
+\begin_inset Quotes frd
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Esta función, de dominio finito, puede ser representada por una tabla de
+ 
+\begin_inset Formula $\left|S\right|$
+\end_inset
+
+ columnas y 
+\begin_inset Formula $\left|\Gamma\right|+1$
+\end_inset
+
+ filas.
+ En cada una de las casillas 
+\begin_inset Formula $i,j$
+\end_inset
+
+ asociadas al estado 
+\begin_inset Formula $q_{j}$
+\end_inset
+
+ y el símbolo 
+\begin_inset Formula $s_{i}$
+\end_inset
+
+ aparecerá una terna que indicara que símbolo escribir, el movimiento a
+ ejecutar y el estado al que pasar.
+ La primer columna de la tabla corresponderá al estado 
+\begin_inset Formula $q_{1}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Nótese que al describir con una función las transiciones de una maquina
+ de Turing, la maquina es determinista.
+ Para ser mas precisos, existe una y solo una transición asociada a cada
+ par estado-símbolo, donde el estado no es el de detención.
+\end_layout
+
+\begin_layout Standard
+Durante la operación normal, una maquina de Turing ejecuta transiciones
+ repetidamente hasta llegar al estado de parada.
+ Esto quiere decir que en ciertas condiciones es posible que nunca se detengan
+ los cálculos de una maquina de Turing, ya que su programa interno puede
+ quedar atrapado en un ciclo sin fin.
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Definición formal
+\end_layout
+
+\begin_layout Standard
+Una maquina de Turing (
+\begin_inset Formula $MT$
+\end_inset
+
+) es una septupla 
+\begin_inset Formula $M=\left(S,\Sigma,\Gamma,f,\square,q_{1},q_{0}\right)$
+\end_inset
+
+ donde:
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $S$
+\end_inset
+
+ es un conjunto finito de estados.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\Sigma$
+\end_inset
+
+ es un conjunto finito de símbolos llamado alfabeto de la maquina.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\Gamma$
+\end_inset
+
+ es un conjunto finito de símbolos llamados símbolos de la cinta, tal que
+ 
+\begin_inset Formula $\Sigma\subseteq\Gamma$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\square\in\Gamma$
+\end_inset
+
+ es el símbolo blanco.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $q_{1}\in S$
+\end_inset
+
+ es el estado inicial.
+ 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $q_{0}\in S$
+\end_inset
+
+ es el estado de parada.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $f:S-\left\{ q_{0}\right\} \times\Gamma\to\Gamma\times\left\{ d,i,n\right\} \times S$
+\end_inset
+
+ es la función de transición de la maquina.
+\end_layout
+
+\begin_layout Section
+Maquinas elementales
+\end_layout
+
+\begin_layout Standard
+Es posible demostrar que con un alfabeto de un solo símbolo (ademas del
+ blanco), se puede codificar cualquier alfabeto finito; por lo tanto, de
+ ahora en adelante trabajaremos con maquinas de Turing sobre el alfabeto
+ 
+\begin_inset Formula $\Sigma=\left\{ \bullet\right\} $
+\end_inset
+
+.
+ Definiremos a continuación las siguientes maquinas elementales:
+\end_layout
+
+\begin_layout Itemize
+Maquina 
+\begin_inset Quotes fld
+\end_inset
+
+mover a la derecha
+\begin_inset Quotes frd
+\end_inset
+
+ (que notaremos 
+\begin_inset Formula $D$
+\end_inset
+
+):
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Tabular
+<lyxtabular version="3" rows="3" columns="2">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $D$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $q_{1}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\square$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\square,d,q_{0}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\bullet$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\bullet,d,q_{0}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Maquina 
+\begin_inset Quotes fld
+\end_inset
+
+mover a la izquierda
+\begin_inset Quotes frd
+\end_inset
+
+ (que notaremos 
+\begin_inset Formula $I$
+\end_inset
+
+):
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Tabular
+<lyxtabular version="3" rows="3" columns="2">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $I$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $q_{1}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\square$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\square,i,q_{0}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\bullet$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\bullet,i,q_{0}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Maquina 
+\begin_inset Quotes fld
+\end_inset
+
+blanco
+\begin_inset Quotes frd
+\end_inset
+
+ (que notaremos 
+\begin_inset Formula $\square$
+\end_inset
+
+):
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Tabular
+<lyxtabular version="3" rows="3" columns="2">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\square$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $q_{1}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\square$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\square,n,q_{0}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\bullet$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\square,n,q_{0}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Maquina 
+\begin_inset Quotes fld
+\end_inset
+
+punto
+\begin_inset Quotes frd
+\end_inset
+
+ (que notaremos 
+\begin_inset Formula $\bullet$
+\end_inset
+
+):
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Tabular
+<lyxtabular version="3" rows="3" columns="2">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\bullet$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $q_{1}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\square$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\bullet,n,q_{0}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\bullet$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\bullet,n,q_{0}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Maquina 
+\begin_inset Quotes fld
+\end_inset
+
+nada
+\begin_inset Quotes frd
+\end_inset
+
+ (que notaremos 
+\begin_inset Formula $N$
+\end_inset
+
+):
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Tabular
+<lyxtabular version="3" rows="3" columns="2">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $N$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $q_{1}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\square$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\square,n,q_{0}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\bullet$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\bullet,n,q_{0}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+A partir de estas maquinas elementales y realizando composiciones se podrá
+ construir cualquier maquina de Turing sobre el alfabeto dado.
+\end_layout
+
+\begin_layout Section
+Composición
+\end_layout
+
+\begin_layout Standard
+Sean 
+\begin_inset Formula $S=\left\{ q_{0},q_{1},\ldots,q_{n}\right\} $
+\end_inset
+
+, 
+\begin_inset Formula $S'=\left\{ q_{0}',q_{1}',\ldots,q_{m}'\right\} $
+\end_inset
+
+, 
+\begin_inset Formula $\Sigma=\left\{ \bullet\right\} $
+\end_inset
+
+ y 
+\begin_inset Formula $\Gamma=\left\{ \bullet,\square\right\} $
+\end_inset
+
+ definimos 
+\begin_inset Formula $M=\left(S,\Sigma,\Gamma,f_{M},\square,q_{1},q_{0}\right)$
+\end_inset
+
+ y 
+\begin_inset Formula $M'=\left(S',\Sigma,\Gamma,f_{M'},\square,q_{1}',q_{0}'\right)$
+\end_inset
+
+.
+ Llamaremos composición de 
+\begin_inset Formula $M$
+\end_inset
+
+ con 
+\begin_inset Formula $M'$
+\end_inset
+
+ a la maquina 
+\begin_inset Formula $MM'=\left(S\cup S'-\left\{ q_{0}\right\} ,\Sigma,\Gamma,f,\square,q_{1},q_{0}'\right)$
+\end_inset
+
+ que realiza la operación equivalente a aplicar primero la maquina 
+\begin_inset Formula $M$
+\end_inset
+
+ y al resultado aplicar 
+\begin_inset Formula $M'$
+\end_inset
+
+, donde 
+\begin_inset Formula $f$
+\end_inset
+
+ esta dada por:
+\begin_inset Formula 
+\[
+f\left(q,s\right)\begin{cases}
+f_{M}\left(q,\alpha\right)\left[q_{1}'/q_{0}\right] & q\in S\\
+f_{M'}\left(q,\alpha\right) & q\in S'
+\end{cases}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Es sencillo construir, a partir de las tablas de las maquinas 
+\begin_inset Formula $M$
+\end_inset
+
+ y 
+\begin_inset Formula $M'$
+\end_inset
+
+ la tabla de 
+\begin_inset Formula $MM'$
+\end_inset
+
+.
+ Para ello se adjunta inmediatamente a la tabla de 
+\begin_inset Formula $M$
+\end_inset
+
+, la tabla de 
+\begin_inset Formula $M'$
+\end_inset
+
+ y se reemplaza en la tabla de 
+\begin_inset Formula $M$
+\end_inset
+
+ cada aparición de 
+\begin_inset Formula $q_{0}$
+\end_inset
+
+ por 
+\begin_inset Formula $q_{1}'$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Section
+Diagramas de composición
+\end_layout
+
+\begin_layout Standard
+Veamos una forma mas general de componer maquinas.
+ En este caso ante el estado final de una maquina se toma en consideración
+ el símbolo observado, y dependiendo del mismo, se la conecta con el estado
+ inicial de una determinada maquina (eventualmente la misma).
+ Esto se diagrama con una flecha, marcada con el símbolo que parte de la
+ maquina que ha terminado hacia la que continua con el proceso.
+ Si no se etiqueta la flecha de salida implica que en todos los casos no
+ etiquetados se pasa al estado inicial de la maquina a la que apunta la
+ flecha.
+ Veamos algunos ejemplos:
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Maquina 
+\begin_inset Quotes fld
+\end_inset
+
+derecha hasta blanco
+\begin_inset Quotes frd
+\end_inset
+
+ (que notaremos 
+\begin_inset Formula $D^{\square}$
+\end_inset
+
+):
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{tikzpicture}[shorten >=1pt,node distance=3cm,on grid,auto]
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node[state, initial, initial text=] (D)   {$D$};
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node[state, accepting, right of=D] (N) {$N$};
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+path[->]
+\end_layout
+
+\begin_layout Plain Layout
+
+		(D)	edge  [loop above] node {$
+\backslash
+bullet$} ()
+\end_layout
+
+\begin_layout Plain Layout
+
+		(D)	edge node {$
+\backslash
+square$} (N)
+\end_layout
+
+\begin_layout Plain Layout
+
+;
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{tikzpicture}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Maquina 
+\begin_inset Quotes fld
+\end_inset
+
+derecha hasta dos blancos
+\begin_inset Quotes frd
+\end_inset
+
+ (que notaremos 
+\begin_inset Formula $D^{\square\square}$
+\end_inset
+
+):
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{tikzpicture}[shorten >=1pt,node distance=3cm,on grid,auto]
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node[state, initial, initial text=] (DB)   {$D^
+\backslash
+square$};
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node[state, right of=DB] (D) {$D$};
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node[state, accepting, right of=D] (N) {$N$};
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+path[->]
+\end_layout
+
+\begin_layout Plain Layout
+
+		(DB)	edge node {$
+\backslash
+square,
+\backslash
+bullet$} (D)
+\end_layout
+
+\begin_layout Plain Layout
+
+		(D)	edge node {$
+\backslash
+square$} (N)
+\end_layout
+
+\begin_layout Plain Layout
+
+		(D)	edge [bend left] node {$
+\backslash
+bullet$} (DB)
+\end_layout
+
+\begin_layout Plain Layout
+
+;
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{tikzpicture}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Maquina 
+\begin_inset Quotes fld
+\end_inset
+
+izquierda hasta punto
+\begin_inset Quotes frd
+\end_inset
+
+ (que notaremos 
+\begin_inset Formula $I^{\bullet}$
+\end_inset
+
+):
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{tikzpicture}[shorten >=1pt,node distance=3cm,on grid,auto]
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node[state, initial, initial text=] (I)   {$I$};
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node[state, accepting, right of=I] (N) {$N$};
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+path[->]
+\end_layout
+
+\begin_layout Plain Layout
+
+		(I)	edge  [loop above] node {$
+\backslash
+square$} ()
+\end_layout
+
+\begin_layout Plain Layout
+
+		(I)	edge node {$
+\backslash
+bullet$} (N)
+\end_layout
+
+\begin_layout Plain Layout
+
+;
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{tikzpicture}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+De forma análoga definimos las maquinas 
+\begin_inset Formula $I^{\square},I^{\bullet},D^{\bullet},\ldots$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Section
+Representación de 
+\begin_inset Formula $FRL$
+\end_inset
+
+ con 
+\begin_inset Formula $MT$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Mostraremos que dada una función de lista, existe una maquina de Turing
+ sobre 
+\begin_inset Formula $\Sigma=\left\{ \square,\bullet\right\} $
+\end_inset
+
+ que la representa.
+ Para ello definiremos primero una representación de una lista, en la cinta
+ de la maquina.
+\end_layout
+
+\begin_layout Standard
+Representaremos entonces las listas como grupos de 
+\begin_inset Formula $\bullet$
+\end_inset
+
+ separados por un solo símbolo blanco, donde por cada numero 
+\begin_inset Formula $n$
+\end_inset
+
+ en la lista, tendremos 
+\begin_inset Formula $n+1$
+\end_inset
+
+ puntitos.
+ Por ejemplo la lista 
+\begin_inset Formula $\left[2,0,5,1\right]$
+\end_inset
+
+ sera representada por la cinta 
+\begin_inset Formula $\text{\ensuremath{\bullet\bullet\bullet\square\bullet\square\bullet\bullet\bullet\bullet\bullet\bullet\square\bullet\bullet}}$
+\end_inset
+
+.
+ Notaremos la representación de una lista 
+\begin_inset Formula $X\in\mathcal{L}$
+\end_inset
+
+ en una cinta de una maquina de Turing como 
+\begin_inset Formula $\left\langle \left\langle X\right\rangle \right\rangle $
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Diremos que dada una función de lista 
+\begin_inset Formula $F$
+\end_inset
+
+, una maquina de Turing (que notaremos 
+\begin_inset Formula $M_{F}$
+\end_inset
+
+) la representa si dada cualquier lista 
+\begin_inset Formula $X\in Dom\left(F\right)$
+\end_inset
+
+, la maquina 
+\begin_inset Formula $M_{F}$
+\end_inset
+
+ tomando como configuración inicial 
+\begin_inset Formula $\left\langle \left\langle X\right\rangle \right\rangle $
+\end_inset
+
+ y con el cabezal en la primer casilla vaciá antes del primer 
+\begin_inset Formula $\bullet$
+\end_inset
+
+, luego de procesarla llega a la configuración final 
+\begin_inset Formula $\left\langle \left\langle FX\right\rangle \right\rangle $
+\end_inset
+
+, observando la primer casilla libre de dicha configuración.
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Funciones base
+\end_layout
+
+\begin_layout Itemize
+La función 
+\begin_inset Formula $0_{i}$
+\end_inset
+
+ esta representada por la maquina 
+\begin_inset Formula $i\bullet i$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+La función 
+\begin_inset Formula $0_{d}$
+\end_inset
+
+ esta representada por la maquina 
+\begin_inset Formula $D^{\square\square}\bullet I^{\square\square}d$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+La función 
+\begin_inset Formula $S_{i}$
+\end_inset
+
+ esta representada por la maquina 
+\begin_inset Formula $D^{\bullet}i\bullet i$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+La función 
+\begin_inset Formula $S_{d}$
+\end_inset
+
+ esta representada por la maquina 
+\begin_inset Formula $D^{\square\square}I^{\bullet}d\bullet I^{\square\square}d$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+La función 
+\begin_inset Formula $\square_{i}$
+\end_inset
+
+ esta representada por la maquina:
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{tikzpicture}[shorten >=1pt,node distance=1.7cm,on grid,auto]
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node[state, initial, initial text=] (sigma1)   {$D^
+\backslash
+bullet$};
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node[state, right of=sigma1] (sigma2) {$
+\backslash
+square$};
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node[state, right of=sigma2] (sigma3) {$d$};
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node[state, accepting, right of=sigma3] (sigma4) {$N$};
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+path[->]
+\end_layout
+
+\begin_layout Plain Layout
+
+		(sigma1)	edge  node {} (sigma2)
+\end_layout
+
+\begin_layout Plain Layout
+
+		(sigma2)	edge  node {} (sigma3)
+\end_layout
+
+\begin_layout Plain Layout
+
+		(sigma3)	edge [bend left] node {$
+\backslash
+bullet$} (sigma2)
+\end_layout
+
+\begin_layout Plain Layout
+
+		(sigma3)	edge  node {$
+\backslash
+square$} (sigma4)
+\end_layout
+
+\begin_layout Plain Layout
+
+;
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{tikzpicture}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+La función 
+\begin_inset Formula $\square_{d}$
+\end_inset
+
+ esta representada por la maquina:
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{tikzpicture}[shorten >=1pt,node distance=1.7cm,on grid,auto]
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node[state, initial, initial text=] (sigma1)   {$D^{
+\backslash
+square
+\backslash
+square}I^
+\backslash
+bullet$};
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node[state, right of=sigma1] (sigma2) {$
+\backslash
+square$};
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node[state, right of=sigma2] (sigma3) {$i$};
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node[state, right of=sigma3] (sigma4) {$I^{
+\backslash
+square
+\backslash
+square}$};
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node[state, accepting, right of=sigma4] (sigma5) {$d$};
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+path[->]
+\end_layout
+
+\begin_layout Plain Layout
+
+		(sigma1)	edge  node {} (sigma2)
+\end_layout
+
+\begin_layout Plain Layout
+
+		(sigma2)	edge  node {} (sigma3)
+\end_layout
+
+\begin_layout Plain Layout
+
+		(sigma3)	edge [bend left] node {$
+\backslash
+bullet$} (sigma2)
+\end_layout
+
+\begin_layout Plain Layout
+
+		(sigma3)	edge  node {$
+\backslash
+square$} (sigma4)
+\end_layout
+
+\begin_layout Plain Layout
+
+		(sigma4)	edge  node {} (sigma5)
+\end_layout
+
+\begin_layout Plain Layout
+
+;
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{tikzpicture}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Composición
+\end_layout
+
+\begin_layout Standard
+Sean 
+\begin_inset Formula $f,g\in FL/\exists M_{f},M_{g}\in MT$
+\end_inset
+
+, entonces la función 
+\begin_inset Formula $fg$
+\end_inset
+
+ esta representada por la maquina 
+\begin_inset Formula $M_{f}M_{g}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Maquina Z
+\end_layout
+
+\begin_layout Paragraph
+Introducción
+\end_layout
+
+\begin_layout Standard
+La maquina 
+\begin_inset Formula $Z$
+\end_inset
+
+ es una maquina de Turing sobre 
+\begin_inset Formula $\Sigma=\left\{ \bullet,\square\right\} $
+\end_inset
+
+ que parte en la primer celda vaciá a la izquierda del primer caracter,
+ cuyo comportamiento es el siguiente:
+\end_layout
+
+\begin_layout Itemize
+Si la cinta inicial no contiene al menos dos grupos de 
+\begin_inset Formula $\bullet$
+\end_inset
+
+ separados por un solo 
+\begin_inset Formula $\square$
+\end_inset
+
+, entonces la maquina no para.
+\end_layout
+
+\begin_layout Itemize
+Si el primer grupo de 
+\begin_inset Formula $\bullet$
+\end_inset
+
+ tiene la misma cantidad de elementos que el ultimo, entonces la configuración
+ final es igual a la inicial.
+\end_layout
+
+\begin_layout Itemize
+Si los grupos primero y ultimo no tienen el mismo numero de elementos, entonces
+ la configuración final es igual a la inicial, pero con el cabezal apuntando
+ al primer 
+\begin_inset Formula $\bullet$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Paragraph
+Definiciones
+\end_layout
+
+\begin_layout Standard
+Definiremos primero cinco maquinas:
+\end_layout
+
+\begin_layout Enumerate
+La maquina preámbulo 
+\begin_inset Formula $P$
+\end_inset
+
+, que no para si la entrada no es correcta.
+\end_layout
+
+\begin_layout Enumerate
+La maquina contadora 
+\begin_inset Formula $C$
+\end_inset
+
+, que vaciá los puntitos de a pares, mientras se pueda.
+\end_layout
+
+\begin_layout Enumerate
+La maquina igualdad 
+\begin_inset Formula $E$
+\end_inset
+
+, que actúa si el conteo fue igual.
+\end_layout
+
+\begin_layout Enumerate
+La maquina desigualdad 
+\begin_inset Formula $\neg E$
+\end_inset
+
+, que actúa si el conteo fue desigual.
+\end_layout
+
+\begin_layout Enumerate
+La maquina restauradora 
+\begin_inset Formula $R$
+\end_inset
+
+, que vuelve a rellenar los puntitos.
+\end_layout
+
+\begin_layout Paragraph
+Maquina P
+\end_layout
+
+\begin_layout Standard
+Definimos 
+\begin_inset Formula $P:=D^{\square}D^{\bullet}I^{\square\square}dd$
+\end_inset
+
+.
+ Veamos algunos ejemplos:
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\check{\square}\bullet\bullet\bullet\underbrace{\Rightarrow}_{D^{\square}}\bullet\bullet\bullet\check{\square}\underbrace{\Rightarrow}_{D^{\bullet}}\ldots$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\check{\square}\bullet\bullet\square\bullet\bullet\underbrace{\Rightarrow}_{D^{\square}}\bullet\bullet\check{\square}\bullet\bullet\underbrace{\Rightarrow}_{D^{\bullet}}\bullet\bullet\square\check{\bullet}\bullet\underbrace{\Rightarrow}_{I^{\square\square}}\check{\square}\square\bullet\bullet\square\bullet\bullet\underbrace{\Rightarrow}_{dd}\check{\bullet}\bullet\square\bullet\bullet$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph
+Maquina C
+\end_layout
+
+\begin_layout Standard
+Definimos 
+\begin_inset Formula $C$
+\end_inset
+
+ mediante el siguiente diagrama:
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{tikzpicture}[shorten >=1pt,node distance=2.5cm,on grid,auto]
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node[state, initial, initial text=] (sigma1)   {$
+\backslash
+circ D^{
+\backslash
+square
+\backslash
+square}I^{
+\backslash
+bullet}
+\backslash
+circ i$};
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node[state, above right of=sigma1] (sigma2) {$I^
+\backslash
+circ d$};
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node[state, below right of=sigma1] (sigma3) {$I^
+\backslash
+circ d$};
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node[state, accepting, right of=sigma2] (eq) {$E$};
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node[state, accepting, right of=sigma3] (neq) {$
+\backslash
+neg E$};
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+path[->]
+\end_layout
+
+\begin_layout Plain Layout
+
+		(sigma1)	edge  node {$
+\backslash
+square$} (sigma2)
+\end_layout
+
+\begin_layout Plain Layout
+
+		(sigma1)	edge [bend left] node {$
+\backslash
+bullet$} (sigma3)
+\end_layout
+
+\begin_layout Plain Layout
+
+		(sigma2)	edge  node {$
+\backslash
+bullet$} (neq)
+\end_layout
+
+\begin_layout Plain Layout
+
+		(sigma3)	edge  node {$
+\backslash
+square$} (neq)
+\end_layout
+
+\begin_layout Plain Layout
+
+		(sigma3)	edge [bend left]  node {$
+\backslash
+bullet$} (sigma1)
+\end_layout
+
+\begin_layout Plain Layout
+
+		(sigma2)	edge  node {$
+\backslash
+square$} (eq)
+\end_layout
+
+\begin_layout Plain Layout
+
+;
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{tikzpicture}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Veamos algunos ejemplos:
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\check{\bullet}\bullet\square\bullet\square\bullet\bullet\Rightarrow\circ\bullet\square\bullet\square\check{\bullet}\circ\Rightarrow\circ\check{\bullet}\square\bullet\square\bullet\circ\Rightarrow\circ\circ\square\bullet\check{\square}\circ\circ\Rightarrow\circ\circ\check{\square}\bullet\square\circ\circ\Rightarrow E$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\check{\bullet}\bullet\bullet\square\bullet\bullet\Rightarrow\circ\bullet\bullet\square\check{\bullet}\circ\Rightarrow\circ\check{\bullet}\bullet\square\bullet\circ\Rightarrow\circ\circ\bullet\check{\square}\circ\circ\Rightarrow\neg E$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph
+Maquina E
+\end_layout
+
+\begin_layout Standard
+Definimos 
+\begin_inset Formula $E:=I^{\square\square}dR$
+\end_inset
+
+.
+ Veamos algunos ejemplos:
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\circ\circ\check{\square}\bullet\square\circ\circ\Rightarrow\check{\square}\square\circ\circ\square\bullet\square\circ\circ\Rightarrow\check{\square}\circ\circ\square\bullet\square\circ\circ\Rightarrow\check{\square}\bullet\bullet\square\bullet\square\bullet\bullet$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph
+Maquina 
+\begin_inset Formula $\neg$
+\end_inset
+
+E
+\end_layout
+
+\begin_layout Standard
+Definimos 
+\begin_inset Formula $\neg E:=I^{\square\square}dRd$
+\end_inset
+
+.
+ Veamos algunos ejemplos:
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\circ\circ\check{\square}\bullet\square\circ\circ\Rightarrow\check{\square}\square\circ\circ\square\bullet\square\circ\circ\Rightarrow\check{\square}\circ\circ\square\bullet\square\circ\circ\Rightarrow\check{\square}\bullet\bullet\square\bullet\square\bullet\bullet\Rightarrow\check{\bullet}\bullet\square\bullet\square\bullet\bullet$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph
+Maquina R
+\end_layout
+
+\begin_layout Standard
+Definimos 
+\begin_inset Formula $R$
+\end_inset
+
+ mediante el siguiente diagrama:
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{tikzpicture}[shorten >=1pt,node distance=1.7cm,on grid,auto]
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node[state, initial, initial text=] (sigma1)   {$d$};
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node[state, right of=sigma1] (sigma2) {$
+\backslash
+bullet$};
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node[state, right of=sigma2] (sigma3) {$d$};
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node[state, right of=sigma3] (sigma4) {$D^{
+\backslash
+square
+\backslash
+square}ii$};
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node[state, right of=sigma4] (sigma6) {$
+\backslash
+bullet$};
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node[state, right of=sigma6] (sigma7) {$i$};
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node[state, right of=sigma7] (sigma8) {$I^{
+\backslash
+square
+\backslash
+square}$};
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node[state, accepting, right of=sigma8] (sigma9) {$d$};
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+path[->]
+\end_layout
+
+\begin_layout Plain Layout
+
+		(sigma1)	edge  node {} (sigma2)
+\end_layout
+
+\begin_layout Plain Layout
+
+		(sigma2)	edge  node {} (sigma3)
+\end_layout
+
+\begin_layout Plain Layout
+
+		(sigma3)	edge  [bend left] node {$
+\backslash
+circ$} (sigma2)
+\end_layout
+
+\begin_layout Plain Layout
+
+		(sigma3)	edge node {} (sigma4)
+\end_layout
+
+\begin_layout Plain Layout
+
+		(sigma4)	edge  node {} (sigma6)
+\end_layout
+
+\begin_layout Plain Layout
+
+		(sigma6)	edge  node {} (sigma7)
+\end_layout
+
+\begin_layout Plain Layout
+
+		(sigma7)	edge  [bend left] node {$
+\backslash
+circ$} (sigma6)
+\end_layout
+
+\begin_layout Plain Layout
+
+		(sigma7)	edge  node {} (sigma8)
+\end_layout
+
+\begin_layout Plain Layout
+
+		(sigma8)	edge  node {} (sigma9)
+\end_layout
+
+\begin_layout Plain Layout
+
+;
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{tikzpicture}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Veamos algunos ejemplos:
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\begin{aligned} & \check{\square}\circ\circ\bullet\square\circ\circ\Rightarrow\check{\circ}\circ\bullet\square\circ\circ\Rightarrow\check{\bullet}\circ\bullet\square\circ\circ\Rightarrow\bullet\check{\circ}\bullet\square\circ\circ\Rightarrow\bullet\check{\bullet}\bullet\square\circ\circ\Rightarrow\\
+ & \Rightarrow\bullet\bullet\check{\bullet}\square\circ\circ\Rightarrow\bullet\bullet\bullet\square\circ\check{\circ}\Rightarrow\bullet\bullet\bullet\square\circ\check{\bullet}\Rightarrow\bullet\bullet\bullet\square\check{\circ}\bullet\Rightarrow\bullet\bullet\bullet\check{\square}\bullet\bullet\Rightarrow\check{\square}\bullet\bullet\bullet\square\bullet\bullet
+\end{aligned}
+$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph
+Conclusión
+\end_layout
+
+\begin_layout Standard
+Nuestra maquina quedaría definida como 
+\begin_inset Formula $Z:=PC$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Repetición
+\end_layout
+
+\begin_layout Standard
+Dada una función 
+\begin_inset Formula $f\in FRL$
+\end_inset
+
+ representada por 
+\begin_inset Formula $M_{f}\in MT$
+\end_inset
+
+ la función 
+\begin_inset Formula $\left\langle f\right\rangle $
+\end_inset
+
+ esta representada por la maquina:
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{tikzpicture}[shorten >=1pt,node distance=1.7cm,on grid,auto]
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node[state, initial, initial text=] (sigma1)   {$Z$};
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node[state, right of=sigma1] (sigma2) {$iM_f$};
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node[state, accepting, below of=sigma1] (sigma3) {$N$};
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+path[->]
+\end_layout
+
+\begin_layout Plain Layout
+
+		(sigma1)	edge  node {$
+\backslash
+bullet$} (sigma2)
+\end_layout
+
+\begin_layout Plain Layout
+
+		(sigma2)	edge [bend left]  node {} (sigma1)
+\end_layout
+
+\begin_layout Plain Layout
+
+		(sigma1)	edge  node {$
+\backslash
+square$} (sigma3)
+\end_layout
+
+\begin_layout Plain Layout
+
+;
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{tikzpicture}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Representación de 
+\begin_inset Formula $MT$
+\end_inset
+
+ con 
+\begin_inset Formula $FR$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Veremos que para toda 
+\begin_inset Formula $M\in MT$
+\end_inset
+
+ existe una 
+\begin_inset Formula $F_{M}\in FR$
+\end_inset
+
+ que la representa.
+ Demostraremos en principio el teorema, para las maquinas de Turing que
+ tienen un alfabeto de diez símbolos 
+\begin_inset Formula $\left\{ s_{0},s_{1},s_{2},s_{3},s_{4},s_{5},s_{6},s_{7},s_{8},s_{9}\right\} $
+\end_inset
+
+ donde 
+\begin_inset Formula $s_{0}=\square$
+\end_inset
+
+ y 
+\begin_inset Formula $M$
+\end_inset
+
+ tiene 
+\begin_inset Formula $p+1$
+\end_inset
+
+ estados.
+\end_layout
+
+\begin_layout Subsection
+Representación de configuraciones
+\end_layout
+
+\begin_layout Standard
+En cada momento la situación de una MT esta completamente definida por los
+ datos que contiene la cinta, la casilla observada y el estado en el que
+ se encuentra.
+ Consideramos la cinta dividida en tres partes: la celda observada, y las
+ zonas que se encuentran a izquierda y derecha de esta celda.
+ 
+\end_layout
+
+\begin_layout Standard
+Asociaremos a la parte izquierda de la cinta el numero que tiene como cifras
+ decimales a los subindices de los símbolos contenidos en las casillas situadas
+ a la izquierda del cabezal.
+ Llamaremos a este numero 
+\begin_inset Formula $C_{i}$
+\end_inset
+
+.
+ Por ejemplo para la cinta 
+\begin_inset Formula $\ldots s_{0}s_{5}s_{3}s_{8}s_{4}s_{2}\check{s_{3}}s_{1}s_{7}s_{9}s_{2}s_{0}\ldots$
+\end_inset
+
+ el numero 
+\begin_inset Formula $C_{i}$
+\end_inset
+
+ sera: 
+\begin_inset Formula $53842$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+A la casilla observada le asociamos como numero el indice del símbolo que
+ contiene y lo notaremos 
+\begin_inset Formula $C_{o}$
+\end_inset
+
+.
+ En nuestro ejemplo 
+\begin_inset Formula $C_{o}=3$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Finalmente asociamos a la parte derecha de la cinta el numero que forman
+ los subindices de los símbolos que contienen pero leyendo de derecha a
+ izquierda .
+ Con lo que los que son los infinitos 
+\begin_inset Quotes fld
+\end_inset
+
+ceros a la derecha
+\begin_inset Quotes frd
+\end_inset
+
+ los que no cuentan en este caso.
+ Notaremos dicho numero como 
+\begin_inset Formula $C_{d}$
+\end_inset
+
+ y en nuestro ejemplo resulta 
+\begin_inset Formula $C_{d}=2971$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Asociaremos entonces a cada configuración de una 
+\begin_inset Formula $MT$
+\end_inset
+
+ el numero 
+\begin_inset Formula $2^{C_{i}}3^{C_{o}}5^{C_{d}}7^{e}$
+\end_inset
+
+ donde 
+\begin_inset Formula $e$
+\end_inset
+
+ es el subindice del estado en el que se encuentra la maquina.
+ Notemos que como hemos elegido números primos para las bases, a partir
+ de un numero natural que represente una configuración podemos recuperar
+ los exponentes mediante una función recursiva primitiva 
+\begin_inset Formula $G$
+\end_inset
+
+ tal que 
+\begin_inset Formula $G\left(x,2\right)=C_{i}$
+\end_inset
+
+, 
+\begin_inset Formula $G\left(x,3\right)=C_{o}$
+\end_inset
+
+, 
+\begin_inset Formula $G\left(x,5\right)=C_{d}$
+\end_inset
+
+ y 
+\begin_inset Formula $G\left(x,7\right)=e$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Transiciones sobre representaciones
+\end_layout
+
+\begin_layout Standard
+Representaremos los movimientos del cabezal con números: 
+\begin_inset Formula $i=1$
+\end_inset
+
+, 
+\begin_inset Formula $d=2$
+\end_inset
+
+ y 
+\begin_inset Formula $n=3$
+\end_inset
+
+.
+ Observemos como se comporta sobre una cinta, una función de transición
+ para el estado actual 
+\begin_inset Formula $q$
+\end_inset
+
+ y el símbolo observado 
+\begin_inset Formula $o$
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="6" columns="6">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top" width="0pt">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $1$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\cdots$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $j$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\cdots$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $f$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $q$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\vdots$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\vdots$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\vdots$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $i$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $o$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\cdots$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\cdots$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $s,m,q'$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\cdots$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\vdots$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\vdots$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Si 
+\begin_inset Formula $m=3$
+\end_inset
+
+ entonces la configuración 
+\begin_inset Formula $N=2^{C_{i}}3^{C_{o}}5^{C_{d}}7^{q}$
+\end_inset
+
+ se transforma en 
+\begin_inset Formula $N'=2^{C_{i}}3^{s}5^{C_{d}}7^{q'}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Si 
+\begin_inset Formula $m=2$
+\end_inset
+
+ entonces se transforma en 
+\begin_inset Formula $N'=2^{10C_{i}+s}3^{C_{d}\%10}5^{\lfloor C_{d}/10\rfloor}7^{q'}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Si 
+\begin_inset Formula $m=1$
+\end_inset
+
+ entonces se transforma en 
+\begin_inset Formula $N'=2^{\lfloor C_{i}/10\rfloor}3^{C_{i}\%10}5^{10C_{d}+s}7^{q'}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Veamos algunos ejemplos partiendo de la cinta 
+\begin_inset Formula $\underbrace{6\check{3}01}_{2}$
+\end_inset
+
+ (representada por el numero 
+\begin_inset Formula $\text{\ensuremath{N=2^{6}3^{3}5^{10}7^{2}=826.875.000.000}}$
+\end_inset
+
+) reemplazando el símbolo actual por 
+\begin_inset Formula $4$
+\end_inset
+
+ y pasando al estado final:
+\end_layout
+
+\begin_layout Itemize
+Si 
+\begin_inset Formula $m=3$
+\end_inset
+
+ se transforma en 
+\begin_inset Formula $N'=2^{6}3^{4}5^{10}7^{0}=16.875.000.000$
+\end_inset
+
+ es decir 
+\begin_inset Formula $\underbrace{6\check{4}01}_{0}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Si 
+\begin_inset Formula $m=2$
+\end_inset
+
+ se transforma en 
+\begin_inset Formula $N'=2^{10\cdot6+4}3^{10\%10}5^{\lfloor10/10\rfloor}7^{0}=2^{64}3^{0}5^{1}7^{0}$
+\end_inset
+
+ es decir 
+\begin_inset Formula $\underbrace{64\check{0}1}_{0}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Si 
+\begin_inset Formula $m=1$
+\end_inset
+
+ se transforma en 
+\begin_inset Formula $N'=2^{\lfloor6/10\rfloor}3^{6\%10}5^{10\cdot10+4}7^{0}=2^{0}3^{6}5^{104}7^{0}$
+\end_inset
+
+ es decir 
+\begin_inset Formula $\underbrace{0\check{6}401}_{0}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+A partir de aquí definimos tres funciones recursivas que estarán asociadas
+ a una función de transición 
+\begin_inset Formula $f$
+\end_inset
+
+ de una 
+\begin_inset Formula $MT$
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $S_{f}\left(i,j\right)=\begin{cases}
+\text{simbolo de la entrada }i,j & \text{si \ensuremath{i,j} es una entrada de la tabla}\\
+0 & \text{si no}
+\end{cases}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $M_{f}\left(i,j\right)=\begin{cases}
+\text{movimiento de la entrada }i,j & \text{si \ensuremath{i,j} es una entrada de la tabla}\\
+0 & \text{si no}
+\end{cases}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $E_{f}\left(i,j\right)=\begin{cases}
+\text{estado de la entrada }i,j & \text{si \ensuremath{i,j} es una entrada de la tabla}\\
+0 & \text{si no}
+\end{cases}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Demostración
+\end_layout
+
+\begin_layout Standard
+Sea 
+\begin_inset Formula $M=\left(S,\Sigma,\Gamma,f,s_{0},q_{1},q_{0}\right)$
+\end_inset
+
+ donde 
+\begin_inset Formula $\Sigma=\Gamma=\left\{ s_{0},s_{1},s_{2},s_{3},s_{4},s_{5},s_{6},s_{7},s_{8},s_{9}\right\} $
+\end_inset
+
+ y 
+\begin_inset Formula $S=\left\{ q_{0},\ldots,q_{p}\right\} $
+\end_inset
+
+; y sea 
+\begin_inset Formula $R\left(c,e\right)=2^{C_{i}}3^{C_{o}}5^{C_{d}}7^{e}$
+\end_inset
+
+ la función que representa configuraciones como números.
+\end_layout
+
+\begin_layout Standard
+Definimos la función recursiva:
+\begin_inset Formula 
+\[
+T_{f}\left(c_{i},c_{o},c_{d},e\right)=\begin{cases}
+2^{\lfloor C_{i}/10\rfloor}3^{C_{i}\%10}5^{10C_{d}+S_{f}\left(c_{o},e\right)}7^{E_{f}\left(c_{o},e\right)} & M_{f}\left(c_{o},e\right)=1\\
+2^{10C_{i}+S_{f}\left(c_{o},e\right)}3^{C_{d}\%10}5^{\lfloor C_{d}/10\rfloor}7^{E_{f}\left(c_{o},e\right)} & M_{f}\left(c_{o},e\right)=2\\
+2^{C_{i}}3^{S_{f}\left(c_{o},e\right)}5^{C_{d}}7^{E_{f}\left(c_{o},e\right)} & M_{f}\left(c_{o},e\right)=3
+\end{cases}
+\]
+
+\end_inset
+
+luego la función recursiva asociada a 
+\begin_inset Formula $f$
+\end_inset
+
+ sera 
+\begin_inset Formula $\overline{f}\left(x\right)=T_{f}\left(G\left[x,2\right],G\left[x,3\right],G\left[x,5\right],G\left[x,7\right]\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Si partiendo de la cinta inicial 
+\begin_inset Formula $C_{1}$
+\end_inset
+
+ la maquina 
+\begin_inset Formula $M$
+\end_inset
+
+ la transforma en la cinta 
+\begin_inset Formula $C_{t}$
+\end_inset
+
+ en 
+\begin_inset Formula $t$
+\end_inset
+
+ pasos entonces: 
+\begin_inset Formula $\overline{f}^{t}\left[R\left(C_{1},1\right)\right]=R\left(C_{t},q\right)$
+\end_inset
+
+.
+ Cuando resulte que 
+\begin_inset Formula $\overline{f}^{t}\left[R\left(C_{1},1\right)\right]=R\left(C_{t},0\right)$
+\end_inset
+
+ entonces habremos terminado los cálculos.
+ Si efectivamente existe un valor de 
+\begin_inset Formula $t$
+\end_inset
+
+ tal que satisfaga dicha igualdad entonces este valor sera el mínimo 
+\begin_inset Formula $t$
+\end_inset
+
+ tal que 
+\begin_inset Formula $G\left\{ \overline{f}^{t}\left[R\left(C_{1},1\right)\right],7\right\} =0$
+\end_inset
+
+, que podemos construir utilizando el minimizador.
+ Sea entonces 
+\begin_inset Formula $H\left(x\right)=\mu_{t}\left\{ G\left[\overline{f}^{t}\left(x\right),7\right]=0\right\} $
+\end_inset
+
+ la función que encuentra dicho valor.
+\end_layout
+
+\begin_layout Standard
+De todo lo aquí expuesto podemos concluir que la función recursiva que represent
+a a 
+\begin_inset Formula $M$
+\end_inset
+
+ es: 
+\begin_inset Formula $\overline{f}^{H\left(x\right)}$
+\end_inset
+
+ donde 
+\begin_inset Formula $x=R\left(C_{1},1\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Paragraph
+Resumen
+\end_layout
+
+\begin_layout Standard
+A partir de una maquina 
+\begin_inset Formula $M$
+\end_inset
+
+ y una cinta inicial 
+\begin_inset Formula $C_{1}$
+\end_inset
+
+, transformamos 
+\begin_inset Formula $C_{1}$
+\end_inset
+
+ en un numero mediante 
+\begin_inset Formula $R\left(C_{1},1\right)$
+\end_inset
+
+.
+ Luego imitamos las transiciones de 
+\begin_inset Formula $f$
+\end_inset
+
+ mediante 
+\begin_inset Formula $\overline{f}$
+\end_inset
+
+ hasta que el estado que obtenemos a través de 
+\begin_inset Formula $G$
+\end_inset
+
+ sea 
+\begin_inset Formula $0$
+\end_inset
+
+ y de esta manera obtenemos un numero que representa la configuración final
+ de 
+\begin_inset Formula $M$
+\end_inset
+
+ aplicada a 
+\begin_inset Formula $C_{1}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Paragraph
+Observación
+\end_layout
+
+\begin_layout Standard
+La condición de que el alfabeto tenga diez valores no es ninguna limitación.
+ En el caso de un alfabeto de 
+\begin_inset Formula $k$
+\end_inset
+
+ elementos basta tomar el sistema numérico de base 
+\begin_inset Formula $k$
+\end_inset
+
+.
+ El valor 
+\begin_inset Formula $10$
+\end_inset
+
+ de las formulas sigue valiendo pues en cada caso es la forma de expresar
+ el valor de la base.
+\end_layout
+
+\begin_layout Paragraph
+Conclusión
+\end_layout
+
+\begin_layout Standard
+Juntando todos los teoremas de representación de modelos de calculo (y haciendo
+ abuso de notación) tenemos 
+\begin_inset Formula $FR\preceq FRL\preceq MT\preceq FR$
+\end_inset
+
+ logrando concluir que todos estos modelos son equivalentes.
+\end_layout
+
+\begin_layout Section
+Numerabilidad de maquinas de Turing
+\end_layout
+
+\begin_layout Standard
+Sea 
+\begin_inset Formula $M_{n}=\left\{ m\in MT:\text{ el alfabeto de m tiene n simbolos}\right\} $
+\end_inset
+
+, observemos que 
+\begin_inset Formula $MT={\displaystyle \bigcup_{n=2}^{\infty}}M_{n}$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+Así mismo 
+\begin_inset Formula $M_{n}={\displaystyle \bigcup_{k=2}^{\infty}M_{nk}}$
+\end_inset
+
+ donde 
+\begin_inset Formula $M_{nk}=\left\{ m\in M_{n}:\text{ m tiene k estados}\right\} $
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Nótese que 
+\begin_inset Formula $M_{nk}$
+\end_inset
+
+ es un conjunto finito.
+ En efecto hay un numero finito de funciones de transición, pues tanto el
+ dominio como el codominio tienen cardinal finito.
+\end_layout
+
+\begin_layout Standard
+Como 
+\begin_inset Formula $MT={\displaystyle \bigcup_{n=2}^{\infty}\bigcup_{k=2}^{\infty}}M_{nk}$
+\end_inset
+
+ concluimos que 
+\begin_inset Formula $\#MT=\aleph_{0}$
+\end_inset
+
+ pues es unión numerable de conjuntos numerados.
+\end_layout
+
+\begin_layout Section
+Limite de lo calculable
+\end_layout
+
+\begin_layout Standard
+Hemos visto que 
+\begin_inset Formula $\#\left\{ f:\mathbb{N}\to\left\{ 0,1\right\} \right\} =\mathcal{P}\left(\mathbb{N}\right)=\aleph_{1}$
+\end_inset
+
+ y claramente hay tantas (o mas) funciones numéricas.
+ Ademas por el teorema anterior podemos concluir que 
+\begin_inset Formula $\#MT=\aleph_{0}\prec\aleph_{1}\preceq\#\left\{ f:\mathbb{N}\to\mathbb{N}\right\} $
+\end_inset
+
+, es decir que existen funciones que ninguna maquina de Turing puede calcular.
+\end_layout
+
+\begin_layout Standard
+Veremos a continuación una función útil y perfectamente definida que no
+ podemos calcular con maquinas de Turing.
+\end_layout
+
+\begin_layout Paragraph
+El problema de la parada
+\end_layout
+
+\begin_layout Standard
+Notemos que dependiendo de cada 
+\begin_inset Formula $MT$
+\end_inset
+
+ no siempre ante una configuración inicial se llega a una configuración
+ final, por ejemplo la maquina 
+\begin_inset Formula $D^{\bullet\bullet}$
+\end_inset
+
+ con una cinta inicial que no tenga dos 
+\begin_inset Formula $\bullet$
+\end_inset
+
+ seguidos no se detendrá nunca.
+\end_layout
+
+\begin_layout Standard
+Intentaremos construir una maquina que dada cualquier maquina de Turing
+ y cualquier entrada, nos indique si esta finaliza sus cálculos o no.
+ Sin lugar a dudas para casos particulares podemos determinar dicha respuesta,
+ pero buscamos una maquina de propósito general.
+\end_layout
+
+\begin_layout Standard
+Sabemos por el teorema anterior que es posible asignarte a cada maquina
+ de Turing un numero natural.
+ Consideremos entonces la siguiente función:
+\begin_inset Formula 
+\[
+\begin{aligned}h:\mathbb{N}\to & \mathbb{N}\\
+k\to & h\left(k\right)=\begin{cases}
+1 & M_{k}\text{ termina con k como entrada}\\
+0 & \text{en caso contrario}
+\end{cases}
+\end{aligned}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+¿Es 
+\begin_inset Formula $h$
+\end_inset
+
+ una función calculable? Es decir: ¿Existe una 
+\begin_inset Formula $MT$
+\end_inset
+
+ que al recibir 
+\begin_inset Formula $k$
+\end_inset
+
+ como entrada calcule 
+\begin_inset Formula $h\left(k\right)$
+\end_inset
+
+? Supongamos que esta maquina existe, llamemosla 
+\begin_inset Formula $H$
+\end_inset
+
+ y definamos la maquina 
+\begin_inset Formula $Y$
+\end_inset
+
+ mediante el siguiente diagrama:
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{tikzpicture}[shorten >=1pt,node distance=2cm,on grid,auto]
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node[state, initial, initial text=] (sigma1)   {$H$};
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node[state, accepting, above right of= sigma1] (sigma2)	{$N$};
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node[state, below right of= sigma1] (sigma3)	{$d$};
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+path[->]
+\end_layout
+
+\begin_layout Plain Layout
+
+		(sigma1)	edge  node {$0$} (sigma2)
+\end_layout
+
+\begin_layout Plain Layout
+
+		(sigma1)	edge  node {$1$} (sigma3)
+\end_layout
+
+\begin_layout Plain Layout
+
+		(sigma3)	edge  [loop right] node {} ()
+\end_layout
+
+\begin_layout Plain Layout
+
+;
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{tikzpicture}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Sea 
+\begin_inset Formula $y$
+\end_inset
+
+ el numero asociado a la maquina 
+\begin_inset Formula $Y$
+\end_inset
+
+.
+ ¿Cuanto vale 
+\begin_inset Formula $h\left(y\right)$
+\end_inset
+
+?
+\end_layout
+
+\begin_layout Itemize
+Supongamos que 
+\begin_inset Formula $Y$
+\end_inset
+
+ termina al recibir 
+\begin_inset Formula $y$
+\end_inset
+
+ como entrada, es decir 
+\begin_inset Formula $\text{\ensuremath{h\left(y\right)=1}}$
+\end_inset
+
+.
+ Analicemos el comportamiento de 
+\begin_inset Formula $Y$
+\end_inset
+
+ en dicha cinta:
+\begin_inset Formula 
+\[
+\check{y}\underbrace{\Rightarrow}_{h(y)=1}y\check{\square}\Rightarrow y\square\check{\square}\Rightarrow y\square\square\check{\square}\Rightarrow\ldots
+\]
+
+\end_inset
+
+ es decir que 
+\begin_inset Formula $Y$
+\end_inset
+
+ no termina.
+ Contradicción.
+\end_layout
+
+\begin_layout Itemize
+Supongamos que 
+\begin_inset Formula $Y$
+\end_inset
+
+ no termina al recibir 
+\begin_inset Formula $y$
+\end_inset
+
+ como entrada, es decir 
+\begin_inset Formula $\text{\ensuremath{h\left(y\right)=0}}$
+\end_inset
+
+.
+ Analicemos el comportamiento de 
+\begin_inset Formula $Y$
+\end_inset
+
+ en dicha cinta:
+\begin_inset Formula 
+\[
+\check{y}\underbrace{\Rightarrow}_{h(y)=0}\check{y}
+\]
+
+\end_inset
+
+ es decir que 
+\begin_inset Formula $Y$
+\end_inset
+
+ termina.
+ Contradicción.
+\end_layout
+
+\begin_layout Standard
+La contradicción vino de suponer que 
+\begin_inset Formula $H$
+\end_inset
+
+ existía, luego 
+\begin_inset Formula $H$
+\end_inset
+
+ no existe.
+\end_layout
+
+\begin_layout Section
+Modificaciones equivalentes
+\end_layout
+
+\begin_layout Standard
+Existen diversas modificaciones a este modelo de maquina de Turing, que
+ no modifican el poder de calculo de estas.
+ Entre ellas:
+\end_layout
+
+\begin_layout Itemize
+Maquina de Turing con cinta acotada a izquierda.
+\end_layout
+
+\begin_layout Itemize
+Maquina de Turing con múltiples cintas.
+\end_layout
+
+\begin_layout Itemize
+Maquina de Turing no determinista.
+\end_layout
+
+\begin_layout Itemize
+Autómata de múltiples pilas.
+\end_layout
+
+\begin_layout Itemize
+Autómata de cola.
+\end_layout
+
+\begin_layout Itemize
+Calculo 
+\begin_inset Formula $\lambda$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Section
+Ejemplos
+\end_layout
+
+\begin_layout Subsection
+Izquierda hasta dos 
+\begin_inset Formula $\square$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Sean 
+\begin_inset Formula $S=\left\{ q_{0},q_{1},q_{2},q_{3}\right\} $
+\end_inset
+
+, 
+\begin_inset Formula $\Sigma=\left\{ \bullet\right\} ,\Gamma=\Sigma\cup\left\{ \square\right\} $
+\end_inset
+
+ definimos 
+\begin_inset Formula $\text{\ensuremath{I^{\square\square}=\left(S,\Sigma,\Gamma,f,\square,q_{1},q_{0}\right)}}$
+\end_inset
+
+ con la siguiente función de transición:
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="3" columns="4">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $f$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $q_{1}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $q_{2}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $q_{3}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\square$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\square,i,q_{2}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\square,i,q_{3}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\square,n,q_{0}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\bullet$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\bullet,i,q_{2}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\bullet,i,q_{2}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\bullet,i,q_{2}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Observemos como se comporta esta maquina partiendo de la cinta vaciá:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\underbrace{\ldots\square\square\check{\square}\ldots}_{q_{1}}\Rightarrow\underbrace{\ldots\square\check{\square}\square\ldots}_{q_{2}}\Rightarrow\underbrace{\ldots\check{\square}\square\square\ldots}_{q_{3}}\Rightarrow\underbrace{\ldots\check{\square}\square\square\ldots}_{q_{0}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Observemos como se comporta esta maquina partiendo de la cinta inicial 
+\begin_inset Formula $\bullet\square\square\bullet\bullet\square\check{\bullet}$
+\end_inset
+
+:
+\begin_inset Formula 
+\[
+\begin{aligned} & \underbrace{\bullet\square\square\bullet\bullet\square\check{\bullet}}_{q_{1}}\Rightarrow\underbrace{\bullet\square\square\bullet\bullet\check{\square}\bullet}_{q_{2}}\Rightarrow\underbrace{\bullet\square\square\bullet\check{\bullet}\square\bullet}_{q_{3}}\Rightarrow\underbrace{\bullet\square\square\check{\bullet}\bullet\square\bullet}_{q_{2}}\Rightarrow\underbrace{\bullet\square\check{\square}\bullet\bullet\square\bullet}_{q_{2}}\Rightarrow\\
+ & \Rightarrow\underbrace{\bullet\check{\square}\square\bullet\bullet\square\bullet}_{q_{3}}\Rightarrow\underbrace{\bullet\check{\square}\square\bullet\bullet\square\bullet}_{q_{0}}
+\end{aligned}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Sucesor decimal
+\end_layout
+
+\begin_layout Standard
+Sean 
+\begin_inset Formula $S=\left\{ q_{0},q_{1},q_{2}\right\} $
+\end_inset
+
+, 
+\begin_inset Formula $\Sigma=\left\{ 0,1,2,3,4,5,6,7,8,9\right\} ,\Gamma=\Sigma\cup\left\{ \square\right\} $
+\end_inset
+
+ definimos 
+\begin_inset Formula $S_{10}=\left(S,\Sigma,\Gamma,f,\square,q_{1},q_{0}\right)$
+\end_inset
+
+ con la siguiente función de transición:
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="12" columns="3">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $f$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $q_{1}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $q_{2}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\square$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\square,i,q_{2}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $1,n,q_{0}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0,d,q_{1}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $1,n,q_{0}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $1$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $1,d,q_{1}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $2,n,q_{0}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $2$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $2,d,q_{1}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $3,n,q_{0}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $3$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $3,d,q_{1}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $4,n,q_{0}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $4$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $4,d,q_{1}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $5,n,q_{0}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $5$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $5,d,q_{1}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $6,n,q_{0}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $6$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $6,d,q_{1}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $7,n,q_{0}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $7$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $7,d,q_{1}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $8,n,q_{0}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $8$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $8,d,q_{1}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $9,n,q_{0}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $9$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $9,d,q_{1}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0,i,q_{2}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Observemos como se comporta esta maquina partiendo de la cinta inicial con
+ el numero 
+\begin_inset Formula $\check{3}99$
+\end_inset
+
+:
+\begin_inset Formula 
+\[
+\underbrace{\check{3}99}_{q_{1}}\Rightarrow\underbrace{3\check{9}9}_{q_{1}}\Rightarrow\underbrace{39\check{9}}_{q_{1}}\Rightarrow\underbrace{399\check{\square}}_{q_{1}}\Rightarrow\underbrace{39\check{9}}_{q_{2}}\Rightarrow\underbrace{3\check{9}0}_{q_{2}}\Rightarrow\underbrace{\check{3}00}_{q_{2}}\Rightarrow\underbrace{\check{4}00}_{q_{0}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Reconocedora de 
+\begin_inset Formula $a^{n}b^{n}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Sean 
+\begin_inset Formula $S=\left\{ q_{0},q_{1},q_{2},q_{3},q_{4}\right\} $
+\end_inset
+
+, 
+\begin_inset Formula $\Sigma=\left\{ a,b\right\} ,\Gamma=\Sigma\cup\left\{ \square\right\} $
+\end_inset
+
+ definimos 
+\begin_inset Formula $\text{\ensuremath{M=\left(S,\Sigma,\Gamma,f,\square,q_{1},q_{0}\right)}}$
+\end_inset
+
+ con la siguiente función de transición:
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="4" columns="5">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $f$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $q_{1}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $q_{2}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $q_{3}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $q_{4}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\square$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\square,n,q_{0}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\square,i,q_{3}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $b,n,q_{0}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\square,d,q_{1}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $a$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\square,d,q_{2}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $a,d,q_{2}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $b,n,q_{0}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $a,i,q_{4}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $b$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $b,n,q_{0}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $b,d,q_{2}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\square,i,q_{4}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $b,i,q_{4}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Esta maquina terminara con el cabezal apuntando a un blanco si la palabra
+ pertenece al lenguaje, y a otro símbolo en caso contrario.
+\end_layout
+
+\begin_layout Standard
+Observemos como se comporta esta maquina partiendo de la cinta inicial con
+ la palabra 
+\begin_inset Formula $\check{a}abb$
+\end_inset
+
+:
+\begin_inset Formula 
+\[
+\begin{array}{cc}
+\underbrace{\check{a}abb}_{q_{1}}\Rightarrow\underbrace{\check{a}bb}_{q_{2}}\Rightarrow\underbrace{a\check{b}b}_{q_{2}}\Rightarrow\underbrace{ab\check{b}}_{q_{2}}\Rightarrow\underbrace{abb\check{\square}}_{q_{2}}\Rightarrow\underbrace{ab\check{b}}_{q_{3}}\Rightarrow\underbrace{a\check{b}}_{q_{4}}\Rightarrow\\
+\Rightarrow\underbrace{\check{a}b}_{q_{4}}\Rightarrow\underbrace{\check{\square}ab}_{q_{4}}\Rightarrow\underbrace{\check{a}b}_{q_{1}}\Rightarrow\underbrace{\check{b}}_{q_{2}}\Rightarrow\underbrace{b\check{\square}}_{q_{2}}\Rightarrow\underbrace{\check{b}}_{q_{3}}\Rightarrow\underbrace{\check{\square}}_{q_{4}}\Rightarrow\underbrace{\check{\square}}_{q_{1}}\Rightarrow\underbrace{\check{\square}}_{q_{0}}
+\end{array}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Observemos como se comporta esta maquina partiendo de la cinta inicial con
+ la palabra 
+\begin_inset Formula $\check{a}ab$
+\end_inset
+
+:
+\begin_inset Formula 
+\[
+\underbrace{\check{a}ab}_{q_{1}}\Rightarrow\underbrace{\check{a}b}_{q_{2}}\Rightarrow\underbrace{a\check{b}}_{q_{2}}\Rightarrow\underbrace{ab\check{\square}}_{q_{2}}\Rightarrow\underbrace{a\check{b}}_{q_{3}}\Rightarrow\underbrace{\check{a}}_{q_{4}}\Rightarrow\underbrace{\check{\square}a}_{q_{4}}\Rightarrow\underbrace{\check{a}}_{q_{1}}\Rightarrow\underbrace{\check{\square}}_{q_{2}}\Rightarrow\underbrace{\check{\square}}_{q_{3}}\Rightarrow\underbrace{\check{b}}_{q_{0}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Duplicar puntos
+\end_layout
+
+\begin_layout Standard
+Definimos 
+\begin_inset Formula $M=\left(S,\Sigma,\Gamma,f,\square,q_{1},q_{0}\right)$
+\end_inset
+
+ con la siguiente función de transición:
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="3" columns="6">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $f$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $q_{1}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $q_{2}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $q_{3}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $q_{4}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $q_{5}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\square$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\square,n,q_{0}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\square,d,q_{3}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\bullet,i,q_{4}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\square,i,q_{5}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\bullet,d,q_{1}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\bullet$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\square,d,q_{2}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\bullet,d,q_{2}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\bullet,d,q_{3}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\bullet,i,q_{4}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\bullet,i,q_{5}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Observemos como se comporta esta maquina partiendo de la cinta inicial con
+ la palabra 
+\begin_inset Formula $\check{\bullet}\bullet\bullet$
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\begin{array}{cc}
+\underbrace{\check{\bullet}\bullet\bullet}_{q_{1}}\Rightarrow\underbrace{\check{\bullet}\bullet}_{q_{2}}\Rightarrow\underbrace{\bullet\check{\bullet}}_{q_{2}}\Rightarrow\underbrace{\bullet\bullet\check{\square}}_{q_{2}}\Rightarrow\underbrace{\bullet\bullet\square\check{\square}}_{q_{3}}\Rightarrow\underbrace{\bullet\bullet\check{\square}\bullet}_{q_{4}}\Rightarrow\underbrace{\bullet\check{\bullet}\square\bullet}_{q_{5}}\Rightarrow\underbrace{\check{\bullet}\bullet\square\bullet}_{q_{5}}\Rightarrow\underbrace{\check{\square}\bullet\bullet\square\bullet}_{q_{5}}\Rightarrow\\
+\Rightarrow\underbrace{\bullet\check{\bullet}\bullet\square\bullet}_{q_{1}}\Rightarrow\underbrace{\bullet\square\check{\bullet}\square\bullet}_{q_{2}}\Rightarrow\underbrace{\bullet\square\bullet\check{\square}\bullet}_{q_{2}}\Rightarrow\underbrace{\bullet\square\bullet\square\check{\bullet}}_{q_{3}}\Rightarrow\underbrace{\bullet\square\bullet\square\bullet\check{\square}}_{q_{3}}\Rightarrow\underbrace{\bullet\square\bullet\square\check{\bullet}\bullet}_{q_{4}}\Rightarrow\\
+\Rightarrow\underbrace{\bullet\square\bullet\check{\square}\bullet\bullet}_{q_{4}}\Rightarrow\underbrace{\bullet\square\check{\bullet}\square\bullet\bullet}_{q_{5}}\Rightarrow\underbrace{\bullet\check{\square}\bullet\square\bullet\bullet}_{q_{5}}\Rightarrow\underbrace{\bullet\bullet\check{\bullet}\square\bullet\bullet}_{q_{1}}\Rightarrow\underbrace{\bullet\bullet\square\check{\square}\bullet\bullet}_{q_{2}}\Rightarrow\underbrace{\bullet\bullet\square\square\check{\bullet}\bullet}_{q_{3}}\Rightarrow\\
+\Rightarrow\underbrace{\bullet\bullet\square\square\bullet\check{\bullet}}_{q_{3}}\Rightarrow\underbrace{\bullet\bullet\square\square\bullet\bullet\check{\square}}_{q_{3}}\Rightarrow\underbrace{\bullet\bullet\square\square\bullet\check{\bullet}\bullet}_{q_{4}}\Rightarrow\underbrace{\bullet\bullet\square\square\check{\bullet}\bullet\bullet}_{q_{4}}\Rightarrow\underbrace{\bullet\bullet\square\check{\square}\bullet\bullet\bullet}_{q_{4}}\Rightarrow\\
+\Rightarrow\underbrace{\bullet\bullet\check{\square}\square\bullet\bullet\bullet}_{q_{5}}\Rightarrow\underbrace{\bullet\bullet\bullet\check{\square}\bullet\bullet\bullet}_{q_{1}}\Rightarrow\underbrace{\bullet\bullet\bullet\check{\square}\bullet\bullet\bullet}_{q_{0}}
+\end{array}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Modulo 3
+\end_layout
+
+\begin_layout Standard
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{tikzpicture}[shorten >=1pt,node distance=2cm,on grid,auto]
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node[state, initial, initial text=] (sigma1)   {$d$};
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node[state, right of=sigma1] (sigma2) {$d$};
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node[state, right of=sigma2] (sigma3) {$d$};
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node[state, right of=sigma3] (sigma4) {$
+\backslash
+square i
+\backslash
+square i
+\backslash
+square dd$};
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node[state, accepting, above of=sigma1] (sigma5) {$N$};
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node[state, accepting, above of=sigma2] (sigma6) {$I^{
+\backslash
+square}$};
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+path[->]
+\end_layout
+
+\begin_layout Plain Layout
+
+		(sigma1)	edge  node {$
+\backslash
+bullet$} (sigma2)
+\end_layout
+
+\begin_layout Plain Layout
+
+		(sigma1)	edge  node {$
+\backslash
+square$} (sigma5)
+\end_layout
+
+\begin_layout Plain Layout
+
+		(sigma2)	edge  node {$
+\backslash
+bullet$} (sigma3)
+\end_layout
+
+\begin_layout Plain Layout
+
+		(sigma3)	edge  node {$
+\backslash
+bullet$} (sigma4)
+\end_layout
+
+\begin_layout Plain Layout
+
+		(sigma4)	edge [bend left] node {} (sigma1)
+\end_layout
+
+\begin_layout Plain Layout
+
+		(sigma2)	edge  node {$
+\backslash
+square$} (sigma6)
+\end_layout
+
+\begin_layout Plain Layout
+
+		(sigma3)	edge  node [right] {$
+\backslash
+square$} (sigma6)
+\end_layout
+
+\begin_layout Plain Layout
+
+;
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{tikzpicture}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Decidibilidad de 
+\begin_inset Formula $\left\{ aa,b\right\} $
+\end_inset
+
+ sobre 
+\begin_inset Formula $\text{\ensuremath{\Sigma=\left\{ a,b\right\} }}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{tikzpicture}[shorten >=1pt,node distance=2cm,on grid,auto]
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node[state, initial, initial text=] (sigma1)   {$d$};
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node[state, above of=sigma1] (sigma2) {$d$};
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node[state, below  of=sigma1] (sigma3) {$d$};
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node[state, right of=sigma2] (sigma4) {$d$};
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node[state, right of=sigma1] (N) {$I^{
+\backslash
+square}
+\backslash
+bullet D^{
+\backslash
+square}$};
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node[state, below right of=N] (sigma5) {$
+\backslash
+square i$};
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node[state, accepting, above right of=N] (sigma6) {$N$};
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node[state, accepting, above right of=sigma5] (A) {$i
+\backslash
+square i
+\backslash
+circ$};
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+path[->]
+\end_layout
+
+\begin_layout Plain Layout
+
+		(sigma1)	edge  node {$a$} (sigma2)
+\end_layout
+
+\begin_layout Plain Layout
+
+		(sigma1)	edge  node {} (N)
+\end_layout
+
+\begin_layout Plain Layout
+
+		(sigma1)	edge  node {$b$} (sigma3)
+\end_layout
+
+\begin_layout Plain Layout
+
+		(sigma3)	edge  node {} (N)
+\end_layout
+
+\begin_layout Plain Layout
+
+		(sigma2)	edge  node {$a$} (sigma4)
+\end_layout
+
+\begin_layout Plain Layout
+
+		(sigma2)	edge  node {} (N)
+\end_layout
+
+\begin_layout Plain Layout
+
+		(sigma3)	edge [bend right=60] node [below] {$
+\backslash
+square$} (A)
+\end_layout
+
+\begin_layout Plain Layout
+
+		(sigma4)	edge [bend left=50] node {$
+\backslash
+square$} (A)
+\end_layout
+
+\begin_layout Plain Layout
+
+		(N)	edge  node {} (sigma5)
+\end_layout
+
+\begin_layout Plain Layout
+
+		(sigma5)	edge  node [right] {$
+\backslash
+bullet$} (sigma6)
+\end_layout
+
+\begin_layout Plain Layout
+
+		(sigma5)	edge [loop left] node {} ()
+\end_layout
+
+\begin_layout Plain Layout
+
+		(sigma4)	edge node {} (N)
+\end_layout
+
+\begin_layout Plain Layout
+
+;
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{tikzpicture}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Representación en 
+\begin_inset Formula $FR$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+La maquina suma unaria esta representada por la siguiente función de transición:
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="3" columns="6">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $f$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $1$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $2$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $3$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $4$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $5$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0,d,1$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $1,d,3$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0,i,4$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0,i,4$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0,n,0$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $1$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $1,d,2$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $1,d,2$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $1,d,3$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0,i,5$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $1,i,5$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+La suma de cuatro y tres partirá de la cinta inicial 
+\begin_inset Formula $\check{0}11110111$
+\end_inset
+
+ que sera representada como 
+\begin_inset Formula $2^{0}3^{0}5^{11101111}7^{1}$
+\end_inset
+
+ y llegara a la final como 
+\begin_inset Formula $2^{0}3^{0}5^{1111111}7^{0}$
+\end_inset
+
+.
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Observemos una traza de la función recursiva que la representa:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\begin{aligned} & \overline{f}^{19}\left[2^{0}3^{0}5^{11101111}7^{1}\right]=\overline{f}^{18}\left[T_{f}\left(0,0,11101111,1\right)\right]=\\
+ & \underbrace{=}_{M\left(0,1\right)=2}\overline{f}^{18}\left[2^{10\cdot0+S_{f}\left(0,1\right)}3^{11101111\%10}5^{\lfloor11101111/10\rfloor}7^{E_{f}\left(0,1\right)}\right]=\\
+ & =\overline{f}^{18}\left[2^{10\cdot0+0}3^{11101111\%10}5^{\lfloor11101111/10\rfloor}7^{1}\right]=\overline{f}^{18}\left[2^{0}3^{1}5^{1110111}7^{1}\right]=\\
+ & =\overline{f}^{17}\left[T_{f}\left(0,1,1110111,1\right)\right]\underbrace{=}_{M\left(1,1\right)=2}\overline{f}^{17}\left[2^{0+S_{f}\left(1,1\right)}3^{1110111\%10}5^{\lfloor1110111/10\rfloor}7^{E_{f}\left(1,1\right)}\right]=\\
+ & =\overline{f}^{17}\left[2^{1}3^{1}5^{111011}7^{2}\right]\underbrace{=}_{M\left(1,2\right)=2}\overline{f}^{16}\left[2^{10\cdot1+1}3^{111011\%10}5^{\lfloor111011/10\rfloor}7^{2}\right]=\overline{f}^{16}\left[2^{11}3^{1}5^{11101}7^{2}\right]=\\
+ & \underbrace{=}_{M\left(1,2\right)=2}\overline{f}^{15}\left[2^{110+1}3^{11101\%10}5^{\lfloor11101/10\rfloor}7^{2}\right]=\overline{f}^{15}\left[2^{111}3^{1}5^{1110}7^{2}\right]=\overline{f}^{14}\left[2^{1111}3^{0}5^{111}7^{2}\right]=\\
+ & \underbrace{=}_{M\left(0,2\right)=2}\overline{f}^{13}\left[2^{11110+1}3^{1}5^{11}7^{3}\right]\underbrace{=}_{M\left(1,3\right)=2}\overline{f}^{12}\left[2^{111110+1}3^{1}5^{1}7^{3}\right]\underbrace{=}_{M\left(1,3\right)=2}\overline{f}^{11}\left[2^{1111111}3^{1}5^{0}7^{3}\right]=\\
+ & \underbrace{=}_{M\left(1,3\right)=2}\overline{f}^{10}\left[2^{11111111}3^{0}5^{0}7^{3}\right]\underbrace{=}_{M\left(0,3\right)=1}\overline{f}^{9}\left[2^{\lfloor11111111/10\rfloor}3^{11111111\%10}5^{10\cdot0+S_{f}\left(0,3\right)}7^{E_{f}\left(0,3\right)}\right]=\\
+ & =\overline{f}^{9}\left[2^{1111111}3^{1}5^{0+0}7^{4}\right]\underbrace{=}_{M\left(1,4\right)=1}\overline{f}^{8}\left[2^{111111}3^{1}5^{0+0}7^{5}\right]\underbrace{=}_{M\left(1,5\right)=1}\overline{f}^{7}\left[2^{11111}3^{1}5^{0+1}7^{5}\right]=\\
+ & \underbrace{=}_{M\left(1,5\right)=1}\overline{f}^{6}\left[2^{1111}3^{1}5^{10+1}7^{5}\right]\underbrace{=}_{M\left(1,5\right)=1}\overline{f}^{5}\left[2^{111}3^{1}5^{111}7^{5}\right]=\overline{f}^{4}\left[2^{11}3^{1}5^{1111}7^{5}\right]=\\
+ & =\overline{f}^{3}\left[2^{1}3^{1}5^{11111}7^{5}\right]=\overline{f}^{2}\left[2^{0}3^{1}5^{111111}7^{5}\right]=\overline{f}^{1}\left[2^{0}3^{0}5^{1111111}7^{5}\right]\underbrace{=}_{M\left(0,5\right)=3}\overline{f}^{0}\left[2^{0}3^{0}5^{1111111}7^{0}\right]
+\end{aligned}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

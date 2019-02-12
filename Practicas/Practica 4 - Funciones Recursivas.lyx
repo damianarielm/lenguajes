@@ -1,0 +1,513 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\begin_preamble
+\renewcommand{\headrulewidth}{1pt}
+\renewcommand{\footrulewidth}{0.5pt}
+\fancyheadoffset[L]{-16pt}
+\end_preamble
+\use_default_options true
+\begin_modules
+customHeadersFooters
+enumitem
+\end_modules
+\maintain_unincluded_children false
+\language spanish-mexico
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize 12
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 2cm
+\rightmargin 2cm
+\headheight 0cm
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style french
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle fancy
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Left Header
+
+\noun on
+Lenguajes Formales y Computabilidad
+\end_layout
+
+\begin_layout Right Header
+2018
+\end_layout
+
+\begin_layout Center Footer
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+thepage
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+
+\size larger
+PRÁCTICA 4: 
+\emph on
+Funciones Recursivas
+\end_layout
+
+\begin_layout Standard
+
+\size footnotesize
+Pablo Verdes
+\begin_inset space \hspace*{\fill}
+\end_inset
+
+Dante Zanarini
+\begin_inset space \hspace*{\fill}
+\end_inset
+
+Pamela Viale
+\begin_inset space \hspace*{\fill}
+\end_inset
+
+Alejandro Hernandez
+\begin_inset space \hspace*{\fill}
+\end_inset
+
+Mauro Lucci
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset line
+LatexCommand rule
+offset "0.5ex"
+width "100col%"
+height "1pt"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Demuestre que las funciones recursivas primitivas son totales.
+\end_layout
+
+\begin_layout Enumerate
+Sea 
+\begin_inset Formula $\left\{ f_{k}/k\in\mathbb{N}_{0}\right\} $
+\end_inset
+
+ el conjunto de funciones de Ackermann visto en teoría.
+ Demuestre las siguientes propiedades:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset Formula $\forall k\in\mathbb{N}$
+\end_inset
+
+, 
+\begin_inset Formula $f_{k}\left(x\right)\in FRP$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\forall x,k\in\mathbb{N}$
+\end_inset
+
+, 
+\begin_inset Formula $f_{k}\left(x\right)>x$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\forall x_{1},x_{2},k\in\mathbb{N}$
+\end_inset
+
+, 
+\begin_inset Formula $x_{1}<x_{2}\Rightarrow f_{k}\left(x_{1}\right)<f_{k}\left(x_{2}\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\forall x,k\in\mathbb{N}$
+\end_inset
+
+, 
+\begin_inset Formula $f_{k}\left(x\right)<f_{k+1}\left(x\right)$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Defina las siguientes funciones como 
+\begin_inset Formula $FR$
+\end_inset
+
+:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Esta función es una herramienta para definir funciones recursivas sin usar
+ la resta acotada.
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula $f\left(x,y\right)=x-y$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $g\left(x\right)=\lfloor\sqrt{x}\rfloor$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $h\left(x\right)=\sqrt{x}$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Sea la función 
+\begin_inset Formula $div\left(x,y\right)=\lfloor x/y\rfloor$
+\end_inset
+
+.
+ Se pide:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Exprese la función 
+\begin_inset Formula $div\left(x,y\right)$
+\end_inset
+
+ como 
+\begin_inset Formula $FR$
+\end_inset
+
+ suponiendo que 
+\begin_inset Formula $0/0$
+\end_inset
+
+ no esta definido.
+\end_layout
+
+\begin_layout Enumerate
+Exprese la función 
+\begin_inset Formula $div\left(x,y\right)$
+\end_inset
+
+ como 
+\begin_inset Formula $FR$
+\end_inset
+
+ suponiendo que 
+\begin_inset Formula $0/0=0$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Defina la función 
+\begin_inset Formula $mod\left(x,y\right)$
+\end_inset
+
+ (que da el resto de la división entera entre 
+\begin_inset Formula $x$
+\end_inset
+
+ e 
+\begin_inset Formula $y$
+\end_inset
+
+) como 
+\begin_inset Formula $FR$
+\end_inset
+
+ utilizando la definición de 
+\begin_inset Formula $div\left(x,y\right)$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Considere la función:
+\begin_inset Formula 
+\[
+menos\left(x,y\right)=\begin{cases}
+x & y=0\\
+pd\left\{ menos\left[x,pd\left(y\right)\right]\right\}  & y\geq1
+\end{cases}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Calcule 
+\begin_inset Formula $f\left(4\right)$
+\end_inset
+
+, donde 
+\begin_inset Formula $f$
+\end_inset
+
+ se define como 
+\begin_inset Formula $f\left(x\right)=\mu_{y}\left\{ menos\left[x,pd\left(y\right)\right]\right\} $
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+¿Es parcial o total la función definida en el ítem anterior?
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Si 
+\begin_inset Formula $g\left(x,y\right)$
+\end_inset
+
+ es una 
+\begin_inset Formula $FRP$
+\end_inset
+
+ y 
+\begin_inset Formula $m\in\mathbb{Z}$
+\end_inset
+
+, defina una 
+\begin_inset Formula $FR$
+\end_inset
+
+ que halle el menor valor de 
+\begin_inset Formula $y$
+\end_inset
+
+ donde 
+\begin_inset Formula $g$
+\end_inset
+
+ vale 
+\begin_inset Formula $m$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Escriba la siguiente función como 
+\begin_inset Formula $FR$
+\end_inset
+
+: 
+\begin_inset Formula $g\left(y,x\right)=\sqrt[y]{x^{2}+x+6}$
+\end_inset
+
+.
+ ¿Podríamos definir esta función como 
+\begin_inset Formula $FRP$
+\end_inset
+
+? Justifique.
+\end_layout
+
+\begin_layout Enumerate
+Muestre que la siguiente función es 
+\begin_inset Formula $FR$
+\end_inset
+
+:
+\begin_inset Formula 
+\[
+\begin{array}{cccc}
+r: & \mathbb{N} & \to & \mathbb{N}\\
+ & n & \to & r\left(n\right)=\lfloor log_{2}\left[\left(n+3\right)^{3}\right]
+\end{array}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Incluyo este ejercicio de un parcial anterior que le resulto difícil a los
+ alumnos y ademas ilustra como se pueden usar las FR para calcular otro
+ tipo de funciones.
+\end_layout
+
+\end_inset
+
+Sea 
+\begin_inset Formula $f\left(n\right)=\begin{cases}
+n/2 & \text{si }n\text{ es par}\\
+3n+1 & \text{si }n\text{ es impar}
+\end{cases}$
+\end_inset
+
+, definir una función recursiva 
+\begin_inset Formula $F\left(x\right)$
+\end_inset
+
+ que devuelva la mínima cantidad de aplicaciones sucesivas de 
+\begin_inset Formula $f$
+\end_inset
+
+ que son necesarias para llegar a 1.
+ Por ejemplo:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $f\left(f\left(f\left(8\right)\right)\right)=1$
+\end_inset
+
+, por lo que 
+\begin_inset Formula $F\left(8\right)=3$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $f\left(f\left(f\left(f\left(f\left(f\left(f\left(f\left(f\left(13\right)\right)\right)\right)\right)\right)\right)\right)\right)=1$
+\end_inset
+
+, por lo que 
+\begin_inset Formula $F\left(13\right)=9$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+
+\emph on
+Ayuda
+\emph default
+: no intente resolver analíticamente cual es el mínimo número de veces que
+ se necesita aplicar 
+\begin_inset Formula $f$
+\end_inset
+
+ para un argumento 
+\begin_inset Formula $n$
+\end_inset
+
+ cualquiera con la intención de luego implementar dicha solución analítica.
+ En cambio, proponga directamente una función que haga el trabajo de encontrar
+ dicho número por usted.
+\end_layout
+
+\end_deeper
+\end_body
+\end_document

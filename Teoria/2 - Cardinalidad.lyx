@@ -1,0 +1,1704 @@
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 508
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass book
+\use_default_options true
+\maintain_unincluded_children false
+\language spanish-mexico
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize 12
+\spacing single
+\use_hyperref false
+\papersize a4paper
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language french
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Chapter
+Cardinalidad
+\end_layout
+
+\begin_layout Section
+Definiciones
+\end_layout
+
+\begin_layout Subsection
+Función inyectiva
+\end_layout
+
+\begin_layout Standard
+Decimos que 
+\begin_inset Formula $f:X\to Y$
+\end_inset
+
+ es 
+\emph on
+inyectiva
+\emph default
+ si: 
+\begin_inset Formula $x_{1}\neq x_{2}\Rightarrow f(x_{1})\neq f(x_{2})$
+\end_inset
+
+ o bien 
+\begin_inset Formula $f(x_{1})=f(x_{2})\Rightarrow x_{1}=x_{2}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Función sobreyectiva
+\end_layout
+
+\begin_layout Standard
+Decimos que 
+\begin_inset Formula $f:X\to Y$
+\end_inset
+
+ es 
+\emph on
+sobreyectiva
+\emph default
+ si: 
+\begin_inset Formula $\forall y\in Y$
+\end_inset
+
+ 
+\begin_inset Formula $\exists x\in X/f(x)=y$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Función biyectiva
+\end_layout
+
+\begin_layout Standard
+Decimos que 
+\begin_inset Formula $f:X\to Y$
+\end_inset
+
+ es 
+\emph on
+biyectiva
+\emph default
+ si es inyectiva y sobreyectiva.
+\end_layout
+
+\begin_layout Subsection
+Conjuntos equipotentes
+\end_layout
+
+\begin_layout Standard
+Dos conjuntos 
+\begin_inset Formula $A$
+\end_inset
+
+ y 
+\begin_inset Formula $B$
+\end_inset
+
+ tienen la misma cardinalidad (son 
+\emph on
+equipotentes
+\emph default
+) si existe una función biyectiva de 
+\begin_inset Formula $A$
+\end_inset
+
+ en 
+\begin_inset Formula $B$
+\end_inset
+
+ y lo notaremos: 
+\begin_inset Formula $\#A=\#B$
+\end_inset
+
+, 
+\begin_inset Formula $A\sim B$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Cardinalidad precedente
+\end_layout
+
+\begin_layout Standard
+La cardinalidad de un conjunto 
+\begin_inset Formula $A$
+\end_inset
+
+ es anterior a la de un conjunto 
+\begin_inset Formula $B$
+\end_inset
+
+ si existe una función inyectiva 
+\begin_inset Formula $f$
+\end_inset
+
+ de 
+\begin_inset Formula $A$
+\end_inset
+
+ en 
+\begin_inset Formula $B$
+\end_inset
+
+ y lo notaremos 
+\begin_inset Formula $\#A\preceq\#B$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Si ademas ninguna de las funciones inyectivas de 
+\begin_inset Formula $A$
+\end_inset
+
+ en 
+\begin_inset Formula $B$
+\end_inset
+
+ es sobreyectiva entonces: 
+\begin_inset Formula $\#A\prec\#B$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Conjuntos finitos
+\end_layout
+
+\begin_layout Standard
+Un conjunto es finito cuando es vacío o equipotente a 
+\begin_inset Formula $\left\{ 1,2,\ldots,n\right\} $
+\end_inset
+
+ para algún 
+\begin_inset Formula $n\in\mathbb{N}$
+\end_inset
+
+.
+ En caso contrario se dice infinito.
+\end_layout
+
+\begin_layout Subsection
+Conjuntos numerables
+\end_layout
+
+\begin_layout Standard
+Diremos que un conjunto 
+\begin_inset Formula $A$
+\end_inset
+
+ es numerable si es finito, o bien resulta que 
+\begin_inset Formula $A\sim\mathbb{N}$
+\end_inset
+
+ en cuyo caso se dice que 
+\begin_inset Formula $A$
+\end_inset
+
+ es infinito numerable.
+ Si nada de lo anterior aplica se dice que 
+\begin_inset Formula $A$
+\end_inset
+
+ no es numerable.
+\end_layout
+
+\begin_layout Subsection
+Familia de conjuntos
+\end_layout
+
+\begin_layout Standard
+Un conjunto 
+\begin_inset Formula $F$
+\end_inset
+
+ se dice una familia de conjuntos si sus elementos son conjuntos.
+ Diremos que 
+\begin_inset Formula $F$
+\end_inset
+
+ es una familia indexada de conjunto indice 
+\begin_inset Formula $I$
+\end_inset
+
+ (no vacío) si existe una función con dominio 
+\begin_inset Formula $I$
+\end_inset
+
+ y recorrido 
+\begin_inset Formula $F$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Llamando 
+\begin_inset Formula $S_{\alpha}$
+\end_inset
+
+ (con 
+\begin_inset Formula $\alpha\in I$
+\end_inset
+
+) a los elementos de la familia 
+\begin_inset Formula $F$
+\end_inset
+
+, podemos entonces decir que 
+\begin_inset Formula $F=\{S_{\alpha}/\alpha\in I\}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Conjunto de partes
+\end_layout
+
+\begin_layout Standard
+Dado un conjunto 
+\begin_inset Formula $S$
+\end_inset
+
+, el conjunto de partes de 
+\begin_inset Formula $S$
+\end_inset
+
+ denotado por 
+\begin_inset Formula $\mathcal{P}(S)$
+\end_inset
+
+ es el conjunto de todos los subconjuntos de 
+\begin_inset Formula $S$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Section
+Teoremas
+\end_layout
+
+\begin_layout Subsection
+Teorema de Cantor-Schroder-Bernstein
+\end_layout
+
+\begin_layout Paragraph
+Enunciado
+\end_layout
+
+\begin_layout Standard
+Si 
+\begin_inset Formula $\#A\preceq\#B$
+\end_inset
+
+ y 
+\begin_inset Formula $\#B\preceq\#A$
+\end_inset
+
+ entonces 
+\begin_inset Formula $A\sim B$
+\end_inset
+
+.
+ En otras palabras: si existe una función inyectiva de 
+\begin_inset Formula $A$
+\end_inset
+
+ en 
+\begin_inset Formula $B$
+\end_inset
+
+ y otra de 
+\begin_inset Formula $B$
+\end_inset
+
+ en 
+\begin_inset Formula $A$
+\end_inset
+
+ entonces existe una función biyectiva de 
+\begin_inset Formula $A$
+\end_inset
+
+ a 
+\begin_inset Formula $B$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Paragraph
+Demostración
+\end_layout
+
+\begin_layout Standard
+Consultar 
+\begin_inset Quotes fld
+\end_inset
+
+Daniel J.
+ Velleman.
+ 
+\emph on
+How to Prove It
+\emph default
+.
+\begin_inset Quotes frd
+\end_inset
+
+ y 
+\begin_inset Quotes fld
+\end_inset
+
+Richard Hammack.
+ 
+\emph on
+Book of Proof
+\emph default
+.
+\begin_inset Quotes frd
+\end_inset
+
+ paginas 322 y 232.
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Cardinalidad de 
+\begin_inset Formula $\mathbb{N\times\mathbb{N}}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph
+Enunciado
+\end_layout
+
+\begin_layout Standard
+El producto cartesiano 
+\begin_inset Formula $\mathbb{N\times\mathbb{N}}$
+\end_inset
+
+ es infinito numerable.
+\end_layout
+
+\begin_layout Paragraph
+Demostración
+\end_layout
+
+\begin_layout Standard
+Sea 
+\begin_inset Formula $f:\mathbb{N}\to\mathbb{N}\times\mathbb{N}$
+\end_inset
+
+ dada por 
+\begin_inset Formula $f\left(n\right)=\left(n,1\right)$
+\end_inset
+
+.
+ Esta función es trivialmente inyectiva.
+\end_layout
+
+\begin_layout Standard
+Sea 
+\begin_inset Formula $g:\mathbb{N}\times\mathbb{N}\to\mathbb{N}$
+\end_inset
+
+ dada por 
+\begin_inset Formula $g\left(a,b\right)=2^{a}3^{b}$
+\end_inset
+
+.
+ El teorema fundamental de la aritmética nos permite asegurar que esta función
+ es inyectiva.
+\end_layout
+
+\begin_layout Standard
+Luego por el teorema de Cantor-Schroder-Bernstein concluimos que 
+\begin_inset Formula $\mathbb{N\sim N\times N}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Paragraph
+Observación
+\end_layout
+
+\begin_layout Standard
+La función 
+\begin_inset Formula $f:\mathbb{N\times\mathbb{N}}\to\mathbb{N}$
+\end_inset
+
+ dada por 
+\begin_inset Formula $\mbox{\ensuremath{f\left[\left(i,j\right)\right]=\frac{1}{2}\left(i+j-1\right)\left(i+j-2\right)+i}}$
+\end_inset
+
+ es una biyeccion:
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="7" columns="7">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $f\left[\left(i,j\right)\right]$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $1$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $2$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $3$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $4$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $5$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $6$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $1$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $1$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $2$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $4$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $7$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $11$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\swarrow$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $2$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $3$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $5$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $8$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $12$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\swarrow$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $3$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $6$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $9$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $13$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\swarrow$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $4$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $10$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $14$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\swarrow$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $5$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $15$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\swarrow$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $6$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\swarrow$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Corolario
+\end_layout
+
+\begin_layout Paragraph
+Enunciado
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\mathbb{N}^{d}\sim\mathbb{N}$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Paragraph
+Demostración
+\end_layout
+
+\begin_layout Standard
+Lo demostraremos por inducción:
+\end_layout
+
+\begin_layout Standard
+Para 
+\begin_inset Formula $d=1$
+\end_inset
+
+ vale trivialmente.
+ Veamos ahora que si 
+\begin_inset Formula $\mbox{\ensuremath{\mathbb{N}^{d}\sim\mathbb{N}\Rightarrow\mathbb{N}^{d+1}\sim\mathbb{N}}}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Escribamos 
+\begin_inset Formula $\mathbb{N}^{d+1}=\mathbb{N}^{d}\times\mathbb{N}$
+\end_inset
+
+.
+ Como 
+\begin_inset Formula $\mathbb{N}^{d}$
+\end_inset
+
+ es numerable (por hipótesis inductiva) podemos listar a sus elementos:
+ 
+\begin_inset Formula $\mathbb{N}^{d}=\{a_{1},a_{2},a_{3},\ldots\}$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+Sea 
+\begin_inset Formula $f:\mathbb{N}\times\mathbb{N}\to\mathbb{N}^{d+1}$
+\end_inset
+
+ dada por 
+\begin_inset Formula $f\left(i,j\right)=\left(a_{i},j\right)$
+\end_inset
+
+ resulta 
+\begin_inset Formula $\mathbb{N}^{d+1}\sim\mathbb{N}\times\mathbb{N}\sim\mathbb{N}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Unión numerable de conjuntos numerables
+\end_layout
+
+\begin_layout Paragraph
+Enunciado
+\end_layout
+
+\begin_layout Standard
+Sean 
+\begin_inset Formula $S_{\alpha}$
+\end_inset
+
+ conjuntos numerables (finitos o infinitos) y un conjunto indice 
+\begin_inset Formula $I$
+\end_inset
+
+ también numerable (finito o infinito) entonces la unión de los elementos
+ de la familia 
+\begin_inset Formula $F=\{S_{\alpha}:\alpha\in I\}$
+\end_inset
+
+, es decir 
+\begin_inset Formula $S={\displaystyle \bigcup_{\alpha\in I}S_{\alpha}}$
+\end_inset
+
+ sera también numerable.
+\end_layout
+
+\begin_layout Paragraph
+Demostración
+\end_layout
+
+\begin_layout Standard
+Nos pondremos en el peor caso posible: supondremos que tanto los conjuntos
+ 
+\begin_inset Formula $S_{\alpha}$
+\end_inset
+
+ como el conjunto indice 
+\begin_inset Formula $I$
+\end_inset
+
+ son infinito numerables.
+\end_layout
+
+\begin_layout Standard
+Dado que el conjunto indice 
+\begin_inset Formula $I$
+\end_inset
+
+ es infinito numerable, sin perder generalidad podemos considerar de aquí
+ en mas que 
+\begin_inset Formula $I=\mathbb{N}$
+\end_inset
+
+.
+ Luego podemos escribir entonces 
+\begin_inset Formula $F=\{S_{\alpha}:\alpha\in I\}=\{S_{i}:i\in\mathbb{N}\}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Dado que 
+\begin_inset Formula $S_{i}$
+\end_inset
+
+ es infinito numerable, podemos escribir 
+\begin_inset Formula $\mbox{\ensuremath{S_{i}=\{a_{ij}/j\in\mathbb{N}\}=\{a_{i1},a_{i2},a_{i3},\ldots\}}}$
+\end_inset
+
+.
+ Observemos que podemos organizar los elementos de la unión de acuerdo a
+ la siguiente tabla:
+\begin_inset Formula 
+\[
+\begin{array}{ccccc}
+a_{11} & a_{12} & a_{13} & a_{14} & \cdots\\
+a_{21} & a_{22} & a_{23} & a_{24} & \cdots\\
+a_{31} & a_{32} & a_{33} & a_{34} & \cdots\\
+a_{41} & a_{42} & a_{43} & a_{44} & \cdots\\
+\vdots & \vdots & \vdots & \vdots & \ddots
+\end{array}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Luego la función 
+\begin_inset Formula $f:S\to\mathbb{N}\times\mathbb{N}$
+\end_inset
+
+ dada por 
+\begin_inset Formula $f\left(a_{ij}\right)=\left(i,j\right)$
+\end_inset
+
+ es inyectiva y como 
+\begin_inset Formula $\mathbb{N}\times\mathbb{N}\sim\mathbb{N}$
+\end_inset
+
+ resulta que 
+\begin_inset Formula $S$
+\end_inset
+
+ es numerable.
+\end_layout
+
+\begin_layout Subsection
+Cardinalidad infinita mas pequeña
+\end_layout
+
+\begin_layout Paragraph
+Enunciado
+\end_layout
+
+\begin_layout Standard
+Para todo conjunto infinito 
+\begin_inset Formula $A$
+\end_inset
+
+, resulta: 
+\begin_inset Formula $\#\mathbb{N=}\aleph_{0}\preceq\#A$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Paragraph
+Demostración
+\end_layout
+
+\begin_layout Standard
+Sea 
+\begin_inset Formula $A$
+\end_inset
+
+ un conjunto infinito:
+\end_layout
+
+\begin_layout Itemize
+Como 
+\begin_inset Formula $A$
+\end_inset
+
+ es infinito resulta 
+\begin_inset Formula $A\neq\emptyset\Rightarrow\exists x_{1}\in A$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Como 
+\begin_inset Formula $A$
+\end_inset
+
+ es infinito resulta 
+\begin_inset Formula $A\neq\left\{ x_{1}\right\} \Rightarrow\exists x_{2}\in A/x_{2}\neq x_{1}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Como 
+\begin_inset Formula $A$
+\end_inset
+
+ es infinito resulta 
+\begin_inset Formula $A\neq\left\{ x_{1},x_{2}\right\} \Rightarrow\exists x_{3}\in A/x_{3}\neq x_{1},x_{2}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Como 
+\begin_inset Formula $A$
+\end_inset
+
+ es infinito resulta 
+\begin_inset Formula $A\neq\left\{ x_{1},x_{2},x_{3}\right\} \Rightarrow\exists x_{4}\in A/x_{4}\neq x_{1},x_{2},x_{3}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+De esta forma se puede construir una sucesión 
+\begin_inset Formula $\left(x_{n}\right)_{n\geq1}$
+\end_inset
+
+ de elementos de 
+\begin_inset Formula $A$
+\end_inset
+
+ tales que 
+\begin_inset Formula $x_{i}\neq x_{j}$
+\end_inset
+
+ si 
+\begin_inset Formula $i\neq j$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Definimos 
+\begin_inset Formula $f:\mathbb{N}\to A$
+\end_inset
+
+ dada por 
+\begin_inset Formula $f(i)=x_{i}$
+\end_inset
+
+ para todo 
+\begin_inset Formula $i\in\mathbb{N}.$
+\end_inset
+
+ Como 
+\begin_inset Formula $f$
+\end_inset
+
+ es inyectiva resulta que 
+\begin_inset Formula $\aleph_{0}\preceq\#A$
+\end_inset
+
+.
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Cardinalidad del conjunto de partes
+\end_layout
+
+\begin_layout Paragraph
+Enunciado
+\end_layout
+
+\begin_layout Standard
+Para todo conjunto 
+\begin_inset Formula $S$
+\end_inset
+
+, resulta: 
+\begin_inset Formula $\#S\prec\#\mathcal{P}(S)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Paragraph
+Demostración
+\end_layout
+
+\begin_layout Standard
+La función 
+\begin_inset Formula $f(x)=\{x\}$
+\end_inset
+
+ es inyectiva de 
+\begin_inset Formula $S$
+\end_inset
+
+ en 
+\begin_inset Formula $\mathcal{P}(S)$
+\end_inset
+
+ por lo que 
+\begin_inset Formula $\#S\preceq\#\mathcal{P}(S)$
+\end_inset
+
+.
+ Veamos ahora que no existe función sobreyectiva de 
+\begin_inset Formula $S$
+\end_inset
+
+ en 
+\begin_inset Formula $\mathcal{P}(S)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Supongamos existe 
+\begin_inset Formula $g:S\to\mathcal{\mathcal{P}}(S)$
+\end_inset
+
+ sobreyectiva y definamos 
+\begin_inset Formula $\mbox{\ensuremath{B=\{x\in S/x\notin g(x)\}\subseteq S}}$
+\end_inset
+
+ el conjunto de los elementos de 
+\begin_inset Formula $S$
+\end_inset
+
+ que no pertenecen a su imagen a través de 
+\begin_inset Formula $g$
+\end_inset
+
+.
+ Como 
+\begin_inset Formula $g$
+\end_inset
+
+ es sobreyectiva y 
+\begin_inset Formula $B\in\mathcal{P}(S)$
+\end_inset
+
+ sabemos que 
+\begin_inset Formula $\exists x\in S/g(x)=B$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Si 
+\begin_inset Formula $x\in B$
+\end_inset
+
+: por definición de 
+\begin_inset Formula $B$
+\end_inset
+
+ resulta 
+\begin_inset Formula $x\notin g(x)=B$
+\end_inset
+
+.
+ Contradicción.
+\end_layout
+
+\begin_layout Itemize
+Si 
+\begin_inset Formula $x\notin B$
+\end_inset
+
+: por definición de 
+\begin_inset Formula $B$
+\end_inset
+
+ resulta 
+\begin_inset Formula $x\in g(x)=B$
+\end_inset
+
+.
+ Contradicción.
+\end_layout
+
+\begin_layout Standard
+Por lo tanto 
+\begin_inset Formula $g$
+\end_inset
+
+ no es sobreyectiva.
+\end_layout
+
+\begin_layout Subsection
+Innumerabilidad del continuo
+\end_layout
+
+\begin_layout Paragraph
+Enunciado
+\end_layout
+
+\begin_layout Standard
+El conjunto de los números reales no es numerable.
+\end_layout
+
+\begin_layout Paragraph
+Demostración
+\end_layout
+
+\begin_layout Standard
+Alcanza con probar que el intervalo 
+\begin_inset Formula $(0,1)$
+\end_inset
+
+ no es numerable pues 
+\begin_inset Formula $(0,1)\sim\mathbb{R}$
+\end_inset
+
+.
+ En efecto 
+\begin_inset Formula $f(x)=tan\left(x\pi-\frac{\pi}{2}\right)$
+\end_inset
+
+ o bien 
+\begin_inset Formula $g(x)=ln\left(\frac{1}{x}-1\right)$
+\end_inset
+
+ demuestran este hecho.
+\end_layout
+
+\begin_layout Standard
+Representemos los elementos de 
+\begin_inset Formula $(0,1)$
+\end_inset
+
+ por su expansión decimal infinita, por ejemplo 
+\begin_inset Formula $0,229384112598\ldots$
+\end_inset
+
+.
+ Supongamos que 
+\begin_inset Formula $(0,1)$
+\end_inset
+
+ es numerable, habrá entonces un primer elemento, segundo, etc.
+ Listemoslos del siguiente modo:
+\begin_inset Formula 
+\[
+\begin{array}{cccccc}
+0,\boldsymbol{a_{11}} & a_{12} & a_{13} & a_{14} & a_{15} & \ldots\\
+0,a_{21} & \boldsymbol{a_{22}} & a_{23} & a_{24} & a_{25} & \ldots\\
+0,a_{31} & a_{32} & \boldsymbol{a_{33}} & a_{34} & a_{35} & \ldots\\
+0,a_{41} & a_{42} & a_{43} & \boldsymbol{a_{44}} & a_{45} & \ldots\\
+0,a_{51} & a_{52} & a_{53} & a_{54} & \boldsymbol{a_{55}} & \ldots\\
+ &  & \vdots
+\end{array}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Consideremos ahora el numero 
+\begin_inset Formula $b=0,b_{1}b_{2}b_{3}b_{4}b_{5}\ldots$
+\end_inset
+
+ donde cada dígito 
+\begin_inset Formula $b_{i}$
+\end_inset
+
+ puede ser cualquier dígito excepto 
+\begin_inset Formula $a_{ii}$
+\end_inset
+
+ (es decir los números en negrita ubicados en la diagonal).
+ Es claro que 
+\begin_inset Formula $b\in(0,1)$
+\end_inset
+
+ pero es distinto a todos los números del listado ya que difiere de cada
+ numero en por lo menos un dígito.
+ Esto constituye una contradicción, luego el intervalo 
+\begin_inset Formula $(0,1)\sim\mathbb{R}$
+\end_inset
+
+ no es numerable.
+\end_layout
+
+\begin_layout Section
+Ejemplos
+\end_layout
+
+\begin_layout Subsection
+Cardinalidad de 
+\begin_inset Formula $\mathbb{Z}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Puesto que 
+\begin_inset Formula $f:\mathbb{N\to\mathbb{Z}}$
+\end_inset
+
+ definida por 
+\begin_inset Formula $f(n)=n/2$
+\end_inset
+
+ (si 
+\begin_inset Formula $n$
+\end_inset
+
+ es par) y 
+\begin_inset Formula $\mbox{\ensuremath{f(n)=(1-n)/2}}$
+\end_inset
+
+ (si 
+\begin_inset Formula $n$
+\end_inset
+
+ es impar) es biyectiva, resulta 
+\begin_inset Formula $\mathbb{Z}\sim\mathbb{N}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+En forma alternativa 
+\begin_inset Formula $\mathbb{Z}=\{\ldots,-2,-1\}\cup\{0\}\cup\{1,2,\ldots\}$
+\end_inset
+
+ es u.
+ n.
+ c.
+ n.
+\end_layout
+
+\begin_layout Subsection
+Cadinalidad de 
+\begin_inset Formula $\mathbb{Q}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Podemos escribir a 
+\begin_inset Formula $\mathbb{Q}$
+\end_inset
+
+ como una u.
+ n.
+ c.
+ n.: 
+\begin_inset Formula $\mathbb{Q}={\displaystyle \bigcup_{k\in\mathbb{N}}A_{k}}$
+\end_inset
+
+ con 
+\begin_inset Formula $\mbox{\ensuremath{A_{k}=\left\{ \ldots,-\frac{2}{k},-\frac{1}{k},\frac{0}{k},\frac{1}{k},\frac{2}{k},\ldots\right\} }}$
+\end_inset
+
+.
+\end_layout
+
+\end_body
+\end_document

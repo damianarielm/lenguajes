@@ -1,0 +1,1081 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\begin_preamble
+\renewcommand{\headrulewidth}{1pt}
+\renewcommand{\footrulewidth}{0.5pt}
+\fancyheadoffset[L]{-16pt}
+\end_preamble
+\use_default_options true
+\begin_modules
+customHeadersFooters
+\end_modules
+\maintain_unincluded_children false
+\language spanish-mexico
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize 12
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 2cm
+\rightmargin 2cm
+\headheight 0cm
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style french
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle fancy
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+\begin_inset Note Comment
+status open
+
+\begin_layout Plain Layout
+Lógica y Algoritmos
+\end_layout
+
+\begin_layout Plain Layout
+Práctica 2 - Conjuntos Inductivos
+\end_layout
+
+\begin_layout Plain Layout
+Primera versión: 03/07 (Dante Zanarini)
+\end_layout
+
+\begin_layout Plain Layout
+Última Revisión: 05/03/08 (Dante Zanarini)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Left Header
+
+\noun on
+Lenguajes Formales y Computabilidad
+\end_layout
+
+\begin_layout Right Header
+2018
+\end_layout
+
+\begin_layout Center Footer
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+thepage
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+
+\size larger
+PRÁCTICA 2: 
+\emph on
+Conjuntos Inductivos
+\end_layout
+
+\begin_layout Standard
+
+\size footnotesize
+Pablo Verdes
+\begin_inset space \hspace*{\fill}
+\end_inset
+
+Dante Zanarini
+\begin_inset space \hspace*{\fill}
+\end_inset
+
+Pamela Viale
+\begin_inset space \hspace*{\fill}
+\end_inset
+
+Alejandro Hernandez
+\begin_inset space \hspace*{\fill}
+\end_inset
+
+Mauro Lucci
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset line
+LatexCommand rule
+offset "0.5ex"
+width "100col%"
+height "1pt"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Defina inductivamente los siguientes conjuntos:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+El conjunto de los números naturales múltiplos de 3.
+\end_layout
+
+\begin_layout Enumerate
+El conjunto de los números enteros múltiplos de 3.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Sea 
+\begin_inset Formula $\Sigma=\left\{ a,b,c\right\} $
+\end_inset
+
+.
+ Defina inductivamente los siguientes conjuntos y enuncie el principio de
+ inducción primitiva para cada uno de ellos:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset Formula $\Sigma^{*}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $B=\left\{ a^{n}bc^{2n}/n\in\mathbb{N}\right\} $
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Defina inductivamente los siguientes conjuntos:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset Formula $A=\left\{ a\right\} ^{*}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $B=\left\{ \alpha\in\left\{ a,b,c\right\} ^{*}/\alpha\text{ es un palindromo}\right\} $
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $C=\left\{ a,b,ab,ba\right\} $
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Considere el conjunto de las matrices
+\begin_inset Formula 
+\[
+M=\left\{ \left[\begin{array}{cc}
+a & 0\\
+b & c
+\end{array}\right]/a,b,c\in\mathbb{N}_{0}\text{ donde }a,b,c\text{ tienen la misma paridad}\right\} 
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Defina inductivamente el conjunto 
+\begin_inset Formula $M$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Enuncie el principio de inducción primitiva para 
+\begin_inset Formula $M$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Enuncie el principio de inducción primitiva para el conjunto 
+\begin_inset Formula $\mathbb{P}$
+\end_inset
+
+, definido inductivamente como el menor conjunto tal que:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $0\in\mathbb{P}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Si 
+\begin_inset Formula $n\in\mathbb{P}$
+\end_inset
+
+ entonces 
+\begin_inset Formula $\left(n+2\right)\in\mathbb{P}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Utilice este principio para probar que para todo 
+\begin_inset Formula $n\in\mathbb{P}$
+\end_inset
+
+ existe 
+\begin_inset Formula $m\in\mathbb{N}_{0}$
+\end_inset
+
+ tal que 
+\begin_inset Formula $n=m+m$
+\end_inset
+
+.
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Sea 
+\begin_inset Formula $\Sigma=\left\{ a,b,c\right\} $
+\end_inset
+
+.
+ Definimos 
+\begin_inset Formula $\Delta$
+\end_inset
+
+ inductivamente como el menor conjunto tal que:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $a\in\Delta$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Si 
+\begin_inset Formula $\alpha\in\Delta$
+\end_inset
+
+ entonces 
+\begin_inset Formula $b\alpha b\in\Delta$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Enuncie el principio de inducción primitiva para 
+\begin_inset Formula $\Delta$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Demuestre que cualquier cadena de 
+\begin_inset Formula $\Delta$
+\end_inset
+
+ tiene un numero par de símbolos 
+\begin_inset Formula $b$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Sea 
+\begin_inset Formula $\Sigma=\left\{ a,b,c\right\} $
+\end_inset
+
+.
+ Definimos 
+\begin_inset Formula $\Gamma$
+\end_inset
+
+ inductivamente como el menor conjunto tal que:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $\lambda\in\Gamma$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Si 
+\begin_inset Formula $\alpha\in\Gamma$
+\end_inset
+
+ entonces 
+\begin_inset Formula $b\alpha\in\Gamma$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Si 
+\begin_inset Formula $\alpha\in\Gamma$
+\end_inset
+
+ entonces 
+\begin_inset Formula $a\alpha\in\Gamma$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Enuncie el principio de inducción primitiva para 
+\begin_inset Formula $\Gamma$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Determine cuales de las siguientes afirmaciones son correctas:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $b\in\Gamma$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $a\in\Gamma$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $babacbaca\in\Gamma$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $aba\in\Gamma$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Considere ahora el conjunto 
+\begin_inset Formula $\Delta$
+\end_inset
+
+ definido inductivamente como el menor conjunto tal que:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $\lambda\in\Delta$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Si 
+\begin_inset Formula $\alpha\in\Gamma$
+\end_inset
+
+ entonces 
+\begin_inset Formula $\alpha b\in\Gamma$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Si 
+\begin_inset Formula $\alpha\in\Gamma$
+\end_inset
+
+ entonces 
+\begin_inset Formula $\alpha a\in\Gamma$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Determine cuales de las siguientes afirmaciones son correctas:
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\alpha\in\Delta\Rightarrow b\alpha\in\Delta$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\alpha\in\Delta\Rightarrow a\alpha\in\Delta$
+\end_inset
+
+.
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Incluyo estos apartados para ayudar en la demostración de los siguientes,
+ con la esperanza de que el alumno tome nota de que a veces es necesario
+ un lema intermedio.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\Gamma\subseteq\Delta$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\Delta\subseteq\Gamma$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\Delta=\Gamma$
+\end_inset
+
+.
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Enumerate
+Definimos inductivamente la relación 
+\begin_inset Formula $S\subseteq\mathbb{N}_{0}\times\mathbb{N}_{0}$
+\end_inset
+
+ como el menor conjunto tal que:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Si 
+\begin_inset Formula $n\in\mathbb{N}_{0}$
+\end_inset
+
+ entonces 
+\begin_inset Formula $\left(n,n\right)\in S$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Si 
+\begin_inset Formula $\left(n,m\right)\in S$
+\end_inset
+
+ entonces 
+\begin_inset Formula $\left(n,m+1\right)\in S$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Determine cuales de las siguientes afirmaciones son correctas:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $\left(0,0\right)\in S$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $0\in S$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\left(2,3\right)\in S$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\left(3,4\right)\in S$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Enuncie el principio de inducción primitiva para 
+\begin_inset Formula $S$
+\end_inset
+
+.
+ Demuestre, utilizando este principio que para todo par 
+\begin_inset Formula $\left(n,m\right)\in S$
+\end_inset
+
+, 
+\begin_inset Formula $n\leq m$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Definimos inductivamente 
+\begin_inset Formula $Q\subseteq\mathbb{N}_{0}\times\mathbb{N}_{0}$
+\end_inset
+
+ como el menor conjunto tal que:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Si 
+\begin_inset Formula $n\in\mathbb{N}_{0}$
+\end_inset
+
+ entonces 
+\begin_inset Formula $\left(0,n\right)\in Q$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Si 
+\begin_inset Formula $\left(n,m\right)\in Q$
+\end_inset
+
+ entonces 
+\begin_inset Formula $\left(n+1,m+1\right)\in Q$
+\end_inset
+
+ .
+\end_layout
+
+\begin_layout Standard
+Determine cuales de las siguientes afirmaciones son correctas:
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $S\subseteq Q$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $Q\subseteq S$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $Q=S$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Enumerate
+El número de formas de elegir 
+\begin_inset Formula $k$
+\end_inset
+
+ elementos a partir de un conjunto de 
+\begin_inset Formula $n$
+\end_inset
+
+ elementos, es exactamente 
+\begin_inset Formula $\binom{n}{k}=\frac{n!}{k!\left(n-k\right)!}$
+\end_inset
+
+.
+ Sabiendo que 
+\begin_inset Formula $\binom{n+1}{k}=\binom{n}{k}+\binom{n}{k-1}$
+\end_inset
+
+ demuestre que 
+\begin_inset Formula ${\displaystyle \sum_{k=0}^{n}\binom{n}{k}=2^{n}}$
+\end_inset
+
+ para cualquier 
+\begin_inset Formula $n\in\mathbb{N}_{0}$
+\end_inset
+
+.
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Este ejercicio lo incluyo pues es un resultado que aplica a temas de cardinalida
+d.
+ Sin embargo no es tan importante y puede eliminarse sin problemas.
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Introduzco los siguientes ejercicios para que los alumnos comiencen a familiariz
+arse a hacer demostraciones sobre estructuras de datos recursivos.
+\end_layout
+
+\end_inset
+
+Considere la siguiente definición de listas:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $Nil$
+\end_inset
+
+ es una lista.
+\end_layout
+
+\begin_layout Itemize
+Si 
+\begin_inset Formula $l$
+\end_inset
+
+ es una lista, y 
+\begin_inset Formula $x$
+\end_inset
+
+ un elemento, entonces 
+\begin_inset Formula $Cons\left(x,l\right)$
+\end_inset
+
+ es una lista.
+\end_layout
+
+\begin_layout Itemize
+Nada mas es una lista.
+\end_layout
+
+\begin_layout Standard
+y la siguiente función:
+\begin_inset Formula 
+\[
+append\left(l_{1},l_{2}\right)=\begin{cases}
+l_{2} & l_{1}=Nil\\
+Cons\left(x,append\left(xs,l_{2}\right)\right) & l_{2}=Cons\left(x,xs\right)
+\end{cases}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+demuestre las siguientes propiedades:
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $Nil$
+\end_inset
+
+ es elemento neutro de 
+\begin_inset Formula $append$
+\end_inset
+
+ a izquierda.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $Nil$
+\end_inset
+
+ es elemento neutro de 
+\begin_inset Formula $append$
+\end_inset
+
+ a derecha.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $append$
+\end_inset
+
+ es asociativa.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Considere la siguiente definición de arboles binarios sin información:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $Null$
+\end_inset
+
+ es un árbol.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $Leaf$
+\end_inset
+
+ es un árbol.
+\end_layout
+
+\begin_layout Itemize
+Si 
+\begin_inset Formula $l$
+\end_inset
+
+ es un árbol y 
+\begin_inset Formula $r$
+\end_inset
+
+ es un árbol, entonces 
+\begin_inset Formula $Node\left(l,r\right)$
+\end_inset
+
+ es un árbol.
+\end_layout
+
+\begin_layout Itemize
+Nada mas es un árbol.
+\end_layout
+
+\begin_layout Standard
+y las siguientes funciones:
+\begin_inset Formula 
+\[
+nleafs\left(t\right)=\begin{cases}
+0 & t=Null\\
+1 & t=Leaf\\
+nleafs\left(l\right)+nleafs\left(r\right) & t=Node\left(l,r\right)
+\end{cases}
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+nnodes\left(t\right)=\begin{cases}
+0 & t=Null\\
+0 & t=Leaf\\
+1+nnodes\left(l\right)+nnodes\left(r\right) & t=Node\left(l,r\right)
+\end{cases}
+\]
+
+\end_inset
+
+demuestre que 
+\begin_inset Formula $nleafs\left(t\right)\leq nnodes\left(t\right)+1$
+\end_inset
+
+ para cualquier árbol.
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Agregue este ejercicio que al contrario que el resto, ilustra lo que esta
+ mal en vez de lo que esta bien.
+ Quizás genere confusión.
+\end_layout
+
+\end_inset
+
+Explique cual es la falla en los siguientes razonamientos inductivos:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Mostraremos por inducción en la cantidad de caballos, que todos los caballos
+ tienen el mismo color.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Caso base 
+\begin_inset Formula $n=1$
+\end_inset
+
+: Para un conjunto de un único caballo 
+\begin_inset Formula $\left\{ c_{1}\right\} $
+\end_inset
+
+ la proposición es trivial
+\end_layout
+
+\begin_layout Itemize
+Caso inductivo 
+\begin_inset Formula $n=k$
+\end_inset
+
+: Supongamos que para cualquier conjunto de 
+\begin_inset Formula $k$
+\end_inset
+
+ caballos, todos resultan ser del mismo color y sea 
+\begin_inset Formula $C=\left\{ c_{1},\ldots,c_{k},c_{k+1}\right\} $
+\end_inset
+
+ un conjunto de 
+\begin_inset Formula $k+1$
+\end_inset
+
+ caballos.
+ Por hipótesis inductiva, 
+\begin_inset Formula $C_{1}=\left\{ c_{1},\ldots,c_{k}\right\} $
+\end_inset
+
+ son todos del mismo color y por la misma razón 
+\begin_inset Formula $C_{2}=\left\{ c_{2},\ldots,c_{k},c_{k+1}\right\} $
+\end_inset
+
+ también son del mismo color.
+ Luego todos los caballos son del mismo color.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Mostraremos por inducción en 
+\begin_inset Formula $\mathbb{N}_{0}$
+\end_inset
+
+ que el doble de cualquier numero es cero.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Caso base 
+\begin_inset Formula $n=0$
+\end_inset
+
+: Trivial (
+\begin_inset Formula $2\cdot0=0$
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Itemize
+Inductivo fuerte 
+\begin_inset Formula $n\leq k$
+\end_inset
+
+: Supongamos que para todo 
+\begin_inset Formula $n\leq k$
+\end_inset
+
+ resulta 
+\begin_inset Formula $2k=0$
+\end_inset
+
+, y veamos que pasa para 
+\begin_inset Formula $k+1$
+\end_inset
+
+.
+ Descompongamos a 
+\begin_inset Formula $k+1$
+\end_inset
+
+ en en la suma de dos naturales, es decir, sea 
+\begin_inset Formula $a+b=k+1$
+\end_inset
+
+.
+ Como 
+\begin_inset Formula $a<k+1$
+\end_inset
+
+ y 
+\begin_inset Formula $b<k+1$
+\end_inset
+
+, por hipótesis inductiva 
+\begin_inset Formula $2a=0$
+\end_inset
+
+ y 
+\begin_inset Formula $2b=0$
+\end_inset
+
+, luego 
+\begin_inset Formula $2\left(k+1\right)=2\left(a+b\right)=2a+2b=0$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Propongo como sugerencia de ejercicio, enunciar el PIP de algún conjunto
+ y que los alumnos describan dicho conjunto.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

@@ -1,0 +1,102 @@
+\documentclass[12pt,a4paper,oneside,spanish]{book}
+\usepackage[T1]{fontenc}
+\usepackage[latin9]{inputenc}
+\setcounter{secnumdepth}{3}
+\setcounter{tocdepth}{3}
+
+\makeatletter
+\makeatother
+\usepackage{babel}
+\addto\shorthandsspanish{\spanishdeactivate{~<>.}}
+
+\begin{document}
+	\chapter{Principio de inducción}
+		\section{Definiciones}
+			\subsection{Conjunto Inductivo}
+				Una definición inductiva de un conjunto $A$ comprende base, inducción y clausura:
+
+				\begin{description}
+					\item [{base}] conjunto de uno o mas elementos \flqq{}\emph{iniciales}\frqq{} de $A$.
+					\item [{inducción}] una o mas reglas para construir \flqq{}\emph{nuevos}\frqq{} elementos de $A$ a partir de \flqq{}\emph{viejos}\frqq{} elementos de $A$.
+					\item [{clausura}] determinar que $A$ consiste exactamente de los elementos obtenidos a partir de los básicos y aplicando las reglas de inducción, sin considerar elementos \flqq{}\emph{extra}\frqq{}.
+				\end{description}
+
+				La forma de clausurar es pedir que $A$ sea el mínimo conjunto que satisface las condiciones de base e inducción o en forma equivalente, definir a $A$ como la intersección de todos los conjuntos que satisfacen dichas condiciones.
+
+				\paragraph{Definición formal}
+				Sean $U$ un conjunto que llamaremos universo, $B$ un subconjunto de $U$ que llamaremos base y $K$ un conjunto no vacío de funciones que llamaremos constructor.
+				Diremos que un conjunto $A$ esta definido inductivamente por $B,K,U$ si es el mínimo conjunto que satisface:
+				
+				\begin{itemize}
+					\item $B\subseteq A$.
+					\item Si $f^{\left(n\right)}\in K$ y $a_{1},\ldots,a_{n}\in A$ entonces $f\left(a_{1},\ldots,a_{n}\right)\in A$ .
+				\end{itemize}
+
+			\subsection{Secuencia de formación}
+				Sean $U,B,K$ como en la definición anterior. Una secuencia $a_{1},\ldots,a_{m}$ de elementos de $U$ es una secuencia de formación para $a_{m}$ si $\forall i=1,\ldots,m$ se verifica que:
+				
+				\begin{itemize}
+					\item $a_{i}\in B$ o bien,
+					\item $\exists f\in K$ con $ar(f)=n$ y $0<i_{1},\ldots,i_{n}<i$ tales que $f\left(a_{i_{1}},\ldots,a_{i_{n}}\right)=a_{i}$
+				\end{itemize}
+				
+				Notemos que el conjunto $A$ tiene todos los elementos de $U$ que poseen una secuencia de formación.
+				Diremos que $B$ y $K$ definen una gramática para las cadenas sintacticamente correctas del lenguaje $A$.
+
+		\section{Demostraciones}
+			\subsection{Pertenencia}
+				Para probar que un elemento pertenece a un conjunto inductivo, debemos dar su secuencia de formación.
+
+				\paragraph{Ejemplo}
+				Sea $L$ el mínimo conjunto que satisface:
+				
+				\begin{itemize}
+					\item $\lambda,0,1\in L$.
+					\item $a\in L\land b\in\{0,1\}\Rightarrow bab\in L$
+				\end{itemize}
+				
+				Probaremos que $110111011\in L$. En efecto posee la siguiente secuencia de formación: $1\Rightarrow111\Rightarrow1011101\Rightarrow110111011$.
+
+			\subsection{No pertenencia}
+				Para probar que un elemento no pertenece a un conjunto inductivo, podemos:
+				
+				\begin{itemize}
+					\item Mostrar que no existe una secuencia de formación para el elemento.
+					\item Mostrar que si se quita al elemento del conjunto se siguen cumpliendo las clausulas.
+					\item \emph{Probar cierta propiedad del conjunto que sirva para excluir al elemento}.
+				\end{itemize}
+				
+				Por ejemplo, para probar que $110111010\notin L$ (definido en el apartado anterior) podríamos demostrar que todas las cadenas de $L$ comienzan y terminan con el mismo caracter.
+				Para demostrar este tipo de propiedades podemos valernos del principio de inducción primitiva que se detalla a continuación.
+
+			\subsection{Principio de inducción primitiva}
+			\paragraph{Enunciado}
+				Sea $A\subseteq U$ definido inductivamente por la base $B$ y el constructor $K$, si:
+				
+				\begin{enumerate}
+					\item vale $P(x)$ $\forall x\in B$ y si
+					\item para cada $f\in K$ resulta: $P\left(a_{1}\right)\land P\left(a_{2}\right)\land\ldots\land P\left(a_{n}\right)\Rightarrow P\left[f\left(a_{1},a_{2},\ldots,a_{n}\right)\right]$
+				\end{enumerate}
+				
+				entonces vale $P(x)$ $\forall x\in A$.
+
+				\paragraph{Demostración}
+				Sea $C$ el conjunto de todos los elementos de $A$ que satisfacen una propiedad $P$, queremos probar que $C=A$.
+				
+				\begin{itemize}
+					\item $C\subseteq A$ es trivial por definición del conjunto.
+					\item Veamos que $C$ satisface las clausulas de la definición inductiva de $A$:
+					\begin{itemize}
+						\item Sea $x\in B$, luego por \emph{(1)} vale $P(x)$ y entonces $x\in C$ por lo que $B\subseteq C$.
+						\item Sean $f^{\left(n\right)}\in K$, $a_{1},a_{2},\ldots,a_{n}\in C$ y $f\left(a_{1},a_{2},\ldots,a_{n}\right)=a$ queremos probar que $a\in C$:
+						\begin{itemize}
+							\item Por definición de $C$ valen $P\left(a_{1}\right),P\left(a_{2}\right),\ldots,P\left(a_{n}\right)$.
+							\item Por \emph{(2)} vale $P\left(a\right)$.
+						\end{itemize}
+						Luego por definición de $C$ resulta $a\in C$.
+					\end{itemize}
+					Dado que $A$ es el mínimo conjunto que cumple las clausulas de su definición inductiva concluimos que $A\subseteq C$.
+				\end{itemize}
+				
+				Puesto que $C\subseteq A$ y $A\subseteq C$ entonces debe ser $A=C$.
+\end{document}

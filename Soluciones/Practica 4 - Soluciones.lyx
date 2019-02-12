@@ -1,0 +1,1478 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\begin_preamble
+\renewcommand{\headrulewidth}{1pt}
+\renewcommand{\footrulewidth}{0.5pt}
+\fancyheadoffset[L]{-16pt}
+\end_preamble
+\use_default_options true
+\begin_modules
+customHeadersFooters
+enumitem
+\end_modules
+\maintain_unincluded_children false
+\language spanish-mexico
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize 12
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 2cm
+\rightmargin 2cm
+\headheight 0cm
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style french
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle fancy
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Left Header
+
+\noun on
+Lenguajes Formales y Computabilidad
+\end_layout
+
+\begin_layout Right Header
+2018
+\end_layout
+
+\begin_layout Center Footer
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+thepage
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+
+\size larger
+PRÁCTICA 4: 
+\emph on
+Soluciones
+\end_layout
+
+\begin_layout Standard
+
+\size footnotesize
+Pablo Verdes
+\begin_inset space \hspace*{\fill}
+\end_inset
+
+Dante Zanarini
+\begin_inset space \hspace*{\fill}
+\end_inset
+
+Pamela Viale
+\begin_inset space \hspace*{\fill}
+\end_inset
+
+Alejandro Hernandez
+\begin_inset space \hspace*{\fill}
+\end_inset
+
+Mauro Lucci
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset line
+LatexCommand rule
+offset "0.5ex"
+width "100col%"
+height "1pt"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Lo demostraremos por inducción sobre el conjunto 
+\begin_inset Formula $FRP$
+\end_inset
+
+:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Casos base: Las funciones bases son totales por definición.
+\end_layout
+
+\begin_layout Itemize
+Composición: Supongamos que 
+\begin_inset Formula $f^{(n)},g_{1}^{(k)},\ldots,g_{n}^{(k)}$
+\end_inset
+
+ son totales.
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Veamos que 
+\begin_inset Formula $h=\Phi\left(f^{(n)},g_{1}^{(k)},\ldots,g_{n}^{(k)}\right)$
+\end_inset
+
+ también lo es.
+ Sea 
+\begin_inset Formula $X\in\mathbb{N}^{k}$
+\end_inset
+
+ podemos calcular 
+\begin_inset Formula $Y=\left(g_{1}\left[X\right],\ldots,g_{n}\left[X\right]\right)$
+\end_inset
+
+ puesto que cada 
+\begin_inset Formula $g_{i}$
+\end_inset
+
+ es total por hipótesis inductiva.
+ Ademas 
+\begin_inset Formula $f$
+\end_inset
+
+ también es total por lo que podemos calcular 
+\begin_inset Formula $f\left(Y\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Es decir, existe un numero natural 
+\begin_inset Formula $z=f\left(Y\right)=h\left(X\right)$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Recursión: Supongamos que 
+\begin_inset Formula $g^{(k)},h^{(k+2)}$
+\end_inset
+
+ son totales.
+ Veremos que 
+\begin_inset Formula $\mbox{\ensuremath{f\left(y,X^{k}\right)=R\left(g,h\right)}}$
+\end_inset
+
+ también lo es, por inducción en 
+\begin_inset Formula $y.$
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Caso base 
+\begin_inset Formula $y=0$
+\end_inset
+
+: 
+\begin_inset Formula $f(0,X^{k})=g\left(X^{k}\right)$
+\end_inset
+
+ que es total por hipótesis.
+\end_layout
+
+\begin_layout Itemize
+Caso inductivo 
+\begin_inset Formula $y=p$
+\end_inset
+
+: Supongamos 
+\begin_inset Formula $f\left(p,X^{k}\right)$
+\end_inset
+
+ es total, luego:
+\begin_inset Formula 
+\[
+f\left(p+1,X^{k}\right)=h\left[p,X^{k},\underbrace{f\left(p,X^{k}\right)}_{\mbox{total por H.I.}}\right]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Enumerate
+\begin_inset space ~
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Lo demostraremos por inducción en 
+\begin_inset Formula $k$
+\end_inset
+
+:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Caso base 
+\begin_inset Formula $k=0$
+\end_inset
+
+: 
+\begin_inset Formula $f_{0}\left(x\right)=s\left(x\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Caso inductivo 
+\begin_inset Formula $k=h$
+\end_inset
+
+: Supongamos que 
+\begin_inset Formula $f_{h}$
+\end_inset
+
+ es 
+\begin_inset Formula $FRP$
+\end_inset
+
+.
+ Queremos ver si 
+\begin_inset Formula $f_{h+1}$
+\end_inset
+
+ tambien lo es.
+ En efecto: 
+\begin_inset Formula $\text{\ensuremath{f_{h+1}\left(x\right)=f_{h}^{x+2}\left(x\right)=f_{h}^{s\left[s\left(x\right)\right]}\left(x\right)}}$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Lo demostraremos por inducción en 
+\begin_inset Formula $k$
+\end_inset
+
+:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Caso base 
+\begin_inset Formula $k=0$
+\end_inset
+
+: 
+\begin_inset Formula $f_{0}\left(x\right)=s\left(x\right)>x$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Caso inductivo 
+\begin_inset Formula $k=n$
+\end_inset
+
+: Supongamos que 
+\begin_inset Formula $f_{n}\left(x\right)>x$
+\end_inset
+
+, luego:
+\begin_inset Formula 
+\[
+f_{n+1}\left(x\right)=f_{n}^{\left(x+2\right)}\left(x\right)=f_{n}\left[f_{n}^{\left(x+1\right)}\left(x\right)\right]\underbrace{>}_{H.I.}f_{n}^{\left(x+1\right)}\left(x\right)=f_{n}\left[f_{n}^{\left(x\right)}\left(x\right)\right]\underbrace{>}_{H.I.}f_{n}^{\left(x\right)}\left(x\right)
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\vdots
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+=f_{n}\left[f_{n}^{\left(2\right)}\left(x\right)\right]\underbrace{>}_{H.I.}f_{n}^{\left(2\right)}\left(x\right)=f_{n}\left[f_{n}\left(x\right)\right]\underbrace{>}_{H.I.}f_{n}\left(x\right)\underbrace{>}_{H.I.}x
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+COMPLETAR.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $f_{k+1}\left(x\right)=f_{k}^{x+2}\left(x\right)=f_{k}^{x+1}\left[f_{k}\left(x\right)\right]\overbrace{>}^{(b)(c)}f_{k}^{x+1}\left(x\right)>\ldots>f_{k}\left(x\right)$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+\begin_inset space ~
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Buscamos un 
+\begin_inset Formula $t$
+\end_inset
+
+ tal que 
+\begin_inset Formula $t=x-y\iff t+y=x$
+\end_inset
+
+.
+ Sea entonces 
+\begin_inset Formula $f\left(x,y\right)=\mu_{t}\left\{ \neg E\left[\Sigma\left(t,y\right),x\right]=0\right\} $
+\end_inset
+
+.
+ Veamos algunos ejemplos:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $f\left(4,2\right)=\mu_{t}\left\{ \neg E\left[\Sigma\left(t,2\right),4\right]=0\right\} $
+\end_inset
+
+:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $t=0:$
+\end_inset
+
+ 
+\begin_inset Formula $\neg E\left[\Sigma\left(0,2\right),4\right]=\neg E\left[2,4\right]=1$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $t=1:$
+\end_inset
+
+ 
+\begin_inset Formula $\neg E\left[\Sigma\left(1,2\right),4\right]=\neg E\left[3,4\right]=1$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\boxed{t=\boldsymbol{2}:\neg E\left[\Sigma\left(2,2\right),4\right]=\neg E\left[4,4\right]=0}$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset Formula $f\left(2,4\right)=\mu_{t}\left\{ \neg E\left[\Sigma\left(t,4\right),2\right]=0\right\} $
+\end_inset
+
+:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $t=0:$
+\end_inset
+
+ 
+\begin_inset Formula $\neg E\left[\Sigma\left(0,4\right),2\right]=\neg E\left[4,2\right]=1$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $t=1:$
+\end_inset
+
+ 
+\begin_inset Formula $\neg E\left[\Sigma\left(1,4\right),2\right]=\neg E\left[5,2\right]=1$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\vdots$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Enumerate
+Buscamos un 
+\begin_inset Formula $t$
+\end_inset
+
+ tal que 
+\begin_inset Formula $t\leq\sqrt{x}<t+1\iff t^{2}\leq x<\left(t+1\right)^{2}$
+\end_inset
+
+.
+ Sea entonces 
+\begin_inset Formula $g\left(x\right)=\mu_{t}\left\{ Leq\left[\Pi\left(t+1,t+1\right),x\right]=0\right\} $
+\end_inset
+
+.
+ Veamos algunos ejemplos:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $g\left(4\right)=\mu_{t}\left\{ Leq\left[\Pi\left(t+1,t+1\right),4\right]=0\right\} $
+\end_inset
+
+:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $t=0$
+\end_inset
+
+: 
+\begin_inset Formula $Leq\left[\Pi\left(0+1,0+1\right),4\right]=Leq\left[1,4\right]=1$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $t=1$
+\end_inset
+
+: 
+\begin_inset Formula $Leq\left[\Pi\left(1+1,1+1\right),4\right]=Leq\left[4,4\right]=1$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\boxed{t=\boldsymbol{2}:Leq\left[\Pi\left(2+1,2+1\right),4\right]=Leq\left[9,4\right]=0.}$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset Formula $g\left(5\right)=\mu_{t}\left[Leq\left[\Pi\left(t+1,t+1\right),5\right]=0\right]$
+\end_inset
+
+:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $t=0$
+\end_inset
+
+: 
+\begin_inset Formula $Leq\left[\Pi\left(0+1,0+1\right),5\right]=Leq\left[1,5\right]=1$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $t=1$
+\end_inset
+
+: 
+\begin_inset Formula $Leq\left[\Pi\left(1+1,1+1\right),5\right]=Leq\left[4,5\right]=1$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\boxed{t=\boldsymbol{2}:Leq\left[\Pi\left(2+1,2+1\right),5\right]=Leq\left[9,5\right]=0.}$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Enumerate
+La función numérica 
+\begin_inset Formula $h\left(x\right)=\sqrt{x}$
+\end_inset
+
+ esta definida si existe 
+\begin_inset Formula $t$
+\end_inset
+
+ tal que 
+\begin_inset Formula $t=\sqrt{x}\iff t^{2}=x$
+\end_inset
+
+.
+ Sea entonces 
+\begin_inset Formula $h\left(x\right)=\mu_{t}\left\{ \neg E\left[\Pi\left(t,t\right),x\right]=0\right\} $
+\end_inset
+
+.
+ Veamos algunos ejemplos:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $h\left(4\right)=\mu_{t}\left\{ \neg E\left[\Pi\left(t,t\right),4\right]=0\right\} $
+\end_inset
+
+:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $t=0$
+\end_inset
+
+: 
+\begin_inset Formula $\neg E\left[\Pi\left(0,0\right),4\right]=\neg E\left\{ 0,4\right\} =1$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $t=1$
+\end_inset
+
+: 
+\begin_inset Formula $\neg E\left[\Pi\left(1,1\right),4\right]=\neg E\left\{ 1,4\right\} =1$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\boxed{t=\boldsymbol{2}:\neg E\left[\Pi\left(2,2\right),4\right]=\neg E\left\{ 4,4\right\} =0.}$
+\end_inset
+
+
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset Formula $h\left(3\right)=\mu_{t}\left\{ \neg E\left[\Pi\left(t,t\right),3\right]=0\right\} $
+\end_inset
+
+:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $t=0$
+\end_inset
+
+: 
+\begin_inset Formula $\neg E\left[\Pi\left(0,0\right),3\right]=\neg E\left[0,3\right]=1$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $t=1$
+\end_inset
+
+: 
+\begin_inset Formula $\neg E\left[\Pi\left(1,1\right),3\right]=\neg E\left[1,3\right]=1$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $t=2$
+\end_inset
+
+: 
+\begin_inset Formula $\neg E\left[\Pi\left(2,2\right),3\right]=\neg E\left[4,3\right]=1$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $t=3$
+\end_inset
+
+: 
+\begin_inset Formula $\neg E\left[\Pi\left(3,3\right),3\right]=\neg E\left[9,3\right]=1$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\vdots$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\end_deeper
+\end_deeper
+\begin_layout Enumerate
+\begin_inset space ~
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Buscamos un 
+\begin_inset Formula $t$
+\end_inset
+
+ tal que 
+\begin_inset Formula $t\leq x/y<t+1\iff ty\leq x<ty+y$
+\end_inset
+
+.
+ Sea entonces 
+\begin_inset Formula $\mbox{\ensuremath{h\left(t,x,y\right)=Leq\left[\Pi\left(t,y\right)+y,x\right]}}$
+\end_inset
+
+.
+ Veamos algunos ejemplos:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $div(0,0)=\mu_{t}\left[h\left(t,0,0\right)=0\right]$
+\end_inset
+
+:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $t=0$
+\end_inset
+
+: 
+\begin_inset Formula $\text{\ensuremath{h\left(0,0,0\right)=Leq\left[\Pi\left(0,0\right)+0,0\right]=Leq\left[0+0,0\right]=1}}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $t=1$
+\end_inset
+
+: 
+\begin_inset Formula $\text{\ensuremath{h\left(1,0,0\right)=Leq\left[\Pi\left(1,0\right)+0,0\right]=Leq\left[0+0,0\right]=1}}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\vdots$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset Formula $div(5,0)=\mu_{t}\left[h\left(t,5,0\right)=0\right]$
+\end_inset
+
+:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $t=0$
+\end_inset
+
+: 
+\begin_inset Formula $\text{\ensuremath{h\left(0,5,0\right)=Leq\left[\Pi\left(0,0\right)+0,5\right]=Leq\left[0+0,5\right]=1}}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $t=1$
+\end_inset
+
+: 
+\begin_inset Formula $\text{\ensuremath{h\left(1,5,0\right)=Leq\left[\Pi\left(1,0\right)+0,5\right]=Leq\left[0+0,5\right]=1}}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\vdots$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset Formula $div(6,3)=\mu_{t}\left[h\left(t,6,3\right)=0\right]$
+\end_inset
+
+:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $t=0$
+\end_inset
+
+: 
+\begin_inset Formula $\text{\ensuremath{h\left(0,6,3\right)=Leq\left[\Pi\left(0,3\right)+3,6\right]=Leq\left[0+3,6\right]=1}}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $t=1$
+\end_inset
+
+: 
+\begin_inset Formula $\text{\ensuremath{h\left(1,6,3\right)=Leq\left[\Pi\left(1,3\right)+3,6\right]=Leq\left[3+3,6\right]=1}}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\boxed{t=\boldsymbol{2}:h\left(2,6,3\right)=Leq\left[\Pi\left(2,3\right)+3,6\right]=Leq\left[6+3,6\right]=0.}$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Enumerate
+Basta con definir 
+\begin_inset Formula $h$
+\end_inset
+
+ como: 
+\begin_inset Formula $h\left(t,x,y\right)=Leq\left\{ \Pi\left[t,y\right]+y+\underbrace{\Pi\left[D_{0}\left(x\right),D_{0}\left(y\right)\right]}_{=1\iff x=y=0},x\right\} $
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Buscamos un 
+\begin_inset Formula $t$
+\end_inset
+
+ tal que 
+\begin_inset Formula $div\left(x,y\right)\times y+t=x$
+\end_inset
+
+.
+ Sea 
+\begin_inset Formula $\text{\ensuremath{h\left(t,x,y\right)=\neg E\left\{ \Pi\left[div\left(x,y\right),y\right]+t,x\right\} }}$
+\end_inset
+
+.
+ Veamos algunos ejemplos:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $mod\left(x,0\right)=\mu_{t}\left[h\left(t,x,0\right)=0\right]$
+\end_inset
+
+: no termina pues 
+\begin_inset Formula $div\left(x,0\right)$
+\end_inset
+
+ no termina.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $mod(7,2)=\mu_{t}\left[h\left(t,7,2\right)=0\right]$
+\end_inset
+
+:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $t=0$
+\end_inset
+
+: 
+\begin_inset Formula $h\left(0,7,2\right)=\neg E\left\{ \Pi\left[3,2\right]+0,7\right\} =\neg E\left\{ 6,7\right\} =1$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\boxed{t=\boldsymbol{1}:h\left(1,7,2\right)=\neg E\left\{ \Pi\left[3,2\right]+1,7\right\} =\neg E\left\{ 7,7\right\} =0.}$
+\end_inset
+
+
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset Formula $mod(10,4)=\mu_{t}\left[h\left(t,10,4\right)=0\right]$
+\end_inset
+
+:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $t=0$
+\end_inset
+
+: 
+\begin_inset Formula $\text{\ensuremath{h\left(0,10,4\right)=\neg E\left\{ \Pi\left[2,4\right]+0,10\right\} =\neg E\left\{ 8,10\right\} =1}}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $t=1$
+\end_inset
+
+: 
+\begin_inset Formula $\text{\ensuremath{h\left(1,10,4\right)=\neg E\left\{ \Pi\left[2,4\right]+1,10\right\} =\neg E\left\{ 9,10\right\} =1}}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\text{\ensuremath{\boxed{t=\boldsymbol{2}:h\left(2,10,4\right)=\neg E\left\{ \Pi\left[2,4\right]+2,10\right\} =\neg E\left\{ 10,10\right\} =0.}}}$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\end_deeper
+\end_deeper
+\begin_layout Enumerate
+\begin_inset space ~
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset Formula $f\left(4\right)=\mu_{y}\left\{ menos\left[4,pd\left(y\right)\right]=0\right\} $
+\end_inset
+
+:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $y=0$
+\end_inset
+
+: 
+\begin_inset Formula $menos\left[4,pd\left(0\right)\right]=menos\left[4,0\right]=4$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $y=1$
+\end_inset
+
+: 
+\begin_inset Formula $menos\left[4,pd\left(1\right)\right]=menos\left[4,0\right]=4$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $y=2$
+\end_inset
+
+: 
+\begin_inset Formula $\text{\ensuremath{menos\left[4,pd\left(2\right)\right]=menos\left[4,1\right]=pd\left\{ menos\left[4,0\right]\right\} =3}}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $y=3$
+\end_inset
+
+: 
+\begin_inset Formula $\text{\ensuremath{menos\left[4,pd\left(3\right)\right]=menos\left[4,2\right]=pd\left\{ menos\left[4,1\right]\right\} =2}}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $y=4$
+\end_inset
+
+: 
+\begin_inset Formula $\text{\ensuremath{menos\left[4,pd\left(4\right)\right]=menos\left[4,3\right]=pd\left\{ menos\left[4,2\right]\right\} =1}}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\boxed{y=\boldsymbol{5}:\text{\ensuremath{menos\left[4,pd\left(5\right)\right]=menos\left[4,4\right]=pd\left\{ menos\left[4,3\right]\right\} =0}}}$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Quizas haya que formalizar esta idea
+\end_layout
+
+\end_inset
+
+Observemos que 
+\begin_inset Formula $menos\left(x,y\right)=pd\left(x\right)^{y}$
+\end_inset
+
+.
+ Dado cualquier 
+\begin_inset Formula $x$
+\end_inset
+
+, el minimizador aumentara la potencia hasta llegar eventualmente a 
+\begin_inset Formula $0$
+\end_inset
+
+, por lo que la función es total.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Sea 
+\begin_inset Formula $h\left(y,x\right)=\neg E\left[g\left(x,y\right),m\right]$
+\end_inset
+
+ luego 
+\begin_inset Formula $f\left(x\right)=\mu_{y}\left\{ \neg E\left[g\left(x,y\right),m\right]=0\right\} $
+\end_inset
+
+ es una función que busca el menor valor de 
+\begin_inset Formula $y$
+\end_inset
+
+ donde 
+\begin_inset Formula $g$
+\end_inset
+
+ vale 
+\begin_inset Formula $m$
+\end_inset
+
+, para un 
+\begin_inset Formula $x$
+\end_inset
+
+ indicado como argumento.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset space ~
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Definiremos primero 
+\begin_inset Formula $f\left(y,x\right)=\sqrt[y]{x}$
+\end_inset
+
+.
+ Buscamos 
+\begin_inset Formula $t$
+\end_inset
+
+ tal que 
+\begin_inset Formula $t=\sqrt[y]{x}\iff t^{y}=x$
+\end_inset
+
+, sea entonces 
+\begin_inset Formula $h\left(t,y,x\right)=\neg E\left[Exp\left(y,t\right),x\right]$
+\end_inset
+
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $f\left(5,25\right)=\mu_{t}\left[h\left(t,5,25\right)=0\right]$
+\end_inset
+
+:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $t=0$
+\end_inset
+
+: 
+\begin_inset Formula $h\left(0,5,25\right)=\neg E\left[0,25\right]=1$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $t=1$
+\end_inset
+
+: 
+\begin_inset Formula $h\left(1,5,25\right)=\neg E\left[1,25\right]=1$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $t=2$
+\end_inset
+
+: 
+\begin_inset Formula $h\left(2,5,25\right)=\neg E\left[32,25\right]=1$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\vdots$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset Formula $f\left(4,81\right)=\mu_{t}\left[h\left(t,4,81\right)=0\right]$
+\end_inset
+
+:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $t=0$
+\end_inset
+
+: 
+\begin_inset Formula $h\left(0,4,25\right)=\neg E\left[0,81\right]=1$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $t=1$
+\end_inset
+
+: 
+\begin_inset Formula $h\left(1,4,25\right)=\neg E\left[1,81\right]=1$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $t=2$
+\end_inset
+
+: 
+\begin_inset Formula $h\left(2,4,25\right)=\neg E\left[16,81\right]=1$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\boxed{t=\boldsymbol{3}:h\left(3,4,25\right)=\neg E\left[81,81\right]=0.}$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Itemize
+Luego 
+\begin_inset Formula $r\left(x\right)=x^{2}+x+6=\Sigma\left\{ \Sigma\left[\Pi\left(x,x\right),x\right],f_{6}\right\} =$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+r\left(x\right)=\Phi\left\{ \Sigma^{\left(2\right)},\Phi\left[\Sigma^{\left(2\right)},\Phi\left(\Pi^{\left(2\right)},p_{1}^{\left(1\right)},p_{1}^{\left(1\right)}\right),p_{1}^{\left(1\right)}\right],f_{6}^{\left(1\right)}\right\} 
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Finalmente 
+\begin_inset Formula $g\left(y,x\right)=\sqrt[y]{x^{2}+x+6}=f\left[y,r\left(x\right)\right]=\Phi\left[f^{\left(2\right)},p_{1}^{\left(2\right)},\Phi\left(r^{\left(1\right)},p_{2}^{\left(2\right)}\right)\right]$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+No podemos escribir a 
+\begin_inset Formula $g$
+\end_inset
+
+ como 
+\begin_inset Formula $FRP$
+\end_inset
+
+ pues toda 
+\begin_inset Formula $FRP$
+\end_inset
+
+ es total y como vimos en el ejemplo 
+\begin_inset Formula $f$
+\end_inset
+
+ no lo es.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+\begin_inset space ~
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Definiremos primero 
+\begin_inset Formula $f\left(x\right)=\lfloor log_{2}\left(x\right)\rfloor$
+\end_inset
+
+.
+ Buscamos 
+\begin_inset Formula $t$
+\end_inset
+
+ tal que 
+\begin_inset Formula $t\leq log_{2}\left(x\right)<t+1\iff2^{t}\leq x<2^{t+1}$
+\end_inset
+
+ luego 
+\begin_inset Formula $h\left(t,x\right)=Leq\left[Exp\left(t+1,2\right),x\right]$
+\end_inset
+
+.
+ Ejemplos:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $f\left(32\right)=\mu_{t}\left[h\left(t,32\right)=0\right]$
+\end_inset
+
+:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $t=0$
+\end_inset
+
+: 
+\begin_inset Formula $h\left(0,32\right)=Leq\left[2,32\right]=1$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $t=1$
+\end_inset
+
+: 
+\begin_inset Formula $h\left(1,32\right)=Leq\left[4,32\right]=1$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $t=2$
+\end_inset
+
+: 
+\begin_inset Formula $h\left(2,32\right)=Leq\left[8,32\right]=1$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $t=3$
+\end_inset
+
+: 
+\begin_inset Formula $h\left(3,32\right)=Leq\left[16,32\right]=1$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $t=4$
+\end_inset
+
+: 
+\begin_inset Formula $h\left(4,32\right)=Leq\left[32,32\right]=1$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\boxed{t=\boldsymbol{5}:h\left(5,32\right)=Leq\left[64,32\right]=0.}$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset Formula $f\left(30\right)=\mu_{t}\left[h\left(t,30\right)=0\right]$
+\end_inset
+
+:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $t=0$
+\end_inset
+
+: 
+\begin_inset Formula $h\left(0,30\right)=Leq\left[2,30\right]=1$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $t=1$
+\end_inset
+
+: 
+\begin_inset Formula $h\left(1,30\right)=Leq\left[4,30\right]=1$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $t=2$
+\end_inset
+
+: 
+\begin_inset Formula $h\left(2,30\right)=Leq\left[8,30\right]=1$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $t=3$
+\end_inset
+
+: 
+\begin_inset Formula $h\left(3,30\right)=Leq\left[16,30\right]=1$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\boxed{t=\boldsymbol{4}:h\left(4,30\right)=Leq\left[32,30\right]=0.}$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Itemize
+Ahora 
+\begin_inset Formula $g\left(x\right)=\left(x+3\right)^{3}=\Phi\left[Exp^{\left(2\right)},f_{3}^{\left(1\right)},\Phi\left(\Sigma^{\left(2\right)},p_{1}^{\left(1\right)},f_{3}^{\left(1\right)}\right)\right]$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Finalmente 
+\begin_inset Formula $\lfloor log_{2}\left[\left(n+3\right)^{3}\right]=\Phi\left[f^{\left(1\right)},\Phi\left(g^{\left(1\right)},p_{1}^{\left(1\right)}\right)\right]$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+\begin_inset Formula $F\left(x\right)=M\left[\neg E\left(f^{t}\left(x\right),1\right)\right]$
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

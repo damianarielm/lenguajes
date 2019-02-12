@@ -1,0 +1,195 @@
+\documentclass[12pt,a4paper,oneside,spanish]{book}
+\usepackage[T1]{fontenc}
+\usepackage[latin9]{inputenc}
+\setcounter{secnumdepth}{3}
+\setcounter{tocdepth}{3}
+\setcounter{chapter}{7}
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+\makeatletter
+\usepackage{tikz}
+\usetikzlibrary{automata,positioning,calc}
+\makeatother
+\usepackage{babel}
+\addto\shorthandsspanish{\spanishdeactivate{~<>.}}
+
+\begin{document}
+	\chapter{Automatas de pila}
+		\section{Introducción}
+			Los autómatas de pila son autómatas que cuentan con las mismas características que un $AEFND$ pero ademas disponen de una pila de memoria en la que podrán leer o escribir símbolos, de forma de poder saber en cada momento si el autómata ya realizo alguna transición en el pasado.
+			Durante cada transición el autómata ejecuta la siguiente secuencia:
+			
+			\begin{enumerate}
+				\item Leer un símbolo de entrada.
+				\item Extraer un símbolo de la pila.
+				\item Insertar un símbolo en la pila.
+				\item Pasar a un nuevo estado.
+			\end{enumerate}
+	
+			A este proceso lo representaremos con la notación $\left(\sigma,l,\alpha;\beta,\tau\right)$	donde:
+			
+			\begin{itemize}
+				\item $\sigma$ es el estado actual.
+				\item $l$ es el símbolo del alfabeto que se lee en la entrada.
+				\item $\alpha$ es el símbolo que se extrae de la pila.
+				\item $\beta$ es el símbolo que se inserta en la pila.
+				\item $\tau$ es el nuevo estado al que pasa el autómata.
+			\end{itemize}
+	
+\pagebreak{}
+
+			Representaremos este proceso mediante el siguiente diagrama de transiciones:
+			
+			\begin{center}
+				\begin{tikzpicture}[shorten >=1pt,node distance=3cm,on grid,auto]
+					\node[state] (sigma)   {$\sigma$};
+					\node[state] (tau) [right=of sigma] {$\tau$};
+
+					\path[->]
+						(sigma)	edge  node {$l,\alpha;\beta$} (tau);
+				\end{tikzpicture}
+			\par\end{center}
+
+			Puesto que permitimos que $l,\alpha,\beta$ sean la cadena vacía, podemos en cualquier transición no leer un caracter, no extraer nada de la pila o no escribir nada en la pila si así lo necesitáramos. 
+			Llamaremos a las transiciones de la forma $\left(\sigma,\lambda,\lambda;\lambda,\tau\right)$ transiciones espontaneas.
+			\paragraph{Observación}
+			Nótese que las transiciones representada por $\left(\sigma,l,\lambda;\lambda,\tau\right)$ son las que realiza un $AEFND$. Por lo tanto los $AEFND$ son un caso particular de $AP$ y en consecuencia los lenguajes regulares son un subconjunto de los lenguajes aceptados por $AP$, es decir: $\mathcal{L}_{3}\subseteq\mathcal{AC}\left(AP\right)$.
+
+		\section{Definición formal}
+			Un autómata de pila ($AP$) es una sextupla $A=\left(S,\Sigma,\Gamma,T,\sigma,Ac\right)$	donde:
+			
+			\begin{itemize}
+				\item $S$ es un conjunto finito de \emph{estados}.
+				\item $\Sigma$ es un conjunto finito de \emph{símbolos de entrada}.
+				\item $\Gamma$ es un conjunto finito de \emph{símbolos de pila}.
+				\item $T\subseteq S\times\left(\Sigma\cup\left\{ \lambda\right\} \right)\times\left(\Gamma\cup\left\{ \lambda\right\} \right)\times\left(\Gamma\cup\left\{ \lambda\right\} \right)\times S$ es una \emph{relación de transición}.
+				\item $\sigma\in S$ es el \emph{estado inicial}.
+				\item $Ac\subseteq S$ es un conjunto de estados de aceptación.
+			\end{itemize}
+
+		\section{Configuración}
+			Una configuración de un autómata de pila $A=\left(S,\Sigma,\Gamma,T,\sigma,Ac\right)$ es un elemento de $\mathcal{C}_{A}=S\times\Sigma^{*}\times\Gamma^{*}$.
+			Dicha configuración $\left(\sigma,p,\gamma\right)$ indica que el autómata esta en el estado $\sigma$, le falta leer la cadena $p$ de la entrada y el contenido completo de la pila es $\gamma$.
+
+		\section{Relación entre configuraciones}
+			Para una autómata de pila $A=\left(S,\Sigma,\Gamma,T,\sigma,Ac\right)$ definimos la relación \flqq{}lleva en un paso\frqq{} (que notaremos $\Rightarrow_{A}$) entre configuraciones, de la siguiente forma: $\left(\sigma,lp,\alpha\gamma\right)\Rightarrow_{A}\left(\tau,p,\beta\gamma\right)$  si y solo si $\left(\sigma,l,\alpha;\beta,\tau\right)\in T$.
+			La relación \flqq{}lleva en uno o mas pasos\frqq{} ($\Rightarrow_{A}^{*}$) define recursivamente a partir de la relación $\Rightarrow_{A}$ de forma análoga a lo hecho para la función de transición $f$ de los $AEF$.
+
+		\section{Lenguaje aceptado}
+			Sea $A=\left(S,\Sigma,\Gamma,T,\sigma,Ac\right)$ un autómata de pila, el lenguaje aceptado por $A$ es el conjunto: $\mathcal{AC}\left(A\right)=\left\{ p\in\Sigma^{*}/\left(\sigma,p,\lambda\right)\Rightarrow^{*}\left(\tau,\lambda,\gamma\right):\gamma\in\Gamma^{*}\land\tau\in Ac\right\} $.
+			Es decir, una cadena $p$ sera aceptada por un $AP$ si, arrancando desde su estado inicial y con la pila vaciá, es posible que el autómata llegue a un estado de aceptación después de leer toda la cadena.
+			\paragraph{Observación}
+			No necesariamente se llegara a un estado de aceptación luego de leer el ultimo caracter de una palabra pues a continuación el autómata podría realizar transiciones de la forma $\left(\sigma,\lambda,\alpha;\beta,\tau\right)$ y llegar luego al estado de aceptación.
+
+		\section{Aceptacion de lenguajes no regulares}
+			Ya hemos visto que $\mathcal{L}_{3}\subseteq\mathcal{AC}\left(AP\right)$.
+			Sin embargo esta inclusión es estricta, pues como veremos, el lenguaje $\left\{ x^{n}y^{n}/n\in\mathbb{N}_{0}\right\} $ es aceptado por el siguiente autómata de pila:
+	
+			\begin{center}
+				\begin{tikzpicture}[shorten >=1pt,node distance=3cm,on grid,auto]
+					\node[state, initial, accepting, initial text= inicio] (sigma0)   {$\sigma_0$};
+					\node[state] (sigma1) [right=of sigma0] {$\sigma_1$};
+					\node[state] (sigma2) [right=of sigma1] {$\sigma_2$};
+					\node[state, accepting] (sigma3) [right=of sigma2] {$\sigma_3$};
+
+					\path[->]
+						(sigma0)	edge  node {$\lambda,\lambda;\#$} (sigma1)
+						(sigma1)	edge  [loop above] node {$x,\lambda;x$} ()
+						(sigma1)	edge  node {$y,x;\lambda$} (sigma2)
+						(sigma2)	edge  [loop above] node {$y,x;\lambda$} ()
+						(sigma2)	edge  node {$\lambda,\#;\lambda$} (sigma3);
+				\end{tikzpicture}
+			\par\end{center}
+			
+\pagebreak{}
+
+		\section{Teorema del vaciado de pila}
+			\paragraph{Enunciado}
+			Para cada $A\in AP$ existe $A'\in AP$ tal que $A'$ vaciá su pila y ademas $\mathcal{AC}\left(A'\right)=\mathcal{AC}\left(A\right)$.
+			\paragraph*{Demostración}
+			Sea $A=\left(S,\Sigma,\Gamma,T,\sigma,Ac\right)$ un $AP$, fabricaremos $A'$ de la siguiente manera:
+			
+			\begin{itemize}
+				\item El estado inicial de $A$ deja de serlo, pues introducimos un nuevo estado inicial y una transición del nuevo al anterior que lo único que hace es insertar en la pila un marcador $\#$ (suponiendo que $\#\notin\Gamma$).
+				\item Los estados de aceptación de $A$ dejan de serlo e introduciremos un nuevo estado $P$ junto con transiciones espontaneas que pasan de cada uno de los antiguos estados de aceptación al nuevo estado $P$.
+				\item Vaciamos la pila sin salir del estado $P$ introduciendo transiciones de la forma $\left(P,\lambda,x;\lambda,P\right)$ para cada $x\in\Gamma$.
+				\item Agregamos un nuevo y único estado de aceptación $Q$ junto a la transición $\left(P,\lambda,\#;\lambda,Q\right)$.
+			\end{itemize}
+					
+			Formalmente definimos $A'=\left(S',\Sigma,\Gamma',T',\sigma',Ac'\right)$ donde:
+			\begin{itemize}
+				\item $S'=S\cup\left\{ R,P,Q\right\} $ donde $R,P,Q\notin S$.
+				\item $\Gamma'=\Gamma\cup\left\{ \#\right\} $ donde $\#\notin\Gamma$.
+				\item $\sigma_{0}'=R$.
+				\item $Ac'=\left\{ Q\right\} $.
+				\item $\begin{aligned}T'=T & \cup\left\{ \left(R,\lambda,\lambda;\#,\sigma\right)\right\}  & \left(1\right)\\
+				 & \cup\left\{ \left(\tau,\lambda,\lambda;\lambda,P\right)/\tau\in Ac\right\}  & \left(2\right)\\
+				 & \cup\left\{ \left(P,\lambda,\alpha;\lambda,P\right)/\alpha\in\Gamma\right\}  & \left(3\right)\\
+				 & \cup\left\{ \left(P,\lambda,\#;\lambda,Q\right)\right\} . & \left(4\right)
+				\end{aligned}$
+			\end{itemize}
+			
+\pagebreak{}
+	
+			Veamos ahora que $\mathcal{AC}\left(A\right)=\mathcal{AC}\left(A'\right)$:
+			
+			\begin{itemize}
+				\item $\subseteq$: Sea $\alpha\in\mathcal{AC}\left(A\right)$. Sabemos que partiendo del estado inicial $\sigma$ con la pila vaciá, $\alpha$ nos lleva en uno o mas pasos a un estado de aceptación. En términos de configuraciones: $\left(\sigma,\alpha,\lambda\right)\Rightarrow^{*}\left(\tau,\lambda,\gamma\right)$ donde $\text{\ensuremath{\tau\in Ac,\gamma\in\Gamma^{*}}}$. Luego en $A'$ tenemos la derivación:
+				
+					\[
+						\left(R,\alpha,\lambda\right)\Rightarrow^{\left(1\right)}\left(\sigma,\alpha,\#\right)\Rightarrow^{*}\left(\tau,\lambda,\gamma\#\right)\Rightarrow^{\left(2\right)}\left(P,\lambda,\gamma\#\right)\Rightarrow^{\left(3\right)*}\left(P,\lambda,\#\right)\Rightarrow^{\left(4\right)}\left(Q,\lambda,\lambda\right)
+					\]
+					
+					Como $Q\in Ac'$ concluimos que $\alpha\in\mathcal{AC}\left(A'\right)$ y la pila queda vacía.
+				\item $\supseteq$: Análogo.
+			\end{itemize}
+
+		\section{Igualdad entre $\mathcal{L}_{2}$ y $\mathcal{AC}\left(AP\right)$}	
+			\paragraph{Enunciado}
+			
+			\begin{enumerate}
+				\item Sea $G$ una gramática independiente de contexto entonces existe un autómata de pila $A$ tal que $L\left(G\right)=\mathcal{AC}\left(A\right)$.
+				\item Sea $A$ un autómata de pila entonces existe una gramática independiente del contexto $G$ tal que $L\left(G\right)=\mathcal{AC}\left(A\right)$.
+			\end{enumerate}
+			
+			Es decir $\mathcal{L}_{2}=\mathcal{AC}\left(AP\right)$.
+			\paragraph{Demostración}
+			
+			\begin{enumerate}
+				\item Consultar \flqq{}J. Glenn Brookshear. \emph{Teoría de la Computación. Lenguajes formales, autómatas y complejidad}\textbf{\frqq{}}, pag 85.
+				\item Consultar \flqq{}J. Glenn Brookshear. \emph{Teoría de la Computación. Lenguajes formales, autómatas y complejidad}.\frqq{}, pag 90.
+			\end{enumerate}
+
+			\paragraph{Conclusión}
+			De todo lo que hemos visto hasta ahora sabemos que: 
+			
+			\[
+				\mathcal{L}_{3}=\mathcal{AC}\left(AEF\right)=\mathcal{AC}\left(AEFND\right)=L_{ER}\subset\mathcal{L}_{2}=\mathcal{AC}\left(AP\right)
+			\]
+
+\pagebreak{}
+
+		\section{Lema de bombeo para autómatas de pila}
+			\paragraph{Enunciado}
+			Sea $L\in\mathcal{L}_{2}$, luego si $L$ es infinito existe $p\in L$ de la forma $p=xuyvz$ donde $uv\neq\lambda$ tal que $xu^{n}yv^{n}z\in L$ $\forall n\in\mathbb{N}$.
+			\paragraph{Demostración}
+			Sabemos que existe una gramática independiente de contexto $G=\left(N,T,P,\sigma\right)$ tal que $L\left(G\right)=L$ y sea $m$ el máximo numero de símbolos de $N\cup T$ que aparecen en el lado derecho de las reglas de producción de $G$. Observemos que como $m$ es la mayor cantidad de símbolos por los que se puede reemplazar un no terminal, al aplicar $i$ reglas de producción cualesquiera, la longitud de la cadena resultante es a lo sumo $m^{i}$.
+			Llamemos $k$ a la cantidad de símbolos no terminales de $G$ ($k=\left|N\right|$).
+			Dada una palabra $p\in L$ tal que $\left|p\right|>m^{k}$ (que existe pues $L$ es infinito), llamemos $i$ a la cantidad de reglas de producción aplicadas para producir $p$. Por lo tanto $m^{k}\leq\left|p\right|\leq m^{i}\Rightarrow k<i$ es decir, para formar $p$ debieron aplicarse mas de $k$ reglas de producción (debieron expandirse mas de $k$ no terminales).
+			Como no hay $k$ no terminales, existe un no terminal $X$ que debió expandirse 2 veces que podremos \flqq{}bombear\frqq{} cuantas veces sea necesario.
+
+		\section{Existencia de lenguajes sensibles al contexto}
+			\paragraph{Enunciado}
+			Existen lenguajes sensibles al contexto.
+			\paragraph{Demostración}
+			Probaremos que $L=\left\{ a^{n}b^{n}c^{n}/n\in\mathbb{N}\right\} \notin\mathcal{L}_{2}$.
+			Como $L$ es infinito el lema de bombeo nos permite asegurar que existe una cadena $xuyvz\in L$ tal que $xu^{n}yv^{n}z\in L$ $\forall n\in\mathbb{N}$ con $uv\neq\lambda$. Supongamos sin perder generalidad que $u\neq\lambda$ luego hay dos posibilidades:
+			
+			\begin{itemize}
+				\item $u$ esta formado por un solo símbolo y al bombearlo se obtiene una palabra que no mantiene la igualdad entre exponentes resultando no pertenecer al lenguaje.
+				\item $u$ esta formado por mas de un caracter y al bombearlo se obtiene una palabra que altera el orden de los símbolos y por lo tanto no pertenece al lenguaje.
+			\end{itemize}
+			
+			Llegamos al absurdo por cualquiera de las dos posibilidades, por lo que $\text{\ensuremath{L\notin\mathcal{L}_{2}}}$.
+\end{document}

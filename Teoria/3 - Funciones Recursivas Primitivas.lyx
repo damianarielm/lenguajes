@@ -1,0 +1,529 @@
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 508
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass book
+\use_default_options true
+\maintain_unincluded_children false
+\language spanish-mexico
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize 12
+\spacing single
+\use_hyperref false
+\papersize a4paper
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language french
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Chapter
+Funciones recursivas primitivas
+\end_layout
+
+\begin_layout Section
+Definiciones
+\end_layout
+
+\begin_layout Subsection
+Aridad
+\end_layout
+
+\begin_layout Standard
+Sea 
+\begin_inset Formula $f:A_{1}\times A_{2}\times\ldots\times A_{n}\to B$
+\end_inset
+
+ llamaremos 
+\emph on
+aridad
+\emph default
+ al numero de argumentos que toma la función, es decir 
+\begin_inset Formula $n$
+\end_inset
+
+ y notaremos 
+\begin_inset Formula $f^{(n)}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Función característica
+\end_layout
+
+\begin_layout Standard
+Dado un conjunto 
+\begin_inset Formula $X$
+\end_inset
+
+, para cada subconjunto 
+\begin_inset Formula $A\subseteq X$
+\end_inset
+
+ definimos su 
+\emph on
+función característica
+\emph default
+ 
+\begin_inset Formula $\chi_{A}:X\to\left\{ 0,1\right\} $
+\end_inset
+
+ como:
+\begin_inset Formula 
+\[
+\chi_{A}\left(x\right)=\begin{cases}
+1 & x\in A\\
+0 & x\notin A
+\end{cases}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Función numérica
+\end_layout
+
+\begin_layout Standard
+Llamaremos función numérica a toda función 
+\begin_inset Formula $f:\mathbb{N}^{k}\to\mathbb{N}$
+\end_inset
+
+ con 
+\begin_inset Formula $k\in\mathbb{N}$
+\end_inset
+
+.
+ Si 
+\begin_inset Formula $k=0$
+\end_inset
+
+ identificaremos a dicha función con un numero perteneciente a 
+\begin_inset Formula $\mathbb{N}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Funciones base
+\end_layout
+
+\begin_layout Standard
+Llamaremos funciones base a las siguientes tres funciones:
+\end_layout
+
+\begin_layout Itemize
+La función cero 
+\begin_inset Formula $c^{(n)}:\mathbb{N}^{n}\to\mathbb{N}$
+\end_inset
+
+ definida por 
+\begin_inset Formula $c^{(n)}\left(X\right)=0$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Las funciones proyección 
+\begin_inset Formula $p_{k}^{(n)}:\mathbb{N}^{n}\to\mathbb{N}$
+\end_inset
+
+ definidas por 
+\begin_inset Formula $\mbox{\ensuremath{p_{k}^{(n)}\left(x_{1},x_{2},\ldots,x_{n}\right)=x_{k}}}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+La función sucesor 
+\begin_inset Formula $s^{\left(1\right)}:\mathbb{N\to\mathbb{N}}$
+\end_inset
+
+ definida por 
+\begin_inset Formula $s^{\left(1\right)}(x)=x+1$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Operadores
+\end_layout
+
+\begin_layout Standard
+Definiremos dos operadores que nos permitirán construir nuevas funciones:
+\end_layout
+
+\begin_layout Itemize
+El operador de composición 
+\begin_inset Formula $\Phi$
+\end_inset
+
+ que dada una función numérica 
+\begin_inset Formula $f^{(n)}$
+\end_inset
+
+ y 
+\begin_inset Formula $n$
+\end_inset
+
+ funciones numéricas de aridad 
+\begin_inset Formula $k$
+\end_inset
+
+, construye la función numérica 
+\begin_inset Formula $h$
+\end_inset
+
+ definida como:
+\begin_inset Formula 
+\begin{align*}
+h:\mathbb{N}^{k}\to & \mathbb{N}\\
+X^{k}\to & h\left(X^{k}\right)=f\left[g_{1}\left(X^{k}\right),g_{2}\left(X^{k}\right),\ldots,g_{n}\left(X^{k}\right)\right]
+\end{align*}
+
+\end_inset
+
+ y que notaremos 
+\begin_inset Formula $h=\Phi\left(f,g_{1},g_{2},\ldots,g_{n}\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+El operador de recursion 
+\begin_inset Formula $R$
+\end_inset
+
+ que dadas dos funciones numéricas 
+\begin_inset Formula $g^{(k)}$
+\end_inset
+
+ y 
+\begin_inset Formula $h^{(k+2)}$
+\end_inset
+
+ construye una nueva función numérica 
+\begin_inset Formula $f^{(k+1)}$
+\end_inset
+
+ definida como
+\begin_inset Formula 
+\[
+f\left(y,X^{k}\right)=\begin{cases}
+g\left(X^{k}\right) & y=0\\
+h\left[y-1,X^{k},f\left(y-1,X^{k}\right)\right] & y>0
+\end{cases}
+\]
+
+\end_inset
+
+ y notaremos 
+\begin_inset Formula $f=R(g,h)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Definición inductiva
+\end_layout
+
+\begin_layout Standard
+Definimos inductivamente el conjunto de funciones recursivas primitivas
+ (
+\begin_inset Formula $FRP$
+\end_inset
+
+) como el menor conjunto tal que:
+\end_layout
+
+\begin_layout Itemize
+Las funciones base pertenecen a 
+\begin_inset Formula $FRP$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Las funciones obtenidas aplicando un numero finito de operaciones de composición
+ y recursion sobre elementos de 
+\begin_inset Formula $FRP$
+\end_inset
+
+ también pertenecen a 
+\begin_inset Formula $FRP$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Section
+Ejemplos
+\end_layout
+
+\begin_layout Subsection
+Predecesor natural
+\end_layout
+
+\begin_layout Standard
+La función 
+\begin_inset Formula $\widehat{Pd}{}^{(1)}(y)=\begin{cases}
+0 & y=0\\
+y-1 & y>0
+\end{cases}$
+\end_inset
+
+ es 
+\begin_inset Formula $FRP$
+\end_inset
+
+ pues:
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\widehat{Pd}{}^{(1)}(0)=0=c^{(0)}\left(\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\widehat{Pd}{}^{(1)}(y)=y-1=p_{1}^{(2)}\left[y-1,\widehat{Pd}{}^{(1)}\left(y-1\right)\right]$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+por lo que 
+\begin_inset Formula $\widehat{Pd}{}^{(1)}=R\left(c^{(0)},p_{1}^{(2)}\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Suma
+\end_layout
+
+\begin_layout Standard
+La función 
+\begin_inset Formula $\Sigma^{(2)}(y,x)=y+x$
+\end_inset
+
+ es 
+\begin_inset Formula $FRP$
+\end_inset
+
+ pues:
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\Sigma^{(2)}\left(0,x\right)=0+x=x=p_{1}^{(1)}\left(x\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\begin{aligned}\Sigma^{(2)}\left(y,x\right) & =y+x=y+x+1-1=\left(y-1\right)+x+1=s^{(1)}\left[\Sigma^{(2)}\left(y-1,x\right)\right]=\\
+ & =s^{(1)}\left\{ p_{3}^{(3)}\left[y-1,x,\Sigma^{(2)}\left(y-1,x\right)\right]\right\} =\Phi\left(s^{(1)},p_{3}^{(3)}\right).
+\end{aligned}
+$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+y en consecuencia 
+\begin_inset Formula $\Sigma^{(2)}=R\left[p_{1}^{(1)},\Phi\left(s^{(1)},p_{3}^{(3)}\right)\right]$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Función potencia
+\end_layout
+
+\begin_layout Standard
+Dada una función 
+\begin_inset Formula $f^{(1)}$
+\end_inset
+
+ definimos 
+\begin_inset Formula $F^{(2)}$
+\end_inset
+
+ llamada potencia de 
+\begin_inset Formula $f$
+\end_inset
+
+ como:
+\begin_inset Formula 
+\[
+F\left(y,x\right)=\begin{cases}
+x & y=0\\
+f\left[F\left(y-1,x\right)\right] & y>0
+\end{cases}
+\]
+
+\end_inset
+
+ y notaremos 
+\begin_inset Formula $F\left(y,x\right)=f^{y}\left(x\right)$
+\end_inset
+
+.
+\begin_inset Newline newline
+\end_inset
+
+La función 
+\begin_inset Formula $f^{y}\left(x\right)$
+\end_inset
+
+ es 
+\begin_inset Formula $FRP$
+\end_inset
+
+ pues:
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $F^{(2)}\left(0,x\right)=x=p_{1}^{(1)}\left(x\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\mbox{\ensuremath{F^{(2)}\left(y,x\right)=f^{(1)}\left[F\left(y-1,x\right)\right]=f^{(1)}\left\{ p_{3}^{(3)}\left[y-1,x,F\left(y-1,x\right)\right]\right\} =\Phi\left(f^{(1)},p_{3}^{(3)}\right)}}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+entonces 
+\begin_inset Formula $F^{(2)}=R\left[p_{1}^{(1)},\Phi\left(f^{(1)},p_{3}^{(3)}\right)\right]$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Section
+Conjuntos
+\end_layout
+
+\begin_layout Subsection
+Conjunto recursivo primitivo
+\end_layout
+
+\begin_layout Standard
+Diremos 
+\begin_inset Formula $A\subseteq\mathbb{N}^{k}$
+\end_inset
+
+ es un conjunto recursivo primitivo (
+\begin_inset Formula $CRP$
+\end_inset
+
+) si su función característica 
+\begin_inset Formula $\chi_{A}:\mathbb{N}^{k}\to\left\{ 0,1\right\} $
+\end_inset
+
+ es 
+\begin_inset Formula $FRP$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Relaciones recursivas primitivas
+\end_layout
+
+\begin_layout Standard
+Una relación 
+\begin_inset Formula $R\subseteq\mathbb{N}\times\mathbb{N}$
+\end_inset
+
+ se dice recursiva primitiva (
+\begin_inset Formula $RRP$
+\end_inset
+
+) si es un 
+\begin_inset Formula $CRP$
+\end_inset
+
+.
+ 
+\end_layout
+
+\end_body
+\end_document

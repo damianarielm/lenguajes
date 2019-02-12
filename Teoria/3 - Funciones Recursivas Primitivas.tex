@@ -1,0 +1,129 @@
+\documentclass[12pt,a4paper,oneside,spanish]{book}
+\usepackage[T1]{fontenc}
+\usepackage[latin9]{inputenc}
+\setcounter{secnumdepth}{3}
+\setcounter{tocdepth}{3}
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+\setcounter{chapter}{2}
+\makeatletter
+\makeatother
+\usepackage{babel}
+\addto\shorthandsspanish{\spanishdeactivate{~<>.}}
+
+\begin{document}
+	\chapter{Funciones recursivas primitivas}
+		\section{Definiciones}
+			\subsection{Aridad}
+				Sea $f:A_{1}\times A_{2}\times\ldots\times A_{n}\to B$ llamaremos \emph{aridad} al numero de argumentos que toma la función, es decir $n$ y notaremos $f^{(n)}$.
+
+			\subsection{Función característica}
+				Dado un conjunto $X$, para cada subconjunto $A\subseteq X$ definimos su \emph{función característica} $\chi_{A}:X\to\left\{ 0,1\right\} $ como:
+	
+				\[
+					\chi_{A}\left(x\right)=
+					\begin{cases}
+						1 & x\in A\\
+						0 & x\notin A
+					\end{cases}
+				\]
+
+			\subsection{Función numérica}
+				Llamaremos función numérica a toda función $f:\mathbb{N}^{k}\to\mathbb{N}$ con $k\in\mathbb{N}$. Si $k=0$ identificaremos a dicha función con un numero perteneciente a $\mathbb{N}$.
+
+			\subsection{Funciones base}
+				Llamaremos funciones base a las siguientes tres funciones:
+				
+				\begin{itemize}
+					\item La función cero $c^{(n)}:\mathbb{N}^{n}\to\mathbb{N}$ definida por $c^{(n)}\left(X\right)=0$.
+					\item Las funciones proyección $p_{k}^{(n)}:\mathbb{N}^{n}\to\mathbb{N}$ definidas por $\mbox{\ensuremath{p_{k}^{(n)}\left(x_{1},x_{2},\ldots,x_{n}\right)=x_{k}}}$.
+					\item La función sucesor $s^{\left(1\right)}:\mathbb{N\to\mathbb{N}}$ definida por $s^{\left(1\right)}(x)=x+1$.
+				\end{itemize}
+
+			\subsection{Operadores}
+				Definiremos dos operadores que nos permitirán construir nuevas funciones:
+
+				\begin{itemize}
+					\item El operador de composición $\Phi$ que dada una función numérica $f^{(n)}$ y $n$ funciones numéricas de aridad $k$, construye la función numérica $h$ definida como:
+						\begin{align*}
+							h:\mathbb{N}^{k}\to & \mathbb{N}\\
+							X^{k}\to & h\left(X^{k}\right)=f\left[g_{1}\left(X^{k}\right),g_{2}\left(X^{k}\right),\ldots,g_{n}\left(X^{k}\right)\right]
+						\end{align*}
+					y que notaremos $h=\Phi\left(f,g_{1},g_{2},\ldots,g_{n}\right)$.
+					\item El operador de recursion $R$ que dadas dos funciones numéricas $g^{(k)}$ y $h^{(k+2)}$ construye una nueva función numérica $f^{(k+1)}$ definida como
+					
+						\[
+							f\left(y,X^{k}\right)=
+							\begin{cases}
+								g\left(X^{k}\right) & y=0\\
+								h\left[y-1,X^{k},f\left(y-1,X^{k}\right)\right] & y>0
+							\end{cases}
+						\]
+					y notaremos $f=R(g,h)$.
+				\end{itemize}
+
+			\subsection{Definición inductiva}
+				Definimos inductivamente el conjunto de funciones recursivas primitivas ($FRP$) como el menor conjunto tal que:
+				
+				\begin{itemize}
+					\item Las funciones base pertenecen a $FRP$.
+					\item Las funciones obtenidas aplicando un numero finito de operaciones de composición y recursion sobre elementos de $FRP$ también pertenecen a $FRP$.
+				\end{itemize}
+
+		\section{Ejemplos}
+			\subsection{Predecesor natural}
+				La función $\widehat{Pd}{}^{(1)}(y)=
+				\begin{cases}
+					0 & y=0\\
+					y-1 & y>0
+				\end{cases}$
+				es $FRP$ pues:
+				
+				\begin{enumerate}
+					\item $\widehat{Pd}{}^{(1)}(0)=0=c^{(0)}\left(\right)$.
+					\item $\widehat{Pd}{}^{(1)}(y)=y-1=p_{1}^{(2)}\left[y-1,\widehat{Pd}{}^{(1)}\left(y-1\right)\right]$.
+				\end{enumerate}
+				
+				por lo que $\widehat{Pd}{}^{(1)}=R\left(c^{(0)},p_{1}^{(2)}\right)$.
+
+			\subsection{Suma}
+				La función $\Sigma^{(2)}(y,x)=y+x$ es $FRP$ pues:
+				
+				\begin{enumerate}
+					\item $\Sigma^{(2)}\left(0,x\right)=0+x=x=p_{1}^{(1)}\left(x\right)$.
+					\item $\begin{aligned}\Sigma^{(2)}\left(y,x\right) & =y+x=y+x+1-1=\left(y-1\right)+x+1=s^{(1)}\left[\Sigma^{(2)}\left(y-1,x\right)\right]=\\
+					& =s^{(1)}\left\{ p_{3}^{(3)}\left[y-1,x,\Sigma^{(2)}\left(y-1,x\right)\right]\right\} =\Phi\left(s^{(1)},p_{3}^{(3)}\right).
+					\end{aligned}
+				$
+				\end{enumerate}
+			
+				y en consecuencia $\Sigma^{(2)}=R\left[p_{1}^{(1)},\Phi\left(s^{(1)},p_{3}^{(3)}\right)\right]$.
+
+			\subsection{Función potencia}
+				Dada una función $f^{(1)}$ definimos $F^{(2)}$ llamada potencia de $f$ como:
+				
+				\[
+					F\left(y,x\right)=
+					\begin{cases}
+						x & y=0\\
+						f\left[F\left(y-1,x\right)\right] & y>0
+					\end{cases}
+				\]
+			 
+				y notaremos $F\left(y,x\right)=f^{y}\left(x\right)$.\\
+				La función $f^{y}\left(x\right)$ es $FRP$ pues:
+				
+				\begin{enumerate}
+					\item $F^{(2)}\left(0,x\right)=x=p_{1}^{(1)}\left(x\right)$.
+					\item $\mbox{\ensuremath{F^{(2)}\left(y,x\right)=f^{(1)}\left[F\left(y-1,x\right)\right]=f^{(1)}\left\{ p_{3}^{(3)}\left[y-1,x,F\left(y-1,x\right)\right]\right\} =\Phi\left(f^{(1)},p_{3}^{(3)}\right)}}$.
+				\end{enumerate}
+				entonces $F^{(2)}=R\left[p_{1}^{(1)},\Phi\left(f^{(1)},p_{3}^{(3)}\right)\right]$.
+
+		\section{Conjuntos}
+			\subsection{Conjunto recursivo primitivo}
+				Diremos $A\subseteq\mathbb{N}^{k}$ es un conjunto recursivo primitivo ($CRP$) si su función característica $\chi_{A}:\mathbb{N}^{k}\to\left\{ 0,1\right\} $ es $FRP$.
+
+			\subsection{Relaciones recursivas primitivas}
+				Una relación $R\subseteq\mathbb{N}\times\mathbb{N}$ se dice recursiva primitiva ($RRP$) si es un $CRP$. 
+\end{document}

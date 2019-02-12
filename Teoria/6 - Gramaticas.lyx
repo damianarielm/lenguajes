@@ -1,0 +1,1283 @@
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 508
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass book
+\begin_preamble
+\usepackage{multicol}
+\usepackage{tikz}
+\usetikzlibrary{automata,positioning,calc}
+\end_preamble
+\use_default_options true
+\maintain_unincluded_children false
+\language spanish-mexico
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize 12
+\spacing single
+\use_hyperref false
+\papersize a4paper
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language french
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Chapter
+Gramáticas
+\end_layout
+
+\begin_layout Section
+Definiciones
+\end_layout
+
+\begin_layout Subsection
+Alfabeto
+\end_layout
+
+\begin_layout Standard
+Un alfabeto es un conjunto finito y no vacío, cuyos elementos reciben el
+ nombre de símbolos, letras o caracteres.
+\end_layout
+
+\begin_layout Standard
+Notaremos a los alfabetos con la letra sigma, por ejemplo 
+\begin_inset Formula $\Sigma=\left\{ l_{1},l_{2},\ldots,l_{k}\right\} $
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Cadena
+\end_layout
+
+\begin_layout Standard
+Una cadena o palabra sobre un alfabeto 
+\begin_inset Formula $\Sigma$
+\end_inset
+
+ es una secuencia finita de símbolos de 
+\begin_inset Formula $\Sigma$
+\end_inset
+
+.
+ Mas precisamente se la define como la función 
+\begin_inset Formula $p:\left\{ 1,\ldots,n\right\} \to\Sigma$
+\end_inset
+
+ donde el entero positivo 
+\begin_inset Formula $n$
+\end_inset
+
+ es la longitud de la palabra, que se denota también como 
+\begin_inset Formula $\left|p\right|$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Ademas definimos la palabra especial 
+\begin_inset Formula $\lambda:\left\{ \right\} \to\Sigma$
+\end_inset
+
+ llamada nula, o vaciá, considerada de longitud 
+\begin_inset Formula $0$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Dada la palabra 
+\begin_inset Formula $p:\left\{ 1,\ldots,n\right\} \to\Sigma$
+\end_inset
+
+ por simplicidad de notación escribiremos la cadena 
+\begin_inset Formula $p$
+\end_inset
+
+ como 
+\begin_inset Formula $p\left(1\right)p\left(2\right)\ldots p\left(n\right)=l_{1}l_{2}\ldots l_{n}$
+\end_inset
+
+.
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Clausuras de Kleene
+\end_layout
+
+\begin_layout Standard
+Dado un alfabeto 
+\begin_inset Formula $\Sigma$
+\end_inset
+
+ definimos 
+\begin_inset Formula $\Sigma^{0}=\left\{ \lambda\right\} $
+\end_inset
+
+ y 
+\begin_inset Formula $\Sigma^{n}=\left\{ p/p:\left\{ 1,\ldots,n\right\} \to\Sigma\right\} $
+\end_inset
+
+ para todo 
+\begin_inset Formula $n\geq1$
+\end_inset
+
+, es decir, el conjunto de todas las palabra de una determinada longitud.
+\end_layout
+
+\begin_layout Standard
+Definimos ademas dos operadores: 
+\begin_inset Formula $\Sigma^{*}={\displaystyle \bigcup_{n\geq0}\Sigma^{n}}$
+\end_inset
+
+ y 
+\begin_inset Formula $\Sigma^{+}={\displaystyle \bigcup_{n\geq1}\Sigma^{n}}$
+\end_inset
+
+, es decir que 
+\begin_inset Formula $\Sigma^{*}$
+\end_inset
+
+ es el conjunto de todas las palabras sobre un alfabeto 
+\begin_inset Formula $\Sigma$
+\end_inset
+
+, incluyendo la palabra vaciá.
+\end_layout
+
+\begin_layout Paragraph
+Observaciones
+\end_layout
+
+\begin_layout Itemize
+Dado un conjunto 
+\begin_inset Formula $A=\emptyset$
+\end_inset
+
+ resulta 
+\begin_inset Formula $A^{*}=\left\{ \lambda\right\} $
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Si 
+\begin_inset Formula $A\neq\emptyset$
+\end_inset
+
+ resulta 
+\begin_inset Formula $A^{*}$
+\end_inset
+
+ es infinito numerable pues es u.n.c.n.
+\end_layout
+
+\begin_layout Subsection
+Concatenación
+\end_layout
+
+\begin_layout Standard
+Dado un alfabeto 
+\begin_inset Formula $\Sigma$
+\end_inset
+
+ y dos palabras 
+\begin_inset Formula $p:\left\{ 1,\ldots,m\right\} \to\Sigma$
+\end_inset
+
+ y 
+\begin_inset Formula $\text{\ensuremath{q:\left\{ 1,\ldots,n\right\} \to\Sigma}}$
+\end_inset
+
+ definimos la concatenación de 
+\begin_inset Formula $p$
+\end_inset
+
+ y 
+\begin_inset Formula $q$
+\end_inset
+
+ (denotada 
+\begin_inset Formula $pq$
+\end_inset
+
+) como la palabra 
+\begin_inset Formula $\mbox{\ensuremath{pq:\left\{ 1,\ldots,m+n\right\} \to\Sigma}}$
+\end_inset
+
+ tal que:
+\begin_inset Formula 
+\[
+pq\left(i\right)=\begin{cases}
+p\left(i\right) & 1\leq i\leq m\\
+q\left(i-m\right) & m+1\leq i\leq m+n
+\end{cases}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph
+Observaciones
+\end_layout
+
+\begin_layout Itemize
+En particular 
+\begin_inset Formula $p\lambda=\lambda p=p$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Es fácil ver que 
+\begin_inset Formula $p\left(qr\right)=\left(qp\right)r$
+\end_inset
+
+ pero 
+\begin_inset Formula $pq\neq qr$
+\end_inset
+
+ , es decir, la concatenación es asociativa pero no conmutativa.
+\end_layout
+
+\begin_layout Subsection
+Cadena potencia
+\end_layout
+
+\begin_layout Standard
+Dada una palabra 
+\begin_inset Formula $p\in\Sigma^{*}$
+\end_inset
+
+ definimos su potencia 
+\begin_inset Formula $p^{n}$
+\end_inset
+
+ como:
+\begin_inset Formula 
+\[
+p^{n}=\begin{cases}
+\lambda & n=0\\
+p^{n-1}p & n\geq1
+\end{cases}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Cadena reversa
+\end_layout
+
+\begin_layout Standard
+Dada una palabra 
+\begin_inset Formula $p\in\Sigma^{*}$
+\end_inset
+
+ y un caracter 
+\begin_inset Formula $c\in\Sigma$
+\end_inset
+
+ definimos inductivamente la cadena reversa 
+\begin_inset Formula $p^{R}$
+\end_inset
+
+ como:
+\begin_inset Formula 
+\[
+\begin{array}{cc}
+\lambda^{R}= & \lambda\\
+\left(pc\right)^{R}= & cp^{R}
+\end{array}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Subcadenas
+\end_layout
+
+\begin_layout Standard
+Diremos que:
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $s$
+\end_inset
+
+ es 
+\emph on
+subcadena
+\emph default
+ de 
+\begin_inset Formula $p$
+\end_inset
+
+ si existen 
+\begin_inset Formula $q,r\in\Sigma^{*}$
+\end_inset
+
+ tales que: 
+\begin_inset Formula $p=qsr$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $s$
+\end_inset
+
+ es 
+\emph on
+prefijo
+\emph default
+ de 
+\begin_inset Formula $p$
+\end_inset
+
+ si es una subcadena tal que: 
+\begin_inset Formula $p=\lambda sr$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $s$
+\end_inset
+
+ es sufijo de 
+\begin_inset Formula $p$
+\end_inset
+
+ si es una subcadena tal que: 
+\begin_inset Formula $p=qs\lambda$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $s$
+\end_inset
+
+ es 
+\emph on
+subcadena propia
+\emph default
+ de 
+\begin_inset Formula $p$
+\end_inset
+
+ si es subcadena de 
+\begin_inset Formula $p$
+\end_inset
+
+ y ademas 
+\begin_inset Formula $s\neq p$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Section
+Lenguajes
+\end_layout
+
+\begin_layout Subsection
+Definición
+\end_layout
+
+\begin_layout Standard
+Un lenguaje sobre un alfabeto 
+\begin_inset Formula $\Sigma$
+\end_inset
+
+ es un subconjunto de 
+\begin_inset Formula $\Sigma^{*}$
+\end_inset
+
+.
+ Para cada alfabeto 
+\begin_inset Formula $\Sigma$
+\end_inset
+
+ llamaremos 
+\begin_inset Formula $\mathcal{L}$
+\end_inset
+
+ al conjunto de todos los lenguajes sobre 
+\begin_inset Formula $\Sigma$
+\end_inset
+
+, es decir, 
+\begin_inset Formula $\mathcal{L}=\mathcal{P}\left(\Sigma^{*}\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Paragraph
+Observación
+\end_layout
+
+\begin_layout Standard
+Para cualquier alfabeto, sabemos que 
+\begin_inset Formula $\#\Sigma^{*}=\aleph_{0}$
+\end_inset
+
+ y en consecuencia 
+\begin_inset Formula $\#\mathcal{L}=\#\mathcal{P}\left(\Sigma^{*}\right)=\aleph_{1}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Unión
+\end_layout
+
+\begin_layout Standard
+Dados dos lenguajes 
+\begin_inset Formula $L_{1}$
+\end_inset
+
+ y 
+\begin_inset Formula $L_{2}$
+\end_inset
+
+ sobre 
+\begin_inset Formula $\Sigma$
+\end_inset
+
+ definimos la unión de los lenguajes como: 
+\begin_inset Formula $L_{1}\cup L_{2}=\left\{ p\in\Sigma^{*}/p\in L_{1}\lor p\in L_{2}\right\} $
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Intersección
+\end_layout
+
+\begin_layout Standard
+Dados dos lenguajes 
+\begin_inset Formula $L_{1}$
+\end_inset
+
+ y 
+\begin_inset Formula $L_{2}$
+\end_inset
+
+ sobre 
+\begin_inset Formula $\Sigma$
+\end_inset
+
+ definimos la intersección de los lenguajes como: 
+\begin_inset Formula $L_{1}\cap L_{2}=\left\{ p\in\Sigma^{*}/p\in L_{1}\land p\in L_{2}\right\} $
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Diferencia
+\end_layout
+
+\begin_layout Standard
+Dados dos lenguajes 
+\begin_inset Formula $L_{1}$
+\end_inset
+
+ y 
+\begin_inset Formula $L_{2}$
+\end_inset
+
+ sobre 
+\begin_inset Formula $\Sigma$
+\end_inset
+
+ definimos la diferencia de los lenguajes como: 
+\begin_inset Formula $L_{1}-L_{2}=\left\{ p\in\Sigma^{*}/p\in L_{1}\land p\notin L_{2}\right\} $
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Complemento
+\end_layout
+
+\begin_layout Standard
+Para cada lenguaje 
+\begin_inset Formula $L$
+\end_inset
+
+, definimos el lenguaje complemento como: 
+\begin_inset Formula $\mbox{\ensuremath{\bar{L}=\Sigma^{*}-L}}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Concatenación
+\end_layout
+
+\begin_layout Standard
+Dados dos lenguajes 
+\begin_inset Formula $L_{1}$
+\end_inset
+
+ y 
+\begin_inset Formula $L_{2}$
+\end_inset
+
+ sobre 
+\begin_inset Formula $\Sigma$
+\end_inset
+
+ definimos la concatenación de los lenguajes como: 
+\begin_inset Formula $L_{1}L_{2}=\left\{ p\in\Sigma^{*}/\exists q\in L_{1},\exists r\in L_{2},p=qr\right\} $
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Paragraph
+Observaciones
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $L\emptyset=\emptyset L=\emptyset$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $L\left\{ \lambda\right\} =\left\{ \lambda\right\} L=L$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+En general 
+\begin_inset Formula $L_{1}L_{2}\neq L_{2}L_{1}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Potencia
+\end_layout
+
+\begin_layout Standard
+Dado un lenguaje 
+\begin_inset Formula $L$
+\end_inset
+
+ definimos inductivamente su potencia 
+\begin_inset Formula $L^{n}$
+\end_inset
+
+ como
+\begin_inset Formula 
+\[
+\begin{array}{cc}
+L^{0}= & \left\{ \lambda\right\} \\
+L^{n+1}= & L^{n}L
+\end{array}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Clausuras de Kleene
+\end_layout
+
+\begin_layout Standard
+Dados un alfabeto 
+\begin_inset Formula $\Sigma$
+\end_inset
+
+ y un lenguaje 
+\begin_inset Formula $L$
+\end_inset
+
+ sobre 
+\begin_inset Formula $\Sigma$
+\end_inset
+
+ definimos: 
+\begin_inset Formula $L^{*}={\displaystyle \bigcup_{n\geq0}L^{n}}$
+\end_inset
+
+ y 
+\begin_inset Formula $L^{+}={\displaystyle \bigcup_{n\geq1}L^{n}}$
+\end_inset
+
+, es decir que 
+\begin_inset Formula $L^{*}$
+\end_inset
+
+ es la unión infinita: 
+\begin_inset Formula 
+\[
+L^{*}=L^{0}\cup L^{1}\cup L^{2}\cup\cdots\cup L^{n}\cup\cdots=\left\{ \lambda\right\} \cup L\cup L^{2}\cup\cdots\cup L^{n}\cup\cdots
+\]
+
+\end_inset
+
+mientras que 
+\begin_inset Formula $L^{+}$
+\end_inset
+
+ es la unión infinita:
+\begin_inset Formula 
+\[
+L^{+}=L^{1}\cup L^{2}\cup\cdots\cup L^{n}\cup\cdots=L\cup L^{2}\cup\cdots\cup L^{n}\cup\cdots
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph
+Observaciones
+\end_layout
+
+\begin_layout Itemize
+Tanto 
+\begin_inset Formula $L^{*}$
+\end_inset
+
+ como 
+\begin_inset Formula $L^{+}$
+\end_inset
+
+ contienen a 
+\begin_inset Formula $L$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Dado que 
+\begin_inset Formula $L^{0}=\left\{ \lambda\right\} $
+\end_inset
+
+ resulta que 
+\begin_inset Formula $L^{*}=L^{+}\cup\left\{ \lambda\right\} $
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\emptyset^{*}=\left\{ \lambda\right\} $
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $L^{+}=L^{*}L$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\left(L^{*}\right)^{*}=L^{*}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $L^{*}L^{*}=L^{*}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Al contrario que con los operadores anteriores, las clausuras de Kleene
+ construyen siempre lenguajes infinitos.
+\end_layout
+
+\begin_layout Section
+Gramáticas
+\end_layout
+
+\begin_layout Subsection
+Definición
+\end_layout
+
+\begin_layout Standard
+Una gramática es una tupla 
+\begin_inset Formula $\left(N,T,P,\sigma\right)$
+\end_inset
+
+ donde:
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $N$
+\end_inset
+
+ es un conjunto finito de símbolos llamados 
+\emph on
+no terminales
+\emph default
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $T$
+\end_inset
+
+ es un conjunto finito de símbolos llamados 
+\emph on
+terminales
+\emph default
+, o alfabeto, tal que 
+\begin_inset Formula $N\cap T=\emptyset$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $P$
+\end_inset
+
+ es un conjunto finito de 
+\emph on
+reglas de producción
+\emph default
+ donde 
+\begin_inset Formula $\text{\ensuremath{P\subseteq\left[\left(N\cup T\right)^{*}-T^{*}\right]\times\left[N\cup T\right]^{*}}}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\sigma\in N$
+\end_inset
+
+ es el llamado 
+\emph on
+símbolo inicial
+\emph default
+.
+\end_layout
+
+\begin_layout Paragraph
+Observaciones
+\end_layout
+
+\begin_layout Itemize
+Nótese que 
+\begin_inset Formula $\left[\left(N\cup T\right)^{*}-T^{*}\right]$
+\end_inset
+
+ es el conjunto de cadenas de no terminales y terminales que contienen al
+ menos un no terminal.
+ Dado que 
+\begin_inset Formula $\lambda\notin\left[\left(N\cup T\right)^{*}-T^{*}\right]$
+\end_inset
+
+ no puede haber reglas del tipo 
+\begin_inset Formula $\left(\lambda,\beta\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+A una regla de producción 
+\begin_inset Formula $\left(\alpha,\beta\right)$
+\end_inset
+
+ la notaremos: 
+\begin_inset Formula $\alpha\to\beta$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Una regla del tipo 
+\begin_inset Formula $\alpha\to\lambda$
+\end_inset
+
+ recibe el nombre de regla 
+\begin_inset Formula $\lambda$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Derivación
+\end_layout
+
+\begin_layout Standard
+Si 
+\begin_inset Formula $\alpha\to\beta$
+\end_inset
+
+ es una regla de producción y 
+\begin_inset Formula $\gamma\alpha\delta\in\left[\left(N\cup T\right)^{*}-T^{*}\right]$
+\end_inset
+
+, entonces diremos que 
+\begin_inset Formula $\gamma\beta\delta$
+\end_inset
+
+ deriva directamente de 
+\begin_inset Formula $\gamma\alpha\delta$
+\end_inset
+
+ o que 
+\begin_inset Formula $\gamma\alpha\delta$
+\end_inset
+
+ produce directamente 
+\begin_inset Formula $\gamma\beta\delta$
+\end_inset
+
+ y lo notaremos: 
+\begin_inset Formula $\gamma\alpha\delta\Rightarrow\gamma\beta\delta$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Si vale que 
+\begin_inset Formula $\alpha_{1}\Rightarrow\alpha_{2}\Rightarrow\ldots\Rightarrow a_{n-1}\Rightarrow\alpha_{n}$
+\end_inset
+
+ donde 
+\begin_inset Formula $\alpha_{i}\in\left[\left(N\cup T\right)^{*}-T^{*}\right]$
+\end_inset
+
+ y 
+\begin_inset Formula $\alpha_{n}\in\left[N\cup T\right]^{*}$
+\end_inset
+
+ diremos que 
+\begin_inset Formula $\alpha_{n}$
+\end_inset
+
+ deriva de 
+\begin_inset Formula $\alpha_{1}$
+\end_inset
+
+ o que 
+\begin_inset Formula $\alpha_{1}$
+\end_inset
+
+ produce 
+\begin_inset Formula $\alpha_{n}$
+\end_inset
+
+ y lo notaremos: 
+\begin_inset Formula $\alpha_{1}\Rightarrow^{*}\alpha_{n}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Lenguajes generados
+\end_layout
+
+\begin_layout Standard
+Definimos el lenguaje generado por una gramática 
+\begin_inset Formula $G=\left(N,T,P,\sigma\right)$
+\end_inset
+
+ como 
+\begin_inset Formula $L\left(G\right)=\left\{ p\in T^{*}/\sigma\Rightarrow^{*}p\right\} $
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Gramáticas regulares
+\end_layout
+
+\begin_layout Standard
+Las gramáticas regulares (también llamadas del tipo 3 o lineales) pueden
+ ser clasificadas como derechas o izquierdas.
+\end_layout
+
+\begin_layout Standard
+Las reglas de producción de una gramática regular derecha tienen las siguientes
+ restricciones:
+\end_layout
+
+\begin_layout Enumerate
+El lado izquierdo debe consistir en un solo no terminal.
+\end_layout
+
+\begin_layout Enumerate
+El lado derecho esta formado por un símbolo terminal que puede estar seguido
+ o no, por un símbolo no terminal o la cadena vaciá.
+\end_layout
+
+\begin_layout Standard
+Es decir que las producciones de una gramática regular derecha tienen la
+ forma 
+\begin_inset Formula $A\to a$
+\end_inset
+
+, 
+\begin_inset Formula $A\to aB$
+\end_inset
+
+ o 
+\begin_inset Formula $A\to\lambda$
+\end_inset
+
+, donde 
+\begin_inset Formula $A,B\in N$
+\end_inset
+
+ y 
+\begin_inset Formula $a\in T$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Alternativamente, en una gramática regular izquierda las reglas de producción
+ son de la forma: 
+\begin_inset Formula $A\to a$
+\end_inset
+
+, 
+\begin_inset Formula $A\to Ba$
+\end_inset
+
+ o 
+\begin_inset Formula $A\to\lambda$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Paragraph
+Observaciones
+\end_layout
+
+\begin_layout Standard
+Toda gramática regular derecha puede ser convertida en una gramática regular
+ izquierda (y viceversa).
+ Algunas definiciones permiten reemplazar 
+\begin_inset Formula $a$
+\end_inset
+
+ por una cadena de uno o mas terminales, siendo ambas definiciones equivalentes.
+\end_layout
+
+\begin_layout Subsection
+Gramáticas libres de contexto
+\end_layout
+
+\begin_layout Standard
+Las gramáticas libres o independientes del contexto son iguales a las regulares,
+ pero sin restricciones sobre el lado derecho.
+ Es decir que las reglas de producción tienen la forma 
+\begin_inset Formula $A\to\alpha$
+\end_inset
+
+ donde 
+\begin_inset Formula $A\in N$
+\end_inset
+
+ y 
+\begin_inset Formula $\alpha\in\left(N\cup T\right)^{*}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Paragraph
+Observaciones
+\end_layout
+
+\begin_layout Itemize
+Estas gramáticas reciben ese nombre debido a que en el lado izquierdo el
+ no terminal aparece solo, por lo que la regla se puede aplicar sin importar
+ el contexto en el que aparece dicho no terminal, al contrario de reglas
+ de la forma 
+\begin_inset Formula $\gamma N\delta\to\gamma\alpha\delta$
+\end_inset
+
+ donde el no terminal 
+\begin_inset Formula $N$
+\end_inset
+
+ solo se puede reemplazar por 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ cuando se encuentre en el contexto de 
+\begin_inset Formula $\gamma$
+\end_inset
+
+ y 
+\begin_inset Formula $\delta$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Dado que no existen restricciones sobre el lado derecho, podría ocurrir
+ que en el aparezcan mas de uno como en 
+\begin_inset Formula $A\to XY$
+\end_inset
+
+.
+ En esta situación el enfoque mas común consiste en reemplazar en el paso
+ siguiente el no terminal situado mas a la izquierda.
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Alternativamente se podría reemplazar no terminales desde la derecha o algún
+ otro patrón pues resultara que el orden en el que se apliquen las reglas,
+ no afecta la determinación de si una cadena puede ser generada por la gramática.
+\end_layout
+
+\begin_layout Subsection
+Gramáticas sensibles al contexto
+\end_layout
+
+\begin_layout Standard
+Las reglas de producción de una gramática dependiente del contexto son del
+ tipo 
+\begin_inset Formula $\alpha A\beta\to\alpha\delta\beta$
+\end_inset
+
+ donde 
+\begin_inset Formula $A\in N$
+\end_inset
+
+, 
+\begin_inset Formula $\alpha,\beta\in\left[N\cup T\right]^{*}$
+\end_inset
+
+ y 
+\begin_inset Formula $\delta\in\left[N\cup T\right]^{+}$
+\end_inset
+
+.
+ Adicionalmente se permite la regla 
+\begin_inset Formula $\sigma\to\lambda$
+\end_inset
+
+ donde 
+\begin_inset Formula $\sigma$
+\end_inset
+
+ es el símbolo inicial siempre que 
+\begin_inset Formula $\sigma$
+\end_inset
+
+ no aparezca en el lado derecho de otra producción.
+\end_layout
+
+\begin_layout Standard
+Quizás a simple vista podría parecer que las gramáticas sensibles al contexto
+ son mas restrictivas que las libre de contexto, sin embargo basta tomar
+ 
+\begin_inset Formula $\alpha=\lambda=\beta$
+\end_inset
+
+ para ver que las sensibles al contexto abarcan a las libres de contexto.
+\end_layout
+
+\begin_layout Subsection
+Gramáticas estructuradas por frases
+\end_layout
+
+\begin_layout Standard
+Finalmente las gramáticas estructuradas por frases o irrestrictas, son aquellas
+ que no tienen restricciones sobre la forma de las reglas de producción.
+ Es decir que sus reglas son de la forma 
+\begin_inset Formula $\alpha\to\beta$
+\end_inset
+
+ donde 
+\begin_inset Formula $\alpha\in\left[\left(N\cup T\right)^{*}-T^{*}\right]$
+\end_inset
+
+ y 
+\begin_inset Formula $\beta\in\left[N\cup T\right]^{*}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Paragraph
+Observación
+\end_layout
+
+\begin_layout Standard
+Dado que 
+\begin_inset Formula $\lambda\notin\left[\left(N\cup T\right)^{*}-T^{*}\right]$
+\end_inset
+
+ no puede haber reglas del tipo 
+\begin_inset Formula $\lambda\to\beta$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Relación entre gramáticas
+\end_layout
+
+\begin_layout Standard
+Llamando 
+\begin_inset Formula $\mathcal{G}_{i}=\left\{ G/G\text{ es del tipo }i\right\} $
+\end_inset
+
+ con 
+\begin_inset Formula $i=0,1,2,3$
+\end_inset
+
+, se tiene que: 
+\begin_inset Formula $\mbox{\mathcal{G}_{3}\subset\mathcal{G}_{2}\subset\mathcal{G}_{1}\subset\mathcal{G}_{0}}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Tipos de lenguajes
+\end_layout
+
+\begin_layout Standard
+Diremos que un lenguaje 
+\begin_inset Formula $L$
+\end_inset
+
+ es de tipo 
+\begin_inset Formula $i$
+\end_inset
+
+ (con 
+\begin_inset Formula $i=0,1,2,3$
+\end_inset
+
+) si y solo si existe una gramática 
+\begin_inset Formula $G$
+\end_inset
+
+ del tipo 
+\begin_inset Formula $i$
+\end_inset
+
+ tal que 
+\begin_inset Formula $L\left(G\right)=L$
+\end_inset
+
+.
+\end_layout
+
+\end_body
+\end_document

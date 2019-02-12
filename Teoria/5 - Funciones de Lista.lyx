@@ -1,0 +1,2966 @@
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 508
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass book
+\use_default_options true
+\maintain_unincluded_children false
+\language spanish-mexico
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize 12
+\spacing single
+\use_hyperref false
+\papersize a4paper
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language french
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Chapter
+Funciones de lista
+\end_layout
+
+\begin_layout Section
+Definiciones
+\end_layout
+
+\begin_layout Subsection
+Lista
+\end_layout
+
+\begin_layout Standard
+Una lista es una secuencia ordenada y finita de cero o mas elementos de
+ 
+\begin_inset Formula $\mathbb{N}_{0}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Paragraph
+Notación
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\left[x_{1},x_{2},\ldots,x_{k}\right]$
+\end_inset
+
+ para una lista de longitud 
+\begin_inset Formula $k$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\left[\right]$
+\end_inset
+
+ para la lista vaciá.
+\end_layout
+
+\begin_layout Itemize
+Notaremos con 
+\begin_inset Formula $\mathcal{L}$
+\end_inset
+
+ al conjunto de todas las listas.
+\end_layout
+
+\begin_layout Itemize
+Con 
+\begin_inset Formula $\mathcal{L}^{n}$
+\end_inset
+
+ indicaremos el conjunto de listas que poseen exactamente 
+\begin_inset Formula $n$
+\end_inset
+
+ elementos.
+\end_layout
+
+\begin_layout Itemize
+Con 
+\begin_inset Formula $\mathcal{L}^{\geq n}$
+\end_inset
+
+ indicaremos el conjunto de listas con al menos 
+\begin_inset Formula $n$
+\end_inset
+
+ elementos.
+\end_layout
+
+\begin_layout Subsection
+Concatenación
+\end_layout
+
+\begin_layout Standard
+Dadas dos listas 
+\begin_inset Formula $X=\left[x_{1},\ldots,x_{m}\right]$
+\end_inset
+
+ e 
+\begin_inset Formula $Y=\left[y_{1},\ldots,y_{n}\right]$
+\end_inset
+
+ llamamos concatenación de 
+\begin_inset Formula $X$
+\end_inset
+
+ e 
+\begin_inset Formula $Y$
+\end_inset
+
+ a la lista 
+\begin_inset Formula $\left[x_{1},\ldots,x_{m},y_{1},\ldots,y_{n}\right]$
+\end_inset
+
+ y lo notaremos 
+\begin_inset Formula $\left[X,Y\right]$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Para distinguir ciertos elementos de intereses escribiremos 
+\begin_inset Formula $\left[a,X,b,Y\right]$
+\end_inset
+
+.
+ La concatenación es una operación asociativa cuyo elemento neutro es la
+ lista vaciá.
+\end_layout
+
+\begin_layout Subsection
+Funciones de lista
+\end_layout
+
+\begin_layout Standard
+Las funciones de listas son funciones que van de 
+\begin_inset Formula $\mathcal{L}$
+\end_inset
+
+ en 
+\begin_inset Formula $\mathcal{L}$
+\end_inset
+
+.
+ Para indicar que una función 
+\begin_inset Formula $F$
+\end_inset
+
+ asigna a la lista 
+\begin_inset Formula $X$
+\end_inset
+
+, la lista 
+\begin_inset Formula $Y$
+\end_inset
+
+ escribimos 
+\begin_inset Formula $F\left[X\right]=Y$
+\end_inset
+
+ o bien 
+\begin_inset Formula $FX=Y$
+\end_inset
+
+.
+ Nótese la omisión de los paréntesis sobre los argumentos.
+\end_layout
+
+\begin_layout Paragraph
+Observación
+\end_layout
+
+\begin_layout Standard
+Podemos pensar a las funciones numéricas 
+\begin_inset Formula $f:\mathbb{N}_{0}^{k}\to\mathbb{N}_{0}$
+\end_inset
+
+ como funciones de listas 
+\begin_inset Formula $F:\mathcal{L}^{k}\to\mathcal{L}^{1}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Funciones base
+\end_layout
+
+\begin_layout Standard
+Llamaremos funciones base a las siguientes 6 funciones:
+\end_layout
+
+\begin_layout Itemize
+Cero a izquierda: 
+\begin_inset Formula $0_{i}\left[x_{1},x_{2},\ldots,x_{k}\right]=\left[\boldsymbol{0},x_{1},x_{2},\ldots,x_{k}\right]$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Cero a derecha: 
+\begin_inset Formula $0_{d}\left[x_{1},x_{2},\ldots,x_{k}\right]=\left[x_{1},x_{2},\ldots,x_{k},\boldsymbol{0}\right]$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Borrar a izquierda: 
+\begin_inset Formula $\square_{i}\left[\boldsymbol{x_{1}},x_{2},\ldots,x_{k}\right]=\left[x_{2},\ldots,x_{k}\right]$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Borrar a derecha: 
+\begin_inset Formula $\square_{d}\left[x_{1},x_{2},\ldots,\boldsymbol{x_{k}}\right]=\left[x_{1},x_{2},\ldots,x_{k-1}\right]$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Sucesor a izquierda: 
+\begin_inset Formula $S_{i}\left[x_{1},x_{2},\ldots,x_{k}\right]=\left[\boldsymbol{x_{1}+1},x_{2},\ldots,x_{k}\right]$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Sucesor a derecha: 
+\begin_inset Formula $S_{d}\left[x_{1},x_{2},\ldots,x_{k}\right]=\left[x_{1},x_{2},\ldots,\boldsymbol{x_{k}+1}\right]$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Paragraph
+Observación
+\end_layout
+
+\begin_layout Standard
+Nótese que 
+\begin_inset Formula $dom\left(0_{i}\right)=dom\left(0_{d}\right)=\mathcal{L}$
+\end_inset
+
+ y que
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula $dom\left(\square_{i}\right)=dom\left(\square_{d}\right)=dom\left(S_{i}\right)=dom\left(S_{d}\right)=\mathcal{L}^{\geq1}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Operadores
+\end_layout
+
+\begin_layout Standard
+Definiremos dos operadores que nos permitirán construir nuevas funciones:
+\end_layout
+
+\begin_layout Itemize
+El operador de composición que dadas dos funciones 
+\begin_inset Formula $F$
+\end_inset
+
+ y 
+\begin_inset Formula $G$
+\end_inset
+
+ construye la función 
+\begin_inset Formula $H=F\circ G$
+\end_inset
+
+ que notaremos simplemente 
+\begin_inset Formula $H=FG$
+\end_inset
+
+ definida como 
+\begin_inset Formula $HX=G\left[FX\right]$
+\end_inset
+
+.
+ Nótese que contrariamente a lo usual, primero se aplica la función 
+\begin_inset Formula $F$
+\end_inset
+
+ y al resultado se aplica la función 
+\begin_inset Formula $G$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+El operador de repetición que dada una función 
+\begin_inset Formula $F$
+\end_inset
+
+ construye la función 
+\begin_inset Formula $\left\langle F\right\rangle $
+\end_inset
+
+ definida como:
+\begin_inset Formula 
+\[
+\left\langle F\right\rangle \left[x,Y,z\right]=\begin{cases}
+\left[x,Y,z\right] & x=z\\
+F\left\langle F\right\rangle \left[x,Y,z\right] & x\neq z
+\end{cases}
+\]
+
+\end_inset
+
+ es decir que la función 
+\begin_inset Formula $\left\langle F\right\rangle $
+\end_inset
+
+ actúa aplicando 
+\begin_inset Formula $F$
+\end_inset
+
+ hasta que el primer y ultimo elemento de su argumento sean iguales.
+\end_layout
+
+\begin_layout Paragraph
+Dominio
+\end_layout
+
+\begin_layout Standard
+ 
+\begin_inset Newline newline
+\end_inset
+
+El dominio de la composición es 
+\begin_inset Formula $dom\left(FG\right)=\left\{ X\in\mathcal{L}/X\in dom\left(F\right)\land FX\in dom\left(G\right)\right\} $
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Observemos que 
+\begin_inset Formula $\left\langle F\right\rangle $
+\end_inset
+
+ esta definida sobre listas de la forma 
+\begin_inset Formula $\left[x,Y,z\right]$
+\end_inset
+
+, es decir, que tienen al menos dos elementos.
+ Mas precisamente 
+\begin_inset Formula $X\in dom\left(\left\langle F\right\rangle \right)$
+\end_inset
+
+ si en la sucesión 
+\begin_inset Formula $\left\{ X,FX,FFX,FFFX,\ldots\right\} $
+\end_inset
+
+ existe una lista cuyo primer y ultimo elemento son iguales.
+\end_layout
+
+\begin_layout Subsection
+Definición inductiva
+\end_layout
+
+\begin_layout Standard
+Definimos inductivamente el conjunto de funciones recursivas de listas (
+\begin_inset Formula $FRL$
+\end_inset
+
+) como el menor conjunto tal que:
+\end_layout
+
+\begin_layout Itemize
+Las funciones base pertenecen a 
+\begin_inset Formula $FRL$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Las funciones obtenidas aplicando un numero finito de operaciones de composición
+ y repetición sobre elementos de 
+\begin_inset Formula $FRL$
+\end_inset
+
+ también pertenecen a 
+\begin_inset Formula $FRL$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Section
+Ejemplos
+\end_layout
+
+\begin_layout Subsection
+Pasar a izquierda
+\end_layout
+
+\begin_layout Standard
+La función 
+\begin_inset Formula $\triangleleft=0_{i}\left\langle S_{i}\right\rangle \square_{d}$
+\end_inset
+
+ pasa el elemento de la derecha a la izquierda.
+ Observemos una traza:
+\end_layout
+
+\begin_layout Standard
+ 
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="4" columns="2">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\left[X,y\right]$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0_{i}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\left[0,X,y\right]$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\left\langle S_{i}\right\rangle $
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\left[y,X,y\right]$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\square_{d}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\left[y,X\right]$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Pasar a derecha
+\end_layout
+
+\begin_layout Standard
+La función 
+\begin_inset Formula $\triangleright=0_{d}\left\langle S_{d}\right\rangle \square_{i}$
+\end_inset
+
+ pasa el elemento de la izquierda a la derecha.
+\end_layout
+
+\begin_layout Subsection
+Duplicar a izquierda
+\end_layout
+
+\begin_layout Standard
+La función 
+\begin_inset Formula $D_{i}=0_{d}\left\langle S_{d}\right\rangle \triangleleft$
+\end_inset
+
+ duplica el elemento de la izquierda (a la izquierda).
+ Observemos una traza:
+\end_layout
+
+\begin_layout Standard
+\align center
+ 
+\begin_inset Tabular
+<lyxtabular version="3" rows="4" columns="2">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\left[y,X\right]$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0_{d}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\left[y,X,0\right]$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\left\langle S_{d}\right\rangle $
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\left[y,X,y\right]$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\triangleleft$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\left[y,y,X\right]$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Duplicar a derecha
+\end_layout
+
+\begin_layout Standard
+La función 
+\begin_inset Formula $D_{d}=0_{i}\left\langle S_{i}\right\rangle \triangleright$
+\end_inset
+
+ duplica el elemento de la derecha (a la derecha).
+ 
+\end_layout
+
+\begin_layout Subsection
+Intercambiar extremos
+\end_layout
+
+\begin_layout Standard
+La función 
+\begin_inset Formula $\leftrightarrow=\triangleright0_{i}\triangleleft0_{i}\left\langle S_{i}\triangleright\triangleright S_{i}\triangleleft\triangleleft\right\rangle \square_{d}\square_{i}\triangleright$
+\end_inset
+
+ intercambia los extremos de una lista.
+ Observemos una traza:
+\end_layout
+
+\begin_layout Standard
+ 
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="9" columns="2">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\left[x,Y,z\right]$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\triangleright$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\left[Y,z,x\right]$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0_{i}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\left[0,Y,z,x\right]$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\triangleleft$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\left[x,0,Y,z\right]$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0_{i}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\left[0,x,0,Y,z\right]$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\left\langle S_{i}\triangleright\triangleright S_{i}\triangleleft\triangleleft\right\rangle $
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\left[z,x,z,Y,z\right]$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\square_{d}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\left[z,x,z,Y\right]$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\square_{i}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\left[x,z,Y\right]$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\triangleright$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\left[z,Y,x\right]$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Representación de 
+\begin_inset Formula $FR$
+\end_inset
+
+ mediante 
+\begin_inset Formula $FRL$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Observemos que las funciones recursivas y las funciones de listas tienen
+ distintos dominios y codominios, por lo que resultara necesario establecer
+ una correspondencia entre ambas.
+\end_layout
+
+\begin_layout Subsection
+Representabilidad
+\end_layout
+
+\begin_layout Standard
+Sea 
+\begin_inset Formula $g:\mathbb{N}_{0}^{k}\to\mathbb{N}_{0}$
+\end_inset
+
+ una función recursiva entonces si existe una función de listas 
+\begin_inset Formula $F_{g}$
+\end_inset
+
+ tal que 
+\begin_inset Formula $\forall X^{k}\in Dom\left(g\right)$
+\end_inset
+
+ y 
+\begin_inset Formula $\forall Y$
+\end_inset
+
+ resulta 
+\begin_inset Formula $F_{g}\left[X,Y\right]=\left[g\left(X\right),X,Y\right]$
+\end_inset
+
+ diremos entonces que 
+\begin_inset Formula $F_{g}$
+\end_inset
+
+ representa a la función recursiva 
+\begin_inset Formula $g$
+\end_inset
+
+ como función de listas.
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Casos base
+\end_layout
+
+\begin_layout Paragraph
+Enunciado
+\end_layout
+
+\begin_layout Standard
+Para toda función recursiva base 
+\begin_inset Formula $g$
+\end_inset
+
+ existe una función de listas 
+\begin_inset Formula $F_{g}$
+\end_inset
+
+ que la representa.
+\end_layout
+
+\begin_layout Paragraph
+Demostración
+\end_layout
+
+\begin_layout Itemize
+Funciones cero 
+\begin_inset Formula $c^{(n)}:$
+\end_inset
+
+ son iguales a 
+\begin_inset Formula $0_{i}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Funciones proyección 
+\begin_inset Formula $p_{k}^{(n)}$
+\end_inset
+
+: son iguales a 
+\begin_inset Formula $\triangleright^{k-1}D_{i}\left(\leftrightarrow\triangleleft\right)^{k-1}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Función sucesor: es igual a 
+\begin_inset Formula $D_{i}S_{i}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Composición
+\end_layout
+
+\begin_layout Paragraph
+Enunciado
+\end_layout
+
+\begin_layout Standard
+Dadas las funciones recursivas 
+\begin_inset Formula $f^{(n)}$
+\end_inset
+
+ y 
+\begin_inset Formula $\left\{ g_{i}^{(k)}\right\} _{i=1}^{n}$
+\end_inset
+
+ con representaciones en 
+\begin_inset Formula $FRL$
+\end_inset
+
+ dadas por 
+\begin_inset Formula $F_{f}$
+\end_inset
+
+ y 
+\begin_inset Formula $\left\{ F_{gi}^{(k)}\right\} _{i=1}^{n}$
+\end_inset
+
+, la composición 
+\begin_inset Formula $h=\Phi\left(f,g_{1},\ldots,g_{n}\right)$
+\end_inset
+
+ también tiene representación en funciones de listas.
+\end_layout
+
+\begin_layout Paragraph
+Demostración
+\end_layout
+
+\begin_layout Standard
+Veamos que 
+\begin_inset Formula $F_{h}=F_{g1}\triangleright F_{g2}\triangleright\ldots F_{gn}\triangleleft^{n-1}F_{f}\triangleright\square_{i}^{n}\triangleleft$
+\end_inset
+
+ representa dicha composición:
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="12" columns="2">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\left[X,Y\right]$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $F_{g1}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\left[\boldsymbol{g_{1}\left(X\right)},X,Y\right]$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\triangleright$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\left[X,Y,\boldsymbol{g_{1}\left(X\right)}\right]$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $F_{g2}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\left[\boldsymbol{g_{2}\left(X\right)},X,Y,g_{1}\left(X\right)\right]$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\triangleright$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\left[X,Y,g_{1}\left(X\right),\boldsymbol{g_{2}\left(X\right)}\right]$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\ldots F_{gn}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\left[\boldsymbol{G_{n}\left(X\right)},X,Y,g_{1}\left(X\right),g_{2}\left(X\right),\boldsymbol{\ldots},\boldsymbol{g_{n-1}\left(X\right)}\right]$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\triangleleft^{n-1}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\left[\boldsymbol{g_{1}\left(X\right),g_{2}\left(X\right),\boldsymbol{\ldots},g_{n}\left(X\right)},X,Y\right]$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $F_{f}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\left[\boldsymbol{f\left\{ g_{1}\left(X\right),\ldots,g_{n}\left(X\right)\right\} },g_{1}\left(X\right),\ldots,g_{n}\left(X\right),X,Y\right]$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $=$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\left[\boldsymbol{h\left(X\right)},g_{1}\left(X\right),\ldots,g_{n}\left(X\right),X,Y\right]$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\triangleright$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\left[g_{1}\left(X\right),\ldots,g_{n}\left(X\right),X,Y,\boldsymbol{h\left(X\right)}\right]$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\square_{i}^{n}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\left[X,Y,h\left(X\right)\right]$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\triangleleft$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\left[h\left(X\right),X,Y\right]$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Recursion
+\end_layout
+
+\begin_layout Paragraph
+Enunciado
+\end_layout
+
+\begin_layout Standard
+Sean las funciones recursivas 
+\begin_inset Formula $g^{(k)}$
+\end_inset
+
+ y 
+\begin_inset Formula $h^{(k+2)}$
+\end_inset
+
+ con representaciones en 
+\begin_inset Formula $FRL$
+\end_inset
+
+ dadas por 
+\begin_inset Formula $F_{g}$
+\end_inset
+
+ y 
+\begin_inset Formula $F_{h}$
+\end_inset
+
+, entonces la función 
+\begin_inset Formula $f^{(k+1)}=R\left(g,h\right)$
+\end_inset
+
+ también tiene representación en 
+\begin_inset Formula $FRL$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Paragraph
+Demostración
+\end_layout
+
+\begin_layout Standard
+Veamos que 
+\begin_inset Formula $F_{f}=\triangleright F_{g}0_{i}\left\langle \triangleright\leftrightarrow\triangleleft F_{h}\triangleright\square_{i}S_{i}\leftrightarrow\triangleleft\right\rangle \square_{i}\leftrightarrow\triangleleft$
+\end_inset
+
+ representa dicha recursion.
+ Aplicando el primer bloque de funciones:
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="5" columns="2">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\left[y,X,Y\right]$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\triangleright$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\left[X,Y,y\right]$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $F_{g}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\left[\boldsymbol{g\left(X\right)},X,Y,y\right]$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0_{i}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\left[\boldsymbol{0},g\left(X\right),X,Y,y\right]$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\left[0,\boldsymbol{f\left(0,X\right)},X,Y,y\right]$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+A partir de aquí hay 2 casos:
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $y=0$
+\end_inset
+
+:
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Tabular
+<lyxtabular version="3" rows="5" columns="2">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\left[0,f\left(0,X\right),X,Y,y\right]$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\left\langle \ldots\right\rangle $
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\left[0,f\left(0,X\right),X,Y,0\right]$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\square_{i}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\left[f\left(0,X\right),X,Y,0\right]$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\leftrightarrow$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\left[0,X,Y,f\left(0,X\right)\right]$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\triangleleft$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\left[f\left(y,X\right),y,X,Y\right]$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $y\neq0$
+\end_inset
+
+:
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Tabular
+<lyxtabular version="3" rows="11" columns="2">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\left[0,f\left(0,X\right),X,Y,y\right]$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\left\langle \triangleright\right.$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\left[f\left(0,X\right),X,Y,y,\boldsymbol{0}\right]$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\leftrightarrow$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\left[\boldsymbol{0},X,Y,y,\boldsymbol{f\left(0,X\right)}\right]$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\triangleleft$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\left[\boldsymbol{f\left(0,X\right)},0,X,Y,y\right]$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $F_{h}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\left[\boldsymbol{h\left(f\left(0,X\right),0,X\right)},f\left(0,X\right),0,X,Y,y\right]$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\left(*\right)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\left[\boldsymbol{f\left(1,X\right)},f\left(0,X\right),0,X,Y,y\right]$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\triangleright$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\left[f\left(0,X\right),0,X,Y,y,\boldsymbol{f\left(1,X\right)}\right]$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\square_{i}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\left[0,X,Y,y,f\left(1,X\right)\right]$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $S_{i}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\left[\boldsymbol{1},X,Y,y,f\left(1,X\right)\right]$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\leftrightarrow$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\left[\boldsymbol{f\left(1,X\right)},X,Y,y,\boldsymbol{1}\right]$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\left.\triangleleft\right\rangle $
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\left[\boldsymbol{1},f\left(1,X\right),X,Y,y\right]$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+A partir de aquí podemos ver que el resultado de la repetición sera 
+\begin_inset Formula $\left[y,f\left(y,X\right),X,Y,y\right]$
+\end_inset
+
+.
+ Luego aplicando el ultimo bloque de funciones:
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Tabular
+<lyxtabular version="3" rows="4" columns="2">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\left[y,f\left(y,X\right),X,Y,y\right]$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\square_{i}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\left[f\left(y,X\right),X,Y,y\right]$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\leftrightarrow$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\left[\boldsymbol{y},X,Y,\boldsymbol{f\left(y,X\right)}\right]$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\triangleleft$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\left[\boldsymbol{f\left(y,X\right)},y,X,Y\right]$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Minimizacion
+\end_layout
+
+\begin_layout Paragraph
+Enunciado
+\end_layout
+
+\begin_layout Standard
+Sea la función recursiva 
+\begin_inset Formula $h^{(n+1)}$
+\end_inset
+
+ y 
+\begin_inset Formula $F_{h}$
+\end_inset
+
+ su representación en 
+\begin_inset Formula $FRL$
+\end_inset
+
+ entonces la función 
+\begin_inset Formula $g^{(n)}=M\left[h\right]$
+\end_inset
+
+ también tiene representación en 
+\begin_inset Formula $FRL$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Paragraph
+Demostración
+\end_layout
+
+\begin_layout Standard
+Veamos que 
+\begin_inset Formula $F_{g}=0_{i}F_{h}0_{d}\left\langle \square_{i}S_{i}F_{h}\right\rangle \square_{i}\square_{d}$
+\end_inset
+
+ representa dicha minimizacion.
+ Aplicando el primer bloque de funciones:
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="4" columns="2">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\left[X,Y\right]$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0_{i}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\left[\boldsymbol{0},X,Y\right]$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $F_{h}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\left[\boldsymbol{h\left(0,X\right)},0,X,Y\right]$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0_{d}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\left[h\left(0,X\right),0,X,Y,0\right]$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+A partir de aquí hay 2 casos:
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $h\left(0,X\right)=0$
+\end_inset
+
+:
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Tabular
+<lyxtabular version="3" rows="6" columns="2">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\left[h\left(0,X\right),0,X,Y,0\right]$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\left\langle \ldots\right\rangle $
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\left[h\left(0,X\right),0,X,Y,0\right]$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\square_{i}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\left[h\left(0,X\right),X,Y,0\right]$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\square_{d}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\left[h\left(0,X\right),X,Y\right]$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\left[\mu_{t}\left(h\left(t,X\right)=0\right),X,Y\right]$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\left[g\left(X\right),X,Y\right]$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $h\left(0,X\right)\neq0$
+\end_inset
+
+:
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Tabular
+<lyxtabular version="3" rows="4" columns="2">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\left[h\left(0,X\right),0,X,Y,0\right]$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\left\langle \square_{i}\right.$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\left[0,X,Y,0\right]$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $S_{i}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\left[\boldsymbol{1},X,Y,0\right]$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\left.F_{h}\right\rangle $
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\left[\boldsymbol{h\left(1,X\right)},1,X,Y,0\right]$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+Vemos que en general, el efecto de la repetición es transformar 
+\begin_inset Formula $\left[h\left(t,X\right),t,X,Y,0\right]$
+\end_inset
+
+ en 
+\begin_inset Formula $\left[h\left(t+1,X\right),t+1,X,Y,0\right]$
+\end_inset
+
+.
+ La repetición se aplicara un numero 
+\begin_inset Formula $k$
+\end_inset
+
+ de veces hasta que 
+\begin_inset Formula $h\left(k,X\right)=0$
+\end_inset
+
+ y a partir de ahí aplicando el ultimo bloque de funciones:
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Tabular
+<lyxtabular version="3" rows="6" columns="2">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\left[h\left(k,X\right),k,X,Y,0\right]$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\left[0,k,X,Y,0\right]$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\square_{i}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\left[k,X,Y,0\right]$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\square_{d}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\left[k,X,Y\right]$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\left[\mu_{t}\left(h\left(t,X\right)=0\right),X,Y\right]$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\left[g\left(X\right),X,Y\right]$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Conclusión
+\end_layout
+
+\begin_layout Standard
+Con todo lo anterior hemos demostrado que toda función recursiva puede ser
+ representada por una función de listas, con lo que las 
+\begin_inset Formula $FRL$
+\end_inset
+
+ son un modelo de calculo tan poderoso como el de las 
+\begin_inset Formula $FR$
+\end_inset
+
+.
+\end_layout
+
+\end_body
+\end_document

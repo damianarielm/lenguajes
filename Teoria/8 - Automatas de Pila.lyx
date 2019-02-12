@@ -1,0 +1,1231 @@
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 508
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass book
+\begin_preamble
+\usepackage{tikz}
+\usetikzlibrary{automata,positioning,calc}
+\end_preamble
+\use_default_options true
+\maintain_unincluded_children false
+\language spanish-mexico
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize 12
+\spacing single
+\use_hyperref false
+\papersize a4paper
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language french
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Chapter
+Automatas de pila
+\end_layout
+
+\begin_layout Section
+Introducción
+\end_layout
+
+\begin_layout Standard
+Los autómatas de pila son autómatas que cuentan con las mismas características
+ que un 
+\begin_inset Formula $AEFND$
+\end_inset
+
+ pero ademas disponen de una pila de memoria en la que podrán leer o escribir
+ símbolos, de forma de poder saber en cada momento si el autómata ya realizo
+ alguna transición en el pasado.
+\end_layout
+
+\begin_layout Standard
+Durante cada transición el autómata ejecuta la siguiente secuencia:
+\end_layout
+
+\begin_layout Enumerate
+Leer un símbolo de entrada.
+\end_layout
+
+\begin_layout Enumerate
+Extraer un símbolo de la pila.
+\end_layout
+
+\begin_layout Enumerate
+Insertar un símbolo en la pila.
+\end_layout
+
+\begin_layout Enumerate
+Pasar a un nuevo estado.
+\end_layout
+
+\begin_layout Standard
+A este proceso lo representaremos con la notación 
+\begin_inset Formula $\left(\sigma,l,\alpha;\beta,\tau\right)$
+\end_inset
+
+ donde:
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\sigma$
+\end_inset
+
+ es el estado actual.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $l$
+\end_inset
+
+ es el símbolo del alfabeto que se lee en la entrada.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\alpha$
+\end_inset
+
+ es el símbolo que se extrae de la pila.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\beta$
+\end_inset
+
+ es el símbolo que se inserta en la pila.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\tau$
+\end_inset
+
+ es el nuevo estado al que pasa el autómata.
+\end_layout
+
+\begin_layout Standard
+Representaremos este proceso mediante el siguiente diagrama de transiciones:
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{tikzpicture}[shorten >=1pt,node distance=3cm,on grid,auto]
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node[state] (sigma)   {$
+\backslash
+sigma$};
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node[state] (tau) [right=of sigma] {$
+\backslash
+tau$};
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+path[->]
+\end_layout
+
+\begin_layout Plain Layout
+
+		(sigma)	edge  node {$l,
+\backslash
+alpha;
+\backslash
+beta$} (tau);
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{tikzpicture}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Puesto que permitimos que 
+\begin_inset Formula $l,\alpha,\beta$
+\end_inset
+
+ sean la cadena vaciá, podemos en cualquier transición no leer un caracter,
+ no extraer nada de la pila o no escribir nada en la pila si así lo necesitáramo
+s.
+ 
+\end_layout
+
+\begin_layout Standard
+Llamaremos a las transiciones de la forma 
+\begin_inset Formula $\left(\sigma,\lambda,\lambda;\lambda,\tau\right)$
+\end_inset
+
+ transiciones espontaneas.
+\end_layout
+
+\begin_layout Paragraph
+Observación
+\end_layout
+
+\begin_layout Standard
+Nótese que las transiciones representada por 
+\begin_inset Formula $\left(\sigma,l,\lambda;\lambda,\tau\right)$
+\end_inset
+
+ son las que realiza un 
+\begin_inset Formula $AEFND$
+\end_inset
+
+.
+ Por lo tanto los 
+\begin_inset Formula $AEFND$
+\end_inset
+
+ son un caso particular de 
+\begin_inset Formula $AP$
+\end_inset
+
+ y en consecuencia los lenguajes regulares son un subconjunto de los lenguajes
+ aceptados por 
+\begin_inset Formula $AP$
+\end_inset
+
+, es decir: 
+\begin_inset Formula $\mathcal{L}_{3}\subseteq\mathcal{AC}\left(AP\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Section
+Definición formal
+\end_layout
+
+\begin_layout Standard
+Un autómata de pila (
+\begin_inset Formula $AP$
+\end_inset
+
+) es una sextupla 
+\begin_inset Formula $A=\left(S,\Sigma,\Gamma,T,\sigma,Ac\right)$
+\end_inset
+
+ donde:
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $S$
+\end_inset
+
+ es un conjunto finito de 
+\emph on
+estados
+\emph default
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\Sigma$
+\end_inset
+
+ es un conjunto finito de 
+\emph on
+símbolos de entrada
+\emph default
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\Gamma$
+\end_inset
+
+ es un conjunto finito de 
+\emph on
+símbolos de pila
+\emph default
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $T\subseteq S\times\left(\Sigma\cup\left\{ \lambda\right\} \right)\times\left(\Gamma\cup\left\{ \lambda\right\} \right)\times\left(\Gamma\cup\left\{ \lambda\right\} \right)\times S$
+\end_inset
+
+ es una 
+\emph on
+relación de transición
+\emph default
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\sigma\in S$
+\end_inset
+
+ es el 
+\emph on
+estado inicial
+\emph default
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $Ac\subseteq S$
+\end_inset
+
+ es un conjunto de estados de aceptación.
+\end_layout
+
+\begin_layout Section
+Configuración
+\end_layout
+
+\begin_layout Standard
+Una configuración de un autómata de pila 
+\begin_inset Formula $A=\left(S,\Sigma,\Gamma,T,\sigma,Ac\right)$
+\end_inset
+
+ es un elemento de 
+\begin_inset Formula $\mathcal{C}_{A}=S\times\Sigma^{*}\times\Gamma^{*}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Dicha configuración 
+\begin_inset Formula $\left(\sigma,p,\gamma\right)$
+\end_inset
+
+ indica que el autómata esta en el estado 
+\begin_inset Formula $\sigma$
+\end_inset
+
+, le falta leer la cadena 
+\begin_inset Formula $p$
+\end_inset
+
+ de la entrada y el contenido completo de la pila es 
+\begin_inset Formula $\gamma$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Section
+Relación entre configuraciones
+\end_layout
+
+\begin_layout Standard
+Para una autómata de pila 
+\begin_inset Formula $A=\left(S,\Sigma,\Gamma,T,\sigma,Ac\right)$
+\end_inset
+
+ definimos la relación 
+\begin_inset Quotes fld
+\end_inset
+
+lleva en un paso
+\begin_inset Quotes frd
+\end_inset
+
+ (que notaremos 
+\begin_inset Formula $\Rightarrow_{A}$
+\end_inset
+
+) entre configuraciones, de la siguiente forma: 
+\begin_inset Formula $\left(\sigma,lp,\alpha\gamma\right)\Rightarrow_{A}\left(\tau,p,\beta\gamma\right)$
+\end_inset
+
+ si y solo si 
+\begin_inset Formula $\left(\sigma,l,\alpha;\beta,\tau\right)\in T$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+La relación 
+\begin_inset Quotes fld
+\end_inset
+
+lleva en uno o mas pasos
+\begin_inset Quotes frd
+\end_inset
+
+ (
+\begin_inset Formula $\Rightarrow_{A}^{*}$
+\end_inset
+
+) define recursivamente a partir de la relación 
+\begin_inset Formula $\Rightarrow_{A}$
+\end_inset
+
+ de forma análoga a lo hecho para la función de transición 
+\begin_inset Formula $f$
+\end_inset
+
+ de los 
+\begin_inset Formula $AEF$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Section
+Lenguaje aceptado
+\end_layout
+
+\begin_layout Standard
+Sea 
+\begin_inset Formula $A=\left(S,\Sigma,\Gamma,T,\sigma,Ac\right)$
+\end_inset
+
+ un autómata de pila, el lenguaje aceptado por 
+\begin_inset Formula $A$
+\end_inset
+
+ es el conjunto: 
+\begin_inset Formula $\mathcal{AC}\left(A\right)=\left\{ p\in\Sigma^{*}/\left(\sigma,p,\lambda\right)\Rightarrow^{*}\left(\tau,\lambda,\gamma\right):\gamma\in\Gamma^{*}\land\tau\in Ac\right\} $
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Es decir, una cadena 
+\begin_inset Formula $p$
+\end_inset
+
+ sera aceptada por un 
+\begin_inset Formula $AP$
+\end_inset
+
+ si, arrancando desde su estado inicial y con la pila vaciá, es posible
+ que el autómata llegue a un estado de aceptación después de leer toda la
+ cadena.
+\end_layout
+
+\begin_layout Paragraph
+Observación
+\end_layout
+
+\begin_layout Standard
+No necesariamente se llegara a un estado de aceptación luego de leer el
+ ultimo caracter de una palabra pues a continuación el autómata podría realizar
+ transiciones de la forma 
+\begin_inset Formula $\left(\sigma,\lambda,\alpha;\beta,\tau\right)$
+\end_inset
+
+ y llegar luego al estado de aceptación.
+\end_layout
+
+\begin_layout Section
+Aceptacion de lenguajes no regulares
+\end_layout
+
+\begin_layout Standard
+Ya hemos visto que 
+\begin_inset Formula $\mathcal{L}_{3}\subseteq\mathcal{AC}\left(AP\right)$
+\end_inset
+
+.
+ Sin embargo esta inclusión es estricta, pues como veremos, el lenguaje
+ 
+\begin_inset Formula $\left\{ x^{n}y^{n}/n\in\mathbb{N}_{0}\right\} $
+\end_inset
+
+ es aceptado por el siguiente autómata de pila:
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{tikzpicture}[shorten >=1pt,node distance=3cm,on grid,auto]
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node[state, initial, accepting, initial text= inicio] (sigma0)   {$
+\backslash
+sigma_0$};
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node[state] (sigma1) [right=of sigma0] {$
+\backslash
+sigma_1$};
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node[state] (sigma2) [right=of sigma1] {$
+\backslash
+sigma_2$};
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node[state, accepting] (sigma3) [right=of sigma2] {$
+\backslash
+sigma_3$};
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+path[->]
+\end_layout
+
+\begin_layout Plain Layout
+
+		(sigma0)	edge  node {$
+\backslash
+lambda,
+\backslash
+lambda;
+\backslash
+#$} (sigma1)
+\end_layout
+
+\begin_layout Plain Layout
+
+		(sigma1)	edge  [loop above] node {$x,
+\backslash
+lambda;x$} ()
+\end_layout
+
+\begin_layout Plain Layout
+
+		(sigma1)	edge  node {$y,x;
+\backslash
+lambda$} (sigma2)
+\end_layout
+
+\begin_layout Plain Layout
+
+		(sigma2)	edge  [loop above] node {$y,x;
+\backslash
+lambda$} ()
+\end_layout
+
+\begin_layout Plain Layout
+
+		(sigma2)	edge  node {$
+\backslash
+lambda,
+\backslash
+#;
+\backslash
+lambda$} (sigma3)
+\end_layout
+
+\begin_layout Plain Layout
+
+;
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{tikzpicture}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Teorema del vaciado de pila
+\end_layout
+
+\begin_layout Paragraph
+Enunciado
+\end_layout
+
+\begin_layout Standard
+Para cada 
+\begin_inset Formula $A\in AP$
+\end_inset
+
+ existe 
+\begin_inset Formula $A'\in AP$
+\end_inset
+
+ tal que 
+\begin_inset Formula $A'$
+\end_inset
+
+ vaciá su pila y ademas 
+\begin_inset Formula $\mathcal{AC}\left(A'\right)=\mathcal{AC}\left(A\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Paragraph*
+Demostración
+\end_layout
+
+\begin_layout Standard
+Sea 
+\begin_inset Formula $A=\left(S,\Sigma,\Gamma,T,\sigma,Ac\right)$
+\end_inset
+
+ un 
+\begin_inset Formula $AP$
+\end_inset
+
+, fabricaremos 
+\begin_inset Formula $A'$
+\end_inset
+
+ de la siguiente manera:
+\end_layout
+
+\begin_layout Itemize
+El estado inicial de 
+\begin_inset Formula $A$
+\end_inset
+
+ deja de serlo, pues introducimos un nuevo estado inicial y una transición
+ del nuevo al anterior que lo único que hace es insertar en la pila un marcador
+ 
+\begin_inset Formula $\#$
+\end_inset
+
+ (suponiendo que 
+\begin_inset Formula $\#\notin\Gamma$
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Itemize
+Los estados de aceptación de 
+\begin_inset Formula $A$
+\end_inset
+
+ dejan de serlo e introduciremos un nuevo estado 
+\begin_inset Formula $P$
+\end_inset
+
+ junto con transiciones espontaneas que pasan de cada uno de los antiguos
+ estados de aceptación al nuevo estado 
+\begin_inset Formula $P$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Vaciamos la pila sin salir del estado 
+\begin_inset Formula $P$
+\end_inset
+
+ introduciendo transiciones de la forma 
+\begin_inset Formula $\left(P,\lambda,x;\lambda,P\right)$
+\end_inset
+
+ para cada 
+\begin_inset Formula $x\in\Gamma$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Agregamos un nuevo y único estado de aceptación 
+\begin_inset Formula $Q$
+\end_inset
+
+ junto a la transición 
+\begin_inset Formula $\left(P,\lambda,\#;\lambda,Q\right)$
+\end_inset
+
+.
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Formalmente definimos 
+\begin_inset Formula $A'=\left(S',\Sigma,\Gamma',T',\sigma',Ac'\right)$
+\end_inset
+
+ donde:
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $S'=S\cup\left\{ R,P,Q\right\} $
+\end_inset
+
+ donde 
+\begin_inset Formula $R,P,Q\notin S$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\Gamma'=\Gamma\cup\left\{ \#\right\} $
+\end_inset
+
+ donde 
+\begin_inset Formula $\#\notin\Gamma$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\sigma_{0}'=R$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $Ac'=\left\{ Q\right\} $
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\begin{aligned}T'=T & \cup\left\{ \left(R,\lambda,\lambda;\#,\sigma\right)\right\}  & \left(1\right)\\
+ & \cup\left\{ \left(\tau,\lambda,\lambda;\lambda,P\right)/\tau\in Ac\right\}  & \left(2\right)\\
+ & \cup\left\{ \left(P,\lambda,\alpha;\lambda,P\right)/\alpha\in\Gamma\right\}  & \left(3\right)\\
+ & \cup\left\{ \left(P,\lambda,\#;\lambda,Q\right)\right\} . & \left(4\right)
+\end{aligned}
+$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Veamos ahora que 
+\begin_inset Formula $\mathcal{AC}\left(A\right)=\mathcal{AC}\left(A'\right)$
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\subseteq$
+\end_inset
+
+: Sea 
+\begin_inset Formula $\alpha\in\mathcal{AC}\left(A\right)$
+\end_inset
+
+.
+ Sabemos que partiendo del estado inicial 
+\begin_inset Formula $\sigma$
+\end_inset
+
+ con la pila vaciá, 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ nos lleva en uno o mas pasos a un estado de aceptación.
+ En términos de configuraciones: 
+\begin_inset Formula $\left(\sigma,\alpha,\lambda\right)\Rightarrow^{*}\left(\tau,\lambda,\gamma\right)$
+\end_inset
+
+ donde 
+\begin_inset Formula $\text{\ensuremath{\tau\in Ac,\gamma\in\Gamma^{*}}}$
+\end_inset
+
+.
+ Luego en 
+\begin_inset Formula $A'$
+\end_inset
+
+ tenemos la derivación: 
+\begin_inset Formula 
+\[
+\left(R,\alpha,\lambda\right)\Rightarrow^{\left(1\right)}\left(\sigma,\alpha,\#\right)\Rightarrow^{*}\left(\tau,\lambda,\gamma\#\right)\Rightarrow^{\left(2\right)}\left(P,\lambda,\gamma\#\right)\Rightarrow^{\left(3\right)*}\left(P,\lambda,\#\right)\Rightarrow^{\left(4\right)}\left(Q,\lambda,\lambda\right)
+\]
+
+\end_inset
+
+Como 
+\begin_inset Formula $Q\in Ac'$
+\end_inset
+
+ concluimos que 
+\begin_inset Formula $\alpha\in\mathcal{AC}\left(A'\right)$
+\end_inset
+
+ y la pila queda vaciá.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\supseteq$
+\end_inset
+
+: Análogo.
+\end_layout
+
+\begin_layout Section
+Igualdad entre 
+\begin_inset Formula $\mathcal{L}_{2}$
+\end_inset
+
+ y 
+\begin_inset Formula $\mathcal{AC}\left(AP\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph
+Enunciado
+\end_layout
+
+\begin_layout Enumerate
+Sea 
+\begin_inset Formula $G$
+\end_inset
+
+ una gramática independiente de contexto entonces existe un autómata de
+ pila 
+\begin_inset Formula $A$
+\end_inset
+
+ tal que 
+\begin_inset Formula $L\left(G\right)=\mathcal{AC}\left(A\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Sea 
+\begin_inset Formula $A$
+\end_inset
+
+ un autómata de pila entonces existe una gramática independiente del contexto
+ 
+\begin_inset Formula $G$
+\end_inset
+
+ tal que 
+\begin_inset Formula $L\left(G\right)=\mathcal{AC}\left(A\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Es decir 
+\begin_inset Formula $\mathcal{L}_{2}=\mathcal{AC}\left(AP\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Paragraph
+Demostración
+\end_layout
+
+\begin_layout Enumerate
+Consultar 
+\begin_inset Quotes fld
+\end_inset
+
+J.
+ Glenn Brookshear.
+ 
+\emph on
+Teoría de la Computación.
+ Lenguajes formales, autómatas y complejidad
+\series bold
+\emph default
+
+\begin_inset Quotes frd
+\end_inset
+
+
+\series default
+, pag 85.
+\end_layout
+
+\begin_layout Enumerate
+Consultar 
+\begin_inset Quotes fld
+\end_inset
+
+J.
+ Glenn Brookshear.
+ 
+\emph on
+Teoría de la Computación.
+ Lenguajes formales, autómatas y complejidad
+\emph default
+.
+\begin_inset Quotes frd
+\end_inset
+
+, pag 90.
+\end_layout
+
+\begin_layout Paragraph
+Conclusión
+\end_layout
+
+\begin_layout Standard
+De todo lo que hemos visto hasta ahora sabemos que: 
+\begin_inset Formula 
+\[
+\mathcal{L}_{3}=\mathcal{AC}\left(AEF\right)=\mathcal{AC}\left(AEFND\right)=L_{ER}\subset\mathcal{L}_{2}=\mathcal{AC}\left(AP\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Lema de bombeo para autómatas de pila
+\end_layout
+
+\begin_layout Paragraph
+Enunciado
+\end_layout
+
+\begin_layout Standard
+Sea 
+\begin_inset Formula $L\in\mathcal{L}_{2}$
+\end_inset
+
+, luego si 
+\begin_inset Formula $L$
+\end_inset
+
+ es infinito existe 
+\begin_inset Formula $p\in L$
+\end_inset
+
+ de la forma 
+\begin_inset Formula $p=xuyvz$
+\end_inset
+
+ donde 
+\begin_inset Formula $uv\neq\lambda$
+\end_inset
+
+ tal que 
+\begin_inset Formula $xu^{n}yv^{n}z\in L$
+\end_inset
+
+ 
+\begin_inset Formula $\forall n\in\mathbb{N}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Paragraph
+Demostración
+\end_layout
+
+\begin_layout Standard
+Sabemos que existe una gramática independiente de contexto 
+\begin_inset Formula $G=\left(N,T,P,\sigma\right)$
+\end_inset
+
+ tal que 
+\begin_inset Formula $L\left(G\right)=L$
+\end_inset
+
+ y sea 
+\begin_inset Formula $m$
+\end_inset
+
+ el máximo numero de símbolos de 
+\begin_inset Formula $N\cup T$
+\end_inset
+
+ que aparecen en el lado derecho de las reglas de producción de 
+\begin_inset Formula $G$
+\end_inset
+
+.
+ Observemos que como 
+\begin_inset Formula $m$
+\end_inset
+
+ es la mayor cantidad de símbolos por los que se puede reemplazar un no
+ terminal, al aplicar 
+\begin_inset Formula $i$
+\end_inset
+
+ reglas de producción cualesquiera, la longitud de la cadena resultante
+ es a lo sumo 
+\begin_inset Formula $m^{i}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Llamemos 
+\begin_inset Formula $k$
+\end_inset
+
+ a la cantidad de símbolos no terminales de 
+\begin_inset Formula $G$
+\end_inset
+
+ (
+\begin_inset Formula $k=\left|N\right|$
+\end_inset
+
+).
+ Dada una palabra 
+\begin_inset Formula $p\in L$
+\end_inset
+
+ tal que 
+\begin_inset Formula $\left|p\right|>m^{k}$
+\end_inset
+
+ (que existe pues 
+\begin_inset Formula $L$
+\end_inset
+
+ es infinito), llamemos 
+\begin_inset Formula $i$
+\end_inset
+
+ a la cantidad de reglas de producción aplicadas para producir 
+\begin_inset Formula $p$
+\end_inset
+
+.
+ Por lo tanto 
+\begin_inset Formula $m^{k}\leq\left|p\right|\leq m^{i}\Rightarrow k<i$
+\end_inset
+
+ es decir, para formar 
+\begin_inset Formula $p$
+\end_inset
+
+ debieron aplicarse mas de 
+\begin_inset Formula $k$
+\end_inset
+
+ reglas de producción (debieron expandirse mas de 
+\begin_inset Formula $k$
+\end_inset
+
+ no terminales).
+\end_layout
+
+\begin_layout Standard
+Como no hay 
+\begin_inset Formula $k$
+\end_inset
+
+ no terminales, existe un no terminal 
+\begin_inset Formula $X$
+\end_inset
+
+ que debió expandirse 2 veces que podremos 
+\begin_inset Quotes fld
+\end_inset
+
+bombear
+\begin_inset Quotes frd
+\end_inset
+
+ cuantas veces sea necesario.
+\end_layout
+
+\begin_layout Section
+Existencia de lenguajes sensibles al contexto
+\end_layout
+
+\begin_layout Paragraph
+Enunciado
+\end_layout
+
+\begin_layout Standard
+Existen lenguajes sensibles al contexto.
+\end_layout
+
+\begin_layout Paragraph
+Demostración
+\end_layout
+
+\begin_layout Standard
+Probaremos que 
+\begin_inset Formula $L=\left\{ a^{n}b^{n}c^{n}/n\in\mathbb{N}\right\} \notin\mathcal{L}_{2}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Como 
+\begin_inset Formula $L$
+\end_inset
+
+ es infinito el lema de bombeo nos permite asegurar que existe una cadena
+ 
+\begin_inset Formula $xuyvz\in L$
+\end_inset
+
+ tal que 
+\begin_inset Formula $xu^{n}yv^{n}z\in L$
+\end_inset
+
+ 
+\begin_inset Formula $\forall n\in\mathbb{N}$
+\end_inset
+
+ con 
+\begin_inset Formula $uv\neq\lambda$
+\end_inset
+
+.
+ Supongamos sin perder generalidad que 
+\begin_inset Formula $u\neq\lambda$
+\end_inset
+
+ luego hay dos posibilidades:
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $u$
+\end_inset
+
+ esta formado por un solo símbolo y al bombearlo se obtiene una palabra
+ que no mantiene la igualdad entre exponentes resultando no pertenecer al
+ lenguaje.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $u$
+\end_inset
+
+ esta formado por mas de un caracter y al bombearlo se obtiene una palabra
+ que altera el orden de los símbolos y por lo tanto no pertenece al lenguaje.
+\end_layout
+
+\begin_layout Standard
+Llegamos al absurdo por cualquiera de las dos posibilidades, por lo que
+ 
+\begin_inset Formula $\text{\ensuremath{L\notin\mathcal{L}_{2}}}$
+\end_inset
+
+.
+\end_layout
+
+\end_body
+\end_document

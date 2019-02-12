@@ -1,0 +1,1505 @@
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 508
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass book
+\use_default_options true
+\maintain_unincluded_children false
+\language spanish-mexico
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize 12
+\spacing single
+\use_hyperref false
+\papersize a4paper
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language french
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Chapter
+Funciones recursivas
+\end_layout
+
+\begin_layout Section
+Introducción
+\end_layout
+
+\begin_layout Subsection
+Función parcial y función total
+\end_layout
+
+\begin_layout Standard
+Una función numérica 
+\begin_inset Formula $f:\mathbb{N}^{k}\to\mathbb{N}$
+\end_inset
+
+ se dice 
+\emph on
+parcia
+\emph default
+l si no esta definida sobre todos los elementos de 
+\begin_inset Formula $\mathbb{N}^{k}$
+\end_inset
+
+.
+ Si esta definida para todos los elementos de 
+\begin_inset Formula $\mathbb{N}^{k}$
+\end_inset
+
+ se dice 
+\emph on
+total
+\emph default
+.
+\end_layout
+
+\begin_layout Subsection
+Función mayora
+\end_layout
+
+\begin_layout Standard
+Decimos que una función 
+\begin_inset Formula $f^{(1)}$
+\end_inset
+
+ mayora a otra función 
+\begin_inset Formula $g^{(n)}$
+\end_inset
+
+ si 
+\begin_inset Formula $\forall$
+\end_inset
+
+ 
+\begin_inset Formula $\mbox{\ensuremath{\left(x_{1},x_{2},\ldots,x_{n}\right)\in dom\left(g\right)}}$
+\end_inset
+
+ se verifica que 
+\begin_inset Formula $g\left(x_{1},x_{2},\ldots,x_{n}\right)\leq f\left[max\left(x_{1},x_{2},\ldots,x_{n}\right)\right]$
+\end_inset
+
+ y lo notamos 
+\begin_inset Formula $\mbox{\ensuremath{f^{(1)}\uparrow g^{(n)}}}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Serie de Ackermann
+\end_layout
+
+\begin_layout Standard
+Consideremos la siguiente sucesión de funciones que llamaremos sucesión
+ de Ackermann:
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $f_{0}\left(x\right)=s\left(x\right)=x+1$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $f_{1}\left(x\right)=f_{0}^{x+2}\left(x\right)=s^{x+2}\left(x\right)=x+\left(x+2\right)=2x+2$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $f_{2}\left(x\right)=f_{1}^{x+2}\left(x\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\vdots$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $f_{k}\left(x\right)=f_{k-1}^{x+2}\left(x\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\vdots$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Calculemos algunos valores de 
+\begin_inset Formula $f_{2}\left(x\right)$
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $f_{2}\left(0\right)=f_{1}^{2}\left(0\right)=f_{1}\left[f_{1}\left(0\right)\right]=f_{1}\left[f_{0}^{2}\left(0\right)\right]=f_{1}\left[2\right]=f_{0}^{4}\left(2\right)=6$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\begin{aligned}f_{2}\left(1\right)= & f_{1}^{3}\left(1\right)=f_{1}\left\{ f_{1}\left[f_{1}\left(1\right)\right]\right\} =f_{1}\left\{ f_{1}\left[f_{0}^{3}\left(1\right)\right]\right\} =f_{1}\left\{ f_{1}\left[4\right]\right\} =f_{1}\left\{ f_{0}^{6}\left[4\right]\right\} =\\
+= & f_{1}\left\{ 10\right\} =f_{0}^{12}\left\{ 10\right\} =22.
+\end{aligned}
+$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $f_{2}\left(2\right)=f_{1}^{4}\left(2\right)=2\left\{ 2\left[2\left(2\text{\cdot2+2}\right)+2\right]+2\right\} +2=62$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $f_{2}\left(3\right)=158$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Función de Ackermann
+\end_layout
+
+\begin_layout Standard
+Definimos una función que llamaremos 
+\begin_inset Formula $ACK$
+\end_inset
+
+ de la siguiente manera: 
+\begin_inset Formula $ACK\left(x\right)=f_{x}\left(x\right)$
+\end_inset
+
+.
+ O sea para encontrar su valor imagen para un determinado valor 
+\begin_inset Formula $x$
+\end_inset
+
+, tomamos la x-esima función de Ackermann y la calculamos en dicho valor.
+ Por ejemplo:
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $ACK\left(0\right)=f_{0}\left(0\right)=1$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $ACK\left(1\right)=f_{1}\left(1\right)=4$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $ACK\left(2\right)=f_{2}\left(2\right)=62$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\begin{aligned}ACK\left(3\right)= & f_{3}\left(3\right)=f_{2}^{5}\left(3\right)=f_{2}\left[f_{2}\left(f_{2}\left\{ f_{2}\left[f_{2}\left(3\right)\right]\right\} \right)\right]=f_{2}\left[f_{2}\left(f_{2}\left\{ f_{2}\left[158\right]\right\} \right)\right]\\
+= & f_{2}\left[f_{2}\left(f_{2}\left\{ f_{1}^{160}\left[158\right]\right\} \right)\right]=f_{2}\left[f_{2}\left(f_{2}\left\{ f_{1}^{159}\left[318\right]\right\} \right)\right]=\\
+= & f_{2}\left[f_{2}\left(f_{2}\left\{ f_{1}^{158}\left[638\right]\right\} \right)\right]=f_{2}\left[f_{2}\left(f_{2}\left\{ f_{1}^{157}\left[1278\right]\right\} \right)\right]=\cdots=\\
+= & f_{2}\left[f_{2}\left(f_{2}\left\{ f_{1}^{150}\left[163.838\right]\right\} \right)\right]=\cdots=f_{2}\left[f_{2}\left(f_{2}\left\{ f_{1}^{140}\left[167.772.158\right]\right\} \right)\right]=\cdots\\
+= & f_{2}\left[f_{2}\left(f_{2}\left\{ f_{1}^{137}\left[1.342.177.278\right]\right\} \right)\right]=\cdots
+\end{aligned}
+$
+\end_inset
+
+
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Teoremas
+\end_layout
+
+\begin_layout Subsection
+Totalidad de las 
+\begin_inset Formula $FRP$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph
+Enunciado
+\end_layout
+
+\begin_layout Standard
+Si 
+\begin_inset Formula $f\in FRP$
+\end_inset
+
+ entonces 
+\begin_inset Formula $f$
+\end_inset
+
+ es una función total.
+\end_layout
+
+\begin_layout Paragraph
+Demostración
+\end_layout
+
+\begin_layout Standard
+Lo demostraremos por inducción sobre el conjunto 
+\begin_inset Formula $FRP$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Caso base: Las funciones bases son totales por definición.
+\end_layout
+
+\begin_layout Itemize
+Composición: Supongamos que 
+\begin_inset Formula $f^{(n)},g_{1}^{(k)},\ldots,g_{n}^{(k)}$
+\end_inset
+
+ son totales.
+ Veremos que 
+\begin_inset Formula $h=\Phi\left(f^{(n)},g_{1}^{(k)},\ldots,g_{n}^{(k)}\right)$
+\end_inset
+
+ también lo es.
+\begin_inset Newline newline
+\end_inset
+
+Sea 
+\begin_inset Formula $X\in\mathbb{N}^{k}$
+\end_inset
+
+ podemos calcular 
+\begin_inset Formula $Y=\left(g_{1}\left[X\right],\ldots,g_{n}\left[X\right]\right)$
+\end_inset
+
+ puesto que cada 
+\begin_inset Formula $g_{i}$
+\end_inset
+
+ es total por hipótesis inductiva.
+ Ademas 
+\begin_inset Formula $f$
+\end_inset
+
+ también es total por lo que podemos calcular 
+\begin_inset Formula $f\left(Y\right)$
+\end_inset
+
+.
+\begin_inset Newline newline
+\end_inset
+
+Es decir, existe un numero natural 
+\begin_inset Formula $z=f\left(Y\right)=h\left(X\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Recursion: Supongamos que 
+\begin_inset Formula $g^{(k)},h^{(k+2)}$
+\end_inset
+
+ son totales.
+ Veremos que 
+\begin_inset Formula $\mbox{\ensuremath{f\left(y,X^{k}\right)=R\left(g,h\right)}}$
+\end_inset
+
+ también lo es, por inducción en 
+\begin_inset Formula $y.$
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Caso base 
+\begin_inset Formula $y=0$
+\end_inset
+
+: 
+\begin_inset Formula $f(0,X^{k})=g\left(X^{k}\right)$
+\end_inset
+
+ que es total por hipótesis.
+\end_layout
+
+\begin_layout Enumerate
+Caso inductivo 
+\begin_inset Formula $y=p$
+\end_inset
+
+: Supongamos 
+\begin_inset Formula $f\left(p,X^{k}\right)$
+\end_inset
+
+ es total, luego:
+\begin_inset Formula 
+\[
+f\left(p+1,X^{k}\right)=h\left[p,X^{k},\underbrace{f\left(p,X^{k}\right)}_{\mbox{total por HI}}\right]
+\]
+
+\end_inset
+
+y como 
+\begin_inset Formula $h$
+\end_inset
+
+ es total resulta que 
+\begin_inset Formula $f$
+\end_inset
+
+ es total.
+\end_layout
+
+\end_deeper
+\begin_layout Subsection
+Propiedades de Ackermann
+\end_layout
+
+\begin_layout Paragraph
+Enunciado
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\forall k\in\mathbb{N}\Rightarrow f_{k}\in FRP$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\forall x,k\in\mathbb{N}\Rightarrow f_{k}\left(x\right)>x$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\forall x_{1},x_{2},k\in\mathbb{N}$
+\end_inset
+
+, si 
+\begin_inset Formula $x_{1}<x_{2}$
+\end_inset
+
+ entonces 
+\begin_inset Formula $f_{k}\left(x_{1}\right)<f_{k}\left(x_{2}\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\forall x,k\in\mathbb{N}\Rightarrow f_{k}\left(x\right)<f_{k+1}\left(x\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Paragraph
+Demostración
+\end_layout
+
+\begin_layout Enumerate
+Lo demostraremos por inducción en 
+\begin_inset Formula $k$
+\end_inset
+
+:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Caso base 
+\begin_inset Formula $k=0$
+\end_inset
+
+: 
+\begin_inset Formula $f_{0}\left(x\right)=s\left(x\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Caso inductivo 
+\begin_inset Formula $k=h$
+\end_inset
+
+: Supongamos que 
+\begin_inset Formula $f_{h}$
+\end_inset
+
+ es 
+\begin_inset Formula $FRP$
+\end_inset
+
+.
+ Queremos ver si 
+\begin_inset Formula $f_{h+1}$
+\end_inset
+
+ también lo es.
+ En efecto 
+\begin_inset Formula $f_{h+1}\left(x\right)=f_{h}^{x+2}\left(x\right)=f_{h}^{s\left[s\left(x\right)\right]}\left(x\right)$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+ Consultar 
+\begin_inset Quotes fld
+\end_inset
+
+Julio Hurtado, Raúl Kantor, Carlos Luna, Luis Sierra y Dante Zanarini.
+ 
+\emph on
+Temas de Teoría de la Computación
+\emph default
+.
+\begin_inset Quotes frd
+\end_inset
+
+, pag.
+ 56.
+\end_layout
+
+\begin_layout Enumerate
+ Consultar 
+\begin_inset Quotes fld
+\end_inset
+
+Julio Hurtado, Raúl Kantor, Carlos Luna, Luis Sierra y Dante Zanarini.
+ 
+\emph on
+Temas de Teoría de la Computación
+\emph default
+.
+\begin_inset Quotes frd
+\end_inset
+
+, pag.
+ 56.
+\end_layout
+
+\begin_layout Enumerate
+Ejercicio.
+\end_layout
+
+\begin_layout Subsection
+Mayorabilidad de las 
+\begin_inset Formula $FRP$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph
+Enunciado
+\end_layout
+
+\begin_layout Standard
+Sea 
+\begin_inset Formula $g^{(n)}\in FRP$
+\end_inset
+
+ entonces existe 
+\begin_inset Formula $f_{k}$
+\end_inset
+
+ de la serie de Ackermann tal que 
+\begin_inset Formula $f_{k}\uparrow g$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Paragraph
+Demostración
+\end_layout
+
+\begin_layout Standard
+Lo demostraremos por inducción:
+\end_layout
+
+\begin_layout Enumerate
+Caso base: Todas las funciones bases son mayoradas por 
+\begin_inset Formula $f_{0}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Caso inductivo:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Composición: Sean las funciones 
+\begin_inset Formula $C^{\left(m\right)},h_{1}^{(n)},\ldots,h_{m}^{(n)}$
+\end_inset
+
+ tales que 
+\begin_inset Formula $f_{k}$
+\end_inset
+
+ mayora a todas ellas, definimos 
+\begin_inset Formula $g^{(n)}=\Phi\left(C^{\left(m\right)},h_{1}^{(n)},\ldots h_{m}^{(n)}\right)$
+\end_inset
+
+.
+ Veremos que 
+\begin_inset Formula $f_{k+1}\uparrow g^{\left(n\right)}$
+\end_inset
+
+.
+\begin_inset Newline newline
+\end_inset
+
+Sabemos que 
+\begin_inset Formula $h_{i}^{\left(n\right)}\left(X\right)\leq f_{k}\left[max\left(X\right)\right]$
+\end_inset
+
+ (por ser mayorada por 
+\begin_inset Formula $f_{k}$
+\end_inset
+
+) luego 
+\begin_inset Formula $max\left\{ h_{1}^{(n)}\left(X\right),\ldots,h_{m}^{(n)}\left(X\right)\right\} \leq f_{k}\left[max\left(X\right)\right]$
+\end_inset
+
+ 
+\emph on
+(*)
+\emph default
+.
+\begin_inset Newline newline
+\end_inset
+
+Ademas como 
+\begin_inset Formula $f_{k}\uparrow C^{\left(m\right)}$
+\end_inset
+
+ resulta:
+\begin_inset Formula 
+\[
+g\left(X\right)=C\left[h_{1}^{(n)}\left(X\right),\ldots,h_{m}^{(n)}\left(X\right)\right]\leq f_{k}\left[max\left(h_{1}^{(n)}\left(X\right),\ldots,h_{m}^{(n)}\left(X\right)\right)\right]
+\]
+
+\end_inset
+
+y por 
+\emph on
+(*)
+\emph default
+ y propiedad 
+\emph on
+(3)
+\emph default
+ tenemos 
+\begin_inset Formula 
+\[
+f_{k}\left[max\left(h_{1}^{(n)}\left(X\right),\ldots,h_{m}^{(n)}\left(X\right)\right)\right]\leq f_{k}\left[f_{k}\left(max\left[X\right]\right)\right]
+\]
+
+\end_inset
+
+ ahora aplicamos varias veces las propiedades 
+\emph on
+(2)
+\emph default
+ y 
+\emph on
+(3)
+\emph default
+ obteniendo: 
+\begin_inset Formula 
+\[
+g\left(X\right)\leq f_{k}\left[f_{k}\left(max\left[X\right]\right)\right]\leq f_{k}^{max\left(X\right)+2}\left[max\left(X\right)\right]=f_{k+1}\left[max\left(X\right)\right].
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Recursion: Sea 
+\begin_inset Formula $g^{\left(n+1\right)}=R\left[B^{\left(n\right)},h^{\left(n+2\right)}\right]$
+\end_inset
+
+, veremos que 
+\begin_inset Formula $\text{\ensuremath{f_{k}\uparrow B\land f_{k}\uparrow h\Rightarrow f_{k+1}\uparrow g^{\left(n\right)}}}$
+\end_inset
+
+.
+\begin_inset Newline newline
+\end_inset
+
+Por hipótesis 
+\begin_inset Formula $g\left(0,X\right)=B\left(X\right)\leq f_{k}\left[max\left(X\right)\right]$
+\end_inset
+
+ 
+\emph on
+(**)
+\emph default
+ y ademas:
+\begin_inset Formula 
+\[
+g\left(1,X\right)=h\left[0,X,g\left(0,X\right)\right]\leq f_{k}\left[max\left(0,X,g\left[0,X\right]\right)\right]
+\]
+
+\end_inset
+
+luego aplicando 
+\emph on
+(**)
+\emph default
+ y propiedad 
+\emph on
+(3)
+\emph default
+ 
+\begin_inset Formula 
+\[
+f_{k}\left[max\left(0,X,g\left[0,X\right]\right)\right]\leq f_{k}\left[max\left(0,X,f_{k}\left[max\left(X\right)\right]\right)\right]
+\]
+
+\end_inset
+
+y puesto que 
+\begin_inset Formula $f_{k}\left[max\left(X\right)\right]>max\left(X,0\right)$
+\end_inset
+
+ 
+\begin_inset Formula $\forall k$
+\end_inset
+
+ resulta 
+\begin_inset Formula 
+\[
+g\left(1,X\right)\leq f_{k}\left[max\left(0,X,f_{k}\left[max\left(X\right)\right]\right)\right]\leq f_{k}\left[f_{\text{k}}\left(max\left[X\right]\right)\right]
+\]
+
+\end_inset
+
+Puede demostrarse por inducción que 
+\begin_inset Formula $g\left(y,X\right)\leq f_{k}^{\left(y+1\right)}\left(max\left[X\right]\right)$
+\end_inset
+
+.
+ Finalmente:
+\begin_inset Formula 
+\[
+f_{k}^{\left(y+1\right)}\left(max\left[X\right]\right)\leq f_{k}^{\left(y+1\right)}\left(max\left[y,X\right]\right)\leq f_{k}^{max\left(y,X\right)+1}\left(max\left[y,X\right]\right)
+\]
+
+\end_inset
+
+y como 
+\begin_inset Formula $f_{k}^{max\left(y,X\right)+1}\left(max\left[y,X\right]\right)\leq f_{k}^{max\left(y,X\right)+2}\left(max\left[y,X\right]\right)=f_{k+1}\left[max\left(y,X\right)\right]$
+\end_inset
+
+ resulta 
+\begin_inset Formula $g\left(y,X\right)\leq f_{k+1}\left[max\left(y,X\right)\right]$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Subsection
+No primitividad de 
+\begin_inset Formula $ACK$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph
+Enunciado
+\end_layout
+
+\begin_layout Standard
+La función 
+\begin_inset Formula $ACK\left(x\right)$
+\end_inset
+
+ no es 
+\begin_inset Formula $FRP.$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph
+Demostración
+\end_layout
+
+\begin_layout Standard
+Supongamos que 
+\begin_inset Formula $ACK\left(x\right)\in FRP$
+\end_inset
+
+.
+ Luego 
+\begin_inset Formula $\text{\ensuremath{ACK\left(x\right)+1\in FRP}}$
+\end_inset
+
+.
+ Por el teorema de mayorabilidad existe 
+\begin_inset Formula $f_{m}$
+\end_inset
+
+ en la serie de Ackermann que la mayora, es decir: 
+\begin_inset Formula $\forall x\in\mathbb{N}$
+\end_inset
+
+ resulta: 
+\begin_inset Formula 
+\[
+ACK\left(x\right)+1\leq f_{m}\left(x\right)\iff f_{x}\left(x\right)+1\leq f_{m}\left(x\right)
+\]
+
+\end_inset
+
+y tomando 
+\begin_inset Formula $x=m$
+\end_inset
+
+ obtenemos 
+\begin_inset Formula $f_{m}\left(m\right)+1\leq f_{m}\left(m\right)$
+\end_inset
+
+.
+ ¡Absurdo! Por lo tanto 
+\begin_inset Formula $ACK\left(x\right)\notin FRP$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Section
+Definiciones
+\end_layout
+
+\begin_layout Subsection
+Operador de minimizacion
+\end_layout
+
+\begin_layout Standard
+Dada 
+\begin_inset Formula $h^{(n+1)}$
+\end_inset
+
+, decimos que 
+\begin_inset Formula $g^{(n)}$
+\end_inset
+
+ se construye por 
+\emph on
+minimizacion
+\emph default
+ de 
+\begin_inset Formula $h$
+\end_inset
+
+ (y lo notaremos 
+\begin_inset Formula $g=M\left[h\right]$
+\end_inset
+
+) cuando 
+\begin_inset Formula $g$
+\end_inset
+
+ se define del modo siguiente: 
+\begin_inset Formula 
+\[
+g\left(X\right)=M\left[h\right]\left(X\right)=\mu_{t}\left[h\left(t,X\right)=0\right]
+\]
+
+\end_inset
+
+ donde 
+\begin_inset Formula $\mu_{t}\left[h\left(t,X\right)=0\right]$
+\end_inset
+
+ es, si existe, el mínimo valor de 
+\begin_inset Formula $t$
+\end_inset
+
+ tal que 
+\begin_inset Formula $h\left(t,X\right)=0$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Paragraph
+Observación
+\end_layout
+
+\begin_layout Standard
+Nada garantiza que tal valor 
+\begin_inset Formula $t$
+\end_inset
+
+ exista, por lo que las funciones construidas con el operador 
+\begin_inset Formula $M$
+\end_inset
+
+ pueden ser parciales.
+\end_layout
+
+\begin_layout Subsection
+Definición inductiva
+\end_layout
+
+\begin_layout Standard
+Definimos inductivamente el conjunto de Funciones Recursivas 
+\begin_inset Formula $(FR)$
+\end_inset
+
+ como el menor conjunto tal que:
+\end_layout
+
+\begin_layout Itemize
+Las funciones base pertenecen a 
+\begin_inset Formula $FR$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Las funciones obtenidas aplicando un numero finito de operaciones de composición
+, recursion y minimizacion sobre elementos de 
+\begin_inset Formula $FR$
+\end_inset
+
+ también pertenecen a 
+\begin_inset Formula $FR$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Section
+Ejemplos
+\end_layout
+
+\begin_layout Subsection
+División
+\end_layout
+
+\begin_layout Standard
+La función numérica 
+\begin_inset Formula $div\left(x,y\right)=x/y$
+\end_inset
+
+ solo esta definida si existe 
+\begin_inset Formula $t$
+\end_inset
+
+ tal que 
+\begin_inset Formula $ty=x$
+\end_inset
+
+.
+ Buscamos entonces 
+\begin_inset Formula $div\left(x,y\right)=\mu_{t}\left[h\left(t,x,y\right)=0\right]$
+\end_inset
+
+.
+ Sea entonces 
+\begin_inset Formula $h\left(t,x,y\right)=\neg E\left[\Pi\left(t,y\right),x\right]$
+\end_inset
+
+.
+ Veamos algunos ejemplos:
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $div\left(25,5\right)=\mu_{t}\left[h\left(t,25,5\right)=0\right]$
+\end_inset
+
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $t=0$
+\end_inset
+
+: 
+\begin_inset Formula $h\left(0,25,5\right)=\neg E\left[\Pi\left(0,5\right),25\right]=\neg E\left[0,25\right]=1\neq0$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $t=1$
+\end_inset
+
+: 
+\begin_inset Formula $h\left(1,25,5\right)=\neg E\left[\Pi\left(1,5\right),25\right]=\neg E\left[5,25\right]=1\neq0$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $t=2$
+\end_inset
+
+: 
+\begin_inset Formula $h\left(2,25,5\right)=\neg E\left[\Pi\left(2,5\right),25\right]=\neg E\left[10,25\right]=1\neq0$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $t=3$
+\end_inset
+
+: 
+\begin_inset Formula $h\left(3,25,5\right)=\neg E\left[\Pi\left(3,5\right),25\right]=\neg E\left[15,25\right]=1\neq0$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $t=4$
+\end_inset
+
+: 
+\begin_inset Formula $h\left(4,25,5\right)=\neg E\left[\Pi\left(4,5\right),25\right]=\neg E\left[20,25\right]=1\neq0$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\boxed{t=5:\mbox{\ensuremath{h\left(5,25,5\right)=\neg E\left[\Pi\left(5,5\right),25\right]=\neg E\left[25,25\right]=0}}.}$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset Formula $div\left(4,3\right)=\mu_{t}\left[h\left(t,4,3\right)=0\right]$
+\end_inset
+
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $t=0:$
+\end_inset
+
+ 
+\begin_inset Formula $h\left(0,4,3\right)=\neg E\left[\Pi\left(0,3\right),4\right]=\neg E\left[0,4\right]=1\neq0$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $t=1:$
+\end_inset
+
+ 
+\begin_inset Formula $h\left(1,4,3\right)=\neg E\left[\Pi\left(1,3\right),4\right]=\neg E\left[3,4\right]=1\neq0$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $t=2:$
+\end_inset
+
+ 
+\begin_inset Formula $h\left(2,4,3\right)=\neg E\left[\Pi\left(2,3\right),4\right]=\neg E\left[6,4\right]=1\neq0$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $t=3:$
+\end_inset
+
+ 
+\begin_inset Formula $h\left(3,4,3\right)=\neg E\left[\Pi\left(3,3\right),4\right]=\neg E\left[9,4\right]=1\neq0$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\vdots$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset Formula $div\left(2,0\right)=\mu_{t}\left[h\left(t,2,0\right)=0\right]$
+\end_inset
+
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $t=0:$
+\end_inset
+
+ 
+\begin_inset Formula $h\left(0,2,0\right)=\neg E\left[\Pi\left(0,0\right),2\right]=\neg E\left[0,2\right]=1\neq0$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $t=1:$
+\end_inset
+
+ 
+\begin_inset Formula $h\left(1,2,0\right)=\neg E\left[\Pi\left(1,0\right),2\right]=\neg E\left[0,2\right]=1\neq0$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\vdots$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset Formula $div\left(0,0\right)=\mu_{t}\left[h\left(t,0,0\right)=0\right]$
+\end_inset
+
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $t=0:$
+\end_inset
+
+ 
+\begin_inset Formula $h\left(0,0,0\right)=\neg E\left[\Pi\left(0,0\right),0\right]=\neg E\left[0,0\right]=0$
+\end_inset
+
+.
+ ERROR.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+Nuestra función 
+\begin_inset Formula $h$
+\end_inset
+
+ falla en el caso extremo 
+\begin_inset Formula $0/0$
+\end_inset
+
+ pero podemos arreglarlo si la redefinimos como: 
+\begin_inset Formula $h\left(t,x,y\right)=\neg E\left\{ \Pi\left[t,y\right],x\right\} +D_{0}\left[y\right]$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+Observemos que el termino que agregamos 
+\begin_inset Formula $D_{0}\left[y\right]$
+\end_inset
+
+ da siempre 
+\begin_inset Formula $0$
+\end_inset
+
+ salvo cuando 
+\begin_inset Formula $y=0$
+\end_inset
+
+ en cuyo caso garantizamos que 
+\begin_inset Formula $h\left(t,x,0\right)\geq1$
+\end_inset
+
+ con lo que la función no se detiene.
+ Veamos que pasa ahora:
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $div\left(0,0\right)=\mu_{t}\left[h\left(t,0,0\right)=0\right]$
+\end_inset
+
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $t=0:$
+\end_inset
+
+ 
+\begin_inset Formula $\mbox{\ensuremath{h\left(0,0,0\right)=\neg E\left\{ \Pi\left[0,0\right],0\right\} +D_{0}\left[0\right]=\neg E\left\{ 0,0\right\} +1=0+1=1}}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $t=1:$
+\end_inset
+
+ 
+\begin_inset Formula $\mbox{\ensuremath{h\left(0,0,0\right)=\neg E\left\{ \Pi\left[1,0\right],0\right\} +D_{0}\left[0\right]=\neg E\left\{ 0,0\right\} +1=0+1=1}}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\vdots$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Subsection
+Logaritmo
+\end_layout
+
+\begin_layout Standard
+La función numérica 
+\begin_inset Formula $Log\left(x,y\right)=log_{x}y$
+\end_inset
+
+ solo esta definida si existe 
+\begin_inset Formula $t$
+\end_inset
+
+ tal que 
+\begin_inset Formula $x^{t}=y$
+\end_inset
+
+.
+ Buscamos entonces 
+\begin_inset Formula $Log\left(x,y\right)=\mu_{t}\left[h\left(t,x,y\right)=0\right]$
+\end_inset
+
+.
+ Sea entonces 
+\begin_inset Formula $h\left(t,x,y\right)=\neg E\left\{ \widehat{Exp}\left[x,t\right]+D_{0}\left[x\right]+D_{1}\left[x\right],y\right\} $
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+Nótense los términos 
+\begin_inset Formula $D_{0}\left[x\right]$
+\end_inset
+
+ y 
+\begin_inset Formula $D_{1}\left[x\right]$
+\end_inset
+
+ que logran 
+\begin_inset Quotes fld
+\end_inset
+
+indefinir
+\begin_inset Quotes frd
+\end_inset
+
+ la función para las bases correspondientes.
+\end_layout
+
+\begin_layout Standard
+Veamos algunos ejemplos:
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $Log\left(0,0\right)=\mu_{t}\left[h\left(t,0,0\right)=0\right]$
+\end_inset
+
+:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $t=0$
+\end_inset
+
+: 
+\begin_inset Formula $\mbox{\ensuremath{h\left(0,0,0\right)=\neg E\left\{ \widehat{Exp}\left(0,0\right)+1+0,0\right\} =\neg E\left\{ 1+1+0,0\right\} =1}}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $t=1$
+\end_inset
+
+: 
+\begin_inset Formula $\mbox{\ensuremath{h\left(1,0,0\right)=\neg E\left\{ \widehat{Exp}\left(0,1\right)+1+0,0\right\} =\neg E\left\{ 0+1+0,0\right\} =1}}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\vdots$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $Log\left(1,0\right)=\mu_{t}\left[h\left(t,1,0\right)=0\right]$
+\end_inset
+
+:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $t=0$
+\end_inset
+
+: 
+\begin_inset Formula $\mbox{\ensuremath{h\left(0,1,0\right)=\neg E\left\{ \widehat{Exp}\left(1,0\right)+0+1,0\right\} =\neg E\left\{ 1+0+1,0\right\} =1}}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $t=1$
+\end_inset
+
+: 
+\begin_inset Formula $\mbox{\ensuremath{h\left(1,1,0\right)=\neg E\left\{ \widehat{Exp}\left(1,1\right)+0+1,0\right\} =\neg E\left\{ 1+0+1,0\right\} =1}}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\vdots$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset Formula $Log\left(10,100\right)=\mu_{t}\left[h\left(t,10,100\right)=0\right]$
+\end_inset
+
+:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $t=0$
+\end_inset
+
+: 
+\begin_inset Formula $\mbox{\ensuremath{h\left(0,10,100\right)=\neg E\left\{ \widehat{Exp}\left(10,0\right)+0+0,100\right\} =\neg E\left\{ 1+0+0,100\right\} =1}}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $t=1$
+\end_inset
+
+: 
+\begin_inset Formula $\mbox{\ensuremath{h\left(1,10,100\right)=\neg E\left\{ \widehat{Exp}\left(10,1\right)+0+0,100\right\} =\neg E\left\{ 10+0+0,100\right\} =1}}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\boxed{t=2:\mbox{\ensuremath{h\left(2,10,100\right)=\neg E\left\{ \widehat{Exp}\left(10,2\right)+0+0,100\right\} =\neg E\left\{ 100+0,100\right\} =0}}.}$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset Formula $Log\left(2,3\right)=\mu_{t}\left[h\left(t,2,3\right)=0\right]$
+\end_inset
+
+:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $t=0$
+\end_inset
+
+: 
+\begin_inset Formula $\mbox{\ensuremath{h\left(0,2,3\right)=\neg E\left\{ \widehat{Exp}\left(2,0\right)+0+0,3\right\} =\neg E\left\{ 1+0+0,3\right\} =1}}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $t=1$
+\end_inset
+
+: 
+\begin_inset Formula $\mbox{\ensuremath{h\left(1,2,3\right)=\neg E\left\{ \widehat{Exp}\left(2,1\right)+0+0,3\right\} =\neg E\left\{ 2+0+0,3\right\} =1}}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $t=2$
+\end_inset
+
+: 
+\begin_inset Formula $\mbox{\ensuremath{h\left(2,2,3\right)=\neg E\left\{ \widehat{Exp}\left(2,2\right)+0+0,3\right\} =\neg E\left\{ 4+0+0,3\right\} =1}}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\vdots$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\end_body
+\end_document

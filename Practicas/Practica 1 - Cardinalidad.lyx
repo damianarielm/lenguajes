@@ -1,0 +1,844 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\begin_preamble
+\renewcommand{\headrulewidth}{1pt}
+\renewcommand{\footrulewidth}{0.5pt}
+\fancyheadoffset[L]{-16pt}
+\end_preamble
+\use_default_options true
+\begin_modules
+customHeadersFooters
+\end_modules
+\maintain_unincluded_children false
+\language spanish-mexico
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize 12
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 2cm
+\rightmargin 2cm
+\headheight 0cm
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style french
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle fancy
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Actualice versión.
+\end_layout
+
+\begin_layout Plain Layout
+Agregue comentarios.
+\end_layout
+
+\begin_layout Plain Layout
+Agregue encabezados.
+\end_layout
+
+\begin_layout Plain Layout
+Agregue soluciones.
+\end_layout
+
+\begin_layout Plain Layout
+Corregí soluciones.
+\end_layout
+
+\begin_layout Plain Layout
+Dividí soluciones.
+\end_layout
+
+\begin_layout Plain Layout
+Agregue ejercicios.
+\end_layout
+
+\begin_layout Plain Layout
+Corrección de ortografía.
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Comment
+status open
+
+\begin_layout Plain Layout
+Lógica y Algoritmos
+\end_layout
+
+\begin_layout Plain Layout
+Práctica 1 - Cardinalidad
+\end_layout
+
+\begin_layout Plain Layout
+Primera versión: 03/07 (Fede Olmedo)
+\end_layout
+
+\begin_layout Plain Layout
+Última Revisión: 05/03/08 (Dante Zanarini)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Left Header
+
+\noun on
+Lenguajes Formales y Computabilidad
+\end_layout
+
+\begin_layout Right Header
+2018
+\end_layout
+
+\begin_layout Center Footer
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+thepage
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+
+\size larger
+PRÁCTICA 1: 
+\emph on
+Cardinalidad
+\end_layout
+
+\begin_layout Standard
+
+\size footnotesize
+Pablo Verdes
+\begin_inset space \hspace*{\fill}
+\end_inset
+
+Dante Zanarini
+\begin_inset space \hspace*{\fill}
+\end_inset
+
+Pamela Viale
+\begin_inset space \hspace*{\fill}
+\end_inset
+
+Alejandro Hernandez
+\begin_inset space \hspace*{\fill}
+\end_inset
+
+Mauro Lucci
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset line
+LatexCommand rule
+offset "0.5ex"
+width "100col%"
+height "1pt"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Queda pendiente introducir ejercicios en términos de la analogía del Hotel
+ Infinito de Hilbert.
+ Con esto se pretende lograr una introducción informal y relajada, a un
+ tema que es difícil de entender.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Mediante el uso de biyecciones apropiadas, demuestre cada uno de los siguientes
+ ítems:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset Formula $P=\left\{ x\in\mathbb{N}/x\text{ mod }2=0\right\} $
+\end_inset
+
+ es equipotente a 
+\begin_inset Formula $\mathbb{N}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $A=\left\{ 1,2,3\right\} $
+\end_inset
+
+ no es equipotente a 
+\begin_inset Formula $B=\left\{ 7\right\} $
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Todos los intervalos reales cerrados y acotados son equipotentes entre si.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\left(-\infty,\infty\right)$
+\end_inset
+
+ es equipotente a 
+\begin_inset Formula $\left(0,1\right)$
+\end_inset
+
+ y a 
+\begin_inset Formula $\left(0,\infty\right)$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Sean 
+\begin_inset Formula $A,B,C$
+\end_inset
+
+ conjuntos cualesquiera.
+ Mostrar que:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Si 
+\begin_inset Formula $A\subseteq B$
+\end_inset
+
+ entonces 
+\begin_inset Formula $card\left(A\right)\preceq card\left(B\right)$
+\end_inset
+
+.
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Agregue este ejercicio pues es sencillo y resulta de utilidad.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $card\left(A-B\right)\preceq card\left(A\right)$
+\end_inset
+
+.
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Agregue este ejercicio pues es sencillo y resulta de utilidad.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $card\left(A\right)=card\left(A\times\left\{ b\right\} \right)$
+\end_inset
+
+ para cualquier 
+\begin_inset Formula $b$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $card\left(A\times B\times C\right)=card\left(A\times\left(B\times C\right)\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $card\left(A\times B\right)=card\left(B\times A\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Si 
+\begin_inset Formula $card\left(B\right)\preceq card\left(C\right)$
+\end_inset
+
+ entonces 
+\begin_inset Formula $card\left(A\times B\right)\preceq card\left(A\times C\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Si 
+\begin_inset Formula $card\left(A\right)=n$
+\end_inset
+
+ entonces 
+\begin_inset Formula $card\left(\mathcal{P}\left(A\right)\right)=2^{n}$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+La idea de este ejercicio es que el alumno, en el proceso de la demostración,
+ incorpore estos conceptos para utilizarlos mas adelante.
+\end_layout
+
+\begin_layout Plain Layout
+Para esto, es necesario agregar a la teoría el teorema de Cantor-Schroder-Bernst
+ein.
+\end_layout
+
+\end_inset
+
+Demuestre las siguientes propiedades:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+La relación 
+\begin_inset Formula $\sim$
+\end_inset
+
+ es una relación de equivalencia.
+\end_layout
+
+\begin_layout Enumerate
+La relación 
+\begin_inset Formula $\preceq$
+\end_inset
+
+ es una relación de orden.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Mostrar que si 
+\begin_inset Formula $A\sim B$
+\end_inset
+
+ y 
+\begin_inset Formula $C\sim D$
+\end_inset
+
+ entonces 
+\begin_inset Formula $A\times C\sim B\times D$
+\end_inset
+
+.
+ ¿Vale la afirmación reciproca?
+\end_layout
+
+\begin_layout Enumerate
+Demuestre que si 
+\begin_inset Formula $A\preceq B$
+\end_inset
+
+ y 
+\begin_inset Formula $C\preceq D$
+\end_inset
+
+, y ademas 
+\begin_inset Formula $B\cap D=\emptyset$
+\end_inset
+
+, entonces 
+\begin_inset Formula $A\cup C\preceq B\cup D$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Demuestre que 
+\begin_inset Formula $\left[0,1\right]$
+\end_inset
+
+ es equipotente a 
+\begin_inset Formula $\left[0,1\right)$
+\end_inset
+
+.
+ Sugerencia: utilice el teorema de Cantor-Schroder-Bernstein.
+ 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Este ejercicio lo incluyo con la intención de que el alumno no olvide el
+ teorema de Cantor-Schroder-Bernstein y de mostrar su utilidad.
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Este ejercicio pretende ser una guiá para que el alumno aprende a demostrar
+ uniones numerables de conjuntos numerables.
+\end_layout
+
+\end_inset
+
+Sea 
+\begin_inset Formula $P_{i}$
+\end_inset
+
+ el conjunto de todos los polinomios a coeficientes enteros de grado 
+\begin_inset Formula $i\in\mathbb{N}_{0}$
+\end_inset
+
+.
+ (Considere al polinomio nulo como un polinomio de grado 0).
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Describa por comprensión los conjuntos 
+\begin_inset Formula $P_{0}$
+\end_inset
+
+, 
+\begin_inset Formula $P_{3}$
+\end_inset
+
+ y 
+\begin_inset Formula $P_{n}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Describa al conjunto 
+\begin_inset Formula $P$
+\end_inset
+
+ de todos los polinomios a coeficientes enteros de grado natural, en términos
+ de los conjuntos 
+\begin_inset Formula $P_{i}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Defina una función 
+\begin_inset Formula $f:D_{i}\to\mathbb{Z}^{i+1}$
+\end_inset
+
+ y demuestre que es inyectiva.
+\end_layout
+
+\begin_layout Enumerate
+Valiéndose de todo lo anterior y de las propiedades de las relaciones 
+\begin_inset Formula $\preceq$
+\end_inset
+
+ y 
+\begin_inset Formula $\sim$
+\end_inset
+
+, demuestre que 
+\begin_inset Formula $P$
+\end_inset
+
+ es numerable.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Mostrar que los siguientes conjuntos son infinito numerables:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset Formula $A=\left\{ \frac{\sqrt[m]{m}}{n^{n}}:m,n\in\mathbb{N}\right\} $
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $B=\left\{ \text{sucesiones de la forma }\left\langle s_{0},s_{0}+r,s_{0}+2r,\ldots,s_{0}+nr,\ldots\right\rangle /s_{0},r\in\mathbb{Z}\right\} $
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $C=\left\{ \left[a,b\right]:a,b\in\mathbb{Z}\land b>a\right\} $
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Un numero 
+\begin_inset Formula $r\in\mathbb{C}$
+\end_inset
+
+ se dice algebraico si y solo si es la solución de una ecuación polinómica
+ a coeficientes enteros, es decir si y solo si: 
+\begin_inset Formula $a_{0}+a_{1}r+a_{2}r^{2}+\ldots+a_{n}r^{n}=0$
+\end_inset
+
+ para algún 
+\begin_inset Formula $n\in\mathbb{N}$
+\end_inset
+
+ y 
+\begin_inset Formula $a_{i}\in\mathbb{Z}$
+\end_inset
+
+ para 
+\begin_inset Formula $i=0,1,\ldots,n$
+\end_inset
+
+.
+ Probar que:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Todo numero racional es algebraico.
+\end_layout
+
+\begin_layout Enumerate
+¿Que se puede concluir a partir del ítem anterior con respecto a la cardinalidad
+ del conjunto de los números algebraicos?
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\sqrt{2}$
+\end_inset
+
+ es algebraico.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $i$
+\end_inset
+
+ es algebraico.
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Incluyo este ejercicio pues es sencillo y me resulta interesante.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+El conjunto de los números algebraicos es numerable.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Los números que no son algebraicos se denominan trascendentes.
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Teniendo como hipótesis que 
+\begin_inset Formula $\mathbb{C}$
+\end_inset
+
+ no es numerable, probar que existen números trascendentes.
+\end_layout
+
+\begin_layout Enumerate
+Probar que los números trascendentes no son numerables.
+\end_layout
+
+\begin_layout Standard
+Sugerencia: en ambos casos razonar por el absurdo y considerar a los reales
+ como la unión de los reales algebraicos y trascendentes.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Se sabe que 
+\begin_inset Formula $\aleph_{0}\prec c$
+\end_inset
+
+, donde 
+\begin_inset Formula $\aleph_{0}=card\left(\mathbb{N}\right)$
+\end_inset
+
+ y 
+\begin_inset Formula $c=card\left(\mathbb{R}\right)$
+\end_inset
+
+.
+ Pero: ¿existe un cardinal 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ tal que 
+\begin_inset Formula $\aleph_{0}\prec\alpha\prec c$
+\end_inset
+
+? Cantor, al no poder dar una respuesta a esta pregunta, conjetura la validez
+ de la llamada hipótesis del continuo.
+ Esta expresa que:
+\begin_inset Formula 
+\[
+\text{No existe un cardinal }\alpha\text{ tal que }\aleph_{0}\prec\alpha\prec c
+\]
+
+\end_inset
+
+A partir de esto, al cardinal 
+\begin_inset Formula $c$
+\end_inset
+
+ se lo suele llamar también 
+\begin_inset Formula $\aleph_{1}$
+\end_inset
+
+.
+ Utilizando esta hipótesis, se pide demostrar el siguiente teorema:
+\begin_inset Formula 
+\[
+card\left(A\right)=\aleph_{0}\text{ y }card\left(B\cup A\right)=\aleph_{1}\Rightarrow card\left(B\right)=\aleph_{1}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Sea 
+\begin_inset Formula $\Sigma$
+\end_inset
+
+ un conjunto finito de símbolos.
+ 
+\begin_inset Formula $\Sigma^{*}$
+\end_inset
+
+ denota el conjunto de todas las cadenas (secuencias finitas y ordenadas
+ de símbolos) sobre el alfabeto 
+\begin_inset Formula $\Sigma$
+\end_inset
+
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+¿Cuantas cadenas se pueden construir sobre el alfabeto 
+\begin_inset Formula $\Sigma$
+\end_inset
+
+?
+\end_layout
+
+\begin_layout Enumerate
+Teniendo en cuenta que un lenguaje sobre 
+\begin_inset Formula $\Sigma$
+\end_inset
+
+ es un subconjunto de 
+\begin_inset Formula $\Sigma^{*}$
+\end_inset
+
+ ¿Cuantos lenguajes existen sobre el alfabeto 
+\begin_inset Formula $\Sigma$
+\end_inset
+
+?
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Muestre que la cardinalidad de 
+\begin_inset Formula $\mathcal{P}\left(X\right)$
+\end_inset
+
+ es igual a la cardinalidad del conjunto de todas las funciones de 
+\begin_inset Formula $X$
+\end_inset
+
+ en 
+\begin_inset Formula $\left\{ 0,1\right\} $
+\end_inset
+
+.
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Este ítem tiene una dificultad excesiva y creo su demostración no le aporta
+ demasiado al alumno.
+ Sin embargo esta claro que es necesario para poder completar el próximo
+ ítem.
+\end_layout
+
+\begin_layout Plain Layout
+Sugiero eliminarlo como ejercicio y agregarlo como hipótesis.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Pruebe que 
+\begin_inset Formula $card\left(\left\{ f/f:\mathbb{N}\to\left\{ 0,1\right\} \right\} \right)\preceq card\left(\left\{ f/f:\mathbb{N}\to\mathbb{N}\right\} \right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Concluya que 
+\begin_inset Formula $\aleph_{0}\prec\mathcal{P}\left(\mathbb{N}\right)\preceq card\left(\left\{ f/f:\mathbb{N}\to\mathbb{N}\right\} \right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Todo programa de computadora puede considerarse como una cadena sobre el
+ alfabeto presente en el sistema.
+ Por lo tanto, ¿cuantos programas se pueden programar en una maquina?
+\end_layout
+
+\begin_layout Enumerate
+¿Que conclusiones pueden sacarse a partir de los últimos dos ítems?
+\end_layout
+
+\end_deeper
+\end_body
+\end_document

@@ -1,0 +1,663 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\begin_preamble
+\renewcommand{\headrulewidth}{1pt}
+\renewcommand{\footrulewidth}{0.5pt}
+\fancyheadoffset[L]{-16pt}
+\end_preamble
+\use_default_options true
+\begin_modules
+customHeadersFooters
+enumitem
+\end_modules
+\maintain_unincluded_children false
+\language spanish-mexico
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize 12
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 2cm
+\rightmargin 2cm
+\headheight 0cm
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style french
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle fancy
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Left Header
+
+\noun on
+Lenguajes Formales y Computabilidad
+\end_layout
+
+\begin_layout Right Header
+2018
+\end_layout
+
+\begin_layout Center Footer
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+thepage
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+
+\size larger
+PRÁCTICA 5: 
+\emph on
+Funciones Recursivas de Listas
+\end_layout
+
+\begin_layout Standard
+
+\size footnotesize
+Pablo Verdes
+\begin_inset space \hspace*{\fill}
+\end_inset
+
+Dante Zanarini
+\begin_inset space \hspace*{\fill}
+\end_inset
+
+Pamela Viale
+\begin_inset space \hspace*{\fill}
+\end_inset
+
+Alejandro Hernandez
+\begin_inset space \hspace*{\fill}
+\end_inset
+
+Mauro Lucci
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset line
+LatexCommand rule
+offset "0.5ex"
+width "100col%"
+height "1pt"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Calcular, si es posible:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset Formula $\left\langle \square_{i}\square_{d}\right\rangle \left[1,3,5,7,9,2,3,7,5,9,9\right]$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\left\langle \square_{i}\square_{d}\right\rangle \left[1,2,3,4,5,6\right]$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $0_{d}\left\langle \triangleleft0_{d}\triangleright\right\rangle \square_{d}\left[5,X\right]$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\triangleright\left\langle \triangleright0_{i}\triangleleft S_{i}\right\rangle \triangleleft\left[x,y,Z\right]$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+¿Cual es el dominio de las siguientes funciones?
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset Formula $\left\langle \triangleleft\right\rangle $
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $0_{d}\left\langle \square_{d}\triangleright0_{d}\right\rangle \square_{d}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\left\langle S_{i}\right\rangle $
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\left\langle \square_{d}\square_{i}\right\rangle $
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $0_{d}\left\langle S_{i}S_{i}\right\rangle $
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $0_{d}\left\langle \triangleright\square_{i}\triangleleft\right\rangle $
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+En este ejercicio agregue varias funciones sencillas y versiones alternativas
+ a las originales.
+ En particular, las versiones persistentes pueden facilitar la construcción
+ de otras funciones.
+\end_layout
+
+\end_inset
+
+Construya las siguientes funciones:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Constante a izquierda: 
+\begin_inset Formula $k_{i}\left[X\right]=\left[k,X\right]$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Constante a derecha: 
+\begin_inset Formula $k_{d}\left[X\right]=\left[X,k\right]$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Pasar a izquierda: 
+\begin_inset Formula $\triangleright\left[Y,x\right]=\left[x,Y\right]$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Pasar a derecha: 
+\begin_inset Formula $\triangleright\left[x,Y\right]=\left[Y,x\right]$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Duplicar a izquierda: 
+\begin_inset Formula $D_{i}\left[x,Y\right]=\left[x,x,Y\right]$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Duplicar a derecha: 
+\begin_inset Formula $D_{d}\left[Y,x\right]=\left[Y,x,x\right]$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Sucesor a izquierda persistente: 
+\begin_inset Formula $\widetilde{S_{i}}\left[x,Y\right]=\left[x+1,x,Y\right]$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Predecesor a izquierda: 
+\begin_inset Formula $P_{i}\left[x,Y\right]=\left[x-1,Y\right]$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Predecesor a izquierda persistente: 
+\begin_inset Formula $\widetilde{P}_{i}\left[x,Y\right]=\left[x-1,x,Y\right]$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Predecesor a izquierda acotado: 
+\begin_inset Formula $\widehat{P}_{i}\left[x,Y\right]=\begin{cases}
+\left[x-1,Y\right] & x\neq0\\
+\left[0,Y\right] & x=0
+\end{cases}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Intercambiar extremos: 
+\begin_inset Formula $\leftrightarrow\left[x,Y,z\right]=\left[z,Y,x\right]$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Suma a izquierda: 
+\begin_inset Formula $\Sigma_{i}\left[x,y,Z\right]=\left[x+y,Z\right]$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Suma a izquierda persistente: 
+\begin_inset Formula $\widetilde{\Sigma}_{i}\left[x,y,Z\right]=\left[x+y,x,y,Z\right]$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Resta a izquierda: 
+\begin_inset Formula $R_{i}\left[x,y,Z\right]=\left[x-y,Z\right]$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Resta a izquierda persistente: 
+\begin_inset Formula $\widetilde{R}_{i}\left[x,y,Z\right]=\left[x-y,x,y,Z\right]$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Resta a izquierda acotada: 
+\begin_inset Formula $\widehat{R}_{i}\left[x,y,Z\right]=\begin{cases}
+\left[x-y,Y\right] & x\geq y\\
+\left[0,Y\right] & x<y
+\end{cases}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Producto a izquierda: 
+\begin_inset Formula $\Pi_{i}\left[x,y,Z\right]=\left[xy,Z\right]$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Producto a izquierda persistente: 
+\begin_inset Formula $\widetilde{\Pi}_{i}\left[x,y,Z\right]=\left[xy,x,y,Z\right]$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Exponencial a izquierda extendido: 
+\begin_inset Formula $\widehat{E}_{i}\left[x,y,Z\right]=\begin{cases}
+\left[1,Z\right] & x=y=0\\
+\left[x^{y},Z\right]
+\end{cases}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Distinguidora del cero a izquierda: 
+\begin_inset Formula $D_{0}\left[x,Y\right]=\begin{cases}
+\left[0,Y\right] & x\neq0\\
+\left[1,Y\right] & x=0
+\end{cases}$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Construya funciones con los siguientes dominios:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset Formula $\mathcal{L}^{\geq2}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\left\{ \left[x,Y,z\right]\in\mathcal{L}/x=z\right\} $
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\left\{ \left[x,y,Z\right]\in\mathcal{L}/x\text{ divide a }y\right\} $
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\left\{ \left[x,y,Z\right]\in\mathcal{L}^{\geq2}/x+y\neq0\right\} $
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\left\{ \left[x,Z\right]\in\mathcal{L}^{\geq1}/x\leq a\land x\geq b\right\} $
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Construya las siguientes funciones:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset Formula $F_{1}\left[x,Y\right]=\left[1+2x+x^{2},Y\right]$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $F_{2}\left[x_{1},x_{2},\ldots,x_{n},Y,z_{1},z_{2},\ldots,z_{m}\right]=\left[z_{1},z_{2},\ldots,z_{m},Y,x_{1},x_{2},\ldots,x_{n}\right]$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $F_{3}\left[x,y,Z\right]=\left[Z,\underbrace{y,y,\ldots,y}_{x\text{ veces}}\right]$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $F_{4}\left[x,Y\right]=\left[1,2,3,\ldots,x,Y\right]$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $F_{5}\left[x_{1},x_{2},\ldots,x_{n},Y\right]=\left[1x_{1},2x_{2},\ldots,nx_{n},Y\right]$
+\end_inset
+
+.
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $F_{6}\left[x,Y\right]=\begin{cases}
+\left[z,Y\right] & x=2z\\
+\text{indefinida}
+\end{cases}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $F_{7}\left[x,y,Z\right]=\begin{cases}
+\left[x,x^{2},x^{3},Z\right] & \text{si }x+y\text{ es impar}\\
+\text{indefinida}
+\end{cases}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Agrego este ejercicio interesante que formo parte del ultimo parcial.
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula $F_{8}\left[n,Y\right]=\left[S_{n},n,Y\right]$
+\end_inset
+
+, donde 
+\begin_inset Formula $S_{n}$
+\end_inset
+
+ es el 
+\begin_inset Formula $n$
+\end_inset
+
+-ésimo numero de la sucesión de Fibonacci, dada por:
+\begin_inset Formula 
+\[
+S_{0}=0,S_{1}=1,S_{n}=S_{n-1}+S_{n-2}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Este ejercicio es una versión simplificada del propuesto originalmente (
+\begin_inset Formula $F_{8}\left[x,Y,z_{1},z_{2},\ldots,z_{n}\right]=\left[x,z_{1},z_{2},\ldots,z_{n}\right]$
+\end_inset
+
+) que resultaba muy difícil para los alumnos.
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula $F_{9}\left[Z\right]=\left[\right]$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Este nuevo ejercicio me parece muy interesante y tiene algunas aplicaciones,
+ sin embargo parece ser un problema bastante difícil.
+\end_layout
+
+\end_inset
+
+Sea 
+\begin_inset Formula $Q$
+\end_inset
+
+ un predicado unario:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Definir 
+\begin_inset Formula $F\left[x,Y\right]=\begin{cases}
+G\left[x,Y\right] & \text{si se cumple }Q\left(x\right)\\
+H\left[x,Y\right] & \text{si no}
+\end{cases}$
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Nótese que aun si 
+\begin_inset Formula $G$
+\end_inset
+
+ y 
+\begin_inset Formula $H$
+\end_inset
+
+ fueran funciones destructivas (podrían devolver una lista que no tenga
+ ni 
+\begin_inset Formula $x$
+\end_inset
+
+, ni 
+\begin_inset Formula $Y$
+\end_inset
+
+, o incluso la lista vacía) la definición de 
+\begin_inset Formula $F$
+\end_inset
+
+ debe seguir siendo valida.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Utilice el resultado del ejercicio anterior para definir 
+\begin_inset Formula $F\left[x,Y\right]=\begin{cases}
+\left[x+1,Y\right] & \text{si }x<5\\
+\left[x-1,Y\right] & \text{si }x\geq5
+\end{cases}$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\end_body
+\end_document

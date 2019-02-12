@@ -1,0 +1,958 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\begin_preamble
+\renewcommand{\headrulewidth}{1pt}
+\renewcommand{\footrulewidth}{0.5pt}
+\fancyheadoffset[L]{-16pt}
+\end_preamble
+\use_default_options true
+\begin_modules
+customHeadersFooters
+enumitem
+\end_modules
+\maintain_unincluded_children false
+\language spanish-mexico
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize 12
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 2cm
+\rightmargin 2cm
+\headheight 0cm
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style french
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle fancy
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Left Header
+
+\noun on
+Lenguajes Formales y Computabilidad
+\end_layout
+
+\begin_layout Right Header
+2018
+\end_layout
+
+\begin_layout Center Footer
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+thepage
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+
+\size larger
+PRÁCTICA 5: 
+\emph on
+Soluciones
+\end_layout
+
+\begin_layout Standard
+
+\size footnotesize
+Pablo Verdes
+\begin_inset space \hspace*{\fill}
+\end_inset
+
+Dante Zanarini
+\begin_inset space \hspace*{\fill}
+\end_inset
+
+Pamela Viale
+\begin_inset space \hspace*{\fill}
+\end_inset
+
+Alejandro Hernandez
+\begin_inset space \hspace*{\fill}
+\end_inset
+
+Mauro Lucci
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset line
+LatexCommand rule
+offset "0.5ex"
+width "100col%"
+height "1pt"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset space ~
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset Formula $\boxed{\begin{array}{c}
+\left\langle \square_{i}\square_{d}\right\rangle \left[\boldsymbol{1},3,5,7,9,2,3,7,5,9,\boldsymbol{9}\right]\\
+=\square_{i}\square_{d}\left\langle \square_{i}\square_{d}\right\rangle \left[1,3,5,7,9,2,3,7,5,9,9\right]=\left\langle \square_{i}\square_{d}\right\rangle \left[\boldsymbol{3},5,7,9,2,3,7,5,\boldsymbol{9}\right]\\
+=\square_{i}\square_{d}\left\langle \square_{i}\square_{d}\right\rangle \left[3,5,7,9,2,3,7,5,9\right]=\left\langle \square_{i}\square_{d}\right\rangle \left[\boldsymbol{5},7,9,2,3,7,\boldsymbol{5}\right]\\
+=\left[\boldsymbol{5},7,9,2,3,7,\boldsymbol{5}\right]
+\end{array}}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\boxed{\begin{array}{c}
+\left\langle \square_{i}\square_{d}\right\rangle \left[\boldsymbol{1},2,3,4,5,\boldsymbol{6}\right]=\square_{i}\square_{d}\left\langle \square_{i}\square_{d}\right\rangle \left[1,2,3,4,5,6\right]\\
+=\left\langle \square_{i}\square_{d}\right\rangle \left[\boldsymbol{2},3,4,\boldsymbol{5}\right]=\square_{i}\square_{d}\left\langle \square_{i}\square_{d}\right\rangle \left[2,3,4,5\right]=\left\langle \square_{i}\square_{d}\right\rangle \left[\boldsymbol{3},\boldsymbol{4}\right]\\
+=\square_{i}\square_{d}\left\langle \square_{i}\square_{d}\right\rangle \left[3,4\right]=\left\langle \square_{i}\square_{d}\right\rangle \left[\right]=\nexists
+\end{array}}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\boxed{\begin{array}{c}
+0_{d}\left\langle \triangleleft0_{d}\triangleright\right\rangle \square_{d}\left[5,X\right]=\left\langle \triangleleft0_{d}\triangleright\right\rangle \square_{d}\left[\boldsymbol{5},X,\boldsymbol{0}\right]=\triangleleft0_{d}\triangleright\left\langle \triangleleft0_{d}\triangleright\right\rangle \square_{d}\left[5,X,0\right]\\
+=0_{d}\triangleright\left\langle \triangleleft0_{d}\triangleright\right\rangle \square_{d}\left[0,5,X\right]=\triangleright\left\langle \triangleleft0_{d}\triangleright\right\rangle \square_{d}\left[0,5,X,0\right]=\left\langle \triangleleft0_{d}\triangleright\right\rangle \square_{d}\left[\boldsymbol{5},X,0,\boldsymbol{0}\right]=\ldots
+\end{array}}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\boxed{\begin{array}{c}
+\triangleright\left\langle \triangleright0_{i}\triangleleft S_{i}\right\rangle \triangleleft\left[x,y,Z\right]=\left\langle \triangleright0_{i}\triangleleft S_{i}\right\rangle \triangleleft\left[\boldsymbol{y},Z,\boldsymbol{x}\right]=\triangleright0_{i}\triangleleft S_{i}\left\langle \triangleright0_{i}\triangleleft S_{i}\right\rangle \triangleleft\left[y,Z,x\right]\\
+=0_{i}\triangleleft S_{i}\left\langle \triangleright0_{i}\triangleleft S_{i}\right\rangle \triangleleft\left[Z,x,y\right]=\triangleleft S_{i}\left\langle \triangleright0_{i}\triangleleft S_{i}\right\rangle \triangleleft\left[0,Z,x,y\right]\\
+=S_{i}\left\langle \triangleright0_{i}\triangleleft S_{i}\right\rangle \triangleleft\left[y,0,Z,x\right]=\left\langle \triangleright0_{i}\triangleleft S_{i}\right\rangle \triangleleft\left[\boldsymbol{y+1},0,Z,\boldsymbol{x}\right]\\
+=\ldots=\left\langle \triangleright0_{i}\triangleleft S_{i}\right\rangle \triangleleft\left[\boldsymbol{y+2},0,0,Z,\boldsymbol{x}\right]=\ldots\\
+=\left\langle \triangleright0_{i}\triangleleft S_{i}\right\rangle \triangleleft\left[\boldsymbol{x},\underbrace{0,\ldots,0}_{x-y},Z,\boldsymbol{x}\right]=\triangleleft\left[x,\underbrace{0,\ldots,0}_{x-y},Z,x\right]=\left[x,x,\underbrace{0,\ldots,0}_{x-y},Z\right]
+\end{array}}$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+\begin_inset space ~
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset Formula $\left\{ \left[x_{0},\ldots,x_{n}\right]\in\mathcal{L}^{\geq2}/x_{0}=x_{n}\lor x_{i}=x_{i+1}\text{ p.a }i\right\} $
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\left\{ \left[x_{0},\ldots,x_{n}\right]\in\mathcal{L}^{\geq1},Z/x_{i}=0\text{ p.a. }i\right\} $
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\left\{ \left[x,Y,z\right]\in\mathcal{L}^{\geq2}/x\leq z\right\} $
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\left\{ \left[x_{0},\ldots,x_{n}\right]\in\mathcal{L}^{\geq2}/x_{i}=x_{n-i}\text{ p.a }0\leq i<\left\lceil n/2\right\rceil \right\} $
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\left\{ \left[0,Z\right]/Z\in\mathcal{L}\right\} $
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\left\{ \left[0,Z\right]/Z\in\mathcal{L}\right\} $
+\end_inset
+
+.
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+\begin_inset space ~
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset Formula $k_{i}=0_{i}S_{i}^{k}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $k_{d}=0_{d}S_{d}^{k}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\triangleleft=0_{i}\left\langle S_{i}\right\rangle \square_{d}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\triangleright=0_{d}\left\langle S_{d}\right\rangle \square_{i}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $D_{i}=0_{d}\left\langle S_{d}\right\rangle \triangleleft$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $D_{d}=0_{i}\left\langle S_{i}\right\rangle \triangleright$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\widetilde{S_{i}}=D_{i}S_{i}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $P_{i}=0_{d}1_{d}\left\langle S_{d}\triangleleft S_{d}\triangleright\right\rangle \square_{i}\square_{d}\triangleleft$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\widetilde{P}_{i}=D_{i}P_{i}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\widehat{P}_{i}=0_{d}\left\langle \square_{d}P_{i}D_{i}\triangleright\right\rangle \square_{d}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\leftrightarrow=\triangleright0_{i}\triangleleft0_{i}\left\langle S_{i}\triangleright^{2}S_{i}\triangleleft^{2}\right\rangle \square_{d}\square_{i}\triangleright$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\Sigma_{i}=\triangleright0_{d}\left\langle S_{d}\triangleleft S_{d}\triangleright\right\rangle \square_{i}\square_{d}\triangleleft$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\widetilde{\Sigma}_{i}=\triangleright D_{i}D_{d}\leftrightarrow\triangleleft^{2}\Sigma_{i}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $R_{i}=\triangleright^{2}0_{i}\left\langle P_{d}\triangleleft P_{d}\triangleright\right\rangle \square_{i}\square_{d}\triangleleft$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\widetilde{R}_{i}=\triangleright D_{i}D_{d}\leftrightarrow\triangleleft^{2}R_{i}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\widehat{R}_{i}=\triangleright^{2}0_{i}\left\langle \widehat{P}_{d}\triangleleft\widehat{P}_{d}\triangleright\right\rangle \square_{i}\square_{d}\triangleleft$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\Pi_{i}=\triangleright D_{i}0_{i}\left\langle S_{i}\triangleright\widetilde{\Sigma}_{i}\triangleright\square_{i}\triangleleft^{2}\right\rangle \square_{i}R_{i}\square_{d}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\widetilde{\Pi}_{i}=\triangleright D_{i}D_{d}\leftrightarrow\triangleleft^{2}\Pi_{i}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\widehat{E}_{i}=\triangleright\leftrightarrow1_{i}0_{i}\left\langle S_{i}\triangleright\widetilde{\Pi}_{i}\triangleright\square_{i}\triangleleft^{2}\right\rangle \square_{i}\square_{d}\triangleright\square_{i}\triangleleft$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $D_{0}=0_{i}\widehat{E}_{i}$
+\end_inset
+
+.
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+\begin_inset space ~
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset Formula $\square_{i}^{2}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\left\langle S_{i}S_{d}\right\rangle $
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\triangleright\left\langle D_{d}\leftrightarrow\triangleleft R_{i}\right\rangle $
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\widetilde{\Sigma}_{i}1_{d}\left\langle S_{d}\right\rangle $
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+COMPLETAR.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+\begin_inset space ~
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset Formula $D_{i}^{2}\Pi\triangleright D_{i}\Sigma\triangleleft1_{i}\Sigma^{2}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\left(\left(\leftrightarrow\triangleleft\right)^{m}\triangleright^{m+1}\right)^{n}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\triangleright0_{i}\left\langle \square_{i}D_{i}0_{i}P_{d}\right\rangle \square_{i}^{2}\square_{d}\triangleleft$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $D_{i}\triangleright0_{i}\left\langle \square_{i}D_{i}P_{i}0_{i}P_{d}\right\rangle \square_{i}^{2}\square_{d}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+COMPLETAR.
+\end_layout
+
+\begin_layout Enumerate
+COMPLETAR.
+\end_layout
+
+\begin_layout Enumerate
+COMPLETAR.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $F_{8}=0_{d}1_{d}0_{d}\left\langle \triangleleft\widetilde{\Sigma}_{d}\triangleleft^{2}\square_{d}\triangleright^{3}S_{d}\right\rangle \square_{d}^{2}\triangleleft$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $F_{9}=0_{i}^{2}1_{d}\left\langle \triangleright^{2}\square_{i}\triangleleft^{2}\right\rangle \square_{i}^{2}$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+\begin_inset space ~
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset space ~
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Definimos 
+\begin_inset Formula $Q\left[x,Y\right]=\begin{cases}
+\left[x,Y,1\right] & \text{si se cumple }Q\left(x\right)\\
+\left[x,Y,0\right] & \text{si no}
+\end{cases}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Definimos 
+\begin_inset Formula $F=Q1_{i}\left\langle \square_{i}\square_{d}H0_{i}0_{d}\right\rangle \hat{P}_{i}\left\langle \square_{i}\square_{d}G0_{i}0_{d}\right\rangle \square_{i}\square_{d}$
+\end_inset
+
+
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph
+Ejemplos
+\end_layout
+
+\begin_layout Itemize
+Sea 
+\begin_inset Formula $k$
+\end_inset
+
+ tal que 
+\begin_inset Formula $Q\left(k\right)$
+\end_inset
+
+ sea cierto, luego:
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="6" columns="2">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\left[k,Y\right]$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $Q1_{i}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\left[1,k,Y,1\right]$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\left\langle \square_{i}\square_{d}H0_{i}0_{d}\right\rangle $
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\left[1,k,Y,1\right]$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\hat{P}_{i}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\left[0,k,Y,1\right]$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\left\langle \square_{i}\square_{d}G0_{i}0_{d}\right\rangle $
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\left[0,G\left[k,Y\right],0\right]$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\square_{i}\square_{d}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $G\left[k,Y\right]$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Sea 
+\begin_inset Formula $k$
+\end_inset
+
+ tal que 
+\begin_inset Formula $Q\left(k\right)$
+\end_inset
+
+ sea falso, luego:
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="6" columns="2">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\left[k,Y\right]$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $Q1_{i}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\left[1,k,Y,0\right]$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\left\langle \square_{i}\square_{d}H0_{i}0_{d}\right\rangle $
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\left[0,H\left[k,Y\right],0\right]$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\hat{P}_{i}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\left[0,H\left[k,Y\right],0\right]$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\left\langle \square_{i}\square_{d}G0_{i}0_{d}\right\rangle $
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\left[0,H\left[k,Y\right],0\right]$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\square_{i}\square_{d}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $H\left[k,Y\right]$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Enumerate
+\begin_inset space ~
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $Q=D_{i}\hat{P}_{i}^{4}D_{0}\triangleright$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $F=Q1_{i}\left\langle \square_{i}\square_{d}P_{i}0_{i}0_{d}\right\rangle \hat{P}_{i}\left\langle \square_{i}\square_{d}S_{i}0_{i}0_{d}\right\rangle \square_{i}\square_{d}$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\end_deeper
+\end_body
+\end_document

@@ -1,0 +1,1958 @@
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 508
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass book
+\begin_preamble
+\usepackage{tikz}
+\usetikzlibrary{automata,positioning,calc}
+\end_preamble
+\use_default_options true
+\maintain_unincluded_children false
+\language spanish-mexico
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize 12
+\spacing single
+\use_hyperref false
+\papersize a4paper
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language french
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Chapter
+Automatas y expresiones regulares
+\end_layout
+
+\begin_layout Section
+Autómatas finitos
+\end_layout
+
+\begin_layout Subsection
+Diagrama de transiciones
+\end_layout
+
+\begin_layout Standard
+El siguiente diagrama representa a un autómata que acepta cadenas que comienzan
+ con una letra, y siguen con letras o números:
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{tikzpicture}[shorten >=1pt,node distance=2cm,on grid,auto]
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node[state,initial, initial text=inicio] (sigma1)   {$I$};
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node[state,accepting] (sigma3) [above right=of sigma1] {$L$};
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node[state] (sigma2) [below right=of sigma1] {$D$};
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+path[->]
+\end_layout
+
+\begin_layout Plain Layout
+
+		(sigma1)	edge  node {$letra$} (sigma3)
+\end_layout
+
+\begin_layout Plain Layout
+
+					edge  node [swap] {$digito$} (sigma2)
+\end_layout
+
+\begin_layout Plain Layout
+
+		(sigma2)	edge [loop right] node {$letra$} ()
+\end_layout
+
+\begin_layout Plain Layout
+
+					edge [loop below] node {$digito$} ()
+\end_layout
+
+\begin_layout Plain Layout
+
+		(sigma3)	edge [loop right] node {$letra$} ()
+\end_layout
+
+\begin_layout Plain Layout
+
+					edge [loop below] node {$digito$} ();
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{tikzpicture}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Diremos que una cadena es aceptada si sus símbolos corresponden a una secuencia
+ de arcos (flechas) que conducen del circulo inicial a uno doble.
+\end_layout
+
+\begin_layout Standard
+Un diagrama de transiciones puede ser usado como herramienta de diseño para
+ producir rutinas de análisis léxico.
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Autómata de estado finito determinista
+\end_layout
+
+\begin_layout Subsubsection
+Definición
+\end_layout
+
+\begin_layout Standard
+Un autómata de estado 
+\noun on
+finito
+\noun default
+ determinista es una quintupla 
+\begin_inset Formula $\left(\Sigma,S,f,Ac,\sigma\right)$
+\end_inset
+
+ donde:
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\Sigma$
+\end_inset
+
+ es un conjunto finito de 
+\emph on
+símbolos de entradas
+\emph default
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $S$
+\end_inset
+
+ es un conjunto 
+\noun on
+finito
+\noun default
+ de 
+\emph on
+estados
+\emph default
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $f:S\times\Sigma\to S$
+\end_inset
+
+ es una 
+\emph on
+función de transición
+\emph default
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $Ac\subseteq S$
+\end_inset
+
+ es un conjunto de 
+\emph on
+estados de aceptación
+\emph default
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\sigma\in S$
+\end_inset
+
+ es el estado inicial.
+ 
+\end_layout
+
+\begin_layout Standard
+La función de transición del diagrama anterior estaría definida de la siguiente
+ forma:
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $f\left(\sigma_{1},digito\right)=\sigma_{2}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $f\left(\sigma_{1},letra\right)=\sigma_{3}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $f\left(\sigma_{2},digito\right)=\sigma_{2}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $f\left(\sigma_{2},letra\right)=\sigma_{2}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $f\left(\sigma_{3},digito\right)=\sigma_{3}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $f\left(\sigma_{3},letra\right)=\sigma_{3}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Paragraph
+Observación
+\end_layout
+
+\begin_layout Standard
+Nótese que cada estado del diagrama de transiciones de un autómata de estado
+ finito 
+\noun on
+determinista
+\noun default
+ solo debe tener un arco que salga para cada símbolo del alfabeto; de lo
+ contrario, un autómata que llega a ese estado se enfrentara a una elección
+ de cual debe ser el arco a seguir.
+ Ademas, dicho diagrama deberá estar completamente definido, es decir, debe
+ existir por lo menos un arco para cada símbolo del alfabeto; de lo contrario,
+ un autómata que llega a ese estado puede enfrentarse a una situación donde
+ no puede aplicar ninguna transición.
+\end_layout
+
+\begin_layout Standard
+Estos requisitos están reflejados en la definición formal primero porque
+ 
+\begin_inset Formula $f$
+\end_inset
+
+ es una función y, segundo porque su dominio es 
+\begin_inset Formula $S\times\Sigma$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsubsection
+Palabra aceptada por un 
+\begin_inset Formula $AEF$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Sean 
+\begin_inset Formula $A=\left(\Sigma,S,f,Ac,\sigma\right)$
+\end_inset
+
+ un 
+\begin_inset Formula $AEF$
+\end_inset
+
+ y 
+\begin_inset Formula $p=p\left(1\right)p\left(2\right)\ldots p\left(n\right)$
+\end_inset
+
+ una palabra sobre 
+\begin_inset Formula $\Sigma$
+\end_inset
+
+, diremos que dicha palabra es aceptada por el autómata 
+\begin_inset Formula $A$
+\end_inset
+
+ si existen 
+\begin_inset Formula $\sigma_{0},\sigma_{1},\ldots,\sigma_{n}\in S$
+\end_inset
+
+ tales que:
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\sigma_{0}=\sigma$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\sigma_{i}=f\left(\sigma_{i-1},p\left(i\right)\right)$
+\end_inset
+
+ para 
+\begin_inset Formula $i=1,\ldots,n$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\sigma_{n}\in Ac$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Paragraph
+Observación
+\end_layout
+
+\begin_layout Standard
+La palabra vaciá es aceptada si y solo si el estado inicial es de aceptación
+ (
+\begin_inset Formula $\sigma\in Ac$
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Subsubsection
+Función de transición extendida
+\end_layout
+
+\begin_layout Standard
+Dado 
+\begin_inset Formula $A=\left(\Sigma,S,f,Ac,\sigma\right)$
+\end_inset
+
+ un 
+\begin_inset Formula $AEF$
+\end_inset
+
+, se define 
+\begin_inset Formula $F:S\times\Sigma^{*}\to S$
+\end_inset
+
+ sobre una palabra 
+\begin_inset Formula $p=cl$
+\end_inset
+
+ donde 
+\begin_inset Formula $c$
+\end_inset
+
+ es una cadena y 
+\begin_inset Formula $l$
+\end_inset
+
+ un caracter de forma recursiva:
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $F\left(s,\lambda\right)=s$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $F\left(s,p\right)=f\left[F\left(s,c\right),l\right]$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsubsection
+Lenguaje aceptado por un 
+\begin_inset Formula $AEF$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Definimos al lenguaje aceptado por un autómata 
+\begin_inset Formula $A$
+\end_inset
+
+ como el conjunto: 
+\begin_inset Formula $\mathcal{AC}\left(A\right)=\left\{ p\in\Sigma^{*}/p\text{ es aceptada por }A\right\} $
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsubsection
+Equivalencia de autómatas
+\end_layout
+
+\begin_layout Standard
+Sean 
+\begin_inset Formula $A_{1},A_{2}$
+\end_inset
+
+ autómatas de estado finito, diremos que 
+\begin_inset Formula $A_{1}$
+\end_inset
+
+ es equivalente a 
+\begin_inset Formula $A_{2}$
+\end_inset
+
+ y lo notaremos 
+\begin_inset Formula $A_{1}\equiv A_{2}$
+\end_inset
+
+ si y solo si 
+\begin_inset Formula $\mathcal{AC}\left(A_{1}\right)=\mathcal{AC}\left(A_{2}\right)$
+\end_inset
+
+, es decir, si y solo si aceptan el mismo lenguaje.
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Regularidad de lenguajes aceptados por 
+\begin_inset Formula $AEF$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph
+Enunciado
+\end_layout
+
+\begin_layout Standard
+Todo lenguaje aceptado por un 
+\begin_inset Formula $AEF$
+\end_inset
+
+ es regular, es decir: 
+\begin_inset Formula 
+\[
+\left\{ L\in\mathcal{L}/L=\mathcal{AC}\left(A\right)\text{ para algun }A\in AEF\right\} \subseteq\mathcal{L}_{3}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph
+Demostración
+\end_layout
+
+\begin_layout Standard
+Sea 
+\begin_inset Formula $A=\left(\Sigma,S,f,Ac,\sigma_{0}\right)$
+\end_inset
+
+ un 
+\begin_inset Formula $AEF$
+\end_inset
+
+, definimos 
+\begin_inset Formula $G=\left(N,T,P,\sigma\right)$
+\end_inset
+
+ donde 
+\begin_inset Formula $N=S,T=\Sigma,\sigma=\sigma_{0}$
+\end_inset
+
+ y reglas de producción:
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $U\to xV\iff f\left(U,x\right)=V$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $U\to\lambda\iff U\in Ac$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Debemos probar que 
+\begin_inset Formula $L\left(G\right)=\mathcal{AC}\left(A\right)$
+\end_inset
+
+ es decir que: 
+\begin_inset Formula 
+\[
+\sigma\Rightarrow^{*}l_{1}l_{2}\ldots l_{n}\iff F\left(\sigma_{0},l_{1}\ldots l_{n}\right)\in Ac
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Queda como ejercicio al lector completar esta demostración.
+\end_layout
+
+\begin_layout Paragraph
+Observación
+\end_layout
+
+\begin_layout Standard
+Este teorema nos indica que los 
+\begin_inset Formula $AEF$
+\end_inset
+
+ no sirven para reconocer lenguajes independientes de contexto.
+\end_layout
+
+\begin_layout Subsubsection
+Lema del bombeo para 
+\begin_inset Formula $AEF$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph
+Enunciado
+\end_layout
+
+\begin_layout Standard
+Sea 
+\begin_inset Formula $A=\left(\Sigma,S,f,Ac,\sigma_{0}\right)$
+\end_inset
+
+ un 
+\begin_inset Formula $AEF$
+\end_inset
+
+, 
+\begin_inset Formula $L=\mathcal{AC}\left(A\right)$
+\end_inset
+
+ y 
+\begin_inset Formula $x,y\in\Sigma$
+\end_inset
+
+, si 
+\begin_inset Formula $L$
+\end_inset
+
+ contiene infinitas cadenas de la forma 
+\begin_inset Formula $x^{n}y^{n}$
+\end_inset
+
+ entonces también contiene infinitas cadenas de la forma 
+\begin_inset Formula $x^{m}y^{n}$
+\end_inset
+
+ con 
+\begin_inset Formula $m\neq n$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Paragraph
+Demostración
+\end_layout
+
+\begin_layout Standard
+El numero de estados de 
+\begin_inset Formula $A$
+\end_inset
+
+ (
+\begin_inset Formula $\left|S\right|$
+\end_inset
+
+) es finito.
+ Sea 
+\begin_inset Formula $\text{\ensuremath{n>\left|S\right|:x^{n}y^{n}\in L}}$
+\end_inset
+
+.
+ Observemos que durante el proceso de aceptación de la palabra 
+\begin_inset Formula $x^{n}y^{n}$
+\end_inset
+
+ (en particular, de la subcadena 
+\begin_inset Formula $x^{n}$
+\end_inset
+
+) el autómata 
+\begin_inset Formula $A$
+\end_inset
+
+ deberá pasar sucesivamente por 
+\begin_inset Formula $n$
+\end_inset
+
+ estados conectados por el caracter 
+\begin_inset Formula $x$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Los estados visitados en dicha secuencia no tienen por que ser, en general,
+ necesariamente distintos.
+ Sin embargo, como el numero de transiciones es mayor que el de estados
+ disponibles, al menos un estado debe aparecer repetido como muestra el
+ siguiente diagrama:
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{tikzpicture}[shorten >=1pt,node distance=2cm,on grid,auto]
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node[state,initial, initial text=] (sigma1)   {};
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node[state] (sigma2) [right=of sigma1] {};
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node[state] (sigma3) [right=of sigma2] {};
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node[state] (sigma4) [above right=of sigma3] {};
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node[state] (sigma5) [above =of sigma4] {};
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node[state] (sigma6) [above left =of sigma5] {};
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node[state] (sigma7) [below left =of sigma6] {};
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node[state] (sigma8) [below  =of sigma7] {};
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node[state] (sigma9) [right  =of sigma3] {};
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node[state] (sigma10) [right  =of sigma9] {};
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+path[->]
+\end_layout
+
+\begin_layout Plain Layout
+
+		(sigma1)	edge  node {$x$} (sigma2)
+\end_layout
+
+\begin_layout Plain Layout
+
+		(sigma2)	edge  node {$x$} (sigma3)
+\end_layout
+
+\begin_layout Plain Layout
+
+		(sigma3)	edge  node {$x$} (sigma4)
+\end_layout
+
+\begin_layout Plain Layout
+
+		(sigma4)	edge  node {$x$} (sigma5)
+\end_layout
+
+\begin_layout Plain Layout
+
+		(sigma5)	edge  node {$x$} (sigma6)
+\end_layout
+
+\begin_layout Plain Layout
+
+		(sigma6)	edge  node {$x$} (sigma7)
+\end_layout
+
+\begin_layout Plain Layout
+
+		(sigma7)	edge  node {$x$} (sigma8)
+\end_layout
+
+\begin_layout Plain Layout
+
+		(sigma8)	edge  node {$x$} (sigma3)
+\end_layout
+
+\begin_layout Plain Layout
+
+		(sigma3)	edge  node {$y$} (sigma9)
+\end_layout
+
+\begin_layout Plain Layout
+
+		(sigma9)	edge  node {$y$} (sigma10)
+\end_layout
+
+\begin_layout Plain Layout
+
+	;
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{tikzpicture}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+De aquí concluimos que 
+\begin_inset Formula $A$
+\end_inset
+
+ acepta también la palabra 
+\begin_inset Formula $x^{n+m}y^{n}$
+\end_inset
+
+ (donde 
+\begin_inset Formula $m$
+\end_inset
+
+ denota la longitud del bucle).
+\end_layout
+
+\begin_layout Subsubsection
+Existencia de lenguajes libres de contexto
+\end_layout
+
+\begin_layout Paragraph
+Enunciado
+\end_layout
+
+\begin_layout Standard
+No existe un 
+\begin_inset Formula $AEF$
+\end_inset
+
+ tal que 
+\begin_inset Formula $\mathcal{AC}\left(A\right)=\left\{ a^{n}b^{n}/n\in\mathbb{N}_{0}\right\} $
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Paragraph
+Demostración
+\end_layout
+
+\begin_layout Standard
+Supongamos por el absurdo que 
+\begin_inset Formula $\text{\ensuremath{\exists A\in AEF/\mathcal{AC}\left(A\right)=\left\{ a^{n}b^{n}/n\in\mathbb{N}_{0}\right\} }}$
+\end_inset
+
+.
+ Dado que 
+\begin_inset Formula $\mathcal{AC}\left(A\right)$
+\end_inset
+
+ contiene infinitas cadenas de la forma 
+\begin_inset Formula $a^{n}b^{n}$
+\end_inset
+
+, por el lema del bombeo concluimos que 
+\begin_inset Formula $\mathcal{AC}\left(A\right)$
+\end_inset
+
+ también contiene cadenas de la forma 
+\begin_inset Formula $a^{m}b^{n}$
+\end_inset
+
+ con 
+\begin_inset Formula $m\neq n$
+\end_inset
+
+ lo cual contradice la definición del lenguaje.
+\end_layout
+
+\begin_layout Paragraph
+Observación
+\end_layout
+
+\begin_layout Standard
+Una consecuencia de este teorema es que los 
+\begin_inset Formula $AEF$
+\end_inset
+
+ no sirven como analizadores léxicos de expresiones aritméticas que contienen
+ paréntesis, pues el autómata debería aceptar cadenas de la forma 
+\begin_inset Formula $(^{n})^{n}$
+\end_inset
+
+ pero de ser así también aceptaría por ejemplo 
+\begin_inset Formula $((^{n})^{n}$
+\end_inset
+
+ que es incorrecta.
+\end_layout
+
+\begin_layout Subsection
+Autómata de estado finito no determinista
+\end_layout
+
+\begin_layout Subsubsection
+Definición
+\end_layout
+
+\begin_layout Standard
+Un 
+\begin_inset Formula $AEF$
+\end_inset
+
+ no determinista (
+\begin_inset Formula $AEFND$
+\end_inset
+
+) es una quintupla 
+\begin_inset Formula $A=\left(\Sigma,S,R,Ac,\sigma\right)$
+\end_inset
+
+ donde:
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\Sigma$
+\end_inset
+
+ es un conjunto finito de 
+\emph on
+símbolos de entrada
+\emph default
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $S$
+\end_inset
+
+ es un conjunto finito de 
+\emph on
+estados
+\emph default
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $R\subseteq S\times\Sigma\times S$
+\end_inset
+
+ es una 
+\emph on
+relación de transición
+\emph default
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $Ac\subseteq S$
+\end_inset
+
+ es un conjunto de 
+\emph on
+estados de aceptación
+\emph default
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\sigma\in S$
+\end_inset
+
+ es el 
+\emph on
+estado inicial
+\emph default
+.
+\end_layout
+
+\begin_layout Standard
+Alternativamente podríamos pensar a 
+\begin_inset Formula $R$
+\end_inset
+
+ como una función 
+\begin_inset Formula $g:S\times\Sigma\to\mathcal{P}\left(S\right)$
+\end_inset
+
+, es decir 
+\begin_inset Formula $g\left(\sigma,c\right)=\left\{ \sigma'\in S/\left(\sigma,c,\sigma'\right)\in R\right\} $
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Paragraph
+Observación
+\end_layout
+
+\begin_layout Standard
+Como hemos cambiado una relación por una función, ahora al leer un nuevo
+ símbolo se podrán seguir múltiples caminos.
+\end_layout
+
+\begin_layout Standard
+Ademas no es necesario que desde cada estado, se puedan leer todas las letras
+ del alfabeto.
+\end_layout
+
+\begin_layout Subsubsection
+Lenguaje aceptado por un 
+\begin_inset Formula $AEFND$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Sea 
+\begin_inset Formula $A=\left(\Sigma,S,R,Ac,\sigma\right)$
+\end_inset
+
+ un 
+\begin_inset Formula $AEFND$
+\end_inset
+
+ y 
+\begin_inset Formula $p\in\Sigma^{*}$
+\end_inset
+
+, luego:
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $p=\lambda\in\mathcal{AC}\left(A\right)\iff\sigma\in Ac$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $p=p\left(1\right)p\left(2\right)\ldots p\left(n\right)\in\mathcal{AC}\left(A\right)\iff\exists\sigma_{0},\sigma_{1},\ldots,\sigma_{n}$
+\end_inset
+
+ tales que:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset Formula $\sigma_{0}=\sigma$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\left(\sigma_{i-1},p\left(i\right),\sigma_{i}\right)\in R$
+\end_inset
+
+ 
+\begin_inset Formula $\forall i=1,\ldots,n$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\sigma_{n}\in Ac$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+A toda secuencia 
+\begin_inset Formula $\left(\sigma_{0},\sigma_{1},\ldots,\sigma_{n}\right)$
+\end_inset
+
+ que cumple con (1) y (2) pero no necesariamente con 
+\begin_inset Formula $(3)$
+\end_inset
+
+ se la llama secuencia que representa a 
+\begin_inset Formula $p$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+En otras palabras, en un 
+\begin_inset Formula $AEFND$
+\end_inset
+
+ una cadena 
+\begin_inset Formula $p$
+\end_inset
+
+ sera:
+\end_layout
+
+\begin_layout Itemize
+Aceptada si existe un camino que la represente y termine en 
+\begin_inset Formula $Ac$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+No aceptada si no existe camino que la represente o bien todo camino que
+ la representa termina en 
+\begin_inset Formula $s\in S-Ac$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsubsection
+Equivalencia entre 
+\emph on
+
+\begin_inset Formula $AEF$
+\end_inset
+
+ y 
+\begin_inset Formula $AEFND$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Dado que toda función es a su vez una relación, resulta que todo 
+\begin_inset Formula $AEF$
+\end_inset
+
+ es también un 
+\begin_inset Formula $AEFND$
+\end_inset
+
+, por lo que:
+\begin_inset Formula 
+\[
+\left\{ L/\exists A\in AEF:\mathcal{AC}\left(A\right)=L\right\} \subseteq\left\{ L/\exists A\in AEFND:\mathcal{AC}\left(A\right)=L\right\} 
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Mas precisamente sea 
+\begin_inset Formula $A=\left(\Sigma,S,f,Ac,\sigma_{0}\right)$
+\end_inset
+
+ un 
+\begin_inset Formula $AEF$
+\end_inset
+
+ definimos 
+\begin_inset Formula $\text{\ensuremath{A'=\left(\Sigma,S,R,Ac,\sigma_{0}\right)}}$
+\end_inset
+
+ con 
+\begin_inset Formula $R$
+\end_inset
+
+ dado por 
+\begin_inset Formula $\left(P,l,Q\right)\in R\iff f\left(P,l\right)=Q$
+\end_inset
+
+, luego 
+\begin_inset Formula $A'$
+\end_inset
+
+ es 
+\begin_inset Formula $AEFND$
+\end_inset
+
+ y 
+\begin_inset Formula $\mathcal{AC}\left(A'\right)=\mathcal{AC}\left(A\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Veremos a continuación que en efecto, ambos conjuntos son idénticos.
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph
+Teorema de Kleene-Rabin-Scott
+\end_layout
+
+\begin_layout Standard
+Para cada 
+\begin_inset Formula $AEFND$
+\end_inset
+
+ existe un 
+\begin_inset Formula $AEF$
+\end_inset
+
+ que acepta el mismo lenguaje.
+\end_layout
+
+\begin_layout Paragraph
+Demostración
+\end_layout
+
+\begin_layout Standard
+Sea 
+\begin_inset Formula $A=\left(\Sigma,S,R,Ac,\sigma_{0}\right)$
+\end_inset
+
+ un 
+\begin_inset Formula $AEFND$
+\end_inset
+
+ y 
+\begin_inset Formula $A'=\left(\Sigma,S',f,Ac',s_{0}'\right)$
+\end_inset
+
+ donde:
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $S'=\mathcal{P}\left(S\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $Ac'=\left\{ s'\in\mathcal{P}\left(S\right)/s'\cap Ac\neq\emptyset\right\} $
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $s_{0}'=\left\{ s_{0}\right\} $
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $f:S'\times\Sigma\to S'$
+\end_inset
+
+ tal que 
+\begin_inset Formula $f\left(s',l\right)=\left\{ s\in S/\exists u\in s':\left(u,l,s\right)\in R\right\} $
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Debemos mostrar ahora que 
+\begin_inset Formula $\mathcal{AC}\left(A\right)=\mathcal{AC}\left(A'\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Para mostrar que 
+\begin_inset Formula $p\in\mathcal{AC}\left(A\right)\iff p\in\mathcal{AC}\left(A'\right)$
+\end_inset
+
+ haremos inducción sobre la cantidad de letras de 
+\begin_inset Formula $p$
+\end_inset
+
+, mas precisamente mostraremos que 
+\begin_inset Formula $\forall n\in\mathbb{N}_{0}$
+\end_inset
+
+ vale el siguiente enunciado 
+\begin_inset Formula $E_{n}$
+\end_inset
+
+: 
+\begin_inset Quotes fld
+\end_inset
+
+
+\emph on
+Para cada ruta en 
+\begin_inset Formula $A$
+\end_inset
+
+ que va de su estado inicial 
+\begin_inset Formula $s_{0}$
+\end_inset
+
+ a un estado 
+\begin_inset Formula $s_{n}$
+\end_inset
+
+, existe una ruta en 
+\begin_inset Formula $A'$
+\end_inset
+
+ que va de su estado inicial 
+\begin_inset Formula $s_{0}'=\left\{ s_{0}\right\} $
+\end_inset
+
+ a un estado 
+\begin_inset Formula $s_{n}'$
+\end_inset
+
+ tal que 
+\begin_inset Formula $s_{n}\in s_{n}'$
+\end_inset
+
+.
+ Recíprocamente, para cada ruta en 
+\begin_inset Formula $A'$
+\end_inset
+
+ que va de 
+\begin_inset Formula $s_{0}'$
+\end_inset
+
+ a un estado 
+\begin_inset Formula $s_{n}'$
+\end_inset
+
+ , y para cada 
+\begin_inset Formula $s_{n}\in s_{n}'$
+\end_inset
+
+, existe una ruta en 
+\begin_inset Formula $A$
+\end_inset
+
+ que va de 
+\begin_inset Formula $s_{0}$
+\end_inset
+
+ a 
+\begin_inset Formula $s_{n}$
+\end_inset
+
+
+\emph default
+
+\begin_inset Quotes frd
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Caso base 
+\begin_inset Formula $n=0$
+\end_inset
+
+: Trivial.
+ En 
+\begin_inset Formula $A$
+\end_inset
+
+, 
+\begin_inset Formula $s_{n}=s_{0}$
+\end_inset
+
+ corresponde al caso en que la entrada es 
+\begin_inset Formula $\lambda$
+\end_inset
+
+ y en 
+\begin_inset Formula $A'$
+\end_inset
+
+ 
+\begin_inset Formula $s_{n}'=s_{0}'$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Paso inductivo: Supongamos que vale 
+\begin_inset Formula $E_{n}$
+\end_inset
+
+ y veamos que vale 
+\begin_inset Formula $E_{n+1}$
+\end_inset
+
+.
+ Por H.
+ I.
+ existe una ruta en 
+\begin_inset Formula $A'$
+\end_inset
+
+ de la forma 
+\begin_inset Formula $s_{0}',\ldots,s_{n}'$
+\end_inset
+
+ tal que 
+\begin_inset Formula $s_{n}\in s_{n}'$
+\end_inset
+
+ y dado que 
+\begin_inset Formula $\left(s_{n},l_{n+1},s_{n+1}\right)\in R$
+\end_inset
+
+ existe un arco en 
+\begin_inset Formula $A'$
+\end_inset
+
+ rotulado 
+\begin_inset Formula $l_{n+1}$
+\end_inset
+
+ de 
+\begin_inset Formula $s_{n}'$
+\end_inset
+
+ a un estado que contiene a 
+\begin_inset Formula $s_{n+1}$
+\end_inset
+
+.
+ Llamemoslo 
+\begin_inset Formula $s_{n+1}'$
+\end_inset
+
+.
+ Por lo tanto existe una ruta en 
+\begin_inset Formula $A'$
+\end_inset
+
+, de 
+\begin_inset Formula $s_{0}'$
+\end_inset
+
+ a 
+\begin_inset Formula $s_{n+1}'$
+\end_inset
+
+ tal que 
+\begin_inset Formula $s_{n+1}\in s_{n+1}'$
+\end_inset
+
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Recíprocamente consideremos una ruta en 
+\begin_inset Formula $A'$
+\end_inset
+
+ de la forma 
+\begin_inset Formula $s_{0}',\ldots,s_{n}',s_{n+1}'$
+\end_inset
+
+ que recorre los arcos rotulados 
+\begin_inset Formula $l_{1},\ldots,l_{n+1}$
+\end_inset
+
+.
+ Para todas las transiciones sobre esta ruta tenemos que 
+\begin_inset Formula $f\left(s_{i}',l_{i+1}\right)=s_{i+1}'$
+\end_inset
+
+; en particular, para la ultima de ellas 
+\begin_inset Formula $f\left(s_{n}',l_{n+1}\right)=s_{n+1}'$
+\end_inset
+
+.
+\begin_inset Newline newline
+\end_inset
+
+Por H.
+ I., para cada 
+\begin_inset Formula $s_{n}\in s_{n}'$
+\end_inset
+
+ debe existir una ruta en 
+\begin_inset Formula $A$
+\end_inset
+
+ que va de 
+\begin_inset Formula $s_{0}$
+\end_inset
+
+ a 
+\begin_inset Formula $s_{n}$
+\end_inset
+
+ y dado que 
+\begin_inset Formula $f\left(s_{n}',l_{n+1}\right)=s_{n+1}'$
+\end_inset
+
+, por definición de 
+\begin_inset Formula $f$
+\end_inset
+
+ tenemos que 
+\begin_inset Formula $s_{n+1}'$
+\end_inset
+
+ es el conjunto de estados 
+\begin_inset Formula $s\in S$
+\end_inset
+
+ a los que se puede llegar desde un estado de 
+\begin_inset Formula $s_{n}'$
+\end_inset
+
+ siguiendo un arco con etiqueta 
+\begin_inset Formula $l_{n+1}$
+\end_inset
+
+.
+ Por lo tanto, para cada 
+\begin_inset Formula $s\in s_{n+1}'$
+\end_inset
+
+ existe una ruta en 
+\begin_inset Formula $A$
+\end_inset
+
+ que va desde 
+\begin_inset Formula $s_{0}$
+\end_inset
+
+ a 
+\begin_inset Formula $s$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Subsubsection
+Igualdad entre 
+\begin_inset Formula $\mathcal{AC}\left(AEF\right)$
+\end_inset
+
+, 
+\begin_inset Formula $\mathcal{AC}\left(AEFND\right)$
+\end_inset
+
+ y 
+\begin_inset Formula $\mathcal{L}_{3}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Puesto que toda función es ademas relación sabíamos que 
+\begin_inset Formula $\text{\ensuremath{\mathcal{AC}\left(AEF\right)\subseteq\mathcal{AC}\left(AEFND\right)}}$
+\end_inset
+
+ y por el teorema de Kleene-Rabin-Scott sabemos que 
+\begin_inset Formula $\mathcal{AC}\left(AEFND\right)\subseteq\mathcal{AC}\left(AEF\right)$
+\end_inset
+
+ por lo que 
+\begin_inset Formula $\mathcal{AC}\left(AEF\right)=\mathcal{AC}\left(AEFND\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Ademas también probamos que dado un 
+\begin_inset Formula $AEF$
+\end_inset
+
+ existe una gramática regular que genera el mismo lenguaje.
+ En síntesis: 
+\begin_inset Formula $\text{\ensuremath{\mathcal{AC}\left(AEFND\right)=\mathcal{AC}\left(AEF\right)\subseteq\mathcal{L}_{3}}}$
+\end_inset
+
+.
+ A continuación veremos que estos tres conjuntos son iguales.
+\end_layout
+
+\begin_layout Paragraph
+Enunciado
+\end_layout
+
+\begin_layout Standard
+Para todo lenguaje regular, existe un 
+\begin_inset Formula $AEFND$
+\end_inset
+
+ que lo acepta.
+\end_layout
+
+\begin_layout Paragraph
+Demostración
+\end_layout
+
+\begin_layout Standard
+Queda como ejercicio al lector completar esta demostración.
+\end_layout
+
+\begin_layout Paragraph
+Conclusión
+\end_layout
+
+\begin_layout Standard
+Como 
+\begin_inset Formula $\text{\ensuremath{\mathcal{AC}\left(AEFND\right)=\mathcal{AC}\left(AEF\right)\subseteq\mathcal{L}_{3}}}$
+\end_inset
+
+ y acabamos de probar 
+\begin_inset Formula $\mathcal{L}_{3}\subseteq\mathcal{AC}\left(AEFND\right)$
+\end_inset
+
+ resulta: 
+\begin_inset Formula $\mathcal{AC}\left(AEF\right)=\mathcal{AC}\left(AEFND\right)=\mathcal{L}_{3}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Section
+Expresiones regulares
+\end_layout
+
+\begin_layout Subsection
+Definición
+\end_layout
+
+\begin_layout Standard
+Una expresión regular (
+\begin_inset Formula $ER$
+\end_inset
+
+) sobre un alfabeto 
+\begin_inset Formula $\Sigma$
+\end_inset
+
+ es una cadena sobre el alfabeto 
+\begin_inset Formula $\Sigma\cup\left\{ (,),\circ,\cup,*,\emptyset\right\} $
+\end_inset
+
+ definida inductivamente como:
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\emptyset\in ER$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $x\in\Sigma\Rightarrow x\in ER$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $p,q\in ER\Rightarrow\left(p\cup q\right)\in ER$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $p,q\in ER\Rightarrow\left(p\circ q\right)\in ER$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $p\in ER\Rightarrow\left(p^{*}\right)\in ER$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Para reducir el numero de paréntesis, convenimos el siguiente orden de precedenc
+ia: 
+\begin_inset Formula $*,\circ,\cup$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Paragraph
+Observación
+\end_layout
+
+\begin_layout Standard
+Nótese que una expresión regular es una cadena de símbolos, no un lenguaje.
+\end_layout
+
+\begin_layout Subsection
+Lenguaje asociado
+\end_layout
+
+\begin_layout Standard
+El lenguaje asociado a una expresión esta dado por la función 
+\begin_inset Formula $L:ER\to\mathcal{L}$
+\end_inset
+
+ que tiene las siguientes propiedades:
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $L\left(\emptyset\right)=\emptyset$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $x\in ER\land x\in\Sigma\Rightarrow L\left(x\right)=\left\{ x\right\} $
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $p,q\in ER\Rightarrow L\left(p\cup q\right)=L\left(p\right)\cup L\left(q\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $p,q\in ER\Rightarrow L\left(p\circ q\right)=L\left(p\right)\circ L\left(q\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $p\in ER\Rightarrow L\left(p^{*}\right)=L\left(p\right)^{*}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Definimos ademas 
+\begin_inset Formula $L_{ER}=\left\{ L\in\mathcal{L}/\exists e\in ER:L\left(e\right)=L\right\} $
+\end_inset
+
+, el conjunto de todos los lenguajes asociados a expresiones regulares.
+\end_layout
+
+\begin_layout Subsection
+Igualdad entre lenguajes asoc.
+ a 
+\begin_inset Formula $L_{ER}$
+\end_inset
+
+ y 
+\begin_inset Formula $\mathcal{L}_{3}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph
+Enunciado
+\end_layout
+
+\begin_layout Standard
+El conjunto de todos los lenguajes asociados a expresiones regulares es
+ igual al conjunto de todos los lenguajes regulares.
+\end_layout
+
+\begin_layout Paragraph
+Demostración
+\end_layout
+
+\begin_layout Standard
+Deberemos probar una doble contención:
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $L_{ER}\subseteq\mathcal{L}_{3}$
+\end_inset
+
+: Lo demostraremos por inducción sobre 
+\begin_inset Formula $ER$
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $e=\emptyset\Rightarrow L\left(e\right)=\emptyset\in\mathcal{L}_{3}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $e=x\Rightarrow L\left(e\right)=\left\{ x\right\} \in\mathcal{L}_{3}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $e=p\cup q\Rightarrow$
+\end_inset
+
+: Debemos probar que 
+\begin_inset Formula $L\left(p\right),L\left(q\right)\in\mathcal{L}_{3}\Rightarrow L\left(p\cup q\right)=L\left(p\right)\cup L\left(q\right)\in\mathcal{L}_{3}$
+\end_inset
+
+ y la unión es cerrada en 
+\begin_inset Formula $\mathcal{L}_{3}$
+\end_inset
+
+.
+ (Ejercicio).
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $e=p\circ q\Rightarrow$
+\end_inset
+
+: Debemos probar que 
+\begin_inset Formula $L\left(p\right),L\left(q\right)\in\mathcal{L}_{3}\Rightarrow L\left(p\circ q\right)=L\left(p\right)\circ L\left(q\right)\in\mathcal{L}_{3}$
+\end_inset
+
+ y la concatenación es cerrada en 
+\begin_inset Formula $\mathcal{L}_{3}$
+\end_inset
+
+.
+ (Ejercicio).
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $e=p^{*}\Rightarrow$
+\end_inset
+
+: Debemos probar que 
+\begin_inset Formula $L\left(p\right)\in\mathcal{L}_{3}\Rightarrow L\left(p^{*}\right)=L\left(p\right)^{*}\in\mathcal{L}_{3}$
+\end_inset
+
+ y la clausura de Kleene es cerrada en 
+\begin_inset Formula $\mathcal{L}_{3}$
+\end_inset
+
+.
+ (Ejercicio).
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset Formula $\mathcal{L}_{3}\subseteq L_{ER}$
+\end_inset
+
+: Consultar 
+\begin_inset Quotes fld
+\end_inset
+
+J.
+ Glenn Brookshear.
+ 
+\emph on
+Teoría de la Computación.
+ Lenguajes formales, autómatas y complejidad
+\emph default
+.
+\begin_inset Quotes frd
+\end_inset
+
+, pagina 63.
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\end_body
+\end_document

@@ -1,0 +1,300 @@
+\documentclass[12pt,a4paper,oneside,spanish]{book}
+\usepackage[T1]{fontenc}
+\usepackage[latin9]{inputenc}
+\setcounter{secnumdepth}{3}
+\setcounter{tocdepth}{3}
+\setcounter{chapter}{6}
+\usepackage{amstext}
+\usepackage{amssymb}
+
+\makeatletter
+\newcommand{\noun}[1]{\textsc{#1}}
+\usepackage{tikz}
+\usetikzlibrary{automata,positioning,calc}
+\makeatother
+\usepackage{babel}
+\addto\shorthandsspanish{\spanishdeactivate{~<>.}}
+
+\begin{document}
+	\chapter{Automatas y expresiones regulares}
+		\section{Autómatas finitos}
+			\subsection{Diagrama de transiciones}
+				El siguiente diagrama representa a un autómata que acepta cadenas que comienzan con una letra, y siguen con letras o números:
+				
+				\begin{center}
+					\begin{tikzpicture}[shorten >=1pt,node distance=2cm,on grid,auto]
+						\node[state,initial, initial text=inicio] (sigma1)   {$I$};
+						\node[state,accepting] (sigma3) [above right=of sigma1] {$L$};
+						\node[state] (sigma2) [below right=of sigma1] {$D$};
+						\path[->]
+							(sigma1)	edge  node {$letra$} (sigma3)
+										edge  node [swap] {$digito$} (sigma2)
+							(sigma2)	edge [loop right] node {$letra$} ()
+										edge [loop below] node {$digito$} ()
+							(sigma3)	edge [loop right] node {$letra$} ()
+										edge [loop below] node {$digito$} ();
+					\end{tikzpicture}
+				\par\end{center}
+
+				Diremos que una cadena es aceptada si sus símbolos corresponden a una secuencia de arcos (flechas) que conducen del circulo inicial a uno doble.
+				Un diagrama de transiciones puede ser usado como herramienta de diseño para producir rutinas de análisis léxico.
+				
+\pagebreak{}
+
+			\subsection{Autómata de estado finito determinista}
+				\subsubsection{Definición}
+					Un autómata de estado \noun{finito} determinista es una quintupla $\left(\Sigma,S,f,Ac,\sigma\right)$ donde:
+					
+					\begin{itemize}
+						\item $\Sigma$ es un conjunto finito de \emph{símbolos de entradas}.
+						\item $S$ es un conjunto \noun{finito} de \emph{estados}.
+						\item $f:S\times\Sigma\to S$ es una \emph{función de transición}.
+						\item $Ac\subseteq S$ es un conjunto de \emph{estados de aceptación}.
+						\item $\sigma\in S$ es el estado inicial. 
+					\end{itemize}
+					
+					La función de transición del diagrama anterior estaría definida de la siguiente forma:
+					
+					\begin{itemize}
+						\item $f\left(\sigma_{1},digito\right)=\sigma_{2}$.
+						\item $f\left(\sigma_{1},letra\right)=\sigma_{3}$.
+						\item $f\left(\sigma_{2},digito\right)=\sigma_{2}$.
+						\item $f\left(\sigma_{2},letra\right)=\sigma_{2}$.
+						\item $f\left(\sigma_{3},digito\right)=\sigma_{3}$.
+						\item $f\left(\sigma_{3},letra\right)=\sigma_{3}$.
+					\end{itemize}
+
+					\paragraph{Observación}
+					Nótese que cada estado del diagrama de transiciones de un autómata de estado finito \noun{determinista} solo debe tener un arco que salga para cada símbolo del alfabeto; de lo contrario, un autómata que llega a ese estado se enfrentara a una elección de cual debe ser el arco a seguir. Ademas, dicho diagrama deberá estar completamente definido, es decir, debe existir por lo menos un arco para cada símbolo del alfabeto; de lo contrario, un autómata que llega a ese estado puede enfrentarse a una situación donde no puede aplicar ninguna transición.
+					Estos requisitos están reflejados en la definición formal primero porque $f$ es una función y, segundo porque su dominio es $S\times\Sigma$.
+
+				\subsubsection{Palabra aceptada por un $AEF$}
+					Sean $A=\left(\Sigma,S,f,Ac,\sigma\right)$ un $AEF$ y $p=p\left(1\right)p\left(2\right)\ldots p\left(n\right)$ una palabra sobre $\Sigma$, diremos que dicha palabra es aceptada por el autómata $A$ si existen $\sigma_{0},\sigma_{1},\ldots,\sigma_{n}\in S$ tales que:
+					
+					\begin{enumerate}
+						\item $\sigma_{0}=\sigma$.
+						\item $\sigma_{i}=f\left(\sigma_{i-1},p\left(i\right)\right)$ para $i=1,\ldots,n$.
+						\item $\sigma_{n}\in Ac$.
+					\end{enumerate}
+
+				\paragraph{Observación}
+					La palabra vaciá es aceptada si y solo si el estado inicial es de aceptación ($\sigma\in Ac$).
+
+				\subsubsection{Función de transición extendida}
+					Dado $A=\left(\Sigma,S,f,Ac,\sigma\right)$ un $AEF$, se define $F:S\times\Sigma^{*}\to S$ sobre una palabra $p=cl$ donde $c$ es una cadena y $l$ un caracter de forma recursiva:
+					
+					\begin{itemize}
+						\item $F\left(s,\lambda\right)=s$.
+						\item $F\left(s,p\right)=f\left[F\left(s,c\right),l\right]$.
+					\end{itemize}
+
+				\subsubsection{Lenguaje aceptado por un $AEF$}
+					Definimos al lenguaje aceptado por un autómata $A$ como el conjunto: $\mathcal{AC}\left(A\right)=\left\{ p\in\Sigma^{*}/p\text{ es aceptada por }A\right\} $.
+
+				\subsubsection{Equivalencia de autómatas}
+					Sean $A_{1},A_{2}$ autómatas de estado finito, diremos que $A_{1}$ es equivalente a $A_{2}$ y lo notaremos $A_{1}\equiv A_{2}$ si y solo si $\mathcal{AC}\left(A_{1}\right)=\mathcal{AC}\left(A_{2}\right)$, es decir, si y solo si aceptan el mismo lenguaje.\pagebreak{}
+
+				\subsubsection{Regularidad de lenguajes aceptados por $AEF$}
+					\paragraph{Enunciado}
+					Todo lenguaje aceptado por un $AEF$ es regular, es decir:
+					
+					\[
+						\left\{ L\in\mathcal{L}/L=\mathcal{AC}\left(A\right)\text{ para algun }A\in AEF\right\} \subseteq\mathcal{L}_{3}
+					\]
+
+					\paragraph{Demostración}
+					Sea $A=\left(\Sigma,S,f,Ac,\sigma_{0}\right)$ un $AEF$, definimos $G=\left(N,T,P,\sigma\right)$ donde $N=S,T=\Sigma,\sigma=\sigma_{0}$ y reglas de producción:
+					
+					\begin{itemize}
+						\item $U\to xV\iff f\left(U,x\right)=V$.
+						\item $U\to\lambda\iff U\in Ac$
+					\end{itemize}
+					
+					Debemos probar que $L\left(G\right)=\mathcal{AC}\left(A\right)$ es decir que: 
+					
+					\[
+						\sigma\Rightarrow^{*}l_{1}l_{2}\ldots l_{n}\iff F\left(\sigma_{0},l_{1}\ldots l_{n}\right)\in Ac
+					\]
+
+					Queda como ejercicio al lector completar esta demostración.
+
+					\paragraph{Observación}
+						Este teorema nos indica que los $AEF$ no sirven para reconocer lenguajes independientes de contexto.
+
+				\subsubsection{Lema del bombeo para $AEF$}
+					\paragraph{Enunciado}
+					Sea $A=\left(\Sigma,S,f,Ac,\sigma_{0}\right)$ un $AEF$, $L=\mathcal{AC}\left(A\right)$ y $x,y\in\Sigma$, si $L$ contiene infinitas cadenas de la forma $x^{n}y^{n}$ entonces también contiene infinitas cadenas de la forma $x^{m}y^{n}$ con $m\neq n$.
+					\paragraph{Demostración}
+					El numero de estados de $A$ ($\left|S\right|$) es finito. Sea $\text{\ensuremath{n>\left|S\right|:x^{n}y^{n}\in L}}$.
+					Observemos que durante el proceso de aceptación de la palabra $x^{n}y^{n}$ (en particular, de la subcadena $x^{n}$) el autómata $A$ deberá pasar sucesivamente por $n$ estados conectados por el caracter $x$.
+					Los estados visitados en dicha secuencia no tienen por que ser, en general, necesariamente distintos. Sin embargo, como el numero de transiciones es mayor que el de estados disponibles, al menos un estado debe aparecer repetido como muestra el siguiente diagrama:
+					
+					\begin{center}
+						\begin{tikzpicture}[shorten >=1pt,node distance=2cm,on grid,auto]
+							\node[state,initial, initial text=] (sigma1)   {};
+							\node[state] (sigma2) [right=of sigma1] {};
+							\node[state] (sigma3) [right=of sigma2] {};
+							\node[state] (sigma4) [above right=of sigma3] {};
+							\node[state] (sigma5) [above =of sigma4] {};
+							\node[state] (sigma6) [above left =of sigma5] {};
+							\node[state] (sigma7) [below left =of sigma6] {};
+							\node[state] (sigma8) [below  =of sigma7] {};
+							\node[state] (sigma9) [right  =of sigma3] {};
+							\node[state] (sigma10) [right  =of sigma9] {};
+							\path[->]
+								(sigma1)	edge  node {$x$} (sigma2)
+								(sigma2)	edge  node {$x$} (sigma3)
+								(sigma3)	edge  node {$x$} (sigma4)
+								(sigma4)	edge  node {$x$} (sigma5)
+								(sigma5)	edge  node {$x$} (sigma6)
+								(sigma6)	edge  node {$x$} (sigma7)
+								(sigma7)	edge  node {$x$} (sigma8)
+								(sigma8)	edge  node {$x$} (sigma3)
+								(sigma3)	edge  node {$y$} (sigma9)
+								(sigma9)	edge  node {$y$} (sigma10)
+							;
+						\end{tikzpicture}
+					\par\end{center}
+
+					De aquí concluimos que $A$ acepta también la palabra $x^{n+m}y^{n}$ (donde $m$ denota la longitud del bucle).
+
+				\subsubsection{Existencia de lenguajes libres de contexto}
+					\paragraph{Enunciado}
+					No existe un $AEF$ tal que $\mathcal{AC}\left(A\right)=\left\{ a^{n}b^{n}/n\in\mathbb{N}_{0}\right\} $.
+					\paragraph{Demostración}
+					Supongamos por el absurdo que $\text{\ensuremath{\exists A\in AEF/\mathcal{AC}\left(A\right)=\left\{ a^{n}b^{n}/n\in\mathbb{N}_{0}\right\} }}$.
+					Dado que $\mathcal{AC}\left(A\right)$ contiene infinitas cadenas de la forma $a^{n}b^{n}$, por el lema del bombeo concluimos que $\mathcal{AC}\left(A\right)$ también contiene cadenas de la forma $a^{m}b^{n}$ con $m\neq n$ lo cual contradice la definición del lenguaje.
+					\paragraph{Observación}
+					Una consecuencia de este teorema es que los $AEF$ no sirven como analizadores léxicos de expresiones aritméticas que contienen paréntesis, pues el autómata debería aceptar cadenas de la forma $(^{n})^{n}$ pero de ser así también aceptaría por ejemplo $((^{n})^{n}$ que es incorrecta.
+
+			\subsection{Autómata de estado finito no determinista}
+				\subsubsection{Definición}
+					Un $AEF$ no determinista ($AEFND$) es una quintupla $A=\left(\Sigma,S,R,Ac,\sigma\right)$ donde:
+					
+					\begin{itemize}
+						\item $\Sigma$ es un conjunto finito de \emph{símbolos de entrada}.
+						\item $S$ es un conjunto finito de \emph{estados}.
+						\item $R\subseteq S\times\Sigma\times S$ es una \emph{relación de transición}.
+						\item $Ac\subseteq S$ es un conjunto de \emph{estados de aceptación}.
+						\item $\sigma\in S$ es el \emph{estado inicial}.
+					\end{itemize}
+	
+					Alternativamente podríamos pensar a $R$ como una función $g:S\times\Sigma\to\mathcal{P}\left(S\right)$, es decir $g\left(\sigma,c\right)=\left\{ \sigma'\in S/\left(\sigma,c,\sigma'\right)\in R\right\} $.
+					\paragraph{Observación}
+					Como hemos cambiado una relación por una función, ahora al leer un nuevo símbolo se podrán seguir múltiples caminos.
+					Ademas no es necesario que desde cada estado, se puedan leer todas las letras del alfabeto.
+
+				\subsubsection{Lenguaje aceptado por un $AEFND$}
+					Sea $A=\left(\Sigma,S,R,Ac,\sigma\right)$ un $AEFND$ y $p\in\Sigma^{*}$, luego:
+					
+					\begin{itemize}
+						\item $p=\lambda\in\mathcal{AC}\left(A\right)\iff\sigma\in Ac$.
+						\item $p=p\left(1\right)p\left(2\right)\ldots p\left(n\right)\in\mathcal{AC}\left(A\right)\iff\exists\sigma_{0},\sigma_{1},\ldots,\sigma_{n}$ tales que:
+						\begin{enumerate}
+							\item $\sigma_{0}=\sigma$.
+							\item $\left(\sigma_{i-1},p\left(i\right),\sigma_{i}\right)\in R$ $\forall i=1,\ldots,n$.
+							\item $\sigma_{n}\in Ac$.
+						\end{enumerate}
+					\end{itemize}
+	
+					A toda secuencia $\left(\sigma_{0},\sigma_{1},\ldots,\sigma_{n}\right)$ que cumple con (1) y (2) pero no necesariamente con $(3)$ se la llama secuencia que representa a $p$.
+					En otras palabras, en un $AEFND$ una cadena $p$ sera:
+					
+					\begin{itemize}
+						\item Aceptada si existe un camino que la represente y termine en $Ac$.
+						\item No aceptada si no existe camino que la represente o bien todo camino que la representa termina en $s\in S-Ac$.
+					\end{itemize}
+
+				\subsubsection{Equivalencia entre \emph{$AEF$ y $AEFND$}}
+					Dado que toda función es a su vez una relación, resulta que todo $AEF$ es también un $AEFND$, por lo que:
+					
+					\[
+						\left\{ L/\exists A\in AEF:\mathcal{AC}\left(A\right)=L\right\} \subseteq\left\{ L/\exists A\in AEFND:\mathcal{AC}\left(A\right)=L\right\} 
+					\]
+
+					Mas precisamente sea $A=\left(\Sigma,S,f,Ac,\sigma_{0}\right)$ un $AEF$ definimos $\text{\ensuremath{A'=\left(\Sigma,S,R,Ac,\sigma_{0}\right)}}$ con $R$ dado por $\left(P,l,Q\right)\in R\iff f\left(P,l\right)=Q$, luego $A'$ es $AEFND$ y $\mathcal{AC}\left(A'\right)=\mathcal{AC}\left(A\right)$.
+					Veremos a continuación que en efecto, ambos conjuntos son idénticos.
+					
+\pagebreak{}
+
+					\paragraph{Teorema de Kleene-Rabin-Scott}
+					Para cada $AEFND$ existe un $AEF$ que acepta el mismo lenguaje.
+					\paragraph{Demostración}
+					Sea $A=\left(\Sigma,S,R,Ac,\sigma_{0}\right)$ un $AEFND$ y $A'=\left(\Sigma,S',f,Ac',s_{0}'\right)$ donde:
+					
+					\begin{itemize}
+						\item $S'=\mathcal{P}\left(S\right)$.
+						\item $Ac'=\left\{ s'\in\mathcal{P}\left(S\right)/s'\cap Ac\neq\emptyset\right\} $.
+						\item $s_{0}'=\left\{ s_{0}\right\} $.
+						\item $f:S'\times\Sigma\to S'$ tal que $f\left(s',l\right)=\left\{ s\in S/\exists u\in s':\left(u,l,s\right)\in R\right\} $.
+					\end{itemize}
+	
+					Debemos mostrar ahora que $\mathcal{AC}\left(A\right)=\mathcal{AC}\left(A'\right)$.
+					Para mostrar que $p\in\mathcal{AC}\left(A\right)\iff p\in\mathcal{AC}\left(A'\right)$ haremos inducción sobre la cantidad de letras de $p$, mas precisamente mostraremos que $\forall n\in\mathbb{N}_{0}$ vale el siguiente enunciado $E_{n}$: \flqq{}\emph{Para cada ruta en $A$ que va de su estado inicial $s_{0}$ a un estado $s_{n}$, existe una ruta en $A'$ que	va de su estado inicial $s_{0}'=\left\{ s_{0}\right\} $ a un estado $s_{n}'$ tal que $s_{n}\in s_{n}'$. Recíprocamente, para cada ruta en $A'$ que va de $s_{0}'$ a un estado $s_{n}'$ , y para cada $s_{n}\in s_{n}'$, existe una ruta en $A$ que va de $s_{0}$ a $s_{n}$}\frqq{}.
+					
+					\begin{itemize}
+						\item Caso base $n=0$: Trivial. En $A$, $s_{n}=s_{0}$ corresponde al caso en que la entrada es $\lambda$ y en $A'$ $s_{n}'=s_{0}'$.
+						\item Paso inductivo: Supongamos que vale $E_{n}$ y veamos que vale $E_{n+1}$.
+							Por H. I. existe una ruta en $A'$ de la forma $s_{0}',\ldots,s_{n}'$ tal que $s_{n}\in s_{n}'$ y dado que $\left(s_{n},l_{n+1},s_{n+1}\right)\in R$ existe un arco en $A'$ rotulado $l_{n+1}$ de $s_{n}'$ a un estado que contiene a $s_{n+1}$. Llamemoslo $s_{n+1}'$. Por lo tanto existe una ruta en $A'$, de $s_{0}'$ a $s_{n+1}'$ tal que $s_{n+1}\in s_{n+1}'$.
+							Recíprocamente consideremos una ruta en $A'$ de la forma $s_{0}',\ldots,s_{n}',s_{n+1}'$ que recorre los arcos rotulados $l_{1},\ldots,l_{n+1}$. Para todas las transiciones sobre esta ruta tenemos que $f\left(s_{i}',l_{i+1}\right)=s_{i+1}'$; en particular, para la ultima de ellas $f\left(s_{n}',l_{n+1}\right)=s_{n+1}'$.\\
+							Por H. I., para cada $s_{n}\in s_{n}'$ debe existir una ruta en $A$ que va de $s_{0}$ a $s_{n}$ y dado que $f\left(s_{n}',l_{n+1}\right)=s_{n+1}'$, por definición de $f$ tenemos que $s_{n+1}'$ es el conjunto de estados $s\in S$ a los que se puede llegar desde un estado de $s_{n}'$ siguiendo un arco con etiqueta $l_{n+1}$. Por lo tanto, para cada $s\in s_{n+1}'$ existe una ruta en $A$ que va desde $s_{0}$ a $s$.
+					\end{itemize}
+
+				\subsubsection{Igualdad entre $\mathcal{AC}\left(AEF\right)$, $\mathcal{AC}\left(AEFND\right)$ y $\mathcal{L}_{3}$}
+					Puesto que toda función es ademas relación sabíamos que $\text{\ensuremath{\mathcal{AC}\left(AEF\right)\subseteq\mathcal{AC}\left(AEFND\right)}}$ y por el teorema de Kleene-Rabin-Scott sabemos que $\mathcal{AC}\left(AEFND\right)\subseteq\mathcal{AC}\left(AEF\right)$ por lo que $\mathcal{AC}\left(AEF\right)=\mathcal{AC}\left(AEFND\right)$.
+					Ademas también probamos que dado un $AEF$ existe una gramática regular que genera el mismo lenguaje. En síntesis: $\text{\ensuremath{\mathcal{AC}\left(AEFND\right)=\mathcal{AC}\left(AEF\right)\subseteq\mathcal{L}_{3}}}$.
+					A continuación veremos que estos tres conjuntos son iguales.
+					\paragraph{Enunciado}
+					Para todo lenguaje regular, existe un $AEFND$ que lo acepta.
+					\paragraph{Demostración}
+					Queda como ejercicio al lector completar esta demostración.
+					\paragraph{Conclusión}
+					Como $\text{\ensuremath{\mathcal{AC}\left(AEFND\right)=\mathcal{AC}\left(AEF\right)\subseteq\mathcal{L}_{3}}}$ y acabamos de probar $\mathcal{L}_{3}\subseteq\mathcal{AC}\left(AEFND\right)$ resulta: $\mathcal{AC}\left(AEF\right)=\mathcal{AC}\left(AEFND\right)=\mathcal{L}_{3}$.
+
+		\section{Expresiones regulares}
+			\subsection{Definición}
+				Una expresión regular ($ER$) sobre un alfabeto $\Sigma$ es una cadena sobre el alfabeto $\Sigma\cup\left\{ (,),\circ,\cup,*,\emptyset\right\} $ definida inductivamente como:
+				
+				\begin{itemize}
+					\item $\emptyset\in ER$.
+					\item $x\in\Sigma\Rightarrow x\in ER$.
+					\item $p,q\in ER\Rightarrow\left(p\cup q\right)\in ER$.
+					\item $p,q\in ER\Rightarrow\left(p\circ q\right)\in ER$.
+					\item $p\in ER\Rightarrow\left(p^{*}\right)\in ER$.
+				\end{itemize}
+				
+				Para reducir el numero de paréntesis, convenimos el siguiente orden de precedencia: $*,\circ,\cup$.
+				\paragraph{Observación}
+				Nótese que una expresión regular es una cadena de símbolos, no un lenguaje.
+
+			\subsection{Lenguaje asociado}
+				El lenguaje asociado a una expresión esta dado por la función $L:ER\to\mathcal{L}$ que tiene las siguientes propiedades:
+				
+				\begin{itemize}
+					\item $L\left(\emptyset\right)=\emptyset$.
+					\item $x\in ER\land x\in\Sigma\Rightarrow L\left(x\right)=\left\{ x\right\} $.
+					\item $p,q\in ER\Rightarrow L\left(p\cup q\right)=L\left(p\right)\cup L\left(q\right)$.
+					\item $p,q\in ER\Rightarrow L\left(p\circ q\right)=L\left(p\right)\circ L\left(q\right)$.
+					\item $p\in ER\Rightarrow L\left(p^{*}\right)=L\left(p\right)^{*}$.
+				\end{itemize}
+	
+				Definimos ademas $L_{ER}=\left\{ L\in\mathcal{L}/\exists e\in ER:L\left(e\right)=L\right\} $, el conjunto de todos los lenguajes asociados a expresiones regulares.
+
+			\subsection{Igualdad entre lenguajes asoc. a $L_{ER}$ y $\mathcal{L}_{3}$}
+				\paragraph{Enunciado}
+				El conjunto de todos los lenguajes asociados a expresiones regulares es igual al conjunto de todos los lenguajes regulares.
+				\paragraph{Demostración}
+				Deberemos probar una doble contención:
+				
+				\begin{itemize}
+					\item $L_{ER}\subseteq\mathcal{L}_{3}$: Lo demostraremos por inducción sobre $ER$
+						\begin{itemize}
+							\item $e=\emptyset\Rightarrow L\left(e\right)=\emptyset\in\mathcal{L}_{3}$.
+							\item $e=x\Rightarrow L\left(e\right)=\left\{ x\right\} \in\mathcal{L}_{3}$.
+							\item $e=p\cup q\Rightarrow$: Debemos probar que $L\left(p\right),L\left(q\right)\in\mathcal{L}_{3}\Rightarrow L\left(p\cup q\right)=L\left(p\right)\cup L\left(q\right)\in\mathcal{L}_{3}$ y la unión es cerrada en $\mathcal{L}_{3}$. (Ejercicio).
+							\item $e=p\circ q\Rightarrow$: Debemos probar que $L\left(p\right),L\left(q\right)\in\mathcal{L}_{3}\Rightarrow L\left(p\circ q\right)=L\left(p\right)\circ L\left(q\right)\in\mathcal{L}_{3}$ y la concatenación es cerrada en $\mathcal{L}_{3}$. (Ejercicio).
+							\item $e=p^{*}\Rightarrow$: Debemos probar que $L\left(p\right)\in\mathcal{L}_{3}\Rightarrow L\left(p^{*}\right)=L\left(p\right)^{*}\in\mathcal{L}_{3}$ y la clausura de Kleene es cerrada en $\mathcal{L}_{3}$. (Ejercicio).
+						\end{itemize}
+					\item $\mathcal{L}_{3}\subseteq L_{ER}$: Consultar <<J. Glenn Brookshear. \emph{Teoría de la Computación. Lenguajes formales, autómatas y complejidad}.>>, pagina 63.
+				\end{itemize}
+\end{document}

@@ -1,0 +1,715 @@
+\documentclass[12pt,a4paper,oneside,spanish]{book}
+\usepackage[T1]{fontenc}
+\usepackage[latin9]{inputenc}
+\setcounter{secnumdepth}{3}
+\setcounter{tocdepth}{3}
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+\makeatletter
+\usepackage{tikz}
+\usetikzlibrary{automata,positioning,calc}
+\makeatother
+\usepackage{babel}
+\addto\shorthandsspanish{\spanishdeactivate{~<>.}}
+
+\begin{document}
+	\chapter{Maquinas de Turing}
+		\section{Descripción}
+			Al igual que los demás autómatas que hemos estudiado, la maquina de Turing contiene un mecanismo de control que en cualquier momento puede encontrarse en uno de entre un numero finito de estados. Uno de estos estados se denomina estado inicial y representa el estado en el cual la maquina comienza los cálculos. Por convención lo notaremos $q_{1}$.
+			Otro de los estados se conoce como estado de parada; una vez que la maquina llega a ese estado, terminan todos los cálculos. De esta manera, el estado de parada de una maquina de Turing difiere de los estados de aceptación de los autómatas de estados finito y los autómatas de pila en que estos pueden continuar sus cálculos después de llegar a un estado de aceptación, mientras que en una maquina de Turing debe detenerse en el momento en que llegue a su estado de parada. Notaremos a este estado como $q_{0}$.
+			Nótese que con base en la definición anterior, el estado inicial de una maquina de Turing no puede ser a la vez el estado de parada; por lo tanto, toda maquina de Turing debe tener cuanto menos dos estados.
+			Una diferencia mas importante entre una maquina de Turing y los autómatas de los capítulos anteriores es que la maquina de Turing puede leer y escribir en su medio de entrada. Para ser mas precisos, la maquina de Turing esta equipada con un cabezal que puede emplearse para leer y escribir símbolos en la cinta de la maquina, que es infinita a izquierda y derecha, pero se conviene que solo un conjunto finito de casillas no están vaciás. Así una maquina de Turing puede emplear su cinta como almacenamiento auxiliar tal como lo hacen los autómatas de pila.
+			Sin embargo con este almacenamiento una maquina de Turing no se limita a las operaciones de inserción y extracción, sino que puede rastrear los datos de la cinta y modificar las celdas que desee sin alterar las demás.
+			Al utilizar la cinta para fines de almacenamiento auxiliar, es conveniente que una maquina de Turing emplee marcas especiales para distinguir porciones de la cinta. Para esto, permitimos que una maquina de Turing lea y escriba símbolos que no aparecen en los datos de entrada; es decir, hacemos una distinción entre el conjunto (finito) de símbolos, llamado alfabeto de la maquina, en el que deben estar codificados los datos de entrada iniciales, y un conjunto, posiblemente mayor (también finito), de símbolos de la cinta, que la maquina puede leer  y escribir. Esta distinción es similar a la que se establece entre el alfabeto de un autómata y sus símbolos de pila. El símbolo blanco es un símbolo de la cinta que esta en cualquier celda de la cinta que no este ocupada. Notaremos a este símbolo como $\square$.
+			Las acción especifica que realiza una maquina de Turing consiste en tres operaciones consecutivas:
+			
+			\begin{enumerate}
+				\item Substituye el símbolo apuntado por el cabezal por otro del alfabeto de la cinta que eventualmente podrá ser el mismo.
+				\item Mueve el cabezal hacia la derecha, izquierda o permanece en la misma posición (notaremos $d,i,n$ respectivamente).
+				\item Cambia el estado en que se encuentra por otro perteneciente al conjunto de estados que eventualmente podrá ser el mismo.
+			\end{enumerate}
+			
+			La acción que se ejecutara en un momento dado dependerá del símbolo apuntado por el cabezal así como del estado actual del mecanismo de control de la maquina. Si representamos con $\Gamma$ al conjunto de símbolos de la cinta, con $S$ al conjunto de estados y $S'=S-\left\{ q_{0}\right\} $ entonces es posible representar las transiciones de la maquina mediante una función $f:S'\times\Gamma\to\Gamma\times\left\{ d,i,n\right\} \times S$.
+			Podemos entonces interpretar $f\left(q_{r},\alpha\right)=\left(\beta,d,q_{n}\right)$ como \flqq{}si el estado actual es $q_{r}$ y el símbolo actual es $\alpha$: reemplazar $\alpha$ por $\beta$, mover el cabezal a la derecha y pasar al estado $q_{n}$\frqq{}.
+			Esta función, de dominio finito, puede ser representada por una tabla de $\left|S\right|$ columnas y $\left|\Gamma\right|+1$ filas. En cada una de las casillas $i,j$ asociadas al estado $q_{j}$ y el símbolo $s_{i}$ aparecerá una terna que indicara que símbolo escribir, el movimiento a ejecutar y el estado al que pasar. La primer columna de la tabla corresponderá al estado $q_{1}$.
+			Nótese que al describir con una función las transiciones de una maquina de Turing, la maquina es determinista. Para ser mas precisos, existe una y solo una transición asociada a cada par estado-símbolo, donde el estado no es el de detención.
+			Durante la operación normal, una maquina de Turing ejecuta transiciones repetidamente hasta llegar al estado de parada. Esto quiere decir que en ciertas condiciones es posible que nunca se detengan los cálculos de una maquina de Turing, ya que su programa interno puede quedar atrapado en un ciclo sin fin.
+			
+\pagebreak{}
+
+		\section{Definición formal}
+			Una maquina de Turing ($MT$) es una septupla $M=\left(S,\Sigma,\Gamma,f,\square,q_{1},q_{0}\right)$ donde:
+			
+			\begin{itemize}
+				\item $S$ es un conjunto finito de estados.
+				\item $\Sigma$ es un conjunto finito de símbolos llamado alfabeto de la maquina.
+				\item $\Gamma$ es un conjunto finito de símbolos llamados símbolos de la cinta, tal que $\Sigma\subseteq\Gamma$.
+				\item $\square\in\Gamma$ es el símbolo blanco.
+				\item $q_{1}\in S$ es el estado inicial. 
+				\item $q_{0}\in S$ es el estado de parada.
+				\item $f:S-\left\{ q_{0}\right\} \times\Gamma\to\Gamma\times\left\{ d,i,n\right\} \times S$ es la función de transición de la maquina.
+			\end{itemize}
+
+		\section{Maquinas elementales}
+			Es posible demostrar que con un alfabeto de un solo símbolo (ademas del blanco), se puede codificar cualquier alfabeto finito; por lo tanto, de ahora en adelante trabajaremos con maquinas de Turing sobre el alfabeto $\Sigma=\left\{ \bullet\right\} $. Definiremos a continuación las siguientes maquinas elementales:
+			
+			\begin{itemize}
+				\item Maquina \flqq{}mover a la derecha\frqq{} (que notaremos $D$):\\
+					\begin{tabular}{|c|c|}
+						\hline 
+						$D$ & $q_{1}$\tabularnewline
+						\hline 
+						\hline 
+						$\square$ & $\square,d,q_{0}$\tabularnewline
+						\hline 
+						$\bullet$ & $\bullet,d,q_{0}$\tabularnewline
+						\hline 
+					\end{tabular}
+				\item Maquina \flqq{}mover a la izquierda\frqq{} (que notaremos $I$):\\
+					\begin{tabular}{|c|c|}
+						\hline 
+						$I$ & $q_{1}$\tabularnewline
+						\hline 
+						\hline 
+						$\square$ & $\square,i,q_{0}$\tabularnewline
+						\hline 
+						$\bullet$ & $\bullet,i,q_{0}$\tabularnewline
+					\hline 
+					\end{tabular}
+				\item Maquina \flqq{}blanco\frqq{} (que notaremos $\square$):\\
+					\begin{tabular}{|c|c|}
+						\hline 
+						$\square$ & $q_{1}$\tabularnewline
+						\hline 
+						\hline 
+						$\square$ & $\square,n,q_{0}$\tabularnewline
+						\hline 
+						$\bullet$ & $\square,n,q_{0}$\tabularnewline
+						\hline 
+					\end{tabular}
+				\item Maquina \flqq{}punto\frqq{} (que notaremos $\bullet$):\\
+					\begin{tabular}{|c|c|}
+						\hline 
+						$\bullet$ & $q_{1}$\tabularnewline
+						\hline 
+						\hline 
+						$\square$ & $\bullet,n,q_{0}$\tabularnewline
+						\hline 
+						$\bullet$ & $\bullet,n,q_{0}$\tabularnewline
+						\hline 
+					\end{tabular}
+				\item Maquina \flqq{}nada\frqq{} (que notaremos $N$):\\
+					\begin{tabular}{|c|c|}
+						\hline 
+						$N$ & $q_{1}$\tabularnewline
+						\hline 
+						\hline 
+						$\square$ & $\square,n,q_{0}$\tabularnewline
+						\hline 
+						$\bullet$ & $\bullet,n,q_{0}$\tabularnewline
+						\hline 
+					\end{tabular}
+			\end{itemize}
+			
+			A partir de estas maquinas elementales y realizando composiciones se podrá construir cualquier maquina de Turing sobre el alfabeto dado.
+			
+		\section{Composición}
+			Sean $S=\left\{ q_{0},q_{1},\ldots,q_{n}\right\} $, $S'=\left\{ q_{0}',q_{1}',\ldots,q_{m}'\right\} $, $\Sigma=\left\{ \bullet\right\} $ y $\Gamma=\left\{ \bullet,\square\right\} $ definimos $M=\left(S,\Sigma,\Gamma,f_{M},\square,q_{1},q_{0}\right)$ y $M'=\left(S',\Sigma,\Gamma,f_{M'},\square,q_{1}',q_{0}'\right)$.
+			Llamaremos composición de $M$ con $M'$ a la maquina $MM'=\left(S\cup S'-\left\{ q_{0}\right\} ,\Sigma,\Gamma,f,\square,q_{1},q_{0}'\right)$ que realiza la operación equivalente a aplicar primero la maquina $M$ y al resultado aplicar $M'$, donde $f$ esta dada por:
+			
+			\[
+			f\left(q,s\right)
+			\begin{cases}
+				f_{M}\left(q,\alpha\right)\left[q_{1}'/q_{0}\right] & q\in S\\
+				f_{M'}\left(q,\alpha\right) & q\in S'
+			\end{cases}
+			\]
+
+			Es sencillo construir, a partir de las tablas de las maquinas $M$ y $M'$ la tabla de $MM'$. Para ello se adjunta inmediatamente a la tabla de $M$, la tabla de $M'$ y se reemplaza en la tabla de $M$ cada aparición de $q_{0}$ por $q_{1}'$.
+
+		\section{Diagramas de composición}
+			Veamos una forma mas general de componer maquinas. En este caso ante el estado final de una maquina se toma en consideración el símbolo observado, y dependiendo del mismo, se la conecta con el estado inicial de una determinada maquina (eventualmente la misma). Esto se diagrama con una flecha, marcada con el símbolo que parte de la maquina que ha terminado hacia la que continua con el proceso. Si no se etiqueta la flecha de salida implica que en todos los casos no etiquetados se pasa al estado inicial de la maquina a la que apunta la flecha.
+			Veamos algunos ejemplos:
+		
+\pagebreak{}
+
+			\begin{itemize}
+				\item Maquina \flqq{}derecha hasta blanco\frqq{} (que notaremos $D^{\square}$):\\
+					\begin{tikzpicture}[shorten >=1pt,node distance=3cm,on grid,auto]
+						\node[state, initial, initial text=] (D)   {$D$};
+						\node[state, accepting, right of=D] (N) {$N$};
+
+						\path[->]
+							(D)	edge  [loop above] node {$\bullet$} ()
+							(D)	edge node {$\square$} (N);
+					\end{tikzpicture}
+				\item Maquina \flqq{}derecha hasta dos blancos\frqq{} (que notaremos $D^{\square\square}$):\\
+					\begin{tikzpicture}[shorten >=1pt,node distance=3cm,on grid,auto]
+						\node[state, initial, initial text=] (DB)   {$D^\square$};
+						\node[state, right of=DB] (D) {$D$};
+						\node[state, accepting, right of=D] (N) {$N$};
+
+						\path[->]
+							(DB)	edge node {$\square,\bullet$} (D)
+							(D)	edge node {$\square$} (N)
+							(D)	edge [bend left] node {$\bullet$} (DB);
+					\end{tikzpicture}
+				\item Maquina \flqq{}izquierda hasta punto\frqq{} (que notaremos $I^{\bullet}$):\\
+					\begin{tikzpicture}[shorten >=1pt,node distance=3cm,on grid,auto]
+						\node[state, initial, initial text=] (I)   {$I$};
+						\node[state, accepting, right of=I] (N) {$N$};
+
+						\path[->]
+							(I)	edge  [loop above] node {$\square$} ()
+							(I)	edge node {$\bullet$} (N);
+					\end{tikzpicture}
+			\end{itemize}
+			
+			De forma análoga definimos las maquinas $I^{\square},I^{\bullet},D^{\bullet},\ldots$.
+
+		\section{Representación de $FRL$ con $MT$}
+			Mostraremos que dada una función de lista, existe una maquina de Turing sobre $\Sigma=\left\{ \square,\bullet\right\} $ que la representa.
+			Para ello definiremos primero una representación de una lista, en la cinta de la maquina.
+			Representaremos entonces las listas como grupos de $\bullet$ separados por un solo símbolo blanco, donde por cada numero $n$ en la lista, tendremos $n+1$ puntitos. Por ejemplo la lista $\left[2,0,5,1\right]$ sera representada por la cinta $\text{\ensuremath{\bullet\bullet\bullet\square\bullet\square\bullet\bullet\bullet\bullet\bullet\bullet\square\bullet\bullet}}$.
+			Notaremos la representación de una lista $X\in\mathcal{L}$ en una cinta de una maquina de Turing como $\left\langle \left\langle X\right\rangle \right\rangle $.
+			Diremos que dada una función de lista $F$, una maquina de Turing (que notaremos $M_{F}$) la representa si dada cualquier lista $X\in Dom\left(F\right)$, la maquina $M_{F}$ tomando como configuración inicial $\left\langle \left\langle X\right\rangle \right\rangle $ y con el cabezal en la primer casilla vaciá antes del primer $\bullet$, luego de procesarla llega a la configuración final $\left\langle \left\langle FX\right\rangle \right\rangle $, observando la primer casilla libre de dicha configuración.
+			
+\pagebreak{}
+
+			\subsection{Funciones base}
+			
+				\begin{itemize}
+					\item La función $0_{i}$ esta representada por la maquina $i\bullet i$.
+					\item La función $0_{d}$ esta representada por la maquina $D^{\square\square}\bullet I^{\square\square}d$.
+					\item La función $S_{i}$ esta representada por la maquina $D^{\bullet}i\bullet i$.
+					\item La función $S_{d}$ esta representada por la maquina $D^{\square\square}I^{\bullet}d\bullet I^{\square\square}d$.
+					\item La función $\square_{i}$ esta representada por la maquina:\\
+					\\
+					
+						\begin{tikzpicture}[shorten >=1pt,node distance=1.7cm,on grid,auto]
+							\node[state, initial, initial text=] (sigma1)   {$D^\bullet$};
+							\node[state, right of=sigma1] (sigma2) {$\square$};
+							\node[state, right of=sigma2] (sigma3) {$d$};
+							\node[state, accepting, right of=sigma3] (sigma4) {$N$};
+
+
+							\path[->]
+								(sigma1)	edge  node {} (sigma2)
+								(sigma2)	edge  node {} (sigma3)
+								(sigma3)	edge [bend left] node {$\bullet$} (sigma2)
+								(sigma3)	edge  node {$\square$} (sigma4);
+						\end{tikzpicture}
+						
+					\item La función $\square_{d}$ esta representada por la maquina:\\
+					\\
+						\begin{tikzpicture}[shorten >=1pt,node distance=1.7cm,on grid,auto]
+							\node[state, initial, initial text=] (sigma1)   {$D^{\square\square}I^\bullet$};
+							\node[state, right of=sigma1] (sigma2) {$\square$};
+							\node[state, right of=sigma2] (sigma3) {$i$};
+							\node[state, right of=sigma3] (sigma4) {$I^{\square\square}$};
+							\node[state, accepting, right of=sigma4] (sigma5) {$d$};
+
+
+							\path[->]
+								(sigma1)	edge  node {} (sigma2)
+								(sigma2)	edge  node {} (sigma3)
+								(sigma3)	edge [bend left] node {$\bullet$} (sigma2)
+								(sigma3)	edge  node {$\square$} (sigma4)
+								(sigma4)	edge  node {} (sigma5);
+						\end{tikzpicture}
+				\end{itemize}
+
+			\subsection{Composición}
+				Sean $f,g\in FL/\exists M_{f},M_{g}\in MT$, entonces la función $fg$ esta representada por la maquina $M_{f}M_{g}$.
+
+			\subsection{Maquina Z}
+				\paragraph{Introducción}
+				La maquina $Z$ es una maquina de Turing sobre $\Sigma=\left\{ \bullet,\square\right\} $ que parte en la primer celda vaciá a la izquierda del primer caracter, cuyo comportamiento es el siguiente:
+				
+				\begin{itemize}
+					\item Si la cinta inicial no contiene al menos dos grupos de $\bullet$ separados por un solo $\square$, entonces la maquina no para.
+					\item Si el primer grupo de $\bullet$ tiene la misma cantidad de elementos que el ultimo, entonces la configuración final es igual a la inicial.
+					\item Si los grupos primero y ultimo no tienen el mismo numero de elementos, entonces la configuración final es igual a la inicial, pero con el cabezal apuntando al primer $\bullet$.
+				\end{itemize}
+
+				\paragraph{Definiciones}
+				Definiremos primero cinco maquinas:
+				
+				\begin{enumerate}
+					\item La maquina preámbulo $P$, que no para si la entrada no es correcta.
+					\item La maquina contadora $C$, que vaciá los puntitos de a pares, mientras se pueda.
+					\item La maquina igualdad $E$, que actúa si el conteo fue igual.
+					\item La maquina desigualdad $\neg E$, que actúa si el conteo fue desigual.
+					\item La maquina restauradora $R$, que vuelve a rellenar los puntitos.
+				\end{enumerate}
+
+				\paragraph{Maquina P}
+				Definimos $P:=D^{\square}D^{\bullet}I^{\square\square}dd$. Veamos algunos ejemplos:
+				
+				\begin{itemize}
+					\item $\check{\square}\bullet\bullet\bullet\underbrace{\Rightarrow}_{D^{\square}}\bullet\bullet\bullet\check{\square}\underbrace{\Rightarrow}_{D^{\bullet}}\ldots$
+					\item $\check{\square}\bullet\bullet\square\bullet\bullet\underbrace{\Rightarrow}_{D^{\square}}\bullet\bullet\check{\square}\bullet\bullet\underbrace{\Rightarrow}_{D^{\bullet}}\bullet\bullet\square\check{\bullet}\bullet\underbrace{\Rightarrow}_{I^{\square\square}}\check{\square}\square\bullet\bullet\square\bullet\bullet\underbrace{\Rightarrow}_{dd}\check{\bullet}\bullet\square\bullet\bullet$
+				\end{itemize}
+
+				\paragraph{Maquina C}
+				Definimos $C$ mediante el siguiente diagrama:
+
+				\begin{tikzpicture}[shorten >=1pt,node distance=2.5cm,on grid,auto]
+					\node[state, initial, initial text=] (sigma1)   {$\circ D^{\square\square}I^{\bullet}\circ i$};
+					\node[state, above right of=sigma1] (sigma2) {$I^\circ d$};
+					\node[state, below right of=sigma1] (sigma3) {$I^\circ d$};
+					\node[state, accepting, right of=sigma2] (eq) {$E$};
+					\node[state, accepting, right of=sigma3] (neq) {$\neg E$};
+
+
+					\path[->]
+						(sigma1)	edge  node {$\square$} (sigma2)
+						(sigma1)	edge [bend left] node {$\bullet$} (sigma3)
+						(sigma2)	edge  node {$\bullet$} (neq)
+						(sigma3)	edge  node {$\square$} (neq)
+						(sigma3)	edge [bend left]  node {$\bullet$} (sigma1)
+						(sigma2)	edge  node {$\square$} (eq);
+				\end{tikzpicture}
+
+				Veamos algunos ejemplos:
+				
+				\begin{itemize}
+					\item $\check{\bullet}\bullet\square\bullet\square\bullet\bullet\Rightarrow\circ\bullet\square\bullet\square\check{\bullet}\circ\Rightarrow\circ\check{\bullet}\square\bullet\square\bullet\circ\Rightarrow\circ\circ\square\bullet\check{\square}\circ\circ\Rightarrow\circ\circ\check{\square}\bullet\square\circ\circ\Rightarrow E$
+					\item $\check{\bullet}\bullet\bullet\square\bullet\bullet\Rightarrow\circ\bullet\bullet\square\check{\bullet}\circ\Rightarrow\circ\check{\bullet}\bullet\square\bullet\circ\Rightarrow\circ\circ\bullet\check{\square}\circ\circ\Rightarrow\neg E$
+				\end{itemize}
+
+				\paragraph{Maquina E}
+				Definimos $E:=I^{\square\square}dR$. Veamos algunos ejemplos:
+				
+				\begin{itemize}
+					\item $\circ\circ\check{\square}\bullet\square\circ\circ\Rightarrow\check{\square}\square\circ\circ\square\bullet\square\circ\circ\Rightarrow\check{\square}\circ\circ\square\bullet\square\circ\circ\Rightarrow\check{\square}\bullet\bullet\square\bullet\square\bullet\bullet$
+				\end{itemize}
+
+				\paragraph{Maquina $\neg$E}
+				Definimos $\neg E:=I^{\square\square}dRd$. Veamos algunos ejemplos:
+				
+				\begin{itemize}
+					\item $\circ\circ\check{\square}\bullet\square\circ\circ\Rightarrow\check{\square}\square\circ\circ\square\bullet\square\circ\circ\Rightarrow\check{\square}\circ\circ\square\bullet\square\circ\circ\Rightarrow\check{\square}\bullet\bullet\square\bullet\square\bullet\bullet\Rightarrow\check{\bullet}\bullet\square\bullet\square\bullet\bullet$
+				\end{itemize}
+
+				\paragraph{Maquina R}
+				Definimos $R$ mediante el siguiente diagrama:
+
+				\begin{tikzpicture}[shorten >=1pt,node distance=1.7cm,on grid,auto]
+					\node[state, initial, initial text=] (sigma1)   {$d$};
+					\node[state, right of=sigma1] (sigma2) {$\bullet$};
+					\node[state, right of=sigma2] (sigma3) {$d$};
+					\node[state, right of=sigma3] (sigma4) {$D^{\square\square}ii$};
+
+					\node[state, right of=sigma4] (sigma6) {$\bullet$};
+					\node[state, right of=sigma6] (sigma7) {$i$};
+					\node[state, right of=sigma7] (sigma8) {$I^{\square\square}$};
+					\node[state, accepting, right of=sigma8] (sigma9) {$d$};
+
+					\path[->]
+						(sigma1)	edge  node {} (sigma2)
+						(sigma2)	edge  node {} (sigma3)
+						(sigma3)	edge  [bend left] node {$\circ$} (sigma2)
+						(sigma3)	edge node {} (sigma4)
+						(sigma4)	edge  node {} (sigma6)
+						(sigma6)	edge  node {} (sigma7)
+						(sigma7)	edge  [bend left] node {$\circ$} (sigma6)
+						(sigma7)	edge  node {} (sigma8)
+						(sigma8)	edge  node {} (sigma9);
+				\end{tikzpicture}
+
+				Veamos algunos ejemplos:
+				
+				\begin{itemize}
+					\item $\begin{aligned} & \check{\square}\circ\circ\bullet\square\circ\circ\Rightarrow\check{\circ}\circ\bullet\square\circ\circ\Rightarrow\check{\bullet}\circ\bullet\square\circ\circ\Rightarrow\bullet\check{\circ}\bullet\square\circ\circ\Rightarrow\bullet\check{\bullet}\bullet\square\circ\circ\Rightarrow\\
+						& \Rightarrow\bullet\bullet\check{\bullet}\square\circ\circ\Rightarrow\bullet\bullet\bullet\square\circ\check{\circ}\Rightarrow\bullet\bullet\bullet\square\circ\check{\bullet}\Rightarrow\bullet\bullet\bullet\square\check{\circ}\bullet\Rightarrow\bullet\bullet\bullet\check{\square}\bullet\bullet\Rightarrow\check{\square}\bullet\bullet\bullet\square\bullet\bullet
+				\end{aligned}$
+				\end{itemize}
+
+				\paragraph{Conclusión}
+				Nuestra maquina quedaría definida como $Z:=PC$.
+				\subsection{Repetición}
+				Dada una función $f\in FRL$ representada por $M_{f}\in MT$ la función $\left\langle f\right\rangle $ esta representada por la maquina:\\
+
+				\begin{tikzpicture}[shorten >=1pt,node distance=1.7cm,on grid,auto]
+					\node[state, initial, initial text=] (sigma1)   {$Z$};
+					\node[state, right of=sigma1] (sigma2) {$iM_f$};
+					\node[state, accepting, below of=sigma1] (sigma3) {$N$};
+
+					\path[->]
+						(sigma1)	edge  node {$\bullet$} (sigma2)
+						(sigma2)	edge [bend left]  node {} (sigma1)
+						(sigma1)	edge  node {$\square$} (sigma3);
+				\end{tikzpicture}
+
+		\section{Representación de $MT$ con $FR$}
+			Veremos que para toda $M\in MT$ existe una $F_{M}\in FR$ que la representa. Demostraremos en principio el teorema, para las maquinas de Turing que tienen un alfabeto de diez símbolos $\left\{ s_{0},s_{1},s_{2},s_{3},s_{4},s_{5},s_{6},s_{7},s_{8},s_{9}\right\} $ donde $s_{0}=\square$ y $M$ tiene $p+1$ estados.
+			
+			\subsection{Representación de configuraciones}
+				En cada momento la situación de una MT esta completamente definida por los datos que contiene la cinta, la casilla observada y el estado en el que se encuentra. Consideramos la cinta dividida en tres partes: la celda observada, y las zonas que se encuentran a izquierda y derecha de esta celda. 
+				Asociaremos a la parte izquierda de la cinta el numero que tiene como cifras decimales a los subindices de los símbolos contenidos en las casillas situadas a la izquierda del cabezal. Llamaremos a este numero $C_{i}$. Por ejemplo para la cinta $\ldots s_{0}s_{5}s_{3}s_{8}s_{4}s_{2}\check{s_{3}}s_{1}s_{7}s_{9}s_{2}s_{0}\ldots$ el numero $C_{i}$ sera: $53842$.
+				A la casilla observada le asociamos como numero el indice del símbolo que contiene y lo notaremos $C_{o}$. En nuestro ejemplo $C_{o}=3$.
+				Finalmente asociamos a la parte derecha de la cinta el numero que forman los subindices de los símbolos que contienen pero leyendo de derecha a izquierda . Con lo que los que son los infinitos \flqq{}ceros a la derecha\frqq{} los que no cuentan en este caso. Notaremos dicho numero como $C_{d}$ y en nuestro ejemplo resulta $C_{d}=2971$.
+				Asociaremos entonces a cada configuración de una $MT$ el numero $2^{C_{i}}3^{C_{o}}5^{C_{d}}7^{e}$ donde $e$ es el subindice del estado en el que se encuentra la maquina.
+				Notemos que como hemos elegido números primos para las bases, a partir de un numero natural que represente una configuración podemos recuperar los exponentes mediante una función recursiva primitiva $G$ tal que $G\left(x,2\right)=C_{i}$, $G\left(x,3\right)=C_{o}$, $G\left(x,5\right)=C_{d}$ y $G\left(x,7\right)=e$.
+
+			\subsection{Transiciones sobre representaciones}
+				Representaremos los movimientos del cabezal con números: $i=1$, $d=2$ y $n=3$. Observemos como se comporta sobre una cinta, una función de transición para el estado actual $q$ y el símbolo observado $o$:
+
+				\begin{tabular}{c|c|c|c|c|c|}
+					\multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{$1$} & \multicolumn{1}{c}{$\cdots$} & \multicolumn{1}{c}{$j$} & \multicolumn{1}{c}{$\cdots$}\tabularnewline
+					\cline{2-6} 
+					 & $f$ &  &  & $q$ & \tabularnewline
+					\cline{2-6} 
+					$0$ &  &  &  & $\vdots$ & \tabularnewline
+					\cline{2-6} 
+					$\vdots$ &  &  &  & $\vdots$ & \tabularnewline
+					\cline{2-6} 
+					$i$ & $o$ & $\cdots$ & $\cdots$ & $s,m,q'$ & $\cdots$\tabularnewline
+					\cline{2-6} 
+					$\vdots$ &  &  &  & $\vdots$ & \tabularnewline
+					\cline{2-6} 
+				\end{tabular}
+				
+				\begin{itemize}
+					\item Si $m=3$ entonces la configuración $N=2^{C_{i}}3^{C_{o}}5^{C_{d}}7^{q}$ se transforma en $N'=2^{C_{i}}3^{s}5^{C_{d}}7^{q'}$.
+					\item Si $m=2$ entonces se transforma en $N'=2^{10C_{i}+s}3^{C_{d}\%10}5^{\lfloor C_{d}/10\rfloor}7^{q'}$.
+					\item Si $m=1$ entonces se transforma en $N'=2^{\lfloor C_{i}/10\rfloor}3^{C_{i}\%10}5^{10C_{d}+s}7^{q'}$.
+				\end{itemize}
+				
+				Veamos algunos ejemplos partiendo de la cinta $\underbrace{6\check{3}01}_{2}$ (representada por el numero $\text{\ensuremath{N=2^{6}3^{3}5^{10}7^{2}=826.875.000.000}}$) reemplazando el símbolo actual por $4$ y pasando al estado final:
+				
+				\begin{itemize}
+					\item Si $m=3$ se transforma en $N'=2^{6}3^{4}5^{10}7^{0}=16.875.000.000$ es decir $\underbrace{6\check{4}01}_{0}$.
+					\item Si $m=2$ se transforma en $N'=2^{10\cdot6+4}3^{10\%10}5^{\lfloor10/10\rfloor}7^{0}=2^{64}3^{0}5^{1}7^{0}$ es decir $\underbrace{64\check{0}1}_{0}$.
+					\item Si $m=1$ se transforma en $N'=2^{\lfloor6/10\rfloor}3^{6\%10}5^{10\cdot10+4}7^{0}=2^{0}3^{6}5^{104}7^{0}$ es decir $\underbrace{0\check{6}401}_{0}$.
+				\end{itemize}
+				
+				A partir de aquí definimos tres funciones recursivas que estarán asociadas a una función de transición $f$ de una $MT$:
+				
+				\begin{itemize}
+					\item $S_{f}\left(i,j\right)=
+						\begin{cases}
+							\text{simbolo de la entrada }i,j & \text{si \ensuremath{i,j} es una entrada de la tabla}\\
+							0 & \text{si no}
+						\end{cases}$
+					\item $M_{f}\left(i,j\right)=
+						\begin{cases}
+							\text{movimiento de la entrada }i,j & \text{si \ensuremath{i,j} es una entrada de la tabla}\\
+							0 & \text{si no}
+						\end{cases}$
+					\item $E_{f}\left(i,j\right)=
+						\begin{cases}
+							\text{estado de la entrada }i,j & \text{si \ensuremath{i,j} es una entrada de la tabla}\\
+							0 & \text{si no}
+						\end{cases}$
+				\end{itemize}
+
+			\subsection{Demostración}
+				Sea $M=\left(S,\Sigma,\Gamma,f,s_{0},q_{1},q_{0}\right)$ donde $\Sigma=\Gamma=\left\{ s_{0},s_{1},s_{2},s_{3},s_{4},s_{5},s_{6},s_{7},s_{8},s_{9}\right\} $ y $S=\left\{ q_{0},\ldots,q_{p}\right\} $; y sea $R\left(c,e\right)=2^{C_{i}}3^{C_{o}}5^{C_{d}}7^{e}$ la función que representa configuraciones como números.
+				Definimos la función recursiva:
+				
+				\[
+					T_{f}\left(c_{i},c_{o},c_{d},e\right)=
+					\begin{cases}
+						2^{\lfloor C_{i}/10\rfloor}3^{C_{i}\%10}5^{10C_{d}+S_{f}\left(c_{o},e\right)}7^{E_{f}\left(c_{o},e\right)} & M_{f}\left(c_{o},e\right)=1\\
+						2^{10C_{i}+S_{f}\left(c_{o},e\right)}3^{C_{d}\%10}5^{\lfloor C_{d}/10\rfloor}7^{E_{f}\left(c_{o},e\right)} & M_{f}\left(c_{o},e\right)=2\\
+						2^{C_{i}}3^{S_{f}\left(c_{o},e\right)}5^{C_{d}}7^{E_{f}\left(c_{o},e\right)} & M_{f}\left(c_{o},e\right)=3
+					\end{cases}
+				\]
+				
+				luego la función recursiva asociada a $f$ sera $\overline{f}\left(x\right)=T_{f}\left(G\left[x,2\right],G\left[x,3\right],G\left[x,5\right],G\left[x,7\right]\right)$.
+				Si partiendo de la cinta inicial $C_{1}$ la maquina $M$ la transforma en la cinta $C_{t}$ en $t$ pasos entonces: $\overline{f}^{t}\left[R\left(C_{1},1\right)\right]=R\left(C_{t},q\right)$.
+				Cuando resulte que $\overline{f}^{t}\left[R\left(C_{1},1\right)\right]=R\left(C_{t},0\right)$ entonces habremos terminado los cálculos. Si efectivamente existe un valor de $t$ tal que satisfaga dicha igualdad entonces este valor sera el mínimo $t$ tal que $G\left\{ \overline{f}^{t}\left[R\left(C_{1},1\right)\right],7\right\} =0$, que podemos construir utilizando el minimizador. Sea entonces $H\left(x\right)=\mu_{t}\left\{ G\left[\overline{f}^{t}\left(x\right),7\right]=0\right\} $ la función que encuentra dicho valor.
+				De todo lo aquí expuesto podemos concluir que la función recursiva que representa a $M$ es: $\overline{f}^{H\left(x\right)}$ donde $x=R\left(C_{1},1\right)$.
+
+				\paragraph{Resumen}
+				A partir de una maquina $M$ y una cinta inicial $C_{1}$, transformamos $C_{1}$ en un numero mediante $R\left(C_{1},1\right)$. Luego imitamos las transiciones de $f$ mediante $\overline{f}$ hasta que el estado que obtenemos a través de $G$ sea $0$ y de esta manera obtenemos un numero que representa la configuración final de $M$ aplicada a $C_{1}$.
+
+				\paragraph{Observación}
+				La condición de que el alfabeto tenga diez valores no es ninguna limitación.
+				En el caso de un alfabeto de $k$ elementos basta tomar el sistema numérico de base $k$. El valor $10$ de las formulas sigue valiendo pues en cada caso es la forma de expresar el valor de la base.
+
+				\paragraph{Conclusión}
+				Juntando todos los teoremas de representación de modelos de calculo (y haciendo abuso de notación) tenemos $FR\preceq FRL\preceq MT\preceq FR$ logrando concluir que todos estos modelos son equivalentes.
+
+		\section{Numerabilidad de maquinas de Turing}
+			Sea $M_{n}=\left\{ m\in MT:\text{ el alfabeto de m tiene n simbolos}\right\} $, observemos que $MT={\displaystyle \bigcup_{n=2}^{\infty}}M_{n}$. 
+			Así mismo $M_{n}={\displaystyle \bigcup_{k=2}^{\infty}M_{nk}}$ donde $M_{nk}=\left\{ m\in M_{n}:\text{ m tiene k estados}\right\} $.
+			Nótese que $M_{nk}$ es un conjunto finito. En efecto hay un numero finito de funciones de transición, pues tanto el dominio como el codominio tienen cardinal finito.
+			Como $MT={\displaystyle \bigcup_{n=2}^{\infty}\bigcup_{k=2}^{\infty}}M_{nk}$ concluimos que $\#MT=\aleph_{0}$ pues es unión numerable de conjuntos numerados.
+
+		\section{Limite de lo calculable}
+			Hemos visto que $\#\left\{ f:\mathbb{N}\to\left\{ 0,1\right\} \right\} =\mathcal{P}\left(\mathbb{N}\right)=\aleph_{1}$ y claramente hay tantas (o mas) funciones numéricas. Ademas por el teorema anterior podemos concluir que $\#MT=\aleph_{0}\prec\aleph_{1}\preceq\#\left\{ f:\mathbb{N}\to\mathbb{N}\right\} $, es decir que existen funciones que ninguna maquina de Turing puede calcular.
+			Veremos a continuación una función útil y perfectamente definida que no podemos calcular con maquinas de Turing.
+
+			\paragraph{El problema de la parada}
+			Notemos que dependiendo de cada $MT$ no siempre ante una configuración inicial se llega a una configuración final, por ejemplo la maquina $D^{\bullet\bullet}$ con una cinta inicial que no tenga dos $\bullet$ seguidos no se detendrá nunca.
+			Intentaremos construir una maquina que dada cualquier maquina de Turing y cualquier entrada, nos indique si esta finaliza sus cálculos o no.
+			Sin lugar a dudas para casos particulares podemos determinar dicha respuesta, pero buscamos una maquina de propósito general.
+			Sabemos por el teorema anterior que es posible asignarte a cada maquina de Turing un numero natural. Consideremos entonces la siguiente función:
+			
+			\[
+				\begin{aligned}h:\mathbb{N}\to & \mathbb{N}\\
+				k\to & h\left(k\right)=
+				\begin{cases}
+					1 & M_{k}\text{ termina con k como entrada}\\
+					0 & \text{en caso contrario}
+				\end{cases}
+				\end{aligned}
+			\]
+
+			¿Es $h$ una función calculable? Es decir: ¿Existe una $MT$ que al recibir $k$ como entrada calcule $h\left(k\right)$? Supongamos que esta maquina existe, llamemosla $H$ y definamos la maquina $Y$ mediante el siguiente diagrama:\\
+
+			\begin{tikzpicture}[shorten >=1pt,node distance=2cm,on grid,auto]
+				\node[state, initial, initial text=] (sigma1)   {$H$};
+				\node[state, accepting, above right of= sigma1] (sigma2)	{$N$};
+				\node[state, below right of= sigma1] (sigma3)	{$d$};
+
+				\path[->]
+					(sigma1)	edge  node {$0$} (sigma2)
+					(sigma1)	edge  node {$1$} (sigma3)
+					(sigma3)	edge  [loop right] node {} ();
+			\end{tikzpicture}
+
+			Sea $y$ el numero asociado a la maquina $Y$. ¿Cuanto vale $h\left(y\right)$?
+			
+			\begin{itemize}
+				\item Supongamos que $Y$ termina al recibir $y$ como entrada, es decir $\text{\ensuremath{h\left(y\right)=1}}$. Analicemos el comportamiento de $Y$ en dicha cinta:
+					\[
+						\check{y}\underbrace{\Rightarrow}_{h(y)=1}y\check{\square}\Rightarrow y\square\check{\square}\Rightarrow y\square\square\check{\square}\Rightarrow\ldots
+					\]
+					 es decir que $Y$ no termina. Contradicción.
+				 
+				\item Supongamos que $Y$ no termina al recibir $y$ como entrada, es decir $\text{\ensuremath{h\left(y\right)=0}}$. Analicemos el comportamiento de $Y$ en dicha cinta:
+				\[
+					\check{y}\underbrace{\Rightarrow}_{h(y)=0}\check{y}
+				\]
+				 es decir que $Y$ termina. Contradicción.
+			\end{itemize}
+			
+			La contradicción vino de suponer que $H$ existía, luego $H$ no existe.
+
+		\section{Modificaciones equivalentes}
+			Existen diversas modificaciones a este modelo de maquina de Turing, que no modifican el poder de calculo de estas. Entre ellas:
+			
+			\begin{itemize}
+				\item Maquina de Turing con cinta acotada a izquierda.
+				\item Maquina de Turing con múltiples cintas.
+				\item Maquina de Turing no determinista.
+				\item Autómata de múltiples pilas.
+				\item Autómata de cola.
+				\item Calculo $\lambda$.
+			\end{itemize}
+
+		\section{Ejemplos}
+			\subsection{Izquierda hasta dos $\square$}
+			Sean $S=\left\{ q_{0},q_{1},q_{2},q_{3}\right\} $, $\Sigma=\left\{ \bullet\right\} ,\Gamma=\Sigma\cup\left\{ \square\right\} $ definimos $\text{\ensuremath{I^{\square\square}=\left(S,\Sigma,\Gamma,f,\square,q_{1},q_{0}\right)}}$ con la siguiente función de transición:\\
+			
+			\begin{center}
+				\begin{tabular}{|c|c|c|c|}
+					\hline 
+					$f$ & $q_{1}$ & $q_{2}$ & $q_{3}$\tabularnewline
+					\hline 
+					\hline 
+					$\square$ & $\square,i,q_{2}$ & $\square,i,q_{3}$ & $\square,n,q_{0}$\tabularnewline
+					\hline 
+					$\bullet$ & $\bullet,i,q_{2}$ & $\bullet,i,q_{2}$ & $\bullet,i,q_{2}$\tabularnewline
+					\hline 
+				\end{tabular}
+			\par\end{center}
+
+			Observemos como se comporta esta maquina partiendo de la cinta vacía:
+
+			\[
+				\underbrace{\ldots\square\square\check{\square}\ldots}_{q_{1}}\Rightarrow\underbrace{\ldots\square\check{\square}\square\ldots}_{q_{2}}\Rightarrow\underbrace{\ldots\check{\square}\square\square\ldots}_{q_{3}}\Rightarrow\underbrace{\ldots\check{\square}\square\square\ldots}_{q_{0}}
+			\]
+
+			Observemos como se comporta esta maquina partiendo de la cinta inicial $\bullet\square\square\bullet\bullet\square\check{\bullet}$:
+			
+			\[
+			\begin{aligned} & \underbrace{\bullet\square\square\bullet\bullet\square\check{\bullet}}_{q_{1}}\Rightarrow\underbrace{\bullet\square\square\bullet\bullet\check{\square}\bullet}_{q_{2}}\Rightarrow\underbrace{\bullet\square\square\bullet\check{\bullet}\square\bullet}_{q_{3}}\Rightarrow\underbrace{\bullet\square\square\check{\bullet}\bullet\square\bullet}_{q_{2}}\Rightarrow\underbrace{\bullet\square\check{\square}\bullet\bullet\square\bullet}_{q_{2}}\Rightarrow\\
+			 & \Rightarrow\underbrace{\bullet\check{\square}\square\bullet\bullet\square\bullet}_{q_{3}}\Rightarrow\underbrace{\bullet\check{\square}\square\bullet\bullet\square\bullet}_{q_{0}}
+			\end{aligned}
+			\]
+
+			\subsection{Sucesor decimal}
+				Sean $S=\left\{ q_{0},q_{1},q_{2}\right\} $, $\Sigma=\left\{ 0,1,2,3,4,5,6,7,8,9\right\} ,\Gamma=\Sigma\cup\left\{ \square\right\} $ definimos $S_{10}=\left(S,\Sigma,\Gamma,f,\square,q_{1},q_{0}\right)$ con la siguiente función de transición:\\
+				
+				\begin{center}
+					\begin{tabular}{|c|c|c|}
+						\hline 
+						$f$ & $q_{1}$ & $q_{2}$\tabularnewline
+						\hline 
+						\hline 
+						$\square$ & $\square,i,q_{2}$ & $1,n,q_{0}$\tabularnewline
+						\hline 
+						$0$ & $0,d,q_{1}$ & $1,n,q_{0}$\tabularnewline
+						\hline 
+						$1$ & $1,d,q_{1}$ & $2,n,q_{0}$\tabularnewline
+						\hline 
+						$2$ & $2,d,q_{1}$ & $3,n,q_{0}$\tabularnewline
+						\hline 
+						$3$ & $3,d,q_{1}$ & $4,n,q_{0}$\tabularnewline
+						\hline 
+						$4$ & $4,d,q_{1}$ & $5,n,q_{0}$\tabularnewline
+						\hline 
+						$5$ & $5,d,q_{1}$ & $6,n,q_{0}$\tabularnewline
+						\hline 
+						$6$ & $6,d,q_{1}$ & $7,n,q_{0}$\tabularnewline
+						\hline 
+						$7$ & $7,d,q_{1}$ & $8,n,q_{0}$\tabularnewline
+						\hline 
+						$8$ & $8,d,q_{1}$ & $9,n,q_{0}$\tabularnewline
+						\hline 
+						$9$ & $9,d,q_{1}$ & $0,i,q_{2}$\tabularnewline
+						\hline 
+					\end{tabular}
+				\par\end{center}
+
+				Observemos como se comporta esta maquina partiendo de la cinta inicial con el numero $\check{3}99$:
+				
+				\[
+					\underbrace{\check{3}99}_{q_{1}}\Rightarrow\underbrace{3\check{9}9}_{q_{1}}\Rightarrow\underbrace{39\check{9}}_{q_{1}}\Rightarrow\underbrace{399\check{\square}}_{q_{1}}\Rightarrow\underbrace{39\check{9}}_{q_{2}}\Rightarrow\underbrace{3\check{9}0}_{q_{2}}\Rightarrow\underbrace{\check{3}00}_{q_{2}}\Rightarrow\underbrace{\check{4}00}_{q_{0}}
+				\]
+
+			\subsection{Reconocedora de $a^{n}b^{n}$}
+				Sean $S=\left\{ q_{0},q_{1},q_{2},q_{3},q_{4}\right\} $, $\Sigma=\left\{ a,b\right\} ,\Gamma=\Sigma\cup\left\{ \square\right\} $ definimos $\text{\ensuremath{M=\left(S,\Sigma,\Gamma,f,\square,q_{1},q_{0}\right)}}$ con la siguiente función de transición:
+				
+				\begin{center}
+					\begin{tabular}{|c|c|c|c|c|}
+					\hline 
+					$f$ & $q_{1}$ & $q_{2}$ & $q_{3}$ & $q_{4}$\tabularnewline
+					\hline 
+					\hline 
+					$\square$ & $\square,n,q_{0}$ & $\square,i,q_{3}$ & $b,n,q_{0}$ & $\square,d,q_{1}$\tabularnewline
+					\hline 
+					$a$ & $\square,d,q_{2}$ & $a,d,q_{2}$ & $b,n,q_{0}$ & $a,i,q_{4}$\tabularnewline
+					\hline 
+					$b$ & $b,n,q_{0}$ & $b,d,q_{2}$ & $\square,i,q_{4}$ & $b,i,q_{4}$\tabularnewline
+					\hline 
+					\end{tabular}
+				\par\end{center}
+
+				Esta maquina terminara con el cabezal apuntando a un blanco si la palabra pertenece al lenguaje, y a otro símbolo en caso contrario.
+				Observemos como se comporta esta maquina partiendo de la cinta inicial con la palabra $\check{a}abb$:
+				
+				\[
+					\begin{array}{cc}
+						\underbrace{\check{a}abb}_{q_{1}}\Rightarrow\underbrace{\check{a}bb}_{q_{2}}\Rightarrow\underbrace{a\check{b}b}_{q_{2}}\Rightarrow\underbrace{ab\check{b}}_{q_{2}}\Rightarrow\underbrace{abb\check{\square}}_{q_{2}}\Rightarrow\underbrace{ab\check{b}}_{q_{3}}\Rightarrow\underbrace{a\check{b}}_{q_{4}}\Rightarrow\\
+						\Rightarrow\underbrace{\check{a}b}_{q_{4}}\Rightarrow\underbrace{\check{\square}ab}_{q_{4}}\Rightarrow\underbrace{\check{a}b}_{q_{1}}\Rightarrow\underbrace{\check{b}}_{q_{2}}\Rightarrow\underbrace{b\check{\square}}_{q_{2}}\Rightarrow\underbrace{\check{b}}_{q_{3}}\Rightarrow\underbrace{\check{\square}}_{q_{4}}\Rightarrow\underbrace{\check{\square}}_{q_{1}}\Rightarrow\underbrace{\check{\square}}_{q_{0}}
+					\end{array}
+				\]
+
+				Observemos como se comporta esta maquina partiendo de la cinta inicial con la palabra $\check{a}ab$:
+				
+				\[
+					\underbrace{\check{a}ab}_{q_{1}}\Rightarrow\underbrace{\check{a}b}_{q_{2}}\Rightarrow\underbrace{a\check{b}}_{q_{2}}\Rightarrow\underbrace{ab\check{\square}}_{q_{2}}\Rightarrow\underbrace{a\check{b}}_{q_{3}}\Rightarrow\underbrace{\check{a}}_{q_{4}}\Rightarrow\underbrace{\check{\square}a}_{q_{4}}\Rightarrow\underbrace{\check{a}}_{q_{1}}\Rightarrow\underbrace{\check{\square}}_{q_{2}}\Rightarrow\underbrace{\check{\square}}_{q_{3}}\Rightarrow\underbrace{\check{b}}_{q_{0}}
+				\]
+
+			\subsection{Duplicar puntos}
+				Definimos $M=\left(S,\Sigma,\Gamma,f,\square,q_{1},q_{0}\right)$ con la siguiente función de transición:\\
+				
+				\begin{center}
+					\begin{tabular}{|c|c|c|c|c|c|}
+						\hline 
+						$f$ & $q_{1}$ & $q_{2}$ & $q_{3}$ & $q_{4}$ & $q_{5}$\tabularnewline
+						\hline 
+						\hline 
+						$\square$ & $\square,n,q_{0}$ & $\square,d,q_{3}$ & $\bullet,i,q_{4}$ & $\square,i,q_{5}$ & $\bullet,d,q_{1}$\tabularnewline
+						\hline 
+						$\bullet$ & $\square,d,q_{2}$ & $\bullet,d,q_{2}$ & $\bullet,d,q_{3}$ & $\bullet,i,q_{4}$ & $\bullet,i,q_{5}$\tabularnewline
+						\hline 
+					\end{tabular}
+				\par\end{center}
+
+				Observemos como se comporta esta maquina partiendo de la cinta inicial con la palabra $\check{\bullet}\bullet\bullet$:
+
+				\[
+					\begin{array}{cc}
+						\underbrace{\check{\bullet}\bullet\bullet}_{q_{1}}\Rightarrow\underbrace{\check{\bullet}\bullet}_{q_{2}}\Rightarrow\underbrace{\bullet\check{\bullet}}_{q_{2}}\Rightarrow\underbrace{\bullet\bullet\check{\square}}_{q_{2}}\Rightarrow\underbrace{\bullet\bullet\square\check{\square}}_{q_{3}}\Rightarrow\underbrace{\bullet\bullet\check{\square}\bullet}_{q_{4}}\Rightarrow\underbrace{\bullet\check{\bullet}\square\bullet}_{q_{5}}\Rightarrow\underbrace{\check{\bullet}\bullet\square\bullet}_{q_{5}}\Rightarrow\underbrace{\check{\square}\bullet\bullet\square\bullet}_{q_{5}}\Rightarrow\\
+						\Rightarrow\underbrace{\bullet\check{\bullet}\bullet\square\bullet}_{q_{1}}\Rightarrow\underbrace{\bullet\square\check{\bullet}\square\bullet}_{q_{2}}\Rightarrow\underbrace{\bullet\square\bullet\check{\square}\bullet}_{q_{2}}\Rightarrow\underbrace{\bullet\square\bullet\square\check{\bullet}}_{q_{3}}\Rightarrow\underbrace{\bullet\square\bullet\square\bullet\check{\square}}_{q_{3}}\Rightarrow\underbrace{\bullet\square\bullet\square\check{\bullet}\bullet}_{q_{4}}\Rightarrow\\
+						\Rightarrow\underbrace{\bullet\square\bullet\check{\square}\bullet\bullet}_{q_{4}}\Rightarrow\underbrace{\bullet\square\check{\bullet}\square\bullet\bullet}_{q_{5}}\Rightarrow\underbrace{\bullet\check{\square}\bullet\square\bullet\bullet}_{q_{5}}\Rightarrow\underbrace{\bullet\bullet\check{\bullet}\square\bullet\bullet}_{q_{1}}\Rightarrow\underbrace{\bullet\bullet\square\check{\square}\bullet\bullet}_{q_{2}}\Rightarrow\underbrace{\bullet\bullet\square\square\check{\bullet}\bullet}_{q_{3}}\Rightarrow\\
+						\Rightarrow\underbrace{\bullet\bullet\square\square\bullet\check{\bullet}}_{q_{3}}\Rightarrow\underbrace{\bullet\bullet\square\square\bullet\bullet\check{\square}}_{q_{3}}\Rightarrow\underbrace{\bullet\bullet\square\square\bullet\check{\bullet}\bullet}_{q_{4}}\Rightarrow\underbrace{\bullet\bullet\square\square\check{\bullet}\bullet\bullet}_{q_{4}}\Rightarrow\underbrace{\bullet\bullet\square\check{\square}\bullet\bullet\bullet}_{q_{4}}\Rightarrow\\
+						\Rightarrow\underbrace{\bullet\bullet\check{\square}\square\bullet\bullet\bullet}_{q_{5}}\Rightarrow\underbrace{\bullet\bullet\bullet\check{\square}\bullet\bullet\bullet}_{q_{1}}\Rightarrow\underbrace{\bullet\bullet\bullet\check{\square}\bullet\bullet\bullet}_{q_{0}}
+					\end{array}
+				\]
+
+			\subsection{Modulo 3}
+				\begin{tikzpicture}[shorten >=1pt,node distance=2cm,on grid,auto]
+					\node[state, initial, initial text=] (sigma1)   {$d$};
+					\node[state, right of=sigma1] (sigma2) {$d$};
+					\node[state, right of=sigma2] (sigma3) {$d$};
+					\node[state, right of=sigma3] (sigma4) {$\square i\square i\square dd$};
+					\node[state, accepting, above of=sigma1] (sigma5) {$N$};
+					\node[state, accepting, above of=sigma2] (sigma6) {$I^{\square}$};
+
+					\path[->]
+						(sigma1)	edge  node {$\bullet$} (sigma2)
+						(sigma1)	edge  node {$\square$} (sigma5)
+						(sigma2)	edge  node {$\bullet$} (sigma3)
+						(sigma3)	edge  node {$\bullet$} (sigma4)
+						(sigma4)	edge [bend left] node {} (sigma1)
+						(sigma2)	edge  node {$\square$} (sigma6)
+						(sigma3)	edge  node [right] {$\square$} (sigma6);
+				\end{tikzpicture}
+
+			\subsection{Decidibilidad de $\left\{ aa,b\right\} $ sobre $\text{\ensuremath{\Sigma=\left\{ a,b\right\} }}$}
+				\begin{tikzpicture}[shorten >=1pt,node distance=2cm,on grid,auto]
+					\node[state, initial, initial text=] (sigma1)   {$d$};
+					\node[state, above of=sigma1] (sigma2) {$d$};
+					\node[state, below  of=sigma1] (sigma3) {$d$};
+					\node[state, right of=sigma2] (sigma4) {$d$};
+					\node[state, right of=sigma1] (N) {$I^{\square}\bullet D^{\square}$};
+					\node[state, below right of=N] (sigma5) {$\square i$};
+					\node[state, accepting, above right of=N] (sigma6) {$N$};
+					\node[state, accepting, above right of=sigma5] (A) {$i\square i\circ$};
+
+					\path[->]
+						(sigma1)	edge  node {$a$} (sigma2)
+						(sigma1)	edge  node {} (N)
+						(sigma1)	edge  node {$b$} (sigma3)
+						(sigma3)	edge  node {} (N)
+						(sigma2)	edge  node {$a$} (sigma4)
+						(sigma2)	edge  node {} (N)
+						(sigma3)	edge [bend right=60] node [below] {$\square$} (A)
+						(sigma4)	edge [bend left=50] node {$\square$} (A)
+						(N)	edge  node {} (sigma5)
+						(sigma5)	edge  node [right] {$\bullet$} (sigma6)
+						(sigma5)	edge [loop left] node {} ()
+						(sigma4)	edge node {} (N);
+				\end{tikzpicture}
+
+			\subsection{Representación en $FR$}
+				La maquina suma unaria esta representada por la siguiente función de transición:\\
+
+				\begin{tabular}{|c|c|c|c|c|c|}
+					\hline 
+					$f$ & $1$ & $2$ & $3$ & $4$ & $5$\tabularnewline
+					\hline 
+					\hline 
+					$0$ & $0,d,1$ & $1,d,3$ & $0,i,4$ & $0,i,4$ & $0,n,0$\tabularnewline
+					\hline 
+					$1$ & $1,d,2$ & $1,d,2$ & $1,d,3$ & $0,i,5$ & $1,i,5$\tabularnewline
+					\hline 
+				\end{tabular}\\
+
+				La suma de cuatro y tres partirá de la cinta inicial $\check{0}11110111$ que sera representada como $2^{0}3^{0}5^{11101111}7^{1}$ y llegara a la final como $2^{0}3^{0}5^{1111111}7^{0}$.\pagebreak{}
+				Observemos una traza de la función recursiva que la representa:
+
+				\[
+					\begin{aligned} & \overline{f}^{19}\left[2^{0}3^{0}5^{11101111}7^{1}\right]=\overline{f}^{18}\left[T_{f}\left(0,0,11101111,1\right)\right]=\\
+					 & \underbrace{=}_{M\left(0,1\right)=2}\overline{f}^{18}\left[2^{10\cdot0+S_{f}\left(0,1\right)}3^{11101111\%10}5^{\lfloor11101111/10\rfloor}7^{E_{f}\left(0,1\right)}\right]=\\
+					 & =\overline{f}^{18}\left[2^{10\cdot0+0}3^{11101111\%10}5^{\lfloor11101111/10\rfloor}7^{1}\right]=\overline{f}^{18}\left[2^{0}3^{1}5^{1110111}7^{1}\right]=\\
+					 & =\overline{f}^{17}\left[T_{f}\left(0,1,1110111,1\right)\right]\underbrace{=}_{M\left(1,1\right)=2}\overline{f}^{17}\left[2^{0+S_{f}\left(1,1\right)}3^{1110111\%10}5^{\lfloor1110111/10\rfloor}7^{E_{f}\left(1,1\right)}\right]=\\
+					 & =\overline{f}^{17}\left[2^{1}3^{1}5^{111011}7^{2}\right]\underbrace{=}_{M\left(1,2\right)=2}\overline{f}^{16}\left[2^{10\cdot1+1}3^{111011\%10}5^{\lfloor111011/10\rfloor}7^{2}\right]=\overline{f}^{16}\left[2^{11}3^{1}5^{11101}7^{2}\right]=\\
+					 & \underbrace{=}_{M\left(1,2\right)=2}\overline{f}^{15}\left[2^{110+1}3^{11101\%10}5^{\lfloor11101/10\rfloor}7^{2}\right]=\overline{f}^{15}\left[2^{111}3^{1}5^{1110}7^{2}\right]=\overline{f}^{14}\left[2^{1111}3^{0}5^{111}7^{2}\right]=\\
+					 & \underbrace{=}_{M\left(0,2\right)=2}\overline{f}^{13}\left[2^{11110+1}3^{1}5^{11}7^{3}\right]\underbrace{=}_{M\left(1,3\right)=2}\overline{f}^{12}\left[2^{111110+1}3^{1}5^{1}7^{3}\right]\underbrace{=}_{M\left(1,3\right)=2}\overline{f}^{11}\left[2^{1111111}3^{1}5^{0}7^{3}\right]=\\
+					 & \underbrace{=}_{M\left(1,3\right)=2}\overline{f}^{10}\left[2^{11111111}3^{0}5^{0}7^{3}\right]\underbrace{=}_{M\left(0,3\right)=1}\overline{f}^{9}\left[2^{\lfloor11111111/10\rfloor}3^{11111111\%10}5^{10\cdot0+S_{f}\left(0,3\right)}7^{E_{f}\left(0,3\right)}\right]=\\
+					 & =\overline{f}^{9}\left[2^{1111111}3^{1}5^{0+0}7^{4}\right]\underbrace{=}_{M\left(1,4\right)=1}\overline{f}^{8}\left[2^{111111}3^{1}5^{0+0}7^{5}\right]\underbrace{=}_{M\left(1,5\right)=1}\overline{f}^{7}\left[2^{11111}3^{1}5^{0+1}7^{5}\right]=\\
+					 & \underbrace{=}_{M\left(1,5\right)=1}\overline{f}^{6}\left[2^{1111}3^{1}5^{10+1}7^{5}\right]\underbrace{=}_{M\left(1,5\right)=1}\overline{f}^{5}\left[2^{111}3^{1}5^{111}7^{5}\right]=\overline{f}^{4}\left[2^{11}3^{1}5^{1111}7^{5}\right]=\\
+					 & =\overline{f}^{3}\left[2^{1}3^{1}5^{11111}7^{5}\right]=\overline{f}^{2}\left[2^{0}3^{1}5^{111111}7^{5}\right]=\overline{f}^{1}\left[2^{0}3^{0}5^{1111111}7^{5}\right]\underbrace{=}_{M\left(0,5\right)=3}\overline{f}^{0}\left[2^{0}3^{0}5^{1111111}7^{0}\right]
+					\end{aligned}
+				\]
+\end{document}

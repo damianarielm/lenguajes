@@ -1,0 +1,297 @@
+\documentclass[12pt,a4paper,oneside,spanish]{book}
+\usepackage[T1]{fontenc}
+\usepackage[latin9]{inputenc}
+\setcounter{secnumdepth}{3}
+\setcounter{tocdepth}{3}
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+\setcounter{chapter}{3}
+\makeatletter
+\makeatother
+\usepackage{babel}
+\addto\shorthandsspanish{\spanishdeactivate{~<>.}}
+
+\begin{document}
+	\chapter{Funciones recursivas}
+		\section{Introducción}
+			\subsection{Función parcial y función total}
+				Una función numérica $f:\mathbb{N}^{k}\to\mathbb{N}$ se dice \emph{parcial} si no esta definida sobre todos los elementos de $\mathbb{N}^{k}$.
+				Si esta definida para todos los elementos de $\mathbb{N}^{k}$ se dice \emph{total}.
+
+			\subsection{Función mayora}
+				Decimos que una función $f^{(1)}$ mayora a otra función $g^{(n)}$ si $\forall$ $\mbox{\ensuremath{\left(x_{1},x_{2},\ldots,x_{n}\right)\in dom\left(g\right)}}$ se verifica que $g\left(x_{1},x_{2},\ldots,x_{n}\right)\leq f\left[max\left(x_{1},x_{2},\ldots,x_{n}\right)\right]$ y lo notamos $\mbox{\ensuremath{f^{(1)}\uparrow g^{(n)}}}$.
+			
+			\subsection{Serie de Ackermann}
+				Consideremos la siguiente sucesión de funciones que llamaremos sucesión de Ackermann:
+				
+				\begin{itemize}
+					\item $f_{0}\left(x\right)=s\left(x\right)=x+1$.
+					\item $f_{1}\left(x\right)=f_{0}^{x+2}\left(x\right)=s^{x+2}\left(x\right)=x+\left(x+2\right)=2x+2$.
+					\item $f_{2}\left(x\right)=f_{1}^{x+2}\left(x\right)$.
+					\item $\vdots$
+					\item $f_{k}\left(x\right)=f_{k-1}^{x+2}\left(x\right)$.
+					\item $\vdots$
+				\end{itemize}
+
+				Calculemos algunos valores de $f_{2}\left(x\right)$:
+				
+				\begin{itemize}
+					\item $f_{2}\left(0\right)=f_{1}^{2}\left(0\right)=f_{1}\left[f_{1}\left(0\right)\right]=f_{1}\left[f_{0}^{2}\left(0\right)\right]=f_{1}\left[2\right]=f_{0}^{4}\left(2\right)=6$.
+					\item $\begin{aligned}f_{2}\left(1\right)= & f_{1}^{3}\left(1\right)=f_{1}\left\{ f_{1}\left[f_{1}\left(1\right)\right]\right\} =f_{1}\left\{ f_{1}\left[f_{0}^{3}\left(1\right)\right]\right\} =f_{1}\left\{ f_{1}\left[4\right]\right\} =f_{1}\left\{ f_{0}^{6}\left[4\right]\right\} =\\
+					= & f_{1}\left\{ 10\right\} =f_{0}^{12}\left\{ 10\right\} =22.
+					\end{aligned}$
+					\item $f_{2}\left(2\right)=f_{1}^{4}\left(2\right)=2\left\{ 2\left[2\left(2\text{\ensuremath{\cdot}2+2}\right)+2\right]+2\right\} +2=62$.
+					\item $f_{2}\left(3\right)=158$.
+				\end{itemize}
+
+			\subsection{Función de Ackermann}
+				Definimos una función que llamaremos $ACK$ de la siguiente manera:
+				$ACK\left(x\right)=f_{x}\left(x\right)$. O sea para encontrar su valor imagen para un determinado valor $x$, tomamos la x-esima función de Ackermann y la calculamos en dicho valor. Por ejemplo:
+				
+				\begin{itemize}
+					\item $ACK\left(0\right)=f_{0}\left(0\right)=1$.
+					\item $ACK\left(1\right)=f_{1}\left(1\right)=4$.
+					\item $ACK\left(2\right)=f_{2}\left(2\right)=62$.
+					\item $
+						\begin{aligned}
+							ACK\left(3\right)= & f_{3}\left(3\right)=f_{2}^{5}\left(3\right)=f_{2}\left[f_{2}\left(f_{2}\left\{ f_{2}\left[f_{2}\left(3\right)\right]\right\} \right)\right]=f_{2}\left[f_{2}\left(f_{2}\left\{ f_{2}\left[158\right]\right\} \right)\right]\\
+							= & f_{2}\left[f_{2}\left(f_{2}\left\{ f_{1}^{160}\left[158\right]\right\} \right)\right]=f_{2}\left[f_{2}\left(f_{2}\left\{ f_{1}^{159}\left[318\right]\right\} \right)\right]=\\
+							= & f_{2}\left[f_{2}\left(f_{2}\left\{ f_{1}^{158}\left[638\right]\right\} \right)\right]=f_{2}\left[f_{2}\left(f_{2}\left\{ f_{1}^{157}\left[1278\right]\right\} \right)\right]=\cdots=\\
+							= & f_{2}\left[f_{2}\left(f_{2}\left\{ f_{1}^{150}\left[163.838\right]\right\} \right)\right]=\cdots=f_{2}\left[f_{2}\left(f_{2}\left\{ f_{1}^{140}\left[167.772.158\right]\right\} \right)\right]=\cdots\\
+							= & f_{2}\left[f_{2}\left(f_{2}\left\{ f_{1}^{137}\left[1.342.177.278\right]\right\} \right)\right]=\cdots
+						\end{aligned}$
+				\end{itemize}
+				
+\pagebreak{}
+
+		\section{Teoremas}
+			\subsection{Totalidad de las $FRP$}
+				\paragraph{Enunciado}
+				Si $f\in FRP$ entonces $f$ es una función total.
+				\paragraph{Demostración}
+				Lo demostraremos por inducción sobre el conjunto $FRP$.
+				
+				\begin{itemize}
+					\item Caso base: Las funciones bases son totales por definición.
+					\item Composición: Supongamos que $f^{(n)},g_{1}^{(k)},\ldots,g_{n}^{(k)}$ son totales. Veremos que $h=\Phi\left(f^{(n)},g_{1}^{(k)},\ldots,g_{n}^{(k)}\right)$ también lo es.\\
+					Sea $X\in\mathbb{N}^{k}$ podemos calcular $Y=\left(g_{1}\left[X\right],\ldots,g_{n}\left[X\right]\right)$ puesto que cada $g_{i}$ es total por hipótesis inductiva. Ademas $f$ también es total por lo que podemos calcular $f\left(Y\right)$.\\
+					Es decir, existe un numero natural $z=f\left(Y\right)=h\left(X\right)$.
+					\item Recursion: Supongamos que $g^{(k)},h^{(k+2)}$ son totales. Veremos que $\mbox{\ensuremath{f\left(y,X^{k}\right)=R\left(g,h\right)}}$ también lo es, por inducción en $y.$
+						\begin{enumerate}
+							\item Caso base $y=0$: $f(0,X^{k})=g\left(X^{k}\right)$ que es total por hipótesis.
+							\item Caso inductivo $y=p$: Supongamos $f\left(p,X^{k}\right)$ es total, luego:
+								\[
+									f\left(p+1,X^{k}\right)=h\left[p,X^{k},\underbrace{f\left(p,X^{k}\right)}_{\mbox{total por HI}}\right]
+								\]
+							y como $h$ es total resulta que $f$ es total.
+						\end{enumerate}
+				\end{itemize}
+
+			\subsection{Propiedades de Ackermann}
+				\paragraph{Enunciado}
+				
+				\begin{enumerate}
+					\item $\forall k\in\mathbb{N}\Rightarrow f_{k}\in FRP$.
+					\item $\forall x,k\in\mathbb{N}\Rightarrow f_{k}\left(x\right)>x$.
+					\item $\forall x_{1},x_{2},k\in\mathbb{N}$, si $x_{1}<x_{2}$ entonces $f_{k}\left(x_{1}\right)<f_{k}\left(x_{2}\right)$.
+					\item $\forall x,k\in\mathbb{N}\Rightarrow f_{k}\left(x\right)<f_{k+1}\left(x\right)$.
+				\end{enumerate}
+
+				\paragraph{Demostración}
+
+				\begin{enumerate}
+					\item Lo demostraremos por inducción en $k$:
+						\begin{enumerate}
+							\item Caso base $k=0$: $f_{0}\left(x\right)=s\left(x\right)$.
+							\item Caso inductivo $k=h$: Supongamos que $f_{h}$ es $FRP$. Queremos ver si $f_{h+1}$ también lo es. En efecto $f_{h+1}\left(x\right)=f_{h}^{x+2}\left(x\right)=f_{h}^{s\left[s\left(x\right)\right]}\left(x\right)$.
+						\end{enumerate}
+					\item  Consultar \flqq{}Julio Hurtado, Raúl Kantor, Carlos Luna, Luis Sierra y Dante Zanarini. \emph{Temas de Teoría de la Computación}.\frqq{}, pag. 56.
+					\item  Consultar \flqq{}Julio Hurtado, Raúl Kantor, Carlos Luna, Luis Sierra y Dante Zanarini. \emph{Temas de Teoría de la Computación}.\frqq{}, pag. 56.
+					\item Ejercicio.
+				\end{enumerate}
+
+			\subsection{Mayorabilidad de las $FRP$}
+				\paragraph{Enunciado}
+				Sea $g^{(n)}\in FRP$ entonces existe $f_{k}$ de la serie de Ackermann tal que $f_{k}\uparrow g$.
+				\paragraph{Demostración}
+				Lo demostraremos por inducción:
+				
+				\begin{enumerate}
+					\item Caso base: Todas las funciones bases son mayoradas por $f_{0}$.
+					\item Caso inductivo:
+					\begin{enumerate}
+						\item Composición: Sean las funciones $C^{\left(m\right)},h_{1}^{(n)},\ldots,h_{m}^{(n)}$ tales que $f_{k}$ mayora a todas ellas, definimos $g^{(n)}=\Phi\left(C^{\left(m\right)},h_{1}^{(n)},\ldots h_{m}^{(n)}\right)$.
+						Veremos que $f_{k+1}\uparrow g^{\left(n\right)}$.\\
+						Sabemos que $h_{i}^{\left(n\right)}\left(X\right)\leq f_{k}\left[max\left(X\right)\right]$ (por ser mayorada por $f_{k}$) luego $max\left\{ h_{1}^{(n)}\left(X\right),\ldots,h_{m}^{(n)}\left(X\right)\right\} \leq f_{k}\left[max\left(X\right)\right]$ \emph{({*})}.\\
+						Ademas como $f_{k}\uparrow C^{\left(m\right)}$ resulta:
+						
+						\[
+							g\left(X\right)=C\left[h_{1}^{(n)}\left(X\right),\ldots,h_{m}^{(n)}\left(X\right)\right]\leq f_{k}\left[max\left(h_{1}^{(n)}\left(X\right),\ldots,h_{m}^{(n)}\left(X\right)\right)\right]
+						\]
+						
+						y por \emph{({*})} y propiedad \emph{(3)} tenemos
+						
+						\[
+							f_{k}\left[max\left(h_{1}^{(n)}\left(X\right),\ldots,h_{m}^{(n)}\left(X\right)\right)\right]\leq f_{k}\left[f_{k}\left(max\left[X\right]\right)\right]
+						\]
+						
+						ahora aplicamos varias veces las propiedades \emph{(2)} y \emph{(3)} obteniendo: 
+						
+						\[
+							g\left(X\right)\leq f_{k}\left[f_{k}\left(max\left[X\right]\right)\right]\leq f_{k}^{max\left(X\right)+2}\left[max\left(X\right)\right]=f_{k+1}\left[max\left(X\right)\right].
+						\]
+						
+						\item Recursion: Sea $g^{\left(n+1\right)}=R\left[B^{\left(n\right)},h^{\left(n+2\right)}\right]$, veremos que $\text{\ensuremath{f_{k}\uparrow B\land f_{k}\uparrow h\Rightarrow f_{k+1}\uparrow g^{\left(n\right)}}}$.\\
+						Por hipótesis $g\left(0,X\right)=B\left(X\right)\leq f_{k}\left[max\left(X\right)\right]$ \emph{({*}{*})} y ademas:
+						
+						\[
+							g\left(1,X\right)=h\left[0,X,g\left(0,X\right)\right]\leq f_{k}\left[max\left(0,X,g\left[0,X\right]\right)\right]
+						\]
+						
+						luego aplicando \emph{({*}{*})} y propiedad \emph{(3)} 
+						
+						\[
+							f_{k}\left[max\left(0,X,g\left[0,X\right]\right)\right]\leq f_{k}\left[max\left(0,X,f_{k}\left[max\left(X\right)\right]\right)\right]
+						\]
+						
+						y puesto que $f_{k}\left[max\left(X\right)\right]>max\left(X,0\right)$ $\forall k$ resulta
+						
+						\[
+							g\left(1,X\right)\leq f_{k}\left[max\left(0,X,f_{k}\left[max\left(X\right)\right]\right)\right]\leq f_{k}\left[f_{\text{k}}\left(max\left[X\right]\right)\right]
+						\]
+						
+						Puede demostrarse por inducción que $g\left(y,X\right)\leq f_{k}^{\left(y+1\right)}\left(max\left[X\right]\right)$.
+						Finalmente:
+						
+						\[
+							f_{k}^{\left(y+1\right)}\left(max\left[X\right]\right)\leq f_{k}^{\left(y+1\right)}\left(max\left[y,X\right]\right)\leq f_{k}^{max\left(y,X\right)+1}\left(max\left[y,X\right]\right)
+						\]
+						
+						y como $f_{k}^{max\left(y,X\right)+1}\left(max\left[y,X\right]\right)\leq f_{k}^{max\left(y,X\right)+2}\left(max\left[y,X\right]\right)=f_{k+1}\left[max\left(y,X\right)\right]$ resulta $g\left(y,X\right)\leq f_{k+1}\left[max\left(y,X\right)\right]$.
+					\end{enumerate}
+				\end{enumerate}
+
+			\subsection{No primitividad de $ACK$}
+				\paragraph{Enunciado}
+				La función $ACK\left(x\right)$ no es $FRP.$
+				\paragraph{Demostración}
+				Supongamos que $ACK\left(x\right)\in FRP$. Luego $\text{\ensuremath{ACK\left(x\right)+1\in FRP}}$.
+				Por el teorema de mayorabilidad existe $f_{m}$ en la serie de Ackermann que la mayora, es decir: $\forall x\in\mathbb{N}$ resulta:
+				
+				\[
+					ACK\left(x\right)+1\leq f_{m}\left(x\right)\iff f_{x}\left(x\right)+1\leq f_{m}\left(x\right)
+				\]
+				
+				y tomando $x=m$ obtenemos $f_{m}\left(m\right)+1\leq f_{m}\left(m\right)$.
+				¡Absurdo! Por lo tanto $ACK\left(x\right)\notin FRP$.
+
+		\section{Definiciones}
+			\subsection{Operador de minimizacion}
+				Dada $h^{(n+1)}$, decimos que $g^{(n)}$ se construye por \emph{minimizacion} de $h$ (y lo notaremos $g=M\left[h\right]$) cuando $g$ se define del modo siguiente: 
+
+				\[
+					g\left(X\right)=M\left[h\right]\left(X\right)=\mu_{t}\left[h\left(t,X\right)=0\right]
+				\]
+				
+				donde $\mu_{t}\left[h\left(t,X\right)=0\right]$ es, si existe, el mínimo valor de $t$ tal que \mbox{$h\left(t,X\right)=0$}.
+
+				\paragraph{Observación}
+				Nada garantiza que tal valor $t$ exista, por lo que las funciones construidas con el operador $M$ pueden ser parciales.
+
+			\subsection{Definición inductiva}
+				Definimos inductivamente el conjunto de Funciones Recursivas $(FR)$ como el menor conjunto tal que:
+
+				\begin{itemize}
+					\item Las funciones base pertenecen a $FR$.
+					\item Las funciones obtenidas aplicando un numero finito de operaciones de composición, recursion y minimizacion sobre elementos de $FR$ también pertenecen a $FR$.
+				\end{itemize}
+
+		\section{Ejemplos}
+			\subsection{División}
+				La función numérica $div\left(x,y\right)=x/y$ solo esta definida si existe $t$ tal que $ty=x$. Buscamos entonces $div\left(x,y\right)=\mu_{t}\left[h\left(t,x,y\right)=0\right]$.
+				Sea entonces $h\left(t,x,y\right)=\neg E\left[\Pi\left(t,y\right),x\right]$.
+				Veamos algunos ejemplos:
+				
+\pagebreak{}
+				
+				\begin{itemize}
+					\item $div\left(25,5\right)=\mu_{t}\left[h\left(t,25,5\right)=0\right]$.
+						\begin{itemize}
+							\item $t=0$: $h\left(0,25,5\right)=\neg E\left[\Pi\left(0,5\right),25\right]=\neg E\left[0,25\right]=1\neq0$.
+							\item $t=1$: $h\left(1,25,5\right)=\neg E\left[\Pi\left(1,5\right),25\right]=\neg E\left[5,25\right]=1\neq0$.
+							\item $t=2$: $h\left(2,25,5\right)=\neg E\left[\Pi\left(2,5\right),25\right]=\neg E\left[10,25\right]=1\neq0$.
+							\item $t=3$: $h\left(3,25,5\right)=\neg E\left[\Pi\left(3,5\right),25\right]=\neg E\left[15,25\right]=1\neq0$.
+							\item $t=4$: $h\left(4,25,5\right)=\neg E\left[\Pi\left(4,5\right),25\right]=\neg E\left[20,25\right]=1\neq0$.
+							\item $\boxed{t=5:\mbox{\ensuremath{h\left(5,25,5\right)=\neg E\left[\Pi\left(5,5\right),25\right]=\neg E\left[25,25\right]=0}}.}$
+						\end{itemize}
+					\item $div\left(4,3\right)=\mu_{t}\left[h\left(t,4,3\right)=0\right]$.
+						\begin{itemize}
+							\item $t=0:$ $h\left(0,4,3\right)=\neg E\left[\Pi\left(0,3\right),4\right]=\neg E\left[0,4\right]=1\neq0$.
+							\item $t=1:$ $h\left(1,4,3\right)=\neg E\left[\Pi\left(1,3\right),4\right]=\neg E\left[3,4\right]=1\neq0$.
+							\item $t=2:$ $h\left(2,4,3\right)=\neg E\left[\Pi\left(2,3\right),4\right]=\neg E\left[6,4\right]=1\neq0$.
+							\item $t=3:$ $h\left(3,4,3\right)=\neg E\left[\Pi\left(3,3\right),4\right]=\neg E\left[9,4\right]=1\neq0$.
+							\item $\vdots$
+						\end{itemize}
+					\item $div\left(2,0\right)=\mu_{t}\left[h\left(t,2,0\right)=0\right]$.
+						\begin{itemize}
+							\item $t=0:$ $h\left(0,2,0\right)=\neg E\left[\Pi\left(0,0\right),2\right]=\neg E\left[0,2\right]=1\neq0$.
+							\item $t=1:$ $h\left(1,2,0\right)=\neg E\left[\Pi\left(1,0\right),2\right]=\neg E\left[0,2\right]=1\neq0$.
+							\item $\vdots$
+						\end{itemize}
+					\item $div\left(0,0\right)=\mu_{t}\left[h\left(t,0,0\right)=0\right]$.
+						\begin{itemize}
+							\item $t=0:$ $h\left(0,0,0\right)=\neg E\left[\Pi\left(0,0\right),0\right]=\neg E\left[0,0\right]=0$. ERROR.
+						\end{itemize}
+				\end{itemize}
+				
+				Nuestra función $h$ falla en el caso extremo $0/0$ pero podemos arreglarlo si la redefinimos como: $h\left(t,x,y\right)=\neg E\left\{ \Pi\left[t,y\right],x\right\} +D_{0}\left[y\right]$. 
+				Observemos que el termino que agregamos $D_{0}\left[y\right]$ da siempre $0$ salvo cuando $y=0$ en cuyo caso garantizamos que $h\left(t,x,0\right)\geq1$ con lo que la función no se detiene. Veamos que pasa ahora:
+				
+				\begin{itemize}
+					\item $div\left(0,0\right)=\mu_{t}\left[h\left(t,0,0\right)=0\right]$.
+					\begin{itemize}
+						\item $t=0:$ $\mbox{\ensuremath{h\left(0,0,0\right)=\neg E\left\{ \Pi\left[0,0\right],0\right\} +D_{0}\left[0\right]=\neg E\left\{ 0,0\right\} +1=0+1=1}}$.
+						\item $t=1:$ $\mbox{\ensuremath{h\left(0,0,0\right)=\neg E\left\{ \Pi\left[1,0\right],0\right\} +D_{0}\left[0\right]=\neg E\left\{ 0,0\right\} +1=0+1=1}}$.
+						\item $\vdots$
+					\end{itemize}
+				\end{itemize}
+
+			\subsection{Logaritmo}
+				La función numérica $Log\left(x,y\right)=log_{x}y$ solo esta definida si existe $t$ tal que $x^{t}=y$. Buscamos entonces $Log\left(x,y\right)=\mu_{t}\left[h\left(t,x,y\right)=0\right]$.
+				Sea entonces $h\left(t,x,y\right)=\neg E\left\{ \widehat{Exp}\left[x,t\right]+D_{0}\left[x\right]+D_{1}\left[x\right],y\right\} $. 
+				Nótense los términos $D_{0}\left[x\right]$ y $D_{1}\left[x\right]$ que logran \flqq{}indefinir\frqq{} la función para las bases correspondientes.
+				Veamos algunos ejemplos:
+				
+				\begin{itemize}
+					\item $Log\left(0,0\right)=\mu_{t}\left[h\left(t,0,0\right)=0\right]$:
+						\begin{itemize}
+							\item $t=0$: $\mbox{\ensuremath{h\left(0,0,0\right)=\neg E\left\{ \widehat{Exp}\left(0,0\right)+1+0,0\right\} =\neg E\left\{ 1+1+0,0\right\} =1}}$.
+							\item $t=1$: $\mbox{\ensuremath{h\left(1,0,0\right)=\neg E\left\{ \widehat{Exp}\left(0,1\right)+1+0,0\right\} =\neg E\left\{ 0+1+0,0\right\} =1}}$.
+							\item $\vdots$
+						\end{itemize}
+				\end{itemize}
+									
+				\begin{itemize}
+					\item $Log\left(1,0\right)=\mu_{t}\left[h\left(t,1,0\right)=0\right]$:
+						\begin{itemize}
+							\item $t=0$: $\mbox{\ensuremath{h\left(0,1,0\right)=\neg E\left\{ \widehat{Exp}\left(1,0\right)+0+1,0\right\} =\neg E\left\{ 1+0+1,0\right\} =1}}$.
+							\item $t=1$: $\mbox{\ensuremath{h\left(1,1,0\right)=\neg E\left\{ \widehat{Exp}\left(1,1\right)+0+1,0\right\} =\neg E\left\{ 1+0+1,0\right\} =1}}$.
+							\item $\vdots$
+						\end{itemize}
+					\item $Log\left(10,100\right)=\mu_{t}\left[h\left(t,10,100\right)=0\right]$:
+						\begin{itemize}
+							\item $t=0$: $\mbox{\ensuremath{h\left(0,10,100\right)=\neg E\left\{ \widehat{Exp}\left(10,0\right)+0+0,100\right\} =\neg E\left\{ 1+0+0,100\right\} =1}}$.
+							\item $t=1$: $\mbox{\ensuremath{h\left(1,10,100\right)=\neg E\left\{ \widehat{Exp}\left(10,1\right)+0+0,100\right\} =\neg E\left\{ 10+0+0,100\right\} =1}}$.
+							\item $\boxed{t=2:\mbox{\ensuremath{h\left(2,10,100\right)=\neg E\left\{ \widehat{Exp}\left(10,2\right)+0+0,100\right\} =\neg E\left\{ 100+0,100\right\} =0}}.}$
+						\end{itemize}
+					\item $Log\left(2,3\right)=\mu_{t}\left[h\left(t,2,3\right)=0\right]$:
+						\begin{itemize}
+							\item $t=0$: $\mbox{\ensuremath{h\left(0,2,3\right)=\neg E\left\{ \widehat{Exp}\left(2,0\right)+0+0,3\right\} =\neg E\left\{ 1+0+0,3\right\} =1}}$.
+							\item $t=1$: $\mbox{\ensuremath{h\left(1,2,3\right)=\neg E\left\{ \widehat{Exp}\left(2,1\right)+0+0,3\right\} =\neg E\left\{ 2+0+0,3\right\} =1}}$.
+							\item $t=2$: $\mbox{\ensuremath{h\left(2,2,3\right)=\neg E\left\{ \widehat{Exp}\left(2,2\right)+0+0,3\right\} =\neg E\left\{ 4+0+0,3\right\} =1}}$.
+							\item $\vdots$
+						\end{itemize}
+				\end{itemize}
+
+\end{document}

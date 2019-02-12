@@ -1,0 +1,1605 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\begin_preamble
+\renewcommand{\headrulewidth}{1pt}
+\renewcommand{\footrulewidth}{0.5pt}
+\fancyheadoffset[L]{-16pt}
+\end_preamble
+\use_default_options true
+\begin_modules
+customHeadersFooters
+\end_modules
+\maintain_unincluded_children false
+\language spanish-mexico
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize 12
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 2cm
+\rightmargin 2cm
+\headheight 0cm
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style french
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle fancy
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Left Header
+
+\noun on
+Lenguajes Formales y Computabilidad
+\end_layout
+
+\begin_layout Right Header
+2018
+\end_layout
+
+\begin_layout Center Footer
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+thepage
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+
+\size larger
+PRÁCTICA 2: 
+\emph on
+Soluciones
+\end_layout
+
+\begin_layout Standard
+
+\size footnotesize
+Pablo Verdes
+\begin_inset space \hspace*{\fill}
+\end_inset
+
+Dante Zanarini
+\begin_inset space \hspace*{\fill}
+\end_inset
+
+Pamela Viale
+\begin_inset space \hspace*{\fill}
+\end_inset
+
+Alejandro Hernandez
+\begin_inset space \hspace*{\fill}
+\end_inset
+
+Mauro Lucci
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset line
+LatexCommand rule
+offset "0.5ex"
+width "100col%"
+height "1pt"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Definimos a 
+\begin_inset Formula $\mathbb{N}_{3}$
+\end_inset
+
+ como el mínimo conjunto tal que:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $0\in\mathbb{N}_{3}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $x\in\mathbb{N}_{3}\Rightarrow x+3\in\mathbb{N}_{3}$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Definimos a 
+\begin_inset Formula $\mathbb{Z}_{3}$
+\end_inset
+
+ el mínimo conjunto tal que:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $0\in\mathbb{N}_{3}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $x\in\mathbb{N}_{3}\Rightarrow x+3\in\mathbb{N}_{3}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $x\in\mathbb{N}_{3}\Rightarrow x-3\in\mathbb{N}_{3}$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Enumerate
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Definimos 
+\begin_inset Formula $\Sigma^{*}$
+\end_inset
+
+ como el mínimo conjunto tal que:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $\lambda,a,b,c\in\Sigma^{*}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $x,y\in\Sigma^{*}\Rightarrow xy\in\Sigma^{*}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Sea 
+\begin_inset Formula $P\left(x\right)$
+\end_inset
+
+ una propiedad definida sobre 
+\begin_inset Formula $x\in\Sigma^{*}$
+\end_inset
+
+, luego:
+\end_layout
+
+\begin_layout Itemize
+Si 
+\begin_inset Formula $P\left(\lambda\right),P\left(a\right),P\left(b\right),P\left(c\right)$
+\end_inset
+
+ son ciertas y;
+\end_layout
+
+\begin_layout Itemize
+De ser ciertas 
+\begin_inset Formula $P\left(x\right)$
+\end_inset
+
+ y 
+\begin_inset Formula $P\left(y\right)$
+\end_inset
+
+ también es cierta 
+\begin_inset Formula $P\left(xy\right)$
+\end_inset
+
+;
+\end_layout
+
+\begin_layout Standard
+entonces 
+\begin_inset Formula $P$
+\end_inset
+
+ es cierta para cualquier elemento de 
+\begin_inset Formula $\Sigma^{*}$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Definimos 
+\begin_inset Formula $B$
+\end_inset
+
+ como el mínimo conjunto tal que:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $b\in B$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $x\in B\Rightarrow axcc\in B$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Sea 
+\begin_inset Formula $P\left(x\right)$
+\end_inset
+
+ una propiedad definida sobre 
+\begin_inset Formula $x\in B$
+\end_inset
+
+, luego:
+\end_layout
+
+\begin_layout Itemize
+Si 
+\begin_inset Formula $P\left(b\right)$
+\end_inset
+
+ es cierta y;
+\end_layout
+
+\begin_layout Itemize
+De ser cierta 
+\begin_inset Formula $P\left(x\right)$
+\end_inset
+
+ también es cierta 
+\begin_inset Formula $P\left(axcc\right)$
+\end_inset
+
+;
+\end_layout
+
+\begin_layout Standard
+entonces 
+\begin_inset Formula $P$
+\end_inset
+
+ es cierta para cualquier elemento de 
+\begin_inset Formula $B$
+\end_inset
+
+.
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Enumerate
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Definimos 
+\begin_inset Formula $A$
+\end_inset
+
+ como el mínimo conjunto tal que:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $\lambda\in A$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $x\in A\Rightarrow xa\in A$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Definimos 
+\begin_inset Formula $B$
+\end_inset
+
+ como el mínimo conjunto tal que:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $\lambda,a,b,c\in B$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $x\in B\Rightarrow axa\in B$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $x\in B\Rightarrow bxb\in B$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $x\in B\Rightarrow cxc\in B$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Definimos 
+\begin_inset Formula $C$
+\end_inset
+
+ como el mínimo conjunto tal que:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $a,b\in C$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $x,y\in C\land\left|x\right|=\left|y\right|=1\land x\neq y\Rightarrow xy\in C$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Enumerate
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Definimos 
+\begin_inset Formula $M$
+\end_inset
+
+ como el mínimo conjunto tal que:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $\left[\begin{array}{cc}
+0 & 0\\
+0 & 0
+\end{array}\right],\left[\begin{array}{cc}
+2 & 0\\
+0 & 0
+\end{array}\right],\left[\begin{array}{cc}
+0 & 0\\
+2 & 0
+\end{array}\right],\left[\begin{array}{cc}
+0 & 0\\
+0 & 2
+\end{array}\right]\in M$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $x,y\in M\Rightarrow x+y\in M$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $x\in M\Rightarrow x+\left[\begin{array}{cc}
+1 & 0\\
+1 & 1
+\end{array}\right]\in M$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Sea 
+\begin_inset Formula $P\left(x\right)$
+\end_inset
+
+ una propiedad definida sobre 
+\begin_inset Formula $x\in M$
+\end_inset
+
+, luego:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Si 
+\begin_inset Formula $P\left(\left[\begin{array}{cc}
+0 & 0\\
+0 & 0
+\end{array}\right]\right),\left(\left[\begin{array}{cc}
+2 & 0\\
+0 & 0
+\end{array}\right]\right),\left(\left[\begin{array}{cc}
+0 & 0\\
+2 & 0
+\end{array}\right]\right),\left(\left[\begin{array}{cc}
+0 & 0\\
+0 & 2
+\end{array}\right]\right)$
+\end_inset
+
+ son ciertas y;
+\end_layout
+
+\begin_layout Itemize
+De ser ciertas 
+\begin_inset Formula $P\left(x\right),P\left(y\right)$
+\end_inset
+
+ también es cierta 
+\begin_inset Formula $P\left(x+y\right)$
+\end_inset
+
+ y;
+\end_layout
+
+\begin_layout Itemize
+De ser cierta 
+\begin_inset Formula $P\left(x\right)$
+\end_inset
+
+ también es cierta 
+\begin_inset Formula $P\left(x+\left[\begin{array}{cc}
+1 & 0\\
+1 & 1
+\end{array}\right]\right)$
+\end_inset
+
+;
+\end_layout
+
+\begin_layout Standard
+entonces 
+\begin_inset Formula $P$
+\end_inset
+
+ es cierta para cualquier elemento de 
+\begin_inset Formula $M$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Enumerate
+Sea 
+\begin_inset Formula $P\left(x\right)$
+\end_inset
+
+ una propiedad definida sobre 
+\begin_inset Formula $x\in\mathbb{P}$
+\end_inset
+
+, luego:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Si 
+\begin_inset Formula $P\left(0\right)$
+\end_inset
+
+ es cierta y;
+\end_layout
+
+\begin_layout Itemize
+De ser cierta 
+\begin_inset Formula $P\left(n\right)$
+\end_inset
+
+ también es cierta 
+\begin_inset Formula $P\left(n+2\right)$
+\end_inset
+
+;
+\end_layout
+
+\begin_layout Standard
+entonces 
+\begin_inset Formula $P$
+\end_inset
+
+ es cierta para cualquier elemento de 
+\begin_inset Formula $\mathbb{P}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Paragraph
+Demostración
+\end_layout
+
+\begin_layout Itemize
+Caso base: Para 
+\begin_inset Formula $n=0\in\mathbb{P}$
+\end_inset
+
+, considerando 
+\begin_inset Formula $m=0\in\mathbb{N}_{0}$
+\end_inset
+
+ resulta 
+\begin_inset Formula $n=m+m$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Caso inductivo: Sea 
+\begin_inset Formula $n\in\mathbb{P}$
+\end_inset
+
+, supongamos que 
+\begin_inset Formula $n=m+m$
+\end_inset
+
+ para algún 
+\begin_inset Formula $m\in\mathbb{N}$
+\end_inset
+
+ (H.I.).
+ Luego 
+\begin_inset Formula $n+2\underbrace{=}_{H.I.}m+m+2=\left(m+1\right)+\left(m+1\right)\in\mathbb{N}_{0}$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Sea 
+\begin_inset Formula $P\left(x\right)$
+\end_inset
+
+ una propiedad definida sobre 
+\begin_inset Formula $x\in\Delta$
+\end_inset
+
+, luego:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Si 
+\begin_inset Formula $P\left(a\right)$
+\end_inset
+
+ es cierta y;
+\end_layout
+
+\begin_layout Itemize
+De ser cierta 
+\begin_inset Formula $P\left(\alpha\right)$
+\end_inset
+
+ también es cierta 
+\begin_inset Formula $P\left(b\alpha b\right)$
+\end_inset
+
+;
+\end_layout
+
+\begin_layout Standard
+entonces 
+\begin_inset Formula $P$
+\end_inset
+
+ es cierta para cualquier elemento de 
+\begin_inset Formula $\Delta$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Caso base: 
+\begin_inset Formula $a$
+\end_inset
+
+ tiene 
+\begin_inset Formula $0\in\mathbb{P}$
+\end_inset
+
+ símbolos 
+\begin_inset Formula $b$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Caso inductivo: Sea 
+\begin_inset Formula $\alpha\in\Delta$
+\end_inset
+
+, supongamos que 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ tiene 
+\begin_inset Formula $2k\in\mathbb{P}$
+\end_inset
+
+ numero de caracteres 
+\begin_inset Formula $b$
+\end_inset
+
+ (H.I.).
+ Luego 
+\begin_inset Formula $b\alpha b$
+\end_inset
+
+ tiene 
+\begin_inset Formula $2+\underbrace{2k}_{H.I.}=2\left(1+k\right)\in\mathbb{P}$
+\end_inset
+
+ numero de caracteres 
+\begin_inset Formula $b$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Enumerate
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Sea 
+\begin_inset Formula $P\left(x\right)$
+\end_inset
+
+ una propiedad definida sobre 
+\begin_inset Formula $x\in\Gamma$
+\end_inset
+
+, luego:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Si 
+\begin_inset Formula $P\left(\lambda\right)$
+\end_inset
+
+ es cierta y;
+\end_layout
+
+\begin_layout Itemize
+De ser cierta 
+\begin_inset Formula $P\left(\alpha\right)$
+\end_inset
+
+ también es cierta 
+\begin_inset Formula $P\left(b\alpha\right)$
+\end_inset
+
+;
+\end_layout
+
+\begin_layout Itemize
+De ser cierta 
+\begin_inset Formula $P\left(\alpha\right)$
+\end_inset
+
+ también es cierta 
+\begin_inset Formula $P\left(a\alpha\right)$
+\end_inset
+
+;
+\end_layout
+
+\begin_layout Standard
+entonces 
+\begin_inset Formula $P$
+\end_inset
+
+ es cierta para cualquier elemento de 
+\begin_inset Formula $\Delta$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $b\in\Gamma$
+\end_inset
+
+ como demuestra la siguiente secuencia de formación: 
+\begin_inset Formula $\lambda\rightarrow b\lambda=b$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $a\in\Gamma$
+\end_inset
+
+ como demuestra la siguiente secuencia de formación: 
+\begin_inset Formula $\lambda\rightarrow a\lambda=a$
+\end_inset
+
+.
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Veamos primero que todos los elementos de 
+\begin_inset Formula $\Gamma$
+\end_inset
+
+ tienen 
+\begin_inset Formula $0$
+\end_inset
+
+ símbolos 
+\begin_inset Formula $c$
+\end_inset
+
+:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Caso base: 
+\begin_inset Formula $\lambda$
+\end_inset
+
+ tiene 0 símbolos.
+\end_layout
+
+\begin_layout Itemize
+Caso inductivo: Sea 
+\begin_inset Formula $\alpha\in\Gamma$
+\end_inset
+
+, supongamos que 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ tiene 
+\begin_inset Formula $0$
+\end_inset
+
+ símbolos 
+\begin_inset Formula $c$
+\end_inset
+
+ (H.I.).
+ Luego: 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $b\alpha$
+\end_inset
+
+ tiene 
+\begin_inset Formula $0+\underbrace{0}_{H.I.}=0$
+\end_inset
+
+ símbolos 
+\begin_inset Formula $c$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $a\alpha$
+\end_inset
+
+ tiene 
+\begin_inset Formula $0+\underbrace{0}_{H.I.}=0$
+\end_inset
+
+ símbolos 
+\begin_inset Formula $c$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+Como 
+\begin_inset Formula $babacbaca$
+\end_inset
+
+ tiene 
+\begin_inset Formula $1$
+\end_inset
+
+ símbolo 
+\begin_inset Formula $c,$
+\end_inset
+
+ podemos afirmar que 
+\begin_inset Formula $\text{\ensuremath{babacbaca\notin\Gamma}}$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset Formula $aba\in\Gamma$
+\end_inset
+
+ como demuestra la siguiente secuencia de formación: 
+\begin_inset Formula $\text{\ensuremath{\lambda\rightarrow a\lambda=a\rightarrow ba\rightarrow aba}}$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+ Probaremos por inducción en 
+\begin_inset Formula $\alpha\in\Delta$
+\end_inset
+
+ que 
+\begin_inset Formula $b\alpha\in\Delta$
+\end_inset
+
+:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Caso base: Para 
+\begin_inset Formula $\alpha=\lambda$
+\end_inset
+
+ resulta: 
+\begin_inset Formula $\lambda\to\lambda b=b\lambda$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Caso inductivo: Supongamos que para 
+\begin_inset Formula $\alpha\in\Delta$
+\end_inset
+
+ resulta 
+\begin_inset Formula $b\alpha\in\Delta$
+\end_inset
+
+.
+ Veamos si para 
+\begin_inset Formula $\alpha b$
+\end_inset
+
+ y 
+\begin_inset Formula $\alpha a$
+\end_inset
+
+ resulta 
+\begin_inset Formula $b\alpha b\in\Delta$
+\end_inset
+
+ y 
+\begin_inset Formula $b\alpha a\in\Delta$
+\end_inset
+
+:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Si el ultimo constructor aplicado en la cadena de formación de 
+\begin_inset Formula $b\alpha$
+\end_inset
+
+ fue el primero, quiere decir que 
+\begin_inset Formula $\alpha=\beta b$
+\end_inset
+
+.
+ Su derivación será: 
+\begin_inset Formula $\lambda\to\ldots\to b\beta\to b\beta b$
+\end_inset
+
+, luego 
+\begin_inset Formula $\lambda\to\ldots\to b\beta\to b\beta bb=b\alpha b$
+\end_inset
+
+.
+ Análogamente para 
+\begin_inset Formula $b\alpha a$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Si el ultimo constructor aplicado en la cadena de formación de 
+\begin_inset Formula $b\alpha$
+\end_inset
+
+ fue el segundo, quiere decir que 
+\begin_inset Formula $\alpha=\beta a$
+\end_inset
+
+.
+ Su derivación será: 
+\begin_inset Formula $\lambda\to\ldots\to b\beta\to b\beta a$
+\end_inset
+
+, luego 
+\begin_inset Formula $\lambda\to\ldots\to b\beta\to b\beta a\to b\beta ab=b\alpha b$
+\end_inset
+
+.
+ Análogamente para 
+\begin_inset Formula $b\alpha a$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Itemize
+Análogo.
+\end_layout
+
+\begin_layout Itemize
+ Probaremos por inducción en 
+\begin_inset Formula $\Gamma$
+\end_inset
+
+ que todas las palabras están en 
+\begin_inset Formula $\Delta$
+\end_inset
+
+:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Caso base: Para 
+\begin_inset Formula $\alpha=\lambda$
+\end_inset
+
+ vale trivialmente.
+\end_layout
+
+\begin_layout Itemize
+Caso inductivo: Supongamos que para una palabra 
+\begin_inset Formula $\alpha\in\Gamma$
+\end_inset
+
+ resulta 
+\begin_inset Formula $\alpha\in\Delta$
+\end_inset
+
+.
+ Queremos ver si 
+\begin_inset Formula $a\alpha\in\Delta$
+\end_inset
+
+ y 
+\begin_inset Formula $b\alpha\in\Delta$
+\end_inset
+
+.
+ Ambas valen por el apartado anterior.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Análogo.
+\end_layout
+
+\begin_layout Itemize
+Por los resultados anteriores, 
+\begin_inset Formula $\Delta=\Gamma$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Enumerate
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $0\in\mathbb{N}_{0}\Rightarrow\left(0,0\right)\in S$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Supongamos 
+\begin_inset Formula $0\in S$
+\end_inset
+
+, luego como 
+\begin_inset Formula $S\subseteq\mathbb{N}_{0}\times\mathbb{N}_{0}$
+\end_inset
+
+ resultara 
+\begin_inset Formula $0\in\mathbb{N}_{0}\times\mathbb{N}_{0}$
+\end_inset
+
+.
+ Absurdo.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\left(2,3\right)\in S$
+\end_inset
+
+ como demuestra la siguiente secuencia de formación: 
+\begin_inset Formula $\left(2,2\right)\rightarrow\left(2,3\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\left(3,4\right)\in S$
+\end_inset
+
+ como demuestra la siguiente secuencia de formación: 
+\begin_inset Formula $\left(3,3\right)\rightarrow\left(3,4\right)$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Sea 
+\begin_inset Formula $P\left(n,m\right)$
+\end_inset
+
+ una propiedad definida sobre 
+\begin_inset Formula $\left(n,m\right)\in S$
+\end_inset
+
+, luego:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Si 
+\begin_inset Formula $P\left(n,n\right)$
+\end_inset
+
+ es cierta para todo 
+\begin_inset Formula $n\in\mathbb{N}_{0}$
+\end_inset
+
+ y;
+\end_layout
+
+\begin_layout Itemize
+De ser cierta 
+\begin_inset Formula $P\left(n,m\right)$
+\end_inset
+
+ también es cierta 
+\begin_inset Formula $P\left(n,m+1\right)$
+\end_inset
+
+;
+\end_layout
+
+\begin_layout Standard
+entonces 
+\begin_inset Formula $P$
+\end_inset
+
+ es cierta para cualquier elemento de 
+\begin_inset Formula $S$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Paragraph
+Demostración
+\end_layout
+
+\begin_layout Itemize
+Caso base: Sea 
+\begin_inset Formula $\left(n,n\right)\in S/n\in\mathbb{N}_{0}$
+\end_inset
+
+ luego 
+\begin_inset Formula $n\leq n$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Caso inductivo: Sea 
+\begin_inset Formula $\left(n,m\right)\in S$
+\end_inset
+
+ y supongamos que 
+\begin_inset Formula $n\leq m$
+\end_inset
+
+ (H.I.).
+ Luego para 
+\begin_inset Formula $\left(n,m+1\right)\in S$
+\end_inset
+
+ resulta 
+\begin_inset Formula $n\leq m\leq m+1$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+COMPLETAR.
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+De momento no tengo tiempo para completar este ejercicio, pero creo que
+ Pablo tiene una solución escrita.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Caso base: 
+\begin_inset Formula ${\displaystyle \sum_{k=0}^{0}\binom{0}{k}=\binom{0}{0}}=\frac{0!}{0!\left(0-0\right)!}=\frac{1}{1}=1=2^{0}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Caso inductivo: Supongamos que 
+\begin_inset Formula ${\displaystyle \sum_{k=0}^{n}\binom{n}{k}=2^{n}}$
+\end_inset
+
+ (H.I.).
+ Luego:
+\begin_inset Formula 
+\[
+\sum_{k=0}^{n+1}\binom{n+1}{k}=\binom{n+1}{0}+\sum_{k=1}^{n}\binom{n+1}{k}+\binom{n+1}{n+1}=
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+=2+\sum_{k=1}^{n}\left[\binom{n}{k}+\binom{n}{k-1}\right]=2+\sum_{k=1}^{n}\binom{n}{k}+\sum_{k=1}^{n}\binom{n}{k-1}=
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\underbrace{=}_{H.I.}2+\left(2^{n}-1\right)+\sum_{k=0}^{n-1}\binom{n}{k}\underbrace{=}_{H.I.}2+\left(2^{n}-1\right)+\left(2^{n}-1\right)=
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+2^{n}+2^{n}=22^{n}=2^{n+1}
+\]
+
+\end_inset
+
+
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+  
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+ 
+\begin_inset Formula $append\left(Nil,l_{2}\right)=l_{2}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Caso base: 
+\begin_inset Formula $append\left(Nil,Nil\right)=Nil$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Caso inductivo: Supongamos que para 
+\begin_inset Formula $xs$
+\end_inset
+
+ resulta 
+\begin_inset Formula $append\left(xs,Nil\right)=xs$
+\end_inset
+
+.
+ Luego: 
+\begin_inset Formula $append\left(Cons\left(x,xs\right),Nil\right)=Cons\left(x,append\left(xs,Nil\right)\right)\underbrace{=}_{H.I.}Cons\left(x,xs\right)$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Caso base: 
+\begin_inset Formula $append\left(append\left(Nil,l_{2}\right),l_{3}\right)=append\left(l_{2},l_{3}\right)=append\left(Nil,append\left(l_{2},l_{3}\right)\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Caso inductivo: Supongamos que para 
+\begin_inset Formula $xs$
+\end_inset
+
+ resulta: 
+\begin_inset Formula 
+\[
+append\left(append\left(xs,l_{2}\right),l_{3}\right)=append\left(xs,append\left(l_{2},l_{3}\right)\right)
+\]
+
+\end_inset
+
+Luego:
+\begin_inset Formula 
+\[
+append\left(append\left(Cons\left(x,xs\right),l_{2}\right),l_{3}\right)=append\left(Cons\left(x,append\left(xs,l_{2}\right)\right),l_{3}\right)
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+=append\left(Cons\left(x,append\left(xs,l_{2}\right)\right),l_{3}\right)=Cons\left(x,append\left(append\left(xs,l_{2}\right),l_{3}\right)\right)
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\underbrace{=}_{H.I.}Cons\left(x,append\left(xs,append\left(l_{2},l_{3}\right)\right)\right)=append\left(Cons\left(x,xs\right),append\left(l_{2},l_{3}\right)\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Enumerate
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Casos base:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $nleafs\left(Null\right)=0\leq1=0+1=nnodes\left(Null\right)+1$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $nleafs\left(Leaf\right)=1\leq1=0+1=nnodes\left(Leaf\right)+1$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Caso inductivo: Supongamos que la propiedad vale para 
+\begin_inset Formula $l$
+\end_inset
+
+ y 
+\begin_inset Formula $r$
+\end_inset
+
+.
+ Luego: 
+\begin_inset Formula 
+\[
+nleafs\left(Node\left(l,r\right)\right)=nleafs\left(l\right)+nleafs\left(r\right)
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\underbrace{\leq}_{H.I.}nnodes\left(l\right)+1+nnodes\left(r\right)+1=nnodes\left(Node\left(l,r\right)\right)+1
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Para poder concluir que los caballos de 
+\begin_inset Formula $C_{1}$
+\end_inset
+
+ y 
+\begin_inset Formula $C_{2}$
+\end_inset
+
+ son todos del mismo color es necesario que dichos conjuntos no sean disjuntos;
+ y esto debe hacerse independientemente de 
+\begin_inset Formula $k$
+\end_inset
+
+.
+ Sin embargo esto no es posible para 
+\begin_inset Formula $k=1$
+\end_inset
+
+ puesto que al ser 
+\begin_inset Formula $C_{1}=\left\{ c_{1}\right\} $
+\end_inset
+
+ y 
+\begin_inset Formula $C_{2}=\left\{ c_{2}\right\} $
+\end_inset
+
+ disjuntos, 
+\begin_inset Formula $c_{1}$
+\end_inset
+
+ puede no ser del mismo color de 
+\begin_inset Formula $c_{2}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Si 
+\begin_inset Formula $k+1=1$
+\end_inset
+
+ entonces 
+\begin_inset Formula $a=1$
+\end_inset
+
+ o 
+\begin_inset Formula $b=1$
+\end_inset
+
+ y en cuyo caso no vale la hipótesis inductiva: 
+\begin_inset Formula $1=a\nless k+1=1$
+\end_inset
+
+ o 
+\begin_inset Formula $1=b\nless k+1=1$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\end_body
+\end_document

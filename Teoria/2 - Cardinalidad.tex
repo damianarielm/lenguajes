@@ -1,0 +1,171 @@
+\documentclass[12pt,a4paper,oneside,spanish]{book}
+\usepackage[T1]{fontenc}
+\usepackage[latin9]{inputenc}
+\setcounter{secnumdepth}{3}
+\setcounter{tocdepth}{3}
+
+\setcounter{chapter}{1}
+\usepackage{amsbsy}
+\usepackage{amssymb}
+\makeatletter
+\makeatother
+\usepackage{babel}
+\addto\shorthandsspanish{\spanishdeactivate{~<>.}}
+
+\begin{document}
+	\chapter{Cardinalidad}
+		\section{Definiciones}
+			\subsection{Función inyectiva}
+				Decimos que $f:X\to Y$ es \emph{inyectiva} si: $x_{1}\neq x_{2}\Rightarrow f(x_{1})\neq f(x_{2})$ o bien $f(x_{1})=f(x_{2})\Rightarrow x_{1}=x_{2}$.
+
+			\subsection{Función sobreyectiva}
+				Decimos que $f:X\to Y$ es \emph{sobreyectiva} si: $\forall y\in Y$ $\exists x\in X/f(x)=y$.
+
+			\subsection{Función biyectiva}
+				Decimos que $f:X\to Y$ es \emph{biyectiva} si es inyectiva y sobreyectiva.
+
+			\subsection{Conjuntos equipotentes}
+				Dos conjuntos $A$ y $B$ tienen la misma cardinalidad (son \emph{equipotentes}) si existe una función biyectiva de $A$ en $B$ y lo notaremos: $\#A=\#B$, $A\sim B$.
+
+			\subsection{Cardinalidad precedente}
+				La cardinalidad de un conjunto $A$ es anterior a la de un conjunto $B$ si existe una función inyectiva $f$ de $A$ en $B$ y lo notaremos $\#A\preceq\#B$.
+				Si ademas ninguna de las funciones inyectivas de $A$ en $B$ es sobreyectiva	entonces: $\#A\prec\#B$.
+
+			\subsection{Conjuntos finitos}
+				Un conjunto es finito cuando es vacío o equipotente a $\left\{ 1,2,\ldots,n\right\} $ para algún $n\in\mathbb{N}$. En caso contrario se dice infinito.
+
+			\subsection{Conjuntos numerables}
+				Diremos que un conjunto $A$ es numerable si es finito, o bien resulta que $A\sim\mathbb{N}$ en cuyo caso se dice que $A$ es infinito numerable.
+				Si nada de lo anterior aplica se dice que $A$ no es numerable.
+
+			\subsection{Familia de conjuntos}
+				Un conjunto $F$ se dice una familia de conjuntos si sus elementos son conjuntos. Diremos que $F$ es una familia indexada de conjunto indice $I$ (no vacío) si existe una función con dominio $I$ y recorrido $F$.
+				Llamando $S_{\alpha}$ (con $\alpha\in I$) a los elementos de la	familia $F$, podemos entonces decir que $F=\{S_{\alpha}/\alpha\in I\}$.
+
+			\subsection{Conjunto de partes}	
+				Dado un conjunto $S$, el conjunto de partes de $S$ denotado por $\mathcal{P}(S)$ es el conjunto de todos los subconjuntos de $S$.
+
+		\section{Teoremas}
+			\subsection{Teorema de Cantor-Schroder-Bernstein}
+				\paragraph{Enunciado}
+				Si $\#A\preceq\#B$ y $\#B\preceq\#A$ entonces $A\sim B$. En otras palabras: si existe una función inyectiva de $A$ en $B$ y otra de	$B$ en $A$ entonces existe una función biyectiva de $A$ a $B$.
+				\paragraph{Demostración}
+				Consultar \flqq{}Daniel J. Velleman. \emph{How to Prove It}.\frqq{} y \flqq{}Richard Hammack. \emph{Book of Proof}.\frqq{} paginas 322 y 232.
+				
+\pagebreak{}
+
+			\subsection{Cardinalidad de $\mathbb{N\times\mathbb{N}}$}
+				\paragraph{Enunciado}
+				El producto cartesiano $\mathbb{N\times\mathbb{N}}$ es infinito numerable.
+				\paragraph{Demostración}
+				Sea $f:\mathbb{N}\to\mathbb{N}\times\mathbb{N}$ dada por $f\left(n\right)=\left(n,1\right)$. Esta función es trivialmente inyectiva.
+				Sea $g:\mathbb{N}\times\mathbb{N}\to\mathbb{N}$ dada por $g\left(a,b\right)=2^{a}3^{b}$.
+				El teorema fundamental de la aritmética nos permite asegurar que esta función es inyectiva.
+				Luego por el teorema de Cantor-Schroder-Bernstein concluimos que $\mathbb{N\sim N\times N}$.
+				\paragraph{Observación}
+				La función $f:\mathbb{N\times\mathbb{N}}\to\mathbb{N}$ dada por $\mbox{\ensuremath{f\left[\left(i,j\right)\right]=\frac{1}{2}\left(i+j-1\right)\left(i+j-2\right)+i}}$ es una biyeccion:
+				
+				\begin{center}
+					\begin{tabular}{c|cccccc}
+						$f\left[\left(i,j\right)\right]$ & $1$ & $2$ & $3$ & $4$ & $5$ & $6$\tabularnewline
+						\hline 
+						$1$ & $1$ & $2$ & $4$ & $7$ & $11$ & $\swarrow$\tabularnewline
+						$2$ & $3$ & $5$ & $8$ & $12$ & $\swarrow$ & \tabularnewline
+						$3$ & $6$ & $9$ & $13$ & $\swarrow$ &  & \tabularnewline
+						$4$ & $10$ & $14$ & $\swarrow$ &  &  & \tabularnewline
+						$5$ & $15$ & $\swarrow$ &  &  &  & \tabularnewline
+						$6$ & $\swarrow$ &  &  &  &  & \tabularnewline
+					\end{tabular}
+				\par\end{center}
+
+			\subsection{Corolario}
+				\paragraph{Enunciado}
+				$\mathbb{N}^{d}\sim\mathbb{N}$. 
+				\paragraph{Demostración}
+				Lo demostraremos por inducción:
+				Para $d=1$ vale trivialmente. Veamos ahora que si $\mbox{\ensuremath{\mathbb{N}^{d}\sim\mathbb{N}\Rightarrow\mathbb{N}^{d+1}\sim\mathbb{N}}}$.
+				Escribamos $\mathbb{N}^{d+1}=\mathbb{N}^{d}\times\mathbb{N}$. Como $\mathbb{N}^{d}$ es numerable (por hipótesis inductiva) podemos listar a sus elementos: $\mathbb{N}^{d}=\{a_{1},a_{2},a_{3},\ldots\}$. 
+				Sea $f:\mathbb{N}\times\mathbb{N}\to\mathbb{N}^{d+1}$ dada por $f\left(i,j\right)=\left(a_{i},j\right)$	resulta $\mathbb{N}^{d+1}\sim\mathbb{N}\times\mathbb{N}\sim\mathbb{N}$.
+
+			\subsection{Unión numerable de conjuntos numerables}
+				\paragraph{Enunciado}
+				Sean $S_{\alpha}$ conjuntos numerables (finitos o infinitos) y un conjunto indice $I$ también numerable (finito o infinito) entonces la unión de los elementos de la familia $F=\{S_{\alpha}:\alpha\in I\}$, es decir $S={\displaystyle \bigcup_{\alpha\in I}S_{\alpha}}$ sera	también numerable.
+				\paragraph{Demostración}
+				Nos pondremos en el peor caso posible: supondremos que tanto los conjuntos $S_{\alpha}$ como el conjunto indice $I$ son infinito numerables.
+				Dado que el conjunto indice $I$ es infinito numerable, sin perder generalidad podemos considerar de aquí en mas que $I=\mathbb{N}$.
+				Luego podemos escribir entonces $F=\{S_{\alpha}:\alpha\in I\}=\{S_{i}:i\in\mathbb{N}\}$.
+				Dado que $S_{i}$ es infinito numerable, podemos escribir $\mbox{\ensuremath{S_{i}=\{a_{ij}/j\in\mathbb{N}\}=\{a_{i1},a_{i2},a_{i3},\ldots\}}}$.
+				Observemos que podemos organizar los elementos de la unión de acuerdo a la siguiente tabla:
+				
+				\[
+					\begin{array}{ccccc}
+						a_{11} & a_{12} & a_{13} & a_{14} & \cdots\\
+						a_{21} & a_{22} & a_{23} & a_{24} & \cdots\\
+						a_{31} & a_{32} & a_{33} & a_{34} & \cdots\\
+						a_{41} & a_{42} & a_{43} & a_{44} & \cdots\\
+						\vdots & \vdots & \vdots & \vdots & \ddots
+					\end{array}
+				\]
+
+				Luego la función $f:S\to\mathbb{N}\times\mathbb{N}$ dada por $f\left(a_{ij}\right)=\left(i,j\right)$ es inyectiva y como $\mathbb{N}\times\mathbb{N}\sim\mathbb{N}$ resulta que $S$ es numerable.
+
+			\subsection{Cardinalidad infinita mas pequeña}
+				\paragraph{Enunciado}
+				Para todo conjunto infinito $A$, resulta: $\#\mathbb{N=}\aleph_{0}\preceq\#A$.
+				\paragraph{Demostración}
+				Sea $A$ un conjunto infinito:
+				
+				\begin{itemize}
+					\item Como $A$ es infinito resulta $A\neq\emptyset\Rightarrow\exists x_{1}\in A$.
+					\item Como $A$ es infinito resulta $A\neq\left\{ x_{1}\right\} \Rightarrow\exists x_{2}\in A/x_{2}\neq x_{1}$.
+					\item Como $A$ es infinito resulta $A\neq\left\{ x_{1},x_{2}\right\} \Rightarrow\exists x_{3}\in A/x_{3}\neq x_{1},x_{2}$.
+					\item Como $A$ es infinito resulta $A\neq\left\{ x_{1},x_{2},x_{3}\right\} \Rightarrow\exists x_{4}\in A/x_{4}\neq x_{1},x_{2},x_{3}$.
+				\end{itemize}
+				
+				De esta forma se puede construir una sucesión $\left(x_{n}\right)_{n\geq1}$ de elementos de $A$ tales que $x_{i}\neq x_{j}$ si $i\neq j$.
+				Definimos $f:\mathbb{N}\to A$ dada por $f(i)=x_{i}$ para todo $i\in\mathbb{N}.$
+				Como $f$ es inyectiva resulta que $\aleph_{0}\preceq\#A$.
+				
+\pagebreak{}
+
+			\subsection{Cardinalidad del conjunto de partes}
+				\paragraph{Enunciado}
+				Para todo conjunto $S$, resulta: $\#S\prec\#\mathcal{P}(S)$.
+				\paragraph{Demostración}
+				La función $f(x)=\{x\}$ es inyectiva de $S$ en $\mathcal{P}(S)$	por lo que $\#S\preceq\#\mathcal{P}(S)$. Veamos ahora que no existe	función sobreyectiva de $S$ en $\mathcal{P}(S)$.
+				Supongamos existe $g:S\to\mathcal{\mathcal{P}}(S)$ sobreyectiva y definamos $\mbox{\ensuremath{B=\{x\in S/x\notin g(x)\}\subseteq S}}$ el conjunto de los elementos de $S$ que no pertenecen a su imagen a través de $g$. Como $g$ es sobreyectiva y $B\in\mathcal{P}(S)$ sabemos que $\exists x\in S/g(x)=B$.
+				
+				\begin{itemize}
+					\item Si $x\in B$: por definición de $B$ resulta $x\notin g(x)=B$. Contradicción.
+					\item Si $x\notin B$: por definición de $B$ resulta $x\in g(x)=B$. Contradicción.
+				\end{itemize}
+				
+				Por lo tanto $g$ no es sobreyectiva.
+
+			\subsection{Innumerabilidad del continuo}
+				\paragraph{Enunciado}
+				El conjunto de los números reales no es numerable.
+				\paragraph{Demostración}
+				Alcanza con probar que el intervalo $(0,1)$ no es numerable pues $(0,1)\sim\mathbb{R}$. En efecto $f(x)=tan\left(x\pi-\frac{\pi}{2}\right)$	o bien $g(x)=ln\left(\frac{1}{x}-1\right)$ demuestran este hecho.
+				Representemos los elementos de $(0,1)$ por su expansión decimal infinita, por ejemplo $0,229384112598\ldots$. Supongamos que $(0,1)$ es numerable, habrá entonces un primer elemento, segundo, etc. Listemoslos del siguiente modo:
+				
+				\[
+					\begin{array}{cccccc}
+						0,\boldsymbol{a_{11}} & a_{12} & a_{13} & a_{14} & a_{15} & \ldots\\
+						0,a_{21} & \boldsymbol{a_{22}} & a_{23} & a_{24} & a_{25} & \ldots\\
+						0,a_{31} & a_{32} & \boldsymbol{a_{33}} & a_{34} & a_{35} & \ldots\\
+						0,a_{41} & a_{42} & a_{43} & \boldsymbol{a_{44}} & a_{45} & \ldots\\
+						0,a_{51} & a_{52} & a_{53} & a_{54} & \boldsymbol{a_{55}} & \ldots\\
+						 &  & \vdots
+					\end{array}
+				\]
+
+				Consideremos ahora el numero $b=0,b_{1}b_{2}b_{3}b_{4}b_{5}\ldots$ donde cada dígito $b_{i}$ puede ser cualquier dígito excepto $a_{ii}$ (es decir los números en negrita ubicados en la diagonal). Es claro que $b\in(0,1)$ pero es distinto a todos los números del listado ya que difiere de cada numero en por lo menos un dígito. Esto constituye una contradicción, luego el intervalo $(0,1)\sim\mathbb{R}$ no es numerable.
+
+		\section{Ejemplos}
+			\subsection{Cardinalidad de $\mathbb{Z}$}
+				Puesto que $f:\mathbb{N\to\mathbb{Z}}$ definida por $f(n)=n/2$ (si $n$ es par) y $\mbox{\ensuremath{f(n)=(1-n)/2}}$ (si $n$ es impar) es biyectiva, resulta $\mathbb{Z}\sim\mathbb{N}$.
+				En forma alternativa $\mathbb{Z}=\{\ldots,-2,-1\}\cup\{0\}\cup\{1,2,\ldots\}$ es u. n. c. n.
+			\subsection{Cadinalidad de $\mathbb{Q}$}
+				Podemos escribir a $\mathbb{Q}$ como una u. n. c. n.: $\mathbb{Q}={\displaystyle \bigcup_{k\in\mathbb{N}}A_{k}}$ con $\mbox{\ensuremath{A_{k}=\left\{ \ldots,-\frac{2}{k},-\frac{1}{k},\frac{0}{k},\frac{1}{k},\frac{2}{k},\ldots\right\} }}$.
+\end{document}

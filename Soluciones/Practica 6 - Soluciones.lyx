@@ -1,0 +1,1166 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\begin_preamble
+\renewcommand{\headrulewidth}{1pt}
+\renewcommand{\footrulewidth}{0.5pt}
+\fancyheadoffset[L]{-16pt}
+\end_preamble
+\use_default_options true
+\begin_modules
+customHeadersFooters
+enumitem
+multicol
+\end_modules
+\maintain_unincluded_children false
+\language spanish-mexico
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize 12
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 2cm
+\rightmargin 2cm
+\headheight 0cm
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style french
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle fancy
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Left Header
+
+\noun on
+Lenguajes Formales y Computabilidad
+\end_layout
+
+\begin_layout Right Header
+2018
+\end_layout
+
+\begin_layout Center Footer
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+thepage
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+
+\size larger
+PRÁCTICA 6: 
+\emph on
+Lenguajes Formales y Gramáticas
+\end_layout
+
+\begin_layout Standard
+
+\size footnotesize
+Pablo Verdes
+\begin_inset space \hspace*{\fill}
+\end_inset
+
+Dante Zanarini
+\begin_inset space \hspace*{\fill}
+\end_inset
+
+Pamela Viale
+\begin_inset space \hspace*{\fill}
+\end_inset
+
+Alejandro Hernandez
+\begin_inset space \hspace*{\fill}
+\end_inset
+
+Mauro Lucci
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset line
+LatexCommand rule
+offset "0.5ex"
+width "100col%"
+height "1pt"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset space ~
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Regular, pues las reglas 3 y 6 son de la forma 
+\begin_inset Formula $A\to a$
+\end_inset
+
+ y las restantes de la forma 
+\begin_inset Formula $A\to aB$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Estructurada por frases pues no es regular, ni libre de contexto ni sensible
+ al contexto ya que la regla 2 no cumple los requisitos.
+\end_layout
+
+\begin_layout Enumerate
+Sensible al contexto pues no es regular ni libre de contexto ya que la regla
+ 3 no cumple los requisitos.
+ Ademas la regla 3 es de la forma requerida considerando 
+\begin_inset Formula $\alpha=\lambda$
+\end_inset
+
+, 
+\begin_inset Formula $\beta=a$
+\end_inset
+
+ y 
+\begin_inset Formula $\delta=AB$
+\end_inset
+
+, la regla 5 considerando
+\begin_inset Formula $\alpha=\lambda$
+\end_inset
+
+, 
+\begin_inset Formula $\beta=b$
+\end_inset
+
+ y 
+\begin_inset Formula $\delta=AB$
+\end_inset
+
+ y la regla 6 considerando 
+\begin_inset Formula $\alpha=\lambda$
+\end_inset
+
+, 
+\begin_inset Formula $\beta=B$
+\end_inset
+
+ y 
+\begin_inset Formula $\delta=AB$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Libre de contexto pues no es regular ya que la regla 1 no cumple los requisitos.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+\begin_inset space ~
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset Formula $\sigma\Rightarrow^{\left(1\right)}b\sigma\Rightarrow^{\left(1\right)}bb\sigma\Rightarrow^{\left(2\right)}bbaA\Rightarrow^{\left(5\right)}bbabA\Rightarrow^{\left(5\right)}bbabbA\Rightarrow^{\left(4\right)}bbabba\sigma\Rightarrow^{\left(3\right)}bbabbab$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\sigma\Rightarrow^{(1)}AB\Rightarrow^{(3)}\Rightarrow aAB\Rightarrow^{(4)}aABb\Rightarrow^{(2)}aBAb\Rightarrow^{(6)}abAb\Rightarrow^{(5)}abab.$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\sigma\Rightarrow^{(2)}AAB\Rightarrow^{(4)}\Rightarrow AaaB\Rightarrow^{(3)}ABaaB\Rightarrow^{(7)}ABaab\Rightarrow^{(7)}Abaab\Rightarrow^{(4)}aabaab.$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\sigma\Rightarrow^{(2)}ABA\Rightarrow^{(3)}\Rightarrow ABAB\Rightarrow^{(6)}abBAB\Rightarrow^{(7)}abbAB\Rightarrow^{(7)}abbabB\Rightarrow^{(7)}abbabb.$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{samepage}
+\end_layout
+
+\end_inset
+
+Demostraremos por inducción en la cantidad de pasos en la derivación de
+ una cadena, que todas las cadenas generadas por las reglas de producción
+ de la gramática, tienen un numero par de símbolos 
+\begin_inset Formula $a$
+\end_inset
+
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Caso base 
+\begin_inset Formula $n=1$
+\end_inset
+
+: Tras aplicar una regla de producción las cadenas generadas pueden ser
+ 
+\begin_inset Formula $aaBA$
+\end_inset
+
+, 
+\begin_inset Formula $ABB$
+\end_inset
+
+, 
+\begin_inset Formula $aaB$
+\end_inset
+
+, 
+\begin_inset Formula $\lambda$
+\end_inset
+
+, 
+\begin_inset Formula $aBa$
+\end_inset
+
+, 
+\begin_inset Formula $Aaa$
+\end_inset
+
+, 
+\begin_inset Formula $AaBa$
+\end_inset
+
+ o 
+\begin_inset Formula $bbb$
+\end_inset
+
+ todas ellas con 
+\begin_inset Formula $2,0,2,0,2,2,2,0$
+\end_inset
+
+ símbolos 
+\begin_inset Formula $a$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Caso inductivo 
+\begin_inset Formula $n=k$
+\end_inset
+
+.
+ Supongamos que tras aplicar 
+\begin_inset Formula $k$
+\end_inset
+
+ reglas de producción, la cadena resultante 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ tiene 
+\begin_inset Formula $2c$
+\end_inset
+
+ símbolos 
+\begin_inset Formula $a$
+\end_inset
+
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Si aplicamos 
+\begin_inset Formula $A\to aaB$
+\end_inset
+
+ la cadena resultante tendrá 
+\begin_inset Formula $2c+2$
+\end_inset
+
+ símbolos 
+\begin_inset Formula $a$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Si aplicamos 
+\begin_inset Formula $A\to\lambda$
+\end_inset
+
+ la cadena resultante tendrá 
+\begin_inset Formula $2c$
+\end_inset
+
+ símbolos 
+\begin_inset Formula $a$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Si aplicamos 
+\begin_inset Formula $aBa\to A$
+\end_inset
+
+ la cadena resultante tendrá 
+\begin_inset Formula $2c-2$
+\end_inset
+
+ símbolos 
+\begin_inset Formula $a$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Si aplicamos 
+\begin_inset Formula $Aaa\to B$
+\end_inset
+
+ la cadena resultante tendrá 
+\begin_inset Formula $2c-2$
+\end_inset
+
+ símbolos 
+\begin_inset Formula $a$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Si aplicamos 
+\begin_inset Formula $B\to AabaB$
+\end_inset
+
+ la cadena resultante tendrá 
+\begin_inset Formula $2c+2$
+\end_inset
+
+ símbolos 
+\begin_inset Formula $a$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Si aplicamos 
+\begin_inset Formula $B\to bbb$
+\end_inset
+
+ la cadena resultante tendrá 
+\begin_inset Formula $2c$
+\end_inset
+
+ símbolos 
+\begin_inset Formula $a$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{samepage}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+\begin_inset space ~
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset Formula $\sigma\to aA$
+\end_inset
+
+, 
+\begin_inset Formula $A\to\lambda|aA|bA$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\sigma\to aA|bC$
+\end_inset
+
+, 
+\begin_inset Formula $A\to bB$
+\end_inset
+
+, 
+\begin_inset Formula $B\to bB|\lambda$
+\end_inset
+
+, 
+\begin_inset Formula $C\to bC|aA$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\sigma\to aA|bB$
+\end_inset
+
+, 
+\begin_inset Formula $A\to aA|bB$
+\end_inset
+
+, 
+\begin_inset Formula $B\to bB|aA|a$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\sigma\to aA|bB$
+\end_inset
+
+, 
+\begin_inset Formula $A\to aA|bB$
+\end_inset
+
+, 
+\begin_inset Formula $B\to bB|aC$
+\end_inset
+
+, 
+\begin_inset Formula $C\to aC|bC,\lambda$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+COMPLETAR.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\sigma\to\lambda|a\sigma b$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+COMPLETAR.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\sigma\to a\sigma a|b\sigma b|\lambda|a|b$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\sigma\to C|aAbC$
+\end_inset
+
+, 
+\begin_inset Formula $A\to aAb|\lambda$
+\end_inset
+
+, 
+\begin_inset Formula $C\to cC|\lambda$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\sigma\to aAa|bAb|\lambda$
+\end_inset
+
+, 
+\begin_inset Formula $A\to aA|bA,\lambda$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\sigma\to aI|bI$
+\end_inset
+
+, 
+\begin_inset Formula $I\to aP|bP|\lambda$
+\end_inset
+
+, 
+\begin_inset Formula $P\to aI|bI$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+COMPLETAR.
+\end_layout
+
+\begin_layout Enumerate
+COMPLETAR.
+\end_layout
+
+\begin_layout Enumerate
+COMPLETAR.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+\begin_inset space ~
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Falso: 
+\begin_inset Formula $abba\in\mathcal{L}$
+\end_inset
+
+ pero 
+\begin_inset Formula $abba\notin L\left(G\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Verdadero.
+\end_layout
+
+\begin_layout Enumerate
+Falso: 
+\begin_inset Formula $aba\in L\left(G\right)$
+\end_inset
+
+ pero 
+\begin_inset Formula $aba\notin\mathcal{L}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Verdadero.
+\end_layout
+
+\begin_layout Enumerate
+Falso: 
+\begin_inset Formula $\lambda\in\mathcal{L}$
+\end_inset
+
+ pero 
+\begin_inset Formula $\lambda\notin L\left(G\right)$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+\begin_inset space ~
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+COMPLETAR.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $S\to yX$
+\end_inset
+
+, 
+\begin_inset Formula $X\to yY$
+\end_inset
+
+, 
+\begin_inset Formula $Y\to\lambda$
+\end_inset
+
+, 
+\begin_inset Formula $X\to xZ$
+\end_inset
+
+, 
+\begin_inset Formula $Z\to xX$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+COMPLETAR
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate-Resume
+\begin_inset space ~
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Flex Multiple Columns
+status open
+
+\begin_layout Itemize
+\begin_inset Formula $S\to XA|WB|WZ$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $A\to S'Y$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $S'\to XA|WB|WZ$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $B\to S'Z$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $X\to x$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $Y\to y$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $W\to w$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $Z\to z$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate-Resume
+\begin_inset space ~
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset Formula $\left\{ a^{n}b^{n}c^{k}/n,k\in\mathbb{N}\right\} \cap\left\{ a^{k}b^{n}c^{n}/n,k\in\mathbb{N}\right\} =\left\{ a^{n}b^{n}c^{n}|n\in\mathbb{N}\right\} $
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Observemos que 
+\begin_inset Formula $\mathcal{L}=\left\{ a^{i}b^{j}c^{k}|i=j\land j=k\right\} $
+\end_inset
+
+ luego 
+\begin_inset Formula $\mathcal{\overline{L}}=\left\{ a^{i}b^{j}c^{k}|i\neq j\lor j\neq k\right\} $
+\end_inset
+
+ por lo que 
+\begin_inset Formula $\mathcal{\overline{L}}=\left\{ a^{i}b^{j}c^{k}|i\neq j\right\} \cup\left\{ a^{i}b^{j}c^{k}|j\neq k\right\} $
+\end_inset
+
+.
+ Puesto que la unión es cerrada para lenguajes libres de contexto y ambas
+ componentes de 
+\begin_inset Formula $\mathcal{\overline{L}}$
+\end_inset
+
+ son lenguajes libres de contexto, entonces 
+\begin_inset Formula $\mathcal{\overline{L}}$
+\end_inset
+
+ es libre de contexto.
+ Supongamos que el complemento sea también una operación cerrada, luego
+ 
+\begin_inset Formula $\overline{\mathcal{\overline{L}}}=\mathcal{L}$
+\end_inset
+
+ es libre de contexto.
+ Contradicción.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate-Resume
+COMPLETAR.
+\end_layout
+
+\begin_layout Enumerate-Resume
+COMPLETAR.
+\end_layout
+
+\begin_layout Enumerate-Resume
+\begin_inset space ~
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Caso base 
+\begin_inset Formula $n=1$
+\end_inset
+
+: Tras aplicar una regla de producción las cadenas generadas pueden ser
+ 
+\begin_inset Formula $aS$
+\end_inset
+
+, 
+\begin_inset Formula $Sb$
+\end_inset
+
+, 
+\begin_inset Formula $a$
+\end_inset
+
+ o 
+\begin_inset Formula $b$
+\end_inset
+
+; ninguna de ellas contiene la subcadena 
+\begin_inset Formula $ba$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Caso inductivo 
+\begin_inset Formula $n=k$
+\end_inset
+
+.
+ Supongamos que tras aplicar 
+\begin_inset Formula $k$
+\end_inset
+
+ reglas de producción, la cadena resultante 
+\begin_inset Formula $\alpha S\beta$
+\end_inset
+
+ no contiene la subcadena 
+\begin_inset Formula $ba$
+\end_inset
+
+:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Supongamos que al aplicar 
+\begin_inset Formula $S\to aS$
+\end_inset
+
+ o 
+\begin_inset Formula $S\to a$
+\end_inset
+
+ se forma la subcadena 
+\begin_inset Formula $ba$
+\end_inset
+
+, luego 
+\begin_inset Formula $\alpha=b^{m}$
+\end_inset
+
+ (con 
+\begin_inset Formula $m>0$
+\end_inset
+
+) pues de lo contrario 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ tendría como subcadena a 
+\begin_inset Formula $ba$
+\end_inset
+
+ lo cual no es cierto por H.I.
+ Sin embargo para 
+\begin_inset Formula $n>1$
+\end_inset
+
+ todas las palabras comienzan con 
+\begin_inset Formula $a$
+\end_inset
+
+.
+ Contradicción.
+ Por lo tanto si aplicamos estas reglas, no se forma la subcadena 
+\begin_inset Formula $ba$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Analogamente si al aplicar 
+\begin_inset Formula $S\to Sb$
+\end_inset
+
+ o 
+\begin_inset Formula $S\to b$
+\end_inset
+
+ se forma la subcadena 
+\begin_inset Formula $ba$
+\end_inset
+
+, entonces 
+\begin_inset Formula $\beta=a^{m}$
+\end_inset
+
+ (con 
+\begin_inset Formula $m>0$
+\end_inset
+
+).
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Enumerate-Resume
+\begin_inset space ~
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Caso base 
+\begin_inset Formula $n=1$
+\end_inset
+
+: Tras aplicar una regla de producción las cadenas generadas pueden ser
+ 
+\begin_inset Formula $aSbS$
+\end_inset
+
+, 
+\begin_inset Formula $bSaS$
+\end_inset
+
+, o 
+\begin_inset Formula $\lambda$
+\end_inset
+
+; todas ellas con misma cantidad de 
+\begin_inset Formula $a$
+\end_inset
+
+'s y 
+\begin_inset Formula $b$
+\end_inset
+
+'s.
+\end_layout
+
+\begin_layout Itemize
+Caso inductivo 
+\begin_inset Formula $n=k$
+\end_inset
+
+.
+ Supongamos que tras aplicar 
+\begin_inset Formula $k$
+\end_inset
+
+ reglas de producción, la cadena resultante tiene 
+\begin_inset Formula $m$
+\end_inset
+
+ letras 
+\begin_inset Formula $a$
+\end_inset
+
+ y 
+\begin_inset Formula $b$
+\end_inset
+
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Si aplicamos 
+\begin_inset Formula $S\to aSbS$
+\end_inset
+
+ o 
+\begin_inset Formula $S\to bSaS$
+\end_inset
+
+ la nueva cadena tendrá 
+\begin_inset Formula $m+1$
+\end_inset
+
+ letras 
+\begin_inset Formula $a$
+\end_inset
+
+ y 
+\begin_inset Formula $b$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Si aplicamos 
+\begin_inset Formula $S\to\lambda$
+\end_inset
+
+ la nueva cadena tendrá 
+\begin_inset Formula $m$
+\end_inset
+
+ letras 
+\begin_inset Formula $a$
+\end_inset
+
+ y 
+\begin_inset Formula $b$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Enumerate-Resume
+COMPLETAR.
+\end_layout
+
+\begin_layout Enumerate-Resume
+Dada la gramática libre de contexto 
+\begin_inset Formula $G=\left(\left\{ E,V\right\} ,\left\{ +,*,(,),x,y,z\right\} ,P,E\right)$
+\end_inset
+
+ donde 
+\begin_inset Formula $P$
+\end_inset
+
+ consiste de las producciones:
+\begin_inset Formula 
+\[
+E\to E+E|E*E|V|\left(E\right)
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+V\to x|y|z
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset Formula $\boxed{x+y*z}\equiv E\begin{cases}
+E & \begin{cases}
+E & \to V\to\boxed{z}\\
+\boxed{*}\\
+E & \to V\to\boxed{y}
+\end{cases}\\
+\boxed{+}\\
+E & \to V\to\boxed{x}
+\end{cases}\equiv E\begin{cases}
+E & \to V\to\boxed{z}\\
+\boxed{*}\\
+E & \begin{cases}
+E & \to V\to\boxed{y}\\
+\boxed{+}\\
+E & \to V\to\boxed{x}
+\end{cases}
+\end{cases}$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Enumerate-Resume
+COMPLETAR.
+\end_layout
+
+\end_deeper
+\end_body
+\end_document
