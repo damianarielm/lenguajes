@@ -1106,28 +1106,7 @@ COMPLETAR.
 \end_layout
 
 \begin_layout Enumerate-Resume
-Dada la gramática libre de contexto 
-\begin_inset Formula $G=\left(\left\{ E,V\right\} ,\left\{ +,*,(,),x,y,z\right\} ,P,E\right)$
-\end_inset
-
- donde 
-\begin_inset Formula $P$
-\end_inset
-
- consiste de las producciones:
-\begin_inset Formula 
-\[
-E\to E+E|E*E|V|\left(E\right)
-\]
-
-\end_inset
-
-
-\begin_inset Formula 
-\[
-V\to x|y|z
-\]
-
+\begin_inset space ~
 \end_inset
 
 
@@ -1158,9 +1137,42 @@ E & \to V\to\boxed{x}
 \end_layout
 
 \begin_layout Enumerate-Resume
-COMPLETAR.
+\begin_inset space ~
+\end_inset
+
+
 \end_layout
 
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $E\to E+T|T$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $T\to T*F|F$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $F\to\left(E\right)|V$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $V\to x|y|z$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
 \end_deeper
 \end_body
 \end_document

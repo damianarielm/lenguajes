@@ -1,0 +1,1571 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\begin_preamble
+\renewcommand{\headrulewidth}{1pt}
+\renewcommand{\footrulewidth}{0.5pt}
+\fancyheadoffset[L]{-16pt}
+\usepackage{tikz}
+\usetikzlibrary{automata,positioning,calc}
+\end_preamble
+\use_default_options true
+\begin_modules
+customHeadersFooters
+enumitem
+multicol
+\end_modules
+\maintain_unincluded_children false
+\language spanish-mexico
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize 12
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 2cm
+\rightmargin 2cm
+\headheight 0cm
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style french
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle fancy
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Left Header
+
+\noun on
+Lenguajes Formales y Computabilidad
+\end_layout
+
+\begin_layout Right Header
+2018
+\end_layout
+
+\begin_layout Center Footer
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+thepage
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+
+\size larger
+PRÁCTICA 8: 
+\emph on
+Soluciones
+\end_layout
+
+\begin_layout Standard
+
+\size footnotesize
+Pablo Verdes
+\begin_inset space \hspace*{\fill}
+\end_inset
+
+Dante Zanarini
+\begin_inset space \hspace*{\fill}
+\end_inset
+
+Pamela Viale
+\begin_inset space \hspace*{\fill}
+\end_inset
+
+Alejandro Hernandez
+\begin_inset space \hspace*{\fill}
+\end_inset
+
+Mauro Lucci
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset line
+LatexCommand rule
+offset "0.5ex"
+width "100col%"
+height "1pt"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset space ~
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset Preview
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{tikzpicture}[baseline=(current bounding box.center),shorten >=1pt,node
+ distance=3cm,on grid,auto]
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node[state, initial, accepting, initial text= inicio] (sigma0)   {$
+\backslash
+sigma_0$};
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node[state] (sigma1) [right=of sigma0] {$
+\backslash
+sigma_1$};
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node[state] (sigma2) [right=of sigma1] {$
+\backslash
+sigma_2$};
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node[state, accepting] (sigma3) [right=of sigma2] {$
+\backslash
+sigma_3$};
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+path[->]
+\end_layout
+
+\begin_layout Plain Layout
+
+		(sigma0)	edge  node {$
+\backslash
+lambda,
+\backslash
+lambda;
+\backslash
+#$} (sigma1)
+\end_layout
+
+\begin_layout Plain Layout
+
+		(sigma1)	edge  [loop above] node {$a,
+\backslash
+lambda;a$} ()
+\end_layout
+
+\begin_layout Plain Layout
+
+		(sigma1)	edge  node {$b,a;
+\backslash
+lambda$} (sigma2)
+\end_layout
+
+\begin_layout Plain Layout
+
+		(sigma2)	edge  [loop above] node {$b,a;
+\backslash
+lambda$} ()
+\end_layout
+
+\begin_layout Plain Layout
+
+		(sigma2)	edge  node {$
+\backslash
+lambda,
+\backslash
+#;
+\backslash
+lambda$} (sigma3)
+\end_layout
+
+\begin_layout Plain Layout
+
+;
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{tikzpicture}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Preview
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{tikzpicture}[baseline=(current bounding box.center),shorten >=1pt,node
+ distance=2.5cm,on grid,auto]
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node[state, initial, accepting, initial text= inicio] (sigma0) {$
+\backslash
+sigma_0$};
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node[state] (s) [right of=sigma0]  {$S$};
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node[state] (a) [right of=s]  {$A$};
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node[state] (b) [right of= a] {$B$};
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node[state] (c) [below right of= a] {$C$};
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node[state, accepting] (q) [right of= c] {$Q$};
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+path[->]
+\end_layout
+
+\begin_layout Plain Layout
+
+		(sigma0)	edge node {$
+\backslash
+lambda,
+\backslash
+lambda;
+\backslash
+#$} (s)
+\end_layout
+
+\begin_layout Plain Layout
+
+		(s)		edge node {$a,
+\backslash
+lambda;a$} (a)
+\end_layout
+
+\begin_layout Plain Layout
+
+		(s)		edge [bend left= 70] node {$b,
+\backslash
+lambda;
+\backslash
+lambda$} (b)
+\end_layout
+
+\begin_layout Plain Layout
+
+		(a)		edge [loop above] node {$a,
+\backslash
+lambda;a$} ()
+\end_layout
+
+\begin_layout Plain Layout
+
+		(a)		edge node {$b,
+\backslash
+lambda;
+\backslash
+lambda$} (b)
+\end_layout
+
+\begin_layout Plain Layout
+
+		(a)		edge node [left] {$c,a;
+\backslash
+lambda$} (c)
+\end_layout
+
+\begin_layout Plain Layout
+
+		(b)		edge [out=60,in=30,looseness=7] node {$b,
+\backslash
+lambda;
+\backslash
+lambda$} (b)
+\end_layout
+
+\begin_layout Plain Layout
+
+		(b)		edge node [right] {$c,a;
+\backslash
+lambda$} (c)
+\end_layout
+
+\begin_layout Plain Layout
+
+		(b)		edge [bend left] node {$
+\backslash
+lambda,
+\backslash
+#;
+\backslash
+lambda$} (q)
+\end_layout
+
+\begin_layout Plain Layout
+
+		(c)		edge [loop left] node {$c,a;
+\backslash
+lambda$} ()
+\end_layout
+
+\begin_layout Plain Layout
+
+		(c)		edge node [below] {$
+\backslash
+lambda,
+\backslash
+#;
+\backslash
+lambda$} (q)
+\end_layout
+
+\begin_layout Plain Layout
+
+;
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{tikzpicture}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Preview
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{tikzpicture}[baseline=(current bounding box.center),shorten >=1pt,node
+ distance=2.5cm,on grid,auto]
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node[state, initial, accepting, initial text= inicio] (sigma0) {$
+\backslash
+sigma_0$};
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node[state] (s) [right of=sigma0]  {$S$};
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node[state] (a) [right of=s]  {$A$};
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node[state] (b) [right of= a] {$B$};
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node[state] (bb) [right of= b] {$BB$};
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node[state, accepting] (c) [right of= bb] {$C$};
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+path[->]
+\end_layout
+
+\begin_layout Plain Layout
+
+		(sigma0)	edge node {$
+\backslash
+lambda,
+\backslash
+lambda;
+\backslash
+#$} (s)
+\end_layout
+
+\begin_layout Plain Layout
+
+		(sigma0)	edge [bend right=20] node {$c,
+\backslash
+lambda;
+\backslash
+lambda$} (c)
+\end_layout
+
+\begin_layout Plain Layout
+
+		(s)		edge node {$a,
+\backslash
+lambda;a$} (a)
+\end_layout
+
+\begin_layout Plain Layout
+
+		(a)		edge [loop above] node {$a,
+\backslash
+lambda;a$} ()
+\end_layout
+
+\begin_layout Plain Layout
+
+		(a)		edge node {$b,
+\backslash
+lambda;
+\backslash
+lambda$} (b)
+\end_layout
+
+\begin_layout Plain Layout
+
+		(b)		edge node {$b,a;
+\backslash
+lambda$} (bb)
+\end_layout
+
+\begin_layout Plain Layout
+
+		(bb)		edge [bend right= 60] node [above] {$b,
+\backslash
+lambda;
+\backslash
+lambda$} (b)
+\end_layout
+
+\begin_layout Plain Layout
+
+		(bb)		edge node {$
+\backslash
+lambda,
+\backslash
+#;
+\backslash
+lambda$} (c)
+\end_layout
+
+\begin_layout Plain Layout
+
+		(c)		edge [loop above] node {$c,
+\backslash
+lambda;
+\backslash
+lambda$} ()
+\end_layout
+
+\begin_layout Plain Layout
+
+;
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{tikzpicture}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+COMPLETAR.
+\end_layout
+
+\begin_layout Enumerate
+COMPLETAR.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Preview
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{tikzpicture}[baseline=(current bounding box.center),shorten >=1pt,node
+ distance=3cm,on grid,auto]
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node[state, initial, initial text= inicio] (sigma0) {$
+\backslash
+sigma_0$};
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node[state] (s) [right of=sigma0]  {$S$};
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node[state] (p) [right of=s]  {$P$};
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node[state, accepting] (q) [right of= p] {$Q$};
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+path[->]
+\end_layout
+
+\begin_layout Plain Layout
+
+		(sigma0)	edge	node	{$
+\backslash
+lambda,
+\backslash
+lambda;
+\backslash
+#$}	(s)
+\end_layout
+
+\begin_layout Plain Layout
+
+		(s)		edge [loop above]	node	{$a,
+\backslash
+lambda;a$}	()
+\end_layout
+
+\begin_layout Plain Layout
+
+		(s)		edge [loop below]	node	{$b,
+\backslash
+lambda;b$}	()
+\end_layout
+
+\begin_layout Plain Layout
+
+		(s)		edge	node	{$
+\backslash
+lambda,
+\backslash
+lambda;
+\backslash
+lambda$}	(p)
+\end_layout
+
+\begin_layout Plain Layout
+
+		(p)		edge [loop above]	node	{$a,a;
+\backslash
+lambda$}	()
+\end_layout
+
+\begin_layout Plain Layout
+
+		(p)		edge [loop below]	node	{$b,b;
+\backslash
+lambda$}	()
+\end_layout
+
+\begin_layout Plain Layout
+
+		(p)		edge	node	{$
+\backslash
+lambda,
+\backslash
+#;
+\backslash
+lambda$}	(q)
+\end_layout
+
+\begin_layout Plain Layout
+
+;
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{tikzpicture}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Se construye fácilmente a partir del anterior.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Preview
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{tikzpicture}[baseline=(current bounding box.center),shorten >=1pt,node
+ distance=3cm,on grid,auto]
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node[state, initial, initial text= inicio] (sigma0) {$
+\backslash
+sigma_0$};
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node[state] (s) [right of=sigma0]  {$S$};
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node[state] (p) [right of=s]  {$P$};
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node[state, accepting] (q) [right of= p] {$Q$};
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+path[->]
+\end_layout
+
+\begin_layout Plain Layout
+
+		(sigma0)	edge	node	{$
+\backslash
+lambda,
+\backslash
+lambda;
+\backslash
+#$}	(s)
+\end_layout
+
+\begin_layout Plain Layout
+
+		(s)		edge [loop above]	node	{$a,
+\backslash
+lambda;a$}	()
+\end_layout
+
+\begin_layout Plain Layout
+
+		(s)		edge [loop below]	node	{$b,
+\backslash
+lambda;b$}	()
+\end_layout
+
+\begin_layout Plain Layout
+
+		(s)		edge	node	{$
+\backslash
+lambda,
+\backslash
+lambda;
+\backslash
+lambda$}	(p)
+\end_layout
+
+\begin_layout Plain Layout
+
+		(p)		edge [loop above]	node	{$a,b;
+\backslash
+lambda$}	()
+\end_layout
+
+\begin_layout Plain Layout
+
+		(p)		edge [loop below]	node	{$b,a;
+\backslash
+lambda$}	()
+\end_layout
+
+\begin_layout Plain Layout
+
+		(p)		edge	node	{$
+\backslash
+lambda,
+\backslash
+#;
+\backslash
+lambda$}	(q)
+\end_layout
+
+\begin_layout Plain Layout
+
+;
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{tikzpicture}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+COMPLETAR.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Preview
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{tikzpicture}[baseline=(current bounding box.center),shorten >=1pt,node
+ distance=3cm,on grid,auto]
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node[state, initial, initial text= inicio] (sigma0) {$
+\backslash
+sigma_0$};
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node[state, right= of sigma0] (sigma1) {$
+\backslash
+sigma_1$};
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node[state, accepting] (sigma2) [right of=sigma1]  {$
+\backslash
+sigma_1$};
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+path[->]
+\end_layout
+
+\begin_layout Plain Layout
+
+		(sigma0)	edge	node	{$
+\backslash
+lambda,
+\backslash
+lambda;
+\backslash
+#$}	(sigma1)
+\end_layout
+
+\begin_layout Plain Layout
+
+		(sigma1)	edge	[out=330,in=290,looseness=7]	node	{$a,
+\backslash
+lambda;a$}	(sigma1)
+\end_layout
+
+\begin_layout Plain Layout
+
+		(sigma1)	edge	[out=250,in=210,looseness=7]	node	{$a,b;
+\backslash
+lambda$}	(sigma1)
+\end_layout
+
+\begin_layout Plain Layout
+
+		(sigma1)	edge	[out=30,in=70,looseness=7]	node [above]	{$b,
+\backslash
+lambda;b$}	(sigma1)
+\end_layout
+
+\begin_layout Plain Layout
+
+		(sigma1)	edge	[out=110,in=150,looseness=7]	node [above]	{$b,a;
+\backslash
+lambda$}	(sigma1)
+\end_layout
+
+\begin_layout Plain Layout
+
+		(sigma1)		edge 	node	{$
+\backslash
+lambda,
+\backslash
+#;
+\backslash
+lambda$}	(sigma2)
+\end_layout
+
+\begin_layout Plain Layout
+
+;
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{tikzpicture}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset Formula $\left\{ a^{m}b^{n}/a,b\in\mathbb{N}_{0}\land m\geq n\right\} $
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Preview
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{tikzpicture}[baseline=(current bounding box.center),shorten >=1pt,node
+ distance=2.5cm,on grid,auto]
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node[state, initial, initial text= inicio] (s) {$s$};
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node[state] (sigma0) [right of=s]  {$
+\backslash
+sigma_0$};
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node[state] (sigma1) [right=of sigma0] {$
+\backslash
+sigma_1$};
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node[state] (p) [right of= sigma1] {$p$};
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node[state, accepting] (q) [right of= p] {$q$};
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+path[->]
+\end_layout
+
+\begin_layout Plain Layout
+
+		(s)	edge  node {$
+\backslash
+lambda,
+\backslash
+lambda;
+\backslash
+#$} (sigma0)
+\end_layout
+
+\begin_layout Plain Layout
+
+		(sigma0)	edge  [loop above] node {$a,
+\backslash
+lambda;a$} ()
+\end_layout
+
+\begin_layout Plain Layout
+
+		(sigma0)	edge  node {$b,a;
+\backslash
+lambda$} (sigma1)
+\end_layout
+
+\begin_layout Plain Layout
+
+		(sigma0)	edge  [bend right] node [below] {$
+\backslash
+lambda,
+\backslash
+lambda;
+\backslash
+lambda$} (p)
+\end_layout
+
+\begin_layout Plain Layout
+
+		(sigma1)	edge  [loop above] node {$b,a;
+\backslash
+lambda$} ()
+\end_layout
+
+\begin_layout Plain Layout
+
+		(sigma1)	edge  node {$
+\backslash
+lambda,
+\backslash
+lambda;
+\backslash
+lambda$} (p)
+\end_layout
+
+\begin_layout Plain Layout
+
+		(p)		edge  [loop above] node {$
+\backslash
+lambda,a;
+\backslash
+lambda$} ()
+\end_layout
+
+\begin_layout Plain Layout
+
+		(p)		edge  [loop below] node {$
+\backslash
+lambda,b;
+\backslash
+lambda$} ()
+\end_layout
+
+\begin_layout Plain Layout
+
+		(p)	edge  node {$
+\backslash
+lambda,
+\backslash
+#;
+\backslash
+lambda$} (q)
+\end_layout
+
+\begin_layout Plain Layout
+
+;
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{tikzpicture}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+\begin_inset Preview
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{tikzpicture}[baseline=(current bounding box.center),node distance=2.5cm,on
+ grid,auto]
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node[state,initial, initial text=inicio] (sigma1)   {};
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node[state] (sigma2) [above right=of sigma1] {$M_1$};
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node[state] (sigma3) [below right=of sigma1] {$M_2$};
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+path[->]
+\end_layout
+
+\begin_layout Plain Layout
+
+		(sigma1)	edge node {$
+\backslash
+lambda,
+\backslash
+lambda;
+\backslash
+lambda$} (sigma2)
+\end_layout
+
+\begin_layout Plain Layout
+
+					edge node {$
+\backslash
+lambda,
+\backslash
+lambda;
+\backslash
+lambda$} (sigma3);
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{tikzpicture}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Sea 
+\begin_inset Formula $M'$
+\end_inset
+
+ el autómata que acepta el mismo lenguaje que 
+\begin_inset Formula $M$
+\end_inset
+
+ pero vacía su pila.
+ El siguiente autómata acepta 
+\begin_inset Formula $L\left(M\right)^{*}$
+\end_inset
+
+:
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{tikzpicture}[node distance=2.5cm,on grid,auto]
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node[state,initial, initial text=inicio] (sigma1)   {$M'$};
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+path[->]
+\end_layout
+
+\begin_layout Plain Layout
+
+		(sigma1)	edge [loop right] node {$
+\backslash
+lambda,
+\backslash
+lambda;
+\backslash
+lambda$} ();
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{tikzpicture}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+\begin_inset space ~
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Supongamos que es libre de contexto y consideremos la cadena 
+\begin_inset Formula $\text{\ensuremath{xuyvz\in L/uv\neq\lambda}}$
+\end_inset
+
+:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Si 
+\begin_inset Formula $u$
+\end_inset
+
+ o 
+\begin_inset Formula $v$
+\end_inset
+
+ tienen mas de un símbolo, al bombearlos se obtendrán subcadenas del tipo
+ 
+\begin_inset Formula $abab$
+\end_inset
+
+, 
+\begin_inset Formula $bcbc$
+\end_inset
+
+ o 
+\begin_inset Formula $abcabc$
+\end_inset
+
+.
+ Contradicción.
+\end_layout
+
+\begin_layout Itemize
+Si 
+\begin_inset Formula $u=v$
+\end_inset
+
+ tienen un solo símbolo entonces al bombearlos, podemos incrementar el exponente
+ de este símbolo, independientemente de los otros.
+ Contradicción.
+\end_layout
+
+\begin_layout Itemize
+Si 
+\begin_inset Formula $u\neq v$
+\end_inset
+
+ tienen un solo símbolo entonces al bombearlos, el restantes tendrán un
+ exponente diferente.
+ Contradicción.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+COMPLETAR
+\end_layout
+
+\begin_layout Enumerate
+Supongamos que es libre de contexto y consideremos la cadena 
+\begin_inset Formula $\text{\ensuremath{xuyvz\in L/uv\neq\lambda}}$
+\end_inset
+
+.
+ Observemos que ninguna palabra termina ni empieza con 
+\begin_inset Formula $\#$
+\end_inset
+
+ por lo que sabemos que 
+\begin_inset Formula $x\neq\#$
+\end_inset
+
+ y 
+\begin_inset Formula $z\neq\#$
+\end_inset
+
+.
+ Luego:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Si 
+\begin_inset Formula $u$
+\end_inset
+
+ o 
+\begin_inset Formula $v$
+\end_inset
+
+ tienen un símbolo 
+\begin_inset Formula $\#$
+\end_inset
+
+ entonces al bombearlo podemos generar mas de 2 símbolos 
+\begin_inset Formula $\#$
+\end_inset
+
+.
+ Contradicción.
+\end_layout
+
+\begin_layout Itemize
+Si 
+\begin_inset Formula $u=\lambda\Rightarrow xuyvz=0^{i}yvz$
+\end_inset
+
+ y puesto que toda palabra tiene dos símbolos 
+\begin_inset Formula $\#$
+\end_inset
+
+ entonces 
+\begin_inset Formula $y=z=\#$
+\end_inset
+
+.
+ Contradicción.
+\end_layout
+
+\begin_layout Itemize
+Análogamente si 
+\begin_inset Formula $v=\lambda\Rightarrow xuyvz=xuy0^{i}$
+\end_inset
+
+, entonces 
+\begin_inset Formula $\text{\ensuremath{x=y=\#}}$
+\end_inset
+
+.
+ Contradicción.
+\end_layout
+
+\begin_layout Itemize
+La posibilidad restante es 
+\begin_inset Formula $xuyvz=0^{i}0^{j}y0^{k}0^{l}\Rightarrow xuyvz=0^{i}0^{j}\#0^{k}0^{l}$
+\end_inset
+
+.
+ Contradicción.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+COMPLETAR.
+\end_layout
+
+\end_deeper
+\end_body
+\end_document

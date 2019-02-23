@@ -1,0 +1,1136 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\begin_preamble
+\renewcommand{\headrulewidth}{1pt}
+\renewcommand{\footrulewidth}{0.5pt}
+\fancyheadoffset[L]{-16pt}
+\usepackage{tikz}
+\usetikzlibrary{automata,positioning,calc}
+\end_preamble
+\use_default_options true
+\begin_modules
+customHeadersFooters
+enumitem
+multicol
+\end_modules
+\maintain_unincluded_children false
+\language spanish-mexico
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize 12
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 2cm
+\rightmargin 2cm
+\headheight 0cm
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style french
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle fancy
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Left Header
+
+\noun on
+Lenguajes Formales y Computabilidad
+\end_layout
+
+\begin_layout Right Header
+2018
+\end_layout
+
+\begin_layout Center Footer
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+thepage
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+
+\size larger
+PRÁCTICA 7: 
+\emph on
+Autómatas Finitos y Expresiones Regulares
+\end_layout
+
+\begin_layout Standard
+
+\size footnotesize
+Pablo Verdes
+\begin_inset space \hspace*{\fill}
+\end_inset
+
+Dante Zanarini
+\begin_inset space \hspace*{\fill}
+\end_inset
+
+Pamela Viale
+\begin_inset space \hspace*{\fill}
+\end_inset
+
+Alejandro Hernandez
+\begin_inset space \hspace*{\fill}
+\end_inset
+
+Mauro Lucci
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset line
+LatexCommand rule
+offset "0.5ex"
+width "100col%"
+height "1pt"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Encuentre autómatas finitos para los siguientes lenguajes definidos sobre
+ 
+\begin_inset Formula $\Sigma=\left\{ 0,1\right\} $
+\end_inset
+
+:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset Formula $\left\{ 00\right\} $
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\left\{ 0,1010,110,001\right\} $
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\left\{ \text{cadenas que empiezan y terminan en }1\right\} $
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\left\{ \text{cadenas que tienen al menos dos ceros seguidos}\right\} $
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\left\{ \text{cadenas que terminen en }00\text{ o bien en }11\right\} $
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\left\{ \text{cadenas con al menos dos simbolos consecutivos iguales}\right\} $
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\left\{ \text{cadenas que no tengan dos simbolos consecutivos iguales}\right\} $
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\left\{ \text{cadenas que empiezan por }1\text{ y terminan en }11\right\} $
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\left\{ \text{cadenas que no contienen la subcadena }011\right\} $
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\left\{ \text{cadenas con un numero par de ceros}\right\} $
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\left\{ \text{cadenas con un numero impar de unos y par de ceros}\right\} $
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\left\{ \text{cadenas que representen en binario numeros enteros multiplos de }3\right\} $
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Este ejercicio es un poco complicado, sin embargo fue tomado en un examen.
+ Por tal motivo decidí incluirlo.
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula $\left\{ \text{cadenas de longitud minima 3 cuyo segundo simbolo es igual al penultimo}\right\} $
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Dado el alfabeto 
+\begin_inset Formula $\Sigma=\left\{ a,b,c\right\} $
+\end_inset
+
+, encuentre un AEF cuyo lenguaje aceptado sea:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset Formula $\left\{ \text{cadenas con un numero de }b\text{ que sea multiplo de }3\text{ y no empiecen por }a\right\} $
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\left\{ \text{cadenas que tengan a lo sumo dos }b\text{ consecutivas pero que no terminen en }c\right\} $
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\left\{ \text{cadenas con un numero par de }a\text{ e impar de }b\right\} $
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\left\{ \text{cadenas que terminen en }c\right\} $
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\left\{ \text{cadenas con un numero par de }a\text{, impar de }b\text{ y que terminen en }c\right\} $
+\end_inset
+
+.
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Dibuje un diagrama de transiciones que acepte la concatenación del lenguaje
+ aceptado por
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+\begin_inset Preview
+
+\begin_layout Standard
+\align center
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{tikzpicture}[node distance=2cm,on grid,auto]
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node[state,initial, initial text=inicio] (sigma1)   {};
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node[state,accepting] (sigma2) [right=of sigma1] {};
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+path[->]
+\end_layout
+
+\begin_layout Plain Layout
+
+		(sigma1)	edge  [bend left] node {$a$} (sigma2)
+\end_layout
+
+\begin_layout Plain Layout
+
+					edge  [bend right] node {$b$} (sigma2)
+\end_layout
+
+\begin_layout Plain Layout
+
+		(sigma2)	edge [loop right] node {$b$} ();
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{tikzpicture}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+ 
+\end_layout
+
+\begin_layout Standard
+seguido por el lenguaje aceptado por
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Preview
+
+\begin_layout Standard
+\align center
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{tikzpicture}[node distance=2cm,on grid,auto]
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node[state,initial, initial text=inicio] (sigma1)   {};
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node[state,accepting] (sigma2) [right=of sigma1] {};
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+path[->]
+\end_layout
+
+\begin_layout Plain Layout
+
+		(sigma1)	edge  [loop above] node {$x$} ()
+\end_layout
+
+\begin_layout Plain Layout
+
+					edge  node {$y$} (sigma2)
+\end_layout
+
+\begin_layout Plain Layout
+
+		(sigma2)	edge [loop right] node {$y$} ();
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{tikzpicture}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Dibuje un diagrama de transiciones que acepte la unión de los lenguajes
+ aceptados por los siguientes diagramas:
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+\begin_inset Preview
+
+\begin_layout Standard
+\align center
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{tikzpicture}[node distance=2cm,on grid,auto]
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node[state,initial, initial text=inicio] (sigma1)   {};
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node[state,accepting] (sigma2) [right=of sigma1] {};
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+path[->]
+\end_layout
+
+\begin_layout Plain Layout
+
+		(sigma1)	edge  [bend left] node {$a$} (sigma2)
+\end_layout
+
+\begin_layout Plain Layout
+
+		(sigma2)	edge [bend left] node {$b$} (sigma1);
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{tikzpicture}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Preview
+
+\begin_layout Standard
+\align center
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{tikzpicture}[node distance=2cm,on grid,auto]
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node[state,initial, initial text=inicio] (sigma1)   {};
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node[state,accepting] (sigma2) [right=of sigma1] {};
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+path[->]
+\end_layout
+
+\begin_layout Plain Layout
+
+		(sigma1)	edge  [bend left] node {$x$} (sigma2)
+\end_layout
+
+\begin_layout Plain Layout
+
+		(sigma2)	edge [bend left] node {$y$} (sigma1);
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{tikzpicture}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Dibuje un diagrama de transiciones que acepte la estrella de Kleene del
+ lenguaje aceptado por el siguiente diagrama:
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+\begin_inset Preview
+
+\begin_layout Standard
+\align center
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{tikzpicture}[node distance=2cm,on grid,auto]
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node[state,initial, initial text=inicio] (sigma1)   {};
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node[state,accepting] (sigma2) [right=of sigma1] {};
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node[state] (sigma3) [right=of sigma2] {};
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+path[->]
+\end_layout
+
+\begin_layout Plain Layout
+
+		(sigma1)	edge  [bend left] node {$a$} (sigma2)
+\end_layout
+
+\begin_layout Plain Layout
+
+		(sigma2)	edge [bend left] node {$b$} (sigma1)
+\end_layout
+
+\begin_layout Plain Layout
+
+		(sigma2)	edge node {$c$} (sigma3);
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{tikzpicture}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Construya una expresión regular que describa el lenguaje aceptado por el
+ siguiente diagrama de transición:
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+\begin_inset Preview
+
+\begin_layout Standard
+\align center
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{tikzpicture}[node distance=2cm,on grid,auto]
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node[state,initial, initial text=inicio] (sigma1)   {};
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node[state,accepting] (sigma2) [above right=of sigma1] {};
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node[state,accepting] (sigma3) [below right=of sigma1] {};
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node[state,accepting] (sigma4) [below right=of sigma2] {};
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node[state] (sigma5) [right=of sigma4] {};
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+path[->]
+\end_layout
+
+\begin_layout Plain Layout
+
+		(sigma1)	edge node {$a$} (sigma2)
+\end_layout
+
+\begin_layout Plain Layout
+
+		(sigma1)	edge node {$b$} (sigma3)
+\end_layout
+
+\begin_layout Plain Layout
+
+		(sigma2)	edge [loop right] node {$b$} ()
+\end_layout
+
+\begin_layout Plain Layout
+
+		(sigma3)	edge [loop right] node {$a$} ()
+\end_layout
+
+\begin_layout Plain Layout
+
+		(sigma2)	edge node {$a$} (sigma4)
+\end_layout
+
+\begin_layout Plain Layout
+
+		(sigma3)	edge node {$b$} (sigma4)
+\end_layout
+
+\begin_layout Plain Layout
+
+		(sigma4)	edge [bend left] node {$a$} (sigma5)
+\end_layout
+
+\begin_layout Plain Layout
+
+		(sigma4)	edge [bend right] node {$b$} (sigma5);
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{tikzpicture}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Aquí incluí varias propiedades de clausuras que se demuestran de forma sencilla
+ y pueden ser de utilidad.
+\end_layout
+
+\end_inset
+
+Sean 
+\begin_inset Formula $L$
+\end_inset
+
+ y 
+\begin_inset Formula $M$
+\end_inset
+
+ lenguajes regulares sobre un alfabeto 
+\begin_inset Formula $\Sigma$
+\end_inset
+
+.
+ Demuestre que los lenguajes regulares son cerrados bajo las operaciones
+ de unión, complemento, intersección, diferencia, concatenación, y estrella
+ de Kleene.
+\end_layout
+
+\begin_layout Enumerate
+Sean 
+\begin_inset Formula $A_{1}=\left(\Sigma,S_{1},f_{1},Ac_{1},\sigma_{1}\right)$
+\end_inset
+
+, 
+\begin_inset Formula $A_{2}=\left(\Sigma,S_{2},f_{2},Ac_{2},\sigma_{2}\right)$
+\end_inset
+
+ autómatas de estado finito.
+ Se define 
+\begin_inset Formula $A=\left(\Sigma,S,f,Ac,\sigma\right)$
+\end_inset
+
+ de la siguiente forma:
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+\begin_inset Formula $\begin{array}{c}
+S=S_{1}\times S_{2}\\
+f\left(\left(s_{1},s_{2}\right),x\right)=\left(f_{1}\left(s_{1},x\right),f_{2}\left(s_{2},x\right)\right)\\
+Ac=\left\{ \left(s,s'\right)\in S|s\in Ac_{1}\land s'\in Ac_{2}\right\} \\
+\sigma=\left(\sigma_{1},\sigma_{2}\right)
+\end{array}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Demuestre que 
+\begin_inset Formula $\mathcal{AC}\left(A\right)=\mathcal{AC}\left(A_{1}\right)\cap\mathcal{AC}\left(A_{2}\right)$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Ya sabe como construir un AEFND que acepta la unión de los lenguajes reconocidos
+ por dos AEF 
+\begin_inset Formula $A_{1}$
+\end_inset
+
+ y 
+\begin_inset Formula $A_{2}$
+\end_inset
+
+.
+ Usando la idea del ejercicio anterior, defina un AEF (es decir, determinista)
+ que acepte el lenguaje 
+\begin_inset Formula $\text{\ensuremath{\mathcal{AC}\left(A_{1}\right)\cup\mathcal{AC}\left(A_{2}\right)}}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Complete la demostración del teorema visto en clase de teoría que dice que
+ todo lenguaje aceptado por un AEF es regular.
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Considere los lenguajes descriptos por las siguientes expresiones regulares.
+ Descríbalos por comprensión, en el caso que sean infinitos, y elabore una
+ lista exhaustiva de las cadenas que contienen si son finitos.
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Flex Multiple Columns
+status open
+
+\begin_layout Enumerate
+\begin_inset Formula $\left(x\circ\left(y\circ z^{*}\right)\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\left(x^{*}\circ\left(y\circ z\right)\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\left(\left(x\cup y\right)\circ x\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\left(z\cup y\right)^{*}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\left(y\circ y\right)^{*}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\left(x^{*}\cup y^{*}\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\left(\left(x\circ x\right)\cup z\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\left(\left(z\cup y\right)\cup x\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\left(z\cup y\right)^{*}\circ x$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\left(\left(x\circ x^{*}\right)\circ y\circ y^{*}\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\left(\left(x\circ x^{*}\right)\cup\left(y\circ y^{*}\right)\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\left(\left(x^{*}\circ y^{*}\right)\circ z^{*}\right)$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Escriba expresiones regulares que describan los siguientes lenguajes:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Todas las cadenas de 
+\begin_inset Formula $x$
+\end_inset
+
+ e 
+\begin_inset Formula $y$
+\end_inset
+
+ que consisten en un numero impar de 
+\begin_inset Formula $x$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Todas las cadenas de 
+\begin_inset Formula $x$
+\end_inset
+
+ e 
+\begin_inset Formula $y$
+\end_inset
+
+ que consisten en un numero impar de 
+\begin_inset Formula $x$
+\end_inset
+
+ y un numero par de 
+\begin_inset Formula $y$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Todas las cadenas de 
+\begin_inset Formula $x$
+\end_inset
+
+ e 
+\begin_inset Formula $y$
+\end_inset
+
+ tales que cada 
+\begin_inset Formula $y$
+\end_inset
+
+ se encuentre entre un par de 
+\begin_inset Formula $x$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Encuentre una expresión regular que represente la intersección de los lenguajes
+ representados por cada uno de los siguientes pares de expresiones regulares:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset Formula $\left(x\cup y^{*}\right)$
+\end_inset
+
+ y 
+\begin_inset Formula $\left(x\cup y\right)^{*}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\left(x\circ\left(x\cup y\right)^{*}\right)$
+\end_inset
+
+ y 
+\begin_inset Formula $\left(\left(x\cup y\right)^{*}\circ y\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\left(\left(\left(x\cup y\right)\circ y\right)\circ\left(x\cup y\right)^{*}\right)$
+\end_inset
+
+ y 
+\begin_inset Formula $\left(y\circ\left(x\cup y\right)^{*}\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\left(\left(x\cup y\right)\circ\left(x\cup\emptyset\right)\right)$
+\end_inset
+
+ y 
+\begin_inset Formula $\left(\left(x\cup y\right)\circ\left(x\circ y\right)^{*}\right)$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\end_body
+\end_document

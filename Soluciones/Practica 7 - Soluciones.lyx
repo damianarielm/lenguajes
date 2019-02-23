@@ -1,0 +1,2241 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\begin_preamble
+\renewcommand{\headrulewidth}{1pt}
+\renewcommand{\footrulewidth}{0.5pt}
+\fancyheadoffset[L]{-16pt}
+\usepackage{tikz}
+\usetikzlibrary{automata,positioning,calc}
+\end_preamble
+\use_default_options true
+\begin_modules
+customHeadersFooters
+enumitem
+multicol
+\end_modules
+\maintain_unincluded_children false
+\language spanish-mexico
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize 12
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 2cm
+\rightmargin 2cm
+\headheight 0cm
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style french
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle fancy
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Left Header
+
+\noun on
+Lenguajes Formales y Computabilidad
+\end_layout
+
+\begin_layout Right Header
+2018
+\end_layout
+
+\begin_layout Center Footer
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+thepage
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+
+\size larger
+PRÁCTICA 7: 
+\emph on
+Soluciones
+\end_layout
+
+\begin_layout Standard
+
+\size footnotesize
+Pablo Verdes
+\begin_inset space \hspace*{\fill}
+\end_inset
+
+Dante Zanarini
+\begin_inset space \hspace*{\fill}
+\end_inset
+
+Pamela Viale
+\begin_inset space \hspace*{\fill}
+\end_inset
+
+Alejandro Hernandez
+\begin_inset space \hspace*{\fill}
+\end_inset
+
+Mauro Lucci
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset line
+LatexCommand rule
+offset "0.5ex"
+width "100col%"
+height "1pt"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset space ~
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset Preview
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{tikzpicture}[baseline=(current bounding box.center),shorten >=1pt,node
+ distance=2cm,on grid,auto]
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node[state,initial, initial text=inicio] (sigma1)   {$
+\backslash
+sigma_1$};
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node[state] (sigma2) [above right=of sigma1] {$
+\backslash
+sigma_2$};
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node[state, accepting] (sigma3) [right=of sigma2] {$
+\backslash
+sigma_3$};
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node[state] (sigma4) [below right=of sigma1] {$
+\backslash
+sigma_4$};
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+path[->]
+\end_layout
+
+\begin_layout Plain Layout
+
+		(sigma1)	edge  node {$0$} (sigma2)
+\end_layout
+
+\begin_layout Plain Layout
+
+					edge  node [swap] {$1$} (sigma4)
+\end_layout
+
+\begin_layout Plain Layout
+
+		(sigma4)	edge  [loop left] node {$1$} ()
+\end_layout
+
+\begin_layout Plain Layout
+
+					edge  [loop right] node {$0$} ()
+\end_layout
+
+\begin_layout Plain Layout
+
+		(sigma2)	edge  node {$1$} (sigma4)
+\end_layout
+
+\begin_layout Plain Layout
+
+		(sigma2)	edge  [bend left] node {$0$} (sigma3)
+\end_layout
+
+\begin_layout Plain Layout
+
+		(sigma3)	edge  [bend left] node {$1$} (sigma4)
+\end_layout
+
+\begin_layout Plain Layout
+
+		(sigma3)	edge  node {$0$} (sigma4);
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{tikzpicture}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+COMPLETAR.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Preview
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{tikzpicture}[baseline=(current bounding box.center),shorten >=1pt,node
+ distance=2cm,on grid,auto]
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node[state,initial, initial text=inicio] (sigma1)   {$
+\backslash
+sigma_1$};
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node[state, accepting] (sigma2) [above right=of sigma1] {$
+\backslash
+sigma_2$};
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node[state] (sigma3) [right=of sigma2] {$
+\backslash
+sigma_3$};
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node[state] (sigma4) [below right=of sigma1] {$
+\backslash
+sigma_4$};
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+path[->]
+\end_layout
+
+\begin_layout Plain Layout
+
+		(sigma1)	edge  node {$1$} (sigma2)
+\end_layout
+
+\begin_layout Plain Layout
+
+					edge  node [swap] {$0$} (sigma4)
+\end_layout
+
+\begin_layout Plain Layout
+
+		(sigma4)	edge  [loop above] node {$1$} ()
+\end_layout
+
+\begin_layout Plain Layout
+
+					edge  [loop right] node {$0$} ()
+\end_layout
+
+\begin_layout Plain Layout
+
+		(sigma2)	edge  [loop above] node {$1$} ()
+\end_layout
+
+\begin_layout Plain Layout
+
+		(sigma2)	edge  [bend left] node {$0$} (sigma3)
+\end_layout
+
+\begin_layout Plain Layout
+
+		(sigma3)	edge  [bend left] node {$1$} (sigma2)
+\end_layout
+
+\begin_layout Plain Layout
+
+		(sigma3)	edge  [loop above] node {$0$} ();
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{tikzpicture}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Preview
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{tikzpicture}[baseline=(current bounding box.center),shorten >=1pt,node
+ distance=2cm,on grid,auto]
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node[state,initial, initial text=inicio] (sigma1)   {$
+\backslash
+sigma_1$};
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node[state] (sigma2) [right=of sigma1] {$
+\backslash
+sigma_2$};
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node[state, accepting] (sigma3) [right=of sigma2] {$
+\backslash
+sigma_3$};
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+path[->]
+\end_layout
+
+\begin_layout Plain Layout
+
+		(sigma1)	edge  [loop above] node {$1$} ()
+\end_layout
+
+\begin_layout Plain Layout
+
+					edge  [bend left] node {$0$} (sigma2)
+\end_layout
+
+\begin_layout Plain Layout
+
+		(sigma2)	edge  [bend left] node {$1$} (sigma1)
+\end_layout
+
+\begin_layout Plain Layout
+
+		(sigma2)	edge  node {$0$} (sigma3)
+\end_layout
+
+\begin_layout Plain Layout
+
+		(sigma3)	edge  [loop right] node {$1$} ()
+\end_layout
+
+\begin_layout Plain Layout
+
+		(sigma3)	edge  [loop above] node {$0$} ();
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{tikzpicture}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Preview
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{tikzpicture}[baseline=(current bounding box.center),shorten >=1pt,node
+ distance=2cm,on grid,auto]
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node[state,initial, initial text=inicio] (sigma1)   {$
+\backslash
+sigma_1$};
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node[state] (sigma2) [above right=of sigma1] {$
+\backslash
+sigma_2$};
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node[state] (sigma4) [below right=of sigma1] {$
+\backslash
+sigma_4$};
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node[state, accepting] (sigma3) [right=of sigma2] {$
+\backslash
+sigma_3$};
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node[state, accepting] (sigma5) [right=of sigma4] {$
+\backslash
+sigma_5$};
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+path[->]
+\end_layout
+
+\begin_layout Plain Layout
+
+		(sigma1)	edge  node [below, sloped]{$1$} (sigma4)
+\end_layout
+
+\begin_layout Plain Layout
+
+					edge  node [above, sloped, swap] {$0$} (sigma2)
+\end_layout
+
+\begin_layout Plain Layout
+
+		(sigma2)	edge  node {$0$} (sigma3)
+\end_layout
+
+\begin_layout Plain Layout
+
+					edge  [bend left] node {$1$} (sigma4)
+\end_layout
+
+\begin_layout Plain Layout
+
+		(sigma3)	edge  [loop right] node {$0$} ()
+\end_layout
+
+\begin_layout Plain Layout
+
+					edge  [bend left=90, distance=3cm] node [sloped, below] {$1$} (sigma4)
+\end_layout
+
+\begin_layout Plain Layout
+
+		(sigma4)	edge  [bend left] node [right] {$0$} (sigma2)
+\end_layout
+
+\begin_layout Plain Layout
+
+					edge  node {$1$} (sigma5)
+\end_layout
+
+\begin_layout Plain Layout
+
+		(sigma5)	%edge  [loop right] node {$1$} ()
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+					edge  [bend right] node [sloped, above] {$0$} (sigma2);
+\end_layout
+
+\begin_layout Plain Layout
+
+			
+\backslash
+path[->] (sigma5) edge [out=60,in=20,looseness=5] node {$1$} (sigma5);
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{tikzpicture}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+COMPLETAR.
+\end_layout
+
+\begin_layout Enumerate
+COMPLETAR.
+\end_layout
+
+\begin_layout Enumerate
+COMPLETAR.
+\end_layout
+
+\begin_layout Enumerate
+COMPLETAR.
+\end_layout
+
+\begin_layout Enumerate
+COMPLETAR.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Preview
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{tikzpicture}[baseline=(current bounding box.center),shorten >=1pt,node
+ distance=2.5cm,on grid,auto]
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node[state,initial, initial text=inicio] (sigma0)   {$0_p 1_p$};
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node[state] (sigma1) [right=of sigma0] {$0_i 1_i$};
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node[state] (sigma2) [above=of sigma0] {$0_i 1_p$};
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node[state, accepting] (sigma3) [below=of sigma0] {$0_p 1_i$};
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+path[->]
+\end_layout
+
+\begin_layout Plain Layout
+
+		(sigma0)	edge  node {$1$} (sigma3)
+\end_layout
+
+\begin_layout Plain Layout
+
+					edge  [bend left] node [left] {$0$} (sigma2)
+\end_layout
+
+\begin_layout Plain Layout
+
+		(sigma1)	edge  [bend left] node {$0$} (sigma3)
+\end_layout
+
+\begin_layout Plain Layout
+
+					edge  node {$1$} (sigma2)
+\end_layout
+
+\begin_layout Plain Layout
+
+		(sigma2)	edge  node [right] {$0$} (sigma0)
+\end_layout
+
+\begin_layout Plain Layout
+
+					edge  [bend left] node {$1$} (sigma1)
+\end_layout
+
+\begin_layout Plain Layout
+
+		(sigma3)	edge  node [below] {$0$} (sigma1)
+\end_layout
+
+\begin_layout Plain Layout
+
+					edge  [bend left] node {$1$} (sigma0);
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{tikzpicture}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+COMPLETAR.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Preview
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{tikzpicture}[baseline=(current bounding box.center),shorten >=1pt,node
+ distance=3cm,on grid,auto]
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node[state, initial, initial text=inicio] (sigma0) {$
+\backslash
+sigma_0$};
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node[state, right of= sigma0] (sigma1) {$
+\backslash
+sigma_1$};
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node[state, above of= sigma1] (A) {$A$};
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node[state, below of= sigma1] (B) {$B$};
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node[state, accepting, above right of= A] (sigma2) {$
+\backslash
+sigma_2$};
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node[state, accepting, below right of= A] (sigma3) {$
+\backslash
+sigma_3$};
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node[state, accepting, right of= sigma2] (sigma4) {$
+\backslash
+sigma_4$};
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node[state, right of= sigma3] (sigma5) {$
+\backslash
+sigma_5$};
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node[state, accepting, above right of= B] (sigma6) {$
+\backslash
+sigma_6$};
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node[state, accepting, below right of= B] (sigma7) {$
+\backslash
+sigma_7$};
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node[state, right of= sigma6] (sigma8) {$
+\backslash
+sigma_8$};
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node[state, accepting, right of= sigma7] (sigma9) {$
+\backslash
+sigma_9$};
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+path[->]
+\end_layout
+
+\begin_layout Plain Layout
+
+		(sigma0) edge [bend right] node {$a$} (sigma1)
+\end_layout
+
+\begin_layout Plain Layout
+
+		(sigma0) edge [bend left] node {$b$} (sigma1)
+\end_layout
+
+\begin_layout Plain Layout
+
+		(sigma1) edge  node {$a$} (A)
+\end_layout
+
+\begin_layout Plain Layout
+
+		(sigma1) edge  node {$b$} (B)
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+		(A) edge  node {$a$} (sigma2)
+\end_layout
+
+\begin_layout Plain Layout
+
+		(A) edge  node {$b$} (sigma3)
+\end_layout
+
+\begin_layout Plain Layout
+
+		(sigma2) edge [loop left] node {$a$} ()
+\end_layout
+
+\begin_layout Plain Layout
+
+		(sigma2) edge  node {$b$} (sigma4)
+\end_layout
+
+\begin_layout Plain Layout
+
+		(sigma3) edge  [bend left] node {$a$} (A)
+\end_layout
+
+\begin_layout Plain Layout
+
+		(sigma3) edge  node {$b$} (sigma5)
+\end_layout
+
+\begin_layout Plain Layout
+
+		(sigma4) edge  node {$a$} (A)
+\end_layout
+
+\begin_layout Plain Layout
+
+		(sigma4) edge  node {$b$} (sigma5)
+\end_layout
+
+\begin_layout Plain Layout
+
+		(sigma5) edge [loop right] node {$b$} ()
+\end_layout
+
+\begin_layout Plain Layout
+
+		(sigma5) edge  [bend right] node {$a$} (A)
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+		(B) edge  node {$a$} (sigma6)
+\end_layout
+
+\begin_layout Plain Layout
+
+		(B) edge  node [below] {$b$} (sigma7)
+\end_layout
+
+\begin_layout Plain Layout
+
+		(sigma6) edge node {$a$} (sigma8)
+\end_layout
+
+\begin_layout Plain Layout
+
+		(sigma6) edge [bend left] node {$b$} (B)
+\end_layout
+
+\begin_layout Plain Layout
+
+		(sigma7) edge [loop left] node {$b$} ()
+\end_layout
+
+\begin_layout Plain Layout
+
+		(sigma7) edge node {$a$} (sigma9)
+\end_layout
+
+\begin_layout Plain Layout
+
+		(sigma8) edge [loop right] node {$a$} ()
+\end_layout
+
+\begin_layout Plain Layout
+
+		(sigma8) edge  [bend left] node {$b$} (B)
+\end_layout
+
+\begin_layout Plain Layout
+
+		(sigma9) edge node {$a$} (sigma8)
+\end_layout
+
+\begin_layout Plain Layout
+
+		(sigma9) edge node [above] {$b$} (B)
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+;
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{tikzpicture}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+\begin_inset space ~
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset Preview
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{tikzpicture}[baseline=(current bounding box.center),shorten >=1pt,node
+ distance=2.5cm,on grid,auto]
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node[state,accepting, initial, initial text=inicio] (sigma1) {$
+\backslash
+sigma_1$};
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node[state, right= of sigma1] (sigma2) {$
+\backslash
+sigma_2$};
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node[state, right= of sigma2] (sigma3) {$
+\backslash
+sigma_3$};
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node[state, accepting, right= of sigma3] (sigma4) {$
+\backslash
+sigma_4$};
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node[state, accepting, above right= of sigma1] (sigma5) {$
+\backslash
+sigma_5$};
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node[state, below right= of sigma1] (sigma6) {$
+\backslash
+sigma_6$};
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+path[->]
+\end_layout
+
+\begin_layout Plain Layout
+
+		(sigma1) edge node {$b$} (sigma2)
+\end_layout
+
+\begin_layout Plain Layout
+
+		(sigma2) edge node {$b$} (sigma3)
+\end_layout
+
+\begin_layout Plain Layout
+
+		(sigma3) edge node {$b$} (sigma4)
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+		(sigma1) edge node {$a$} (sigma6)
+\end_layout
+
+\begin_layout Plain Layout
+
+		(sigma1) edge node {$c$} (sigma5)
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+		(sigma6) edge [loop left] node {$a$} ()
+\end_layout
+
+\begin_layout Plain Layout
+
+		(sigma6) edge [loop right] node {$b$} ()
+\end_layout
+
+\begin_layout Plain Layout
+
+		(sigma6) edge [loop below] node {$c$} ()
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+		(sigma4) edge [loop above] node {$a$} ()
+\end_layout
+
+\begin_layout Plain Layout
+
+		(sigma4) edge [loop right] node {$c$} ()
+\end_layout
+
+\begin_layout Plain Layout
+
+		(sigma4) edge [bend left=70] node {$b$} (sigma2)
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+		(sigma3) edge [loop above] node {$a$} ()
+\end_layout
+
+\begin_layout Plain Layout
+
+		(sigma3) edge [loop below] node {$c$} ()
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+		(sigma5) edge [loop left] node {$c$} ()
+\end_layout
+
+\begin_layout Plain Layout
+
+		(sigma5) edge [loop right] node {$a$} ()
+\end_layout
+
+\begin_layout Plain Layout
+
+		(sigma5) edge node {$b$} (sigma2)
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+		(sigma2) edge [out=60,in=20,looseness=5] node {$a$} (sigma2)
+\end_layout
+
+\begin_layout Plain Layout
+
+		(sigma2) edge [out=280,in=240,looseness=5] node [below] {$c$} (sigma2);
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{tikzpicture}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Preview
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{tikzpicture}[baseline=(current bounding box.center),shorten >=1pt,node
+ distance=2.5cm,on grid,auto]
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node[state,accepting, initial, initial text=inicio] (sigma1) {$0b$};
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node[state, right= of sigma1, accepting] (sigma2) {$1b$};
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node[state, above= of sigma2, accepting] (sigma3) {$2b$};
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node[state, below= of sigma2] (sigma4) {$c$};
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node[state, right= of sigma2] (sigma5) {$
+\backslash
+geq3b$};
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+path[->]
+\end_layout
+
+\begin_layout Plain Layout
+
+		(sigma1) edge [bend left] node {$b$} (sigma2)
+\end_layout
+
+\begin_layout Plain Layout
+
+		(sigma1) edge [loop above] node {$a$} ()
+\end_layout
+
+\begin_layout Plain Layout
+
+		(sigma1) edge node [below] {$c$} (sigma4)
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+		(sigma2) edge [bend left] node {$a$} (sigma1)
+\end_layout
+
+\begin_layout Plain Layout
+
+		(sigma2) edge node {$b$} (sigma3)
+\end_layout
+
+\begin_layout Plain Layout
+
+		(sigma2) edge node {$c$} (sigma4)
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+		(sigma3) edge node {$b$} (sigma5)
+\end_layout
+
+\begin_layout Plain Layout
+
+		(sigma3) edge node [above] {$a$} (sigma1)
+\end_layout
+
+\begin_layout Plain Layout
+
+		(sigma3) edge [bend left] node {$c$} (sigma4)
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+		(sigma4) edge [bend left] node {$a$} (sigma1)
+\end_layout
+
+\begin_layout Plain Layout
+
+		(sigma4) edge [bend left] node {$b$} (sigma2)
+\end_layout
+
+\begin_layout Plain Layout
+
+		(sigma4) edge [loop right] node {$c$} ()
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+		(sigma5) edge [loop above] node {$a$} ()
+\end_layout
+
+\begin_layout Plain Layout
+
+		(sigma5) edge [loop right] node {$b$} ()
+\end_layout
+
+\begin_layout Plain Layout
+
+		(sigma5) edge [loop below] node {$c$} ();
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{tikzpicture}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Similar al ejercicio 1k, pero con loops para la letra 
+\begin_inset Formula $c$
+\end_inset
+
+ en todos los estados.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Preview
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{tikzpicture}[baseline=(current bounding box.center),shorten >=1pt,node
+ distance=2cm,on grid,auto]
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node[state,initial, initial text=inicio] (sigma1) {$
+\backslash
+sigma_1$};
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node[state, accepting, right= of sigma1] (sigma2) {$
+\backslash
+sigma_2$};
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+path[->]
+\end_layout
+
+\begin_layout Plain Layout
+
+		(sigma1) edge [loop above] node {$a$} ()
+\end_layout
+
+\begin_layout Plain Layout
+
+		(sigma1) edge [loop below] node {$b$} ()
+\end_layout
+
+\begin_layout Plain Layout
+
+		(sigma1) edge node {$c$} (sigma2)
+\end_layout
+
+\begin_layout Plain Layout
+
+		(sigma2) edge [loop right] node {$c$} ()
+\end_layout
+
+\begin_layout Plain Layout
+
+		(sigma2) edge [bend left] node {$a$} (sigma1)
+\end_layout
+
+\begin_layout Plain Layout
+
+		(sigma2) edge [bend right] node [above] {$b$} (sigma1)
+\end_layout
+
+\begin_layout Plain Layout
+
+;
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{tikzpicture}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Puede construirse a partir del ejercicio c.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+\begin_inset space ~
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+\begin_inset Preview
+
+\begin_layout Standard
+\align center
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{tikzpicture}[node distance=2cm,on grid,auto]
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node[state,initial, initial text=inicio] (sigma1)   {};
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node[state] (sigma2) [right=of sigma1] {};
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node[state] (sigma3) [right=of sigma2] {};
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node[state,accepting] (sigma4) [right=of sigma3] {};
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+path[->]
+\end_layout
+
+\begin_layout Plain Layout
+
+		(sigma1)	edge  [bend left] node {$a$} (sigma2)
+\end_layout
+
+\begin_layout Plain Layout
+
+					edge  [bend right] node {$b$} (sigma2)
+\end_layout
+
+\begin_layout Plain Layout
+
+		(sigma2)	edge [loop above] node {$b$} ()
+\end_layout
+
+\begin_layout Plain Layout
+
+					edge node {$x$} (sigma3)
+\end_layout
+
+\begin_layout Plain Layout
+
+		(sigma3)	edge [loop above] node {$x$} ()
+\end_layout
+
+\begin_layout Plain Layout
+
+					edge node {$y$} (sigma4)
+\end_layout
+
+\begin_layout Plain Layout
+
+		(sigma4)	edge [loop right] node {$y$} ();
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{tikzpicture}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+\begin_inset space ~
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+\begin_inset Preview
+
+\begin_layout Standard
+\align center
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{tikzpicture}[node distance=2cm,on grid,auto]
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node[state,initial, initial text=inicio] (sigma1)   {};
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node[state,accepting] (sigma2) [above right=of sigma1] {};
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node[state] (sigma3) [right=of sigma2] {};
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node[state,accepting] (sigma4) [below right=of sigma1] {};
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node[state] (sigma5) [right=of sigma4] {};
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+path[->]
+\end_layout
+
+\begin_layout Plain Layout
+
+		(sigma1)	edge node {$a$} (sigma2)
+\end_layout
+
+\begin_layout Plain Layout
+
+		(sigma2)	edge [bend left] node {$b$} (sigma3)
+\end_layout
+
+\begin_layout Plain Layout
+
+		(sigma3)	edge [bend left] node {$a$} (sigma2)
+\end_layout
+
+\begin_layout Plain Layout
+
+		(sigma1)	edge node {$x$} (sigma4)
+\end_layout
+
+\begin_layout Plain Layout
+
+		(sigma4)	edge [bend left] node {$y$} (sigma5)
+\end_layout
+
+\begin_layout Plain Layout
+
+		(sigma5)	edge [bend left] node {$x$} (sigma4);
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{tikzpicture}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+\begin_inset space ~
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Preview
+
+\begin_layout Standard
+\align center
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{tikzpicture}[node distance=2cm,on grid,auto]
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node[state,initial,accepting,initial text=inicio] (sigma1)   {};
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node[state] (sigma1') [right=of sigma1] {};
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node[state,accepting] (sigma2) [right=of sigma1'] {};
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node[state] (sigma3) [right=of sigma2] {};
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+path[->]
+\end_layout
+
+\begin_layout Plain Layout
+
+		(sigma1)	edge  [bend left] node {$a$} (sigma2)
+\end_layout
+
+\begin_layout Plain Layout
+
+		(sigma1')	edge  node {$a$} (sigma2)
+\end_layout
+
+\begin_layout Plain Layout
+
+		(sigma2)	edge [bend left] node {$b$} (sigma1')
+\end_layout
+
+\begin_layout Plain Layout
+
+		(sigma2)	edge [loop below] node {$a$} ()
+\end_layout
+
+\begin_layout Plain Layout
+
+		(sigma2)	edge node {$c$} (sigma3);
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{tikzpicture}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+\begin_inset Formula $\left(a\circ b^{*}\right)\cup\left(a\circ b^{*}\circ a\right)\cup\left(b\circ a^{*}\right)\cup\left(b\circ a^{*}\circ b\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset space ~
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{samepage}
+\end_layout
+
+\end_inset
+
+Union: Puesto que 
+\begin_inset Formula $L$
+\end_inset
+
+ y 
+\begin_inset Formula $M$
+\end_inset
+
+ son lenguajes regulares, existen expresiones regulares 
+\begin_inset Formula $l$
+\end_inset
+
+ y 
+\begin_inset Formula $m$
+\end_inset
+
+ tales que 
+\begin_inset Formula $L\left(l\right)=L$
+\end_inset
+
+ y 
+\begin_inset Formula $L\left(m\right)=M$
+\end_inset
+
+.
+ Luego para la expresión regular 
+\begin_inset Formula $l\cup m$
+\end_inset
+
+ resulta: 
+\begin_inset Formula $L\left(l\cup m\right)=L\left(l\right)\cup L\left(m\right)=L\cup M$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Complemento: Sabemos que 
+\begin_inset Formula $L$
+\end_inset
+
+ es regular, luego existe un autómata 
+\begin_inset Formula $A=\left(\Sigma,S,f,Ac,\sigma\right)$
+\end_inset
+
+ tal que 
+\begin_inset Formula $\mathcal{AC}\left(A\right)=L$
+\end_inset
+
+.
+ Para el autómata 
+\begin_inset Formula $B=\left(\Sigma,S,f,S-Ac,\sigma\right)$
+\end_inset
+
+ resultara: 
+\begin_inset Formula $\mathcal{AC}\left(B\right)=\overline{L}=\Sigma^{*}-L$
+\end_inset
+
+.
+ Es fácil ver que toda palabra aceptada por 
+\begin_inset Formula $B$
+\end_inset
+
+ esta en 
+\begin_inset Formula $\Sigma^{*}$
+\end_inset
+
+ .
+ Ahora, dada una palabra 
+\begin_inset Formula $\alpha\in\overline{L}$
+\end_inset
+
+ sabemos que 
+\begin_inset Formula $F\left(\alpha\right)\in S-Ac$
+\end_inset
+
+ luego 
+\begin_inset Formula $F\left(\alpha\right)\notin Ac$
+\end_inset
+
+ por lo que 
+\begin_inset Formula $\alpha\notin L$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Intersección: Observemos que 
+\begin_inset Formula $L\cap M=\overline{\overline{L}\cup\overline{M}}$
+\end_inset
+
+ y como el complemento es cerrado, entonces la intersección es cerrada.
+\end_layout
+
+\begin_layout Itemize
+Diferencia: Observemos que 
+\begin_inset Formula $L-M=L\cap\overline{M}$
+\end_inset
+
+ y como la intersección es cerrada, entonces la diferencia es cerrada.
+\end_layout
+
+\begin_layout Itemize
+Concatenación: Análoga a la unión.
+\end_layout
+
+\begin_layout Itemize
+Reversa: COMPLETAR.
+\end_layout
+
+\begin_layout Itemize
+Estrella de Kleene: Análoga a la unión.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{samepage}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+COMPLETAR.
+\end_layout
+
+\begin_layout Enumerate
+COMPLETAR.
+\end_layout
+
+\begin_layout Enumerate
+COMPLETAR.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset space ~
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Flex Multiple Columns
+status open
+
+\begin_layout Enumerate
+\begin_inset Formula $\left\{ xyz^{n}/n\in\mathbb{N}_{0}\right\} $
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\left\{ x^{n}yz/n\in\mathbb{N}_{0}\right\} $
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\left\{ xx,yx\right\} $
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula ${\displaystyle \bigcup_{n\in\mathbb{N}_{0}}}\left\{ \alpha_{1}\ldots\alpha_{n}/\alpha_{i}\in\left\{ z,y\right\} \right\} $
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\left\{ \left(yy\right)^{n}/n\in\mathbb{N}_{0}\right\} $
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\left(\alpha^{n}/n\in\mathbb{N}_{0}\land\alpha\in\left\{ x,y\right\} \right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\left\{ xx,z\right\} $
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\left\{ z,y,x\right\} $
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\left\{ \alpha x/\alpha\in D\right\} $
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\left\{ xx^{n}yy^{m}/n,m\in\mathbb{N}_{0}\right\} $
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\left\{ \alpha\alpha^{n}/n\in\mathbb{N}_{0}\land\alpha\in\left\{ x,y\right\} \right\} $
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+COMPLETAR.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+\begin_inset space ~
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset Formula $\left(x\circ x\right)^{*}\circ x$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\left(yy\cup xx\cup\left[\left(yx\cup xy\right)\circ\left(yy\cup xx\right)^{*}\circ\left(xy\cup yx\right)\right]\right)^{*}\circ\left(x\cup\left[\left(yx\cup xy\right)\circ\left(xx\cup yy\right)^{*}\circ y\right]\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\left(\left(x\circ\left(y\circ x\right)^{*}\right)\cup x^{*}\right)^{*}$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+\begin_inset space ~
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset Formula $x\cup y^{*}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $x\circ\left(x\cup y\right)^{*}\circ y$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $y\circ y\circ\left(x\cup y\right)^{*}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\left(x\circ x\right)\cup\left(y\circ x\right)$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\end_body
+\end_document

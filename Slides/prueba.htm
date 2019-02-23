@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="author" content="Pablo Verdes. LCC.">
+  <title>Funciones Recursivas</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="reveal.js/css/reveal.css">
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; position: absolute; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; }
+pre.numberSource a.sourceLine:empty
+  { position: absolute; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: absolute; left: -5em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="reveal.js/css/theme/black.css" id="theme">
+  <link rel="stylesheet" href="style.css"/>
+  <!-- Printing and PDF exports -->
+  <script>
+    var link = document.createElement( 'link' );
+    link.rel = 'stylesheet';
+    link.type = 'text/css';
+    link.href = window.location.search.match( /print-pdf/gi ) ? 'reveal.js/css/print/pdf.css' : 'reveal.js/css/print/paper.css';
+    document.getElementsByTagName( 'head' )[0].appendChild( link );
+  </script>
+  <!--[if lt IE 9]>
+  <script src="reveal.js/lib/js/html5shiv.js"></script>
+  <![endif]-->
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide">
+  <h1 class="title">Funciones Recursivas</h1>
+  <p class="author">Pablo Verdes. LCC.</p>
+  <p class="date">9 de Abril de 2019.</p>
+</section>
+
+<section id="contenidos" class="slide level3">
+<h3>Contenidos</h3>
+<ul>
+<li class="fragment"><em>Motivacion</em>: Las FRP no alcanzan.
+<ul>
+<li class="fragment">Funciones parciales y totales.</li>
+<li class="fragment">Relacion entre FRP y funciones totales.</li>
+<li class="fragment">La funcion de Ackermann.</li>
+</ul></li>
+<li class="fragment"><em>Nuevo operador</em>: Minimizador.</li>
+<li class="fragment"><em>Funciones recursivas</em>: Definicion.</li>
+<li class="fragment"><em>Tesis de Church</em>.</li>
+</ul>
+</section>
+<section class="slide level3">
+
+<h6 id="las-frp-no-alcanzan">Las FRP no alcanzan</h6>
+<ul>
+<li class="fragment"><em>Definicion</em>: Una funcion numerica <span class="math inline">\(f:\mathbb{N}^k \to \mathbb{N}\)</span> se dice <em>parcial</em> si no esta definida sobre todos los elementos de <span class="math inline">\(\mathbb{N}^k\)</span>. Ejemplos:
+<ul>
+<li class="fragment"><p>La funcion:</p>
+<p><span class="math display">\[
+   \begin{aligned}
+     f : \mathbb{N} &amp; \to \mathbb{N} \\
+                  n &amp; \mapsto f(n) = n/3
+   \end{aligned}
+\]</span></p>
+solo esta definida en <span class="math inline">\(n=0,3,6,9,12,15,\ldots\)</span></li>
+<li class="fragment"><p>La funcion:</p>
+<p><span class="math display">\[
+  \begin{aligned}
+    f : \mathbb{N} &amp; \to \mathbb{N} \\
+                 n &amp; \mapsto f(n) = \sqrt{n}
+  \end{aligned}
+\]</span></p>
+solo esta definida en <span class="math inline">\(n=0,1,4,9,16,25,\ldots\)</span></li>
+<li class="fragment"><p>La funcion definida como: <span class="math inline">\(f(0)=0, f(n+2)=f(n)+3\)</span></p></li>
+</ul></li>
+</ul>
+</section>
+<section class="slide level3">
+
+<h6 id="las-frp-no-alzancan">Las FRP no alzancan</h6>
+<ul>
+<li class="fragment"><em>Definicion</em>: Una funcion numerica <span class="math inline">\(f:\mathbb{N}^k \to \mathbb{N}\)</span> se dice <em>total</em> si esta definida sobre todos los elementos de <span class="math inline">\(\mathbb{N}^k\)</span>.</li>
+<li class="fragment"><em>Teorema</em>: Si <span class="math inline">\(f\in FRP\)</span> entonces <span class="math inline">\(f\)</span> es una funcion total.<br />
+<em>Demostracion</em>: Por induccion sobre el conjunto FRP.
+<ul>
+<li class="fragment"><em>Caso base</em>: Trivial. Las funciones base <span class="math inline">\(c^{(k)},p_i^{(k)}\)</span> y <span class="math inline">\(s^{(1)}\)</span> son totales.</li>
+<li class="fragment"><p><em>Composicion</em>: Supongamos que <span class="math inline">\(f^{(n)},g_1^{(k)},\ldots,g_n^{(k)}\)</span> son totales y veamos que <span class="math display">\[h=\phi(f,g_1,g_2,\ldots,g_n)\]</span></p>
+<p>tambien es total. Dado <span class="math inline">\(X\in \mathbb{N}^k\)</span>, podemos calcular</p>
+<p><span class="math display">\[Y=(g_1(X),g_2(X),\ldots,g_n(X))\]</span></p>
+pues cada <span class="math inline">\(g_i\)</span> es total (H.I.). Como <span class="math inline">\(f\)</span> es total en <span class="math inline">\(\mathbb{N}\)</span>, podemos tambien calcular <span class="math inline">\(f(Y)\)</span>. Por lo tanto, <span class="math inline">\(\exists z\in\mathbb{N}\)</span> tal que <span class="math inline">\(z=F(Y)=h(X)\)</span>. Dado que <span class="math inline">\(\forall X\in\mathbb{N}^k \exists h(X)\)</span>, concluimos que <span class="math inline">\(h\)</span> es una funcion total.</li>
+<li class="fragment"><p><em>Recursion</em>: Ejercicio 1, Practica 4.</p></li>
+</ul></li>
+</ul>
+</section>
+<section class="slide level3">
+
+<h6 id="las-frp-no-alcanzan-1">Las FRP no alcanzan</h6>
+<ul>
+<li class="fragment"><p>En otras palabras, acabamos de probar que</p>
+<p><span class="math display">\[FRP\subseteq\{f / f \text{ es funcion total}\}\]</span></p></li>
+<li class="fragment">Es decir, las FRP no pueden representar funciones parciales.</li>
+<li class="fragment">Consideremos la pregunta inversa: ¿Sera que todas las funciones totales son FRP? Es decir, ¿sera cierto que <span class="math inline">\(f\)</span> total <span class="math inline">\(\Rightarrow f\in FRP\)</span>?</li>
+<li class="fragment">La respuesta es no: veremos a continuacion la funcion de Ackermann, que es total pero no recursiva primitiva.</li>
+<li class="fragment">Para demostrar que dicha funcion no es FRP, la estrategia sera demostrar que todas las FRP cumplen cierta propiedad, mientras que la funcion de Ackermann no la cumple.</li>
+<li class="fragment">Resumiendo, las FRP no pueden representar a:
+<ul>
+<li class="fragment">Ninguna funcion parcial.</li>
+<li class="fragment">Todas las funciones totales.</li>
+</ul></li>
+</ul>
+</section>
+<section class="slide level3">
+
+<h6 id="las-frp-no-alcanzan-2">Las FRP no alcanzan</h6>
+<ul>
+<li class="fragment">Deciamos que vamos a demostrar que cierta funcion (la llamada de Ackermann) no es FRP mostrando que:
+<ul>
+<li class="fragment">Todos los elementos del conjunto FRP satisfacen cierta propiedad.</li>
+<li class="fragment">La funcion de Ackermann no la satisface.</li>
+</ul></li>
+<li class="fragment">En terminos coloquiales, dicha propiedad sera la siguiente:</li>
+</ul>
+<div class="fragment">
+<blockquote>
+<p>Ser mayorado por algun elemento de la sucesion de Ackermann</p>
+</blockquote>
+<ul>
+<li class="fragment">Para formalizar este argumento, a continuacion definimos:
+<ul>
+<li class="fragment">La sucesion (o serie) de Ackermann, <span class="math inline">\(\{ f_k(x) \}_{k\in\mathbb{N}}\)</span>.</li>
+<li class="fragment">La funcion de Ackermann, <span class="math inline">\(ACK(x)\)</span>.</li>
+<li class="fragment">El concepto “<span class="math inline">\(f\)</span> mayora a <span class="math inline">\(g\)</span>”, que indicaremos <span class="math inline">\(f \uparrow g\)</span>.<br />
+</li>
+</ul></li>
+<li class="fragment">Luego demostraremos:
+<ol type="1">
+<li class="fragment"><span class="math inline">\(g\in FRP \Rightarrow \exists k\in\mathbb{N} / f_k \uparrow g\)</span>.</li>
+<li class="fragment"><span class="math inline">\(\nexists k\in\mathbb{N} / f_k \uparrow ACK\)</span>.</li>
+</ol></li>
+</ul>
+</div>
+</section>
+<section class="slide level3">
+
+<h6 id="sucesion-o-serie-de-ackermann">Sucesion (o serie) de Ackermann</h6>
+<ul>
+<li class="fragment"><p>Consideremos la siguiente sucesion de funciones, que llamaremos <em>sucesion (o serie de Ackermann)</em>:</p>
+<p><span class="math display">\[
+  \begin{aligned}
+    f_0(x) = &amp; s(x)=x+1 \\
+    f_1(x) = &amp; f_0^{x+2}(x)=s^{x+2}(x)=x+(x+2)=2x+2 \\
+    f_2(x) = &amp; f_1^{x+2}(x) \\ \vdots \\ 
+    f_k(x) = &amp; f_{k-1}^{x+2}(x) \\ \vdots
+  \end{aligned}
+\]</span></p></li>
+<li class="fragment">Para ver mejor como funciona, calculemos algunos valores de <span class="math inline">\(f_2(x)\)</span>:
+<ul>
+<li class="fragment"><span class="math inline">\(f_2(0) = f_1^2(0) = (2(2x+2)+2)|_{x=0}=6\)</span>.</li>
+<li class="fragment"><span class="math inline">\(f_2(1) = f_1^3(1) = (2(2(2x+2)+2)+2)|_{x=1}=6\)</span>.</li>
+<li class="fragment"><span class="math inline">\(f_2(2) = f_1^4(2) = (2(2(2(2x+2)+2)+2)+2)|_{x=2}=6\)</span>.</li>
+</ul></li>
+</ul>
+</section>
+<section class="slide level3">
+
+<h6 id="funcion-de-ackermann">Funcion de Ackermann</h6>
+<ul>
+<li class="fragment"><em>Propiedades</em>:
+<ul>
+<li class="fragment"><span class="math inline">\(\forall k\in\mathbb{N} : f_k(x)\in FRP\)</span></li>
+<li class="fragment"><span class="math inline">\(\forall x,k\in\mathbb{N} : f_k(x)&gt;x\)</span></li>
+<li class="fragment"><span class="math inline">\(\forall x_1,x_2,k\in\mathbb{N}: x_1 &lt; x_2 \Rightarrow f_k(x_1) &lt; f_k(x_2)\)</span></li>
+<li class="fragment"><span class="math inline">\(\forall x,k\in\mathbb{N} : f_k(x) &lt; f_{k+1}(x)\)</span></li>
+</ul></li>
+<li class="fragment"><em>Demostracion</em>: Ejercicio 2, Practica 4.</li>
+<li class="fragment"><p><em>Definicion</em>: Funcion de Ackermann</p>
+<p><span class="math display">\[ACK(x)=f_x(x)\]</span></p>
+<p>Calculemos algunos valres en el pizarron.</p></li>
+</ul>
+</section>
+<section class="slide level3">
+
+<h6 id="funcion-de-ackermann-1">Funcion de Ackermann</h6>
+<ul>
+<li class="fragment"><em>Definicion</em>: Decimos que una funcion <span class="math inline">\(f^{(1)}\)</span> <em>mayora</em> a otra funcion <span class="math inline">\(g^{(n)}\)</span> si <span class="math inline">\(\forall (x_1,x_2,\ldots,x_n)\in\mathbb{N}\)</span> se verifica que: <span class="math display">\[g(x_1,x_2,\ldots,x_n)\leq f(\max \{ x_1,x_2,\ldots,x_n \})\]</span> <em>Notacion</em>: <span class="math inline">\(f^{(1)} \uparrow g^{(n)}\)</span>.</li>
+</ul>
+<ol type="1">
+<li class="fragment"><em>Teorema</em>: Sea <span class="math inline">\(g^{(n)}\in FRP\)</span>, entonces existe <span class="math inline">\(f_k\)</span> de la sucesion de Ackermann tal que <span class="math inline">\(f_k \uparrow g\)</span>. <em>Demostracion</em>: Por induccion en <span class="math inline">\(g\)</span>. No la hacemos en clase (ver el libro <em>Temas de Teoria de la Computacion, Proyecto LATIn, pag. 56</em>).</li>
+<li class="fragment"><em>Teorema</em>: <span class="math inline">\(ACK(x)\notin FRP\)</span>. <em>Demostracion</em>: Por el absurdo, supongamos que <span class="math inline">\(ACK(x)\in FRP\)</span>. Luego <span class="math inline">\(ACK(x)+1 \in FRP\)</span>. Por el teorema anterior, existe <span class="math inline">\(f_M\)</span> en la sucesion de Ackermann que la mayora: <span class="math display">\[
+  \begin{aligned}
+    \forall x\in\mathbb{N}: ACK(x)+1 &amp; \leq f_M(x) \\
+    \forall x\in\mathbb{N}: f_x(x)+1 &amp; \leq f_M(x) \\
+            x=M \Rightarrow f_M(M)+1 &amp; \leq f_M(M) \text{ Absurdo!}
+  \end{aligned}
+\]</span> Por lo tanto <span class="math inline">\(ACK(x)\notin FRP\)</span>.</li>
+</ol>
+</section>
+<section class="slide level3">
+
+<h6 id="operador-minimizador-m">Operador Minimizador M</h6>
+<ul>
+<li class="fragment">Con la intencion de completar nuestro modelo de calculo, agregamos un nuevo operador.</li>
+<li class="fragment"><p><em>Definicion</em>: Operador Minimizador M. Dada <span class="math inline">\(h^{(n+1)}\)</span>, decimos que <span class="math inline">\(g^{(n)}\)</span> se construye por minimizacion de <span class="math inline">\(h\)</span> (y lo notaremos <span class="math inline">\(g=M[h]\)</span>) cuando <span class="math inline">\(g\)</span> se define del modo siguiente:</p>
+<p><span class="math display">\[g(X)=M [h] (X) = \mu_{t} (h(t,X)=0)\]</span></p>
+donde <span class="math inline">\(\mu_t (h(t,X)=0)\)</span> es, si existe, el minimo valor de <span class="math inline">\(t\)</span> tal que <span class="math inline">\(h(t,X)=0\)</span>.</li>
+<li class="fragment"><p>Observacion: Nada garantiza que tal valor de <span class="math inline">\(t\)</span> exista. Por lo tanto, las funciones construidas con el operador M pueden ser parciales.</p></li>
+</ul>
+</section>
+<section class="slide level3">
+
+<h6 id="ejemplos">Ejemplos</h6>
+<ul>
+<li class="fragment"><p>La funcion <em>cociente</em> <span class="math inline">\(C(x,y)=x/y\)</span>, que solo esta definida si existe <span class="math inline">\(t\)</span> tal que</p>
+<p><span class="math inline">\(ty=x\)</span>: <span class="math inline">\(C(x,y)=\mu_t (h(t,x,y)=0)\)</span> donde <span class="math display">\[h(t,x,y)=(ty \dot{-} x)+(x \dot{-} ty)\]</span></p></li>
+<li class="fragment"><p>La funcion <em>logaritmo</em> <span class="math inline">\(\log(x,y)=\log_x(y)\)</span>, que solo esta definida si existe <span class="math inline">\(t\)</span> tal que <span class="math inline">\(x^t=y\)</span>: <span class="math inline">\(\log(x,y)=\mu_t (h(t,x,y)=0)\)</span> donde</p>
+<p><span class="math display">\[h(t,x,y)=(x^t \dot{-} y)+(y \dot{-} x^t)\]</span></p></li>
+<li class="fragment"><p>La funcion <em>raiz enesima</em> <span class="math inline">\(Rad(x,n)=\sqrt[n]{x}\)</span>, que solo esta definida si existe <span class="math inline">\(t\)</span> tal que <span class="math inline">\(t^n=x\)</span>: <span class="math inline">\(Rad(x,n)=\mu_t (h(t,x,y)=0)\)</span> donde</p>
+<p><span class="math display">\[h(t,x,y)=(t^n \dot{-} x)+(x \dot{-} t^n)\]</span></p></li>
+</ul>
+<aside class="notes">
+<ul>
+<li>Realizar traza en el pizarron.</li>
+<li>Alertar sobre casos extremos. La funcion C falla en (0,0).</li>
+</ul>
+</aside>
+</section>
+<section class="slide level3">
+
+<h6 id="pseudocodigo">Pseudocodigo</h6>
+<div class="fragment">
+<p>La siguiente analogia muestra como dada <span class="math inline">\(h^{(n+1)}\)</span>, podemos pensar a <span class="math inline">\(g=M[h]\)</span> como un programa:</p>
+</div>
+<div class="fragment">
+<div class="sourceCode" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw">def</span> g(X):</a>
+<a class="sourceLine" id="cb1-2" data-line-number="2">  t <span class="op">=</span> <span class="dv">0</span></a>
+<a class="sourceLine" id="cb1-3" data-line-number="3">  <span class="cf">while</span> (h(t,X) <span class="op">!=</span> <span class="dv">0</span>):</a>
+<a class="sourceLine" id="cb1-4" data-line-number="4">    t <span class="op">+=</span> <span class="dv">1</span></a>
+<a class="sourceLine" id="cb1-5" data-line-number="5">  <span class="cf">return</span> t</a></code></pre></div>
+</div>
+</section>
+<section class="slide level3">
+
+<h6 id="funciones-recursivas">Funciones Recursivas</h6>
+<ul>
+<li class="fragment"><em>Definicion</em>: Definimos inductivamente el conjunto de <em>Funciones Recursivas (FR)</em> como el menor conjunto tal que:
+<ul>
+<li class="fragment">Las funciones base pertenecen a FR.</li>
+<li class="fragment">Las funciones obtenidas aplicando un numero finito de operaciones de composicion (<span class="math inline">\(\phi\)</span>), recursion (<span class="math inline">\(R\)</span>) y minimizacion (<span class="math inline">\(M\)</span>) sobre elementos de FR tambien pertenecen a FR.</li>
+</ul></li>
+<li class="fragment">Observemos que <span class="math inline">\(FRP \subset FR\)</span>.</li>
+<li class="fragment">Se extiende la propiedad de ser <em>revursivos</em> a conjuntos y relaciones de manera analoga a como se hizo para la recursion primitiva.</li>
+<li class="fragment">Todos los mecanismos que permiten construir elementos nuevos de FRP, CRP y RRP a partir de otros elementos pueden ser extendidos al caso de FR, CR y RR.</li>
+</ul>
+</section>
+<section class="slide level3">
+
+<h6 id="tesis-de-church">Tesis de Church</h6>
+<ul>
+<li class="fragment">¿Hara falta introducir algun operador mas?</li>
+<li class="fragment">La <em>Tesis de Church</em> afirma que el conjunto de las FR coincide con el de las funciones “calculables”.</li>
+<li class="fragment">Por funcion “calculable” entendemos una funcion para la cual podemos, en principio, obtener el valor de la imagen de cualquier elemento de su dominio mediante un algoritmo. (Esto no significa que efectivamente podamos realizar el calculo pues podria haber limitaciones de tiempo y espacio).</li>
+<li class="fragment">Observemos que no es posible demostrar la Tesis de Church, pues la definicion de funcion “calculable” es intuitiva pero no rigurosa.</li>
+<li class="fragment">Sin embargo, en la busqueda de otros posibles modelos para el calculo (que estudiaremos en la materia) no se ha encontrado ningun algoritmo que no pueda ser representado como una FR.</li>
+</ul>
+</section>
+    </div>
+  </div>
+
+  <script src="reveal.js/lib/js/head.min.js"></script>
+  <script src="reveal.js/js/reveal.js"></script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        // Push each slide change to the browser history
+        history: true,
+        math: {
+          mathjax: 'mathjax/MathJax.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
+        // Optional reveal.js plugins
+        dependencies: [
+          { src: 'reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+          { src: 'reveal.js/plugin/zoom-js/zoom.js', async: true },
+          { src: 'reveal.js/plugin/math/math.js', async: true },
+          { src: 'reveal.js/plugin/notes/notes.js', async: true }
+        ]
+      });
+    </script>
+    </body>
+</html>

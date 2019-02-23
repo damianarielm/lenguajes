@@ -1,0 +1,548 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\begin_preamble
+\renewcommand{\headrulewidth}{1pt}
+\renewcommand{\footrulewidth}{0.5pt}
+\fancyheadoffset[L]{-16pt}
+\usepackage{tikz}
+\usetikzlibrary{automata,positioning,calc}
+\end_preamble
+\use_default_options true
+\begin_modules
+customHeadersFooters
+enumitem
+multicol
+\end_modules
+\maintain_unincluded_children false
+\language spanish-mexico
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize 12
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 2cm
+\rightmargin 2cm
+\headheight 0cm
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style french
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle fancy
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Left Header
+
+\noun on
+Lenguajes Formales y Computabilidad
+\end_layout
+
+\begin_layout Right Header
+2018
+\end_layout
+
+\begin_layout Center Footer
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+thepage
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+
+\size larger
+PRÁCTICA 8: 
+\emph on
+Autómatas de Pila
+\end_layout
+
+\begin_layout Standard
+
+\size footnotesize
+Pablo Verdes
+\begin_inset space \hspace*{\fill}
+\end_inset
+
+Dante Zanarini
+\begin_inset space \hspace*{\fill}
+\end_inset
+
+Pamela Viale
+\begin_inset space \hspace*{\fill}
+\end_inset
+
+Alejandro Hernandez
+\begin_inset space \hspace*{\fill}
+\end_inset
+
+Mauro Lucci
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset line
+LatexCommand rule
+offset "0.5ex"
+width "100col%"
+height "1pt"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+De un autómata de pila que reconozca cada uno de los siguientes lenguajes
+ y que al aceptar una cadena, su pila quede vacía:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset Formula $\left\{ a^{n}b^{n}/n\in\mathbb{N}_{0}\right\} $
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\left\{ a^{n}b^{m}c^{n}/m,n\in\mathbb{N}_{0}\right\} $
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\left\{ a^{n}b^{2n}c^{m}/m,n\in\mathbb{N}_{0}\right\} $
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\left\{ a^{r}b^{s}c^{t}/r,s,t\in\mathbb{N}_{0}\land t=r+s\right\} $
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\left\{ a^{r}b^{s}c^{t}d^{u}/r,s,t,u\in\mathbb{N}_{0}\land r+s=2\left(t+u\right)\right\} $
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\left\{ ww^{R}/w\in\left\{ a,b\right\} ^{*}\right\} $
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\left\{ w\in\left\{ a,b\right\} ^{*}/w\text{ es palindromo}\right\} $
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+El ejercicio original (
+\begin_inset Formula $\left\{ w\circ swap\left(w\right)/w\in\left\{ a,b\right\} ^{*}\right\} $
+\end_inset
+
+) tengo entendido que no puede resolverse con autómatas de pila.
+ Ofrezco a cambio un lenguaje similar que si puede reconocerse.
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula $\left\{ w\circ swap\left(w\right)^{R}/w\in\left\{ a,b\right\} ^{*}\right\} $
+\end_inset
+
+, donde 
+\begin_inset Formula $swap\left(w\right)$
+\end_inset
+
+ devuelve la cadena que se obtiene de reemplazar en 
+\begin_inset Formula $w$
+\end_inset
+
+ cada ocurrencia de 
+\begin_inset Formula $a$
+\end_inset
+
+ por 
+\begin_inset Formula $b$
+\end_inset
+
+ y cada ocurrencia de 
+\begin_inset Formula $b$
+\end_inset
+
+ por 
+\begin_inset Formula $a$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\left\{ a^{m}b^{n}/m,n\in\mathbb{N}_{0}\land n\leq2m\right\} $
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\left\{ w\in\left\{ a,b\right\} ^{*}/N_{a}\left(w\right)=N_{b}\left(w\right)\right\} $
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+¿Cual es el lenguaje aceptado por el autómata de pila cuyo diagrama de transicio
+nes se presenta a continuación?
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+\begin_inset Preview
+
+\begin_layout Standard
+\align center
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{tikzpicture}[node distance=2.5cm,on grid,auto]
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node[state,initial, accepting, initial text=inicio] (sigma1)   {};
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node[state,accepting] (sigma2) [right=of sigma1] {};
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+path[->]
+\end_layout
+
+\begin_layout Plain Layout
+
+		(sigma1)	edge [loop above] node {$a,
+\backslash
+lambda;a$} ()
+\end_layout
+
+\begin_layout Plain Layout
+
+					edge node {$b,a;
+\backslash
+lambda$} (sigma2)
+\end_layout
+
+\begin_layout Plain Layout
+
+		(sigma2)	edge [loop right] node {$b,a;
+\backslash
+lambda$} ();
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{tikzpicture}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Modifique el diagrama de transiciones para que el autómata de pila acepte
+ el mismo lenguaje, pero termine con su pila vacía.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Muestre como pueden combinarse dos autómatas de pila 
+\begin_inset Formula $M_{1}$
+\end_inset
+
+ y 
+\begin_inset Formula $M_{2}$
+\end_inset
+
+ para formar un solo autómata que acepte el lenguaje 
+\begin_inset Formula $L\left(M_{1}\right)\cup L\left(M_{2}\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Muestre como puede modificarse un autómata de pila 
+\begin_inset Formula $M$
+\end_inset
+
+ para que acepte el lenguaje 
+\begin_inset Formula $L\left(M\right)^{*}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Utilice el 
+\emph on
+pumping lemma
+\emph default
+ para lenguajes independientes de contexto
+\begin_inset Formula $^{1}$
+\end_inset
+
+ para probar que los siguientes lenguajes no pueden ser aceptados por ningún
+ autómata de pila:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset Formula $L_{1}=\left\{ a^{n}b^{n}c^{n}/n\in\mathbb{N}_{0}\right\} $
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $L_{2}=\left\{ a^{i}b^{j}c^{k}/i,j,k\in\mathbb{N}_{0}\land i<j<k\right\} $
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $L_{3}=\left\{ 0^{n}\#0^{2n}\#0^{3n}/n\in\mathbb{N}_{0}\right\} $
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $L_{4}=\left\{ a^{n}/n\text{ es primo}\right\} $
+\end_inset
+
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+
+\emph on
+Sugerencia
+\emph default
+: si 
+\begin_inset Formula $p$
+\end_inset
+
+ es un numero primo y 
+\begin_inset Formula $k$
+\end_inset
+
+ cualquier otro numero natural, la sucesión 
+\begin_inset Formula $\left(p,p+k,p+2k,\ldots,p+nk,\ldots\right)$
+\end_inset
+
+ contiene al menos un natural que no es primo.
+\end_layout
+
+\end_deeper
+\begin_layout Left Footer
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula $^{1}$
+\end_inset
+
+Si 
+\begin_inset Formula $L$
+\end_inset
+
+ es un lenguaje independiente de contexto que contiene un numero infinito
+ de cadenas, entonces debe existir en 
+\begin_inset Formula $L$
+\end_inset
+
+ una cadena de la forma 
+\begin_inset Formula $xuyvz$
+\end_inset
+
+, donde 
+\begin_inset Formula $x$
+\end_inset
+
+, 
+\begin_inset Formula $u$
+\end_inset
+
+, 
+\begin_inset Formula $y$
+\end_inset
+
+, 
+\begin_inset Formula $v$
+\end_inset
+
+, 
+\begin_inset Formula $z$
+\end_inset
+
+ son subcadenas, al menos una de 
+\begin_inset Formula $u$
+\end_inset
+
+ y 
+\begin_inset Formula $v$
+\end_inset
+
+ es no vaciá, y 
+\begin_inset Formula $xu^{n}yv^{n}z$
+\end_inset
+
+ esta en 
+\begin_inset Formula $L$
+\end_inset
+
+ para cada 
+\begin_inset Formula $n\geq1$
+\end_inset
+
+.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset CommandInset line
+LatexCommand rule
+offset "0.5ex"
+width "100text%"
+height "0.5pt"
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\end_body
+\end_document
