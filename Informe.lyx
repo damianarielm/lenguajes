@@ -1,0 +1,677 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\use_default_options true
+\maintain_unincluded_children false
+\language spanish-mexico
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize 12
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style french
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Adscripción a Lenguajes Formales y Computabilidad: Informe Final
+\end_layout
+
+\begin_layout Author
+Damián Ariel Marotte
+\end_layout
+
+\begin_layout Abstract
+El siguiente informe presenta las observaciones sobre la cátedra de 
+\begin_inset Quotes fld
+\end_inset
+
+Lenguajes Formales y Computabilidad
+\begin_inset Quotes frd
+\end_inset
+
+ llevada a cabo durante mi adscripción realizada durante los años 2017-2018.
+ Describe las experiencias obtenidas, así como también el trabajo realizado
+ y sugerencias que pretenden lograr una mejoría en el proceso de aprendizaje
+ de los alumnos.
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset toc
+LatexCommand tableofcontents
+
+\end_inset
+
+
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Part
+Observaciones generales
+\end_layout
+
+\begin_layout Section
+Condiciones de cursado
+\end_layout
+
+\begin_layout Standard
+Tanto durante mi experiencia como alumno, como durante mi experiencia como
+ adscripto, pude observar que a esta materia asisten una gran cantidad de
+ alumnos.
+ Sin embargo, a medida que el cursado avanza, la cantidad de alumnos disminuye
+ de forma notable.
+\end_layout
+
+\begin_layout Standard
+Ambas cuestiones son situaciones que pueden traer dificultades y deben intentar
+ corregirse: durante los primeros meses la gran asistencia puede saturar
+ los salones y el nivel de deserción dificulta el estudio de materias posteriore
+s.
+\end_layout
+
+\begin_layout Standard
+Una de las razones que seguramente contribuye al gran afluente de estudiantes
+ durante los inicios se debe a los escasos requerimientos que dicta el plan
+ en términos de materias previas: tan solo se requiere 
+\begin_inset Quotes fld
+\end_inset
+
+Programación II
+\begin_inset Quotes frd
+\end_inset
+
+.
+ Estos requerimientos no reflejan las necesidades de la materia pues en
+ ella, hacemos uso frecuente de temas de 
+\begin_inset Quotes fld
+\end_inset
+
+Álgebra I
+\begin_inset Quotes frd
+\end_inset
+
+ como por ejemplo relaciones entre conjuntos.
+ Otra materia que (en menor medida) dicta temas utilizados en 
+\begin_inset Quotes fld
+\end_inset
+
+Lenguajes Formales y Computabilidad
+\begin_inset Quotes frd
+\end_inset
+
+ es 
+\begin_inset Quotes fld
+\end_inset
+
+Álgebra II
+\begin_inset Quotes frd
+\end_inset
+
+, en donde se estudian temas como inducción y cardinalidad.
+\end_layout
+
+\begin_layout Standard
+Modificar el plan de estudio para reflejar estas necesidades no solo representa
+ un plan mas adecuado para la materia, sino que también puede reducir la
+ cantidad de alumnos en condiciones de cursarla.
+\end_layout
+
+\begin_layout Standard
+Si estas modificaciones no logran solucionar el problema de saturación del
+ aula y no es posible conseguir aulas de mayor capacidad, otras posibles
+ soluciones podrían ser la implementación de un recursado de la materia
+ o la división del curso en dos comisiones que asistan a clases en aulas
+ separadas.
+\end_layout
+
+\begin_layout Standard
+El nivel de deserción de los alumnos probablemente se deba a que el plan
+ de estudios indica materias correlativas recién en cuarto año.
+ Esto facilita la postergación de la materia por parte de los alumnos para
+ años siguientes.
+ Nuevamente dicha situación se trata de una incorrección en el plan de estudios
+ pues los temas desarrollados por la cátedra se utilizan con frecuencia
+ en materias como 
+\begin_inset Quotes fld
+\end_inset
+
+Lógica
+\begin_inset Quotes frd
+\end_inset
+
+ o 
+\begin_inset Quotes fld
+\end_inset
+
+Análisis de Lenguajes de Programación
+\begin_inset Quotes frd
+\end_inset
+
+.
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+La inclusión de estas materias como correlativas en el plan de estudio puede
+ evitar el abandono por parte de los alumnos y ademas facilitará la compresión
+ de las materias posteriores.
+\end_layout
+
+\begin_layout Section
+Dictado de clases teóricas
+\end_layout
+
+\begin_layout Standard
+Uno de los problemas que tienen las clases de teoría es que resultan ser
+ muy agobiantes para los alumnos.
+ Podemos arribar a esta conclusión no solo al observar las encuestas respondidas
+ por los alumnos sino también al tomar nota de que varios alumnos se duermen
+ durante las clases.
+\end_layout
+
+\begin_layout Standard
+Para evitar esta situación debe evitarse (siempre que sea posible) dictar
+ las clases teóricas durante el horario de la mañana.
+\end_layout
+
+\begin_layout Standard
+Otra posible mejora en este aspecto consiste en realizar las clases de forma
+ mas interactiva.
+ El planteo de ejercicios sencillos durante las clases no solo alienta al
+ alumno a mantenerse atento, sino que ademas puede servir para detectar
+ posibles errores de comprensión en el mismo momento en el que se producen.
+ Otra estrategia en este mismo sentido puede ser la introducción de pequeños
+ errores voluntarios con el fin de captar la atención de los alumnos.
+\end_layout
+
+\begin_layout Section
+Otras observaciones
+\end_layout
+
+\begin_layout Subsection
+Sobre la página de la materia
+\end_layout
+
+\begin_layout Standard
+He notado que los alumnos no suelen ser conscientes de la existencia de
+ un foro en linea donde compartir inquietudes.
+ Inclusive aquellos que si lo conocen, no lo utilizan.
+\end_layout
+
+\begin_layout Standard
+Personalmente considero que la utilización de dicho espacio puede tener
+ algunas ventajas:
+\end_layout
+
+\begin_layout Itemize
+Si una duda es respondida en dicho medio, otro alumno que tenga la misma
+ inquietud puede ver la respuesta inmediatamente.
+\end_layout
+
+\begin_layout Itemize
+Aquellos alumnos que se sientan inhibidos a la hora de hacer preguntas,
+ podrian sentirse mas cómodos planteando sus dudas en el foro.
+\end_layout
+
+\begin_layout Itemize
+El historial de los temas de conversación puede servir como herramienta
+ para revisar el dictado de la materia.
+\end_layout
+
+\begin_layout Standard
+Para alentar el uso del foro, sugiero que la cátedra publique en el información
+ de interés para el alumno, aunque no de vital importancia.
+ Por ejemplo, la solución a algún ejercicio difícil, parciales anteriores
+ o las notas de los últimos exámenes.
+ De esta forma cuando el alumno se dirija al foro a observar la información
+ que necesita, indefectiblemente toma conciencia de los temas de conversación
+ allí expuestos
+\end_layout
+
+\begin_layout Subsection
+Sobre el método de evaluación final
+\end_layout
+
+\begin_layout Standard
+Muchos alumnos optan por memorizar algunos de los temas a la hora de enfrentar
+ un examen final teórico.
+ Este método de estudio no permite la compresión de los contenidos pero
+ sin embargo puede facilitar la aprobación de un examen.
+\end_layout
+
+\begin_layout Standard
+A mi criterio un examen oral es una herramienta que permite evaluar con
+ mayor precisión y en menor tiempo, si un alumno comprende un tema, sin
+ embargo también es cierto que este tipo de instancias suele poner nervioso
+ a los alumnos e inducirlos a cometer errores.
+\end_layout
+
+\begin_layout Standard
+Por tal motivo y a modo de prueba, sugiero que se les permita a aquellos
+ alumnos que quieran hacerlo, rendir un examen final oral.
+ El carácter optativo de esta instancia permite que solo aquellos alumnos
+ que sientan mayor seguridad para enfrentar ese tipo de exámenes se presenten
+ a rendirlo.
+\end_layout
+
+\begin_layout Part
+Observaciones a las practicas
+\end_layout
+
+\begin_layout Standard
+La siguiente es una sugerencia de nuevos ejercicios, modificaciones o propuestas
+ de remoción a los ejercicios de las practicas de la materia.
+ Cada una de estas sugerencias se acompaña de una breve explicación del
+ motivo de la propuesta.
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Cardinalidad
+\end_layout
+
+\begin_layout Itemize
+Introducir ejercicios en términos de la analogía del Hotel Infinito de Hilbert.
+ Con esto se pretende lograr una introducción informal y relajada, a un
+ tema que es difícil de entender.
+\end_layout
+
+\begin_layout Itemize
+Los ejercicios 
+\begin_inset Formula $A\subseteq B\Rightarrow card\left(A\right)\preceq card\left(B\right)$
+\end_inset
+
+ y 
+\begin_inset Formula $card\left(A-B\right)\preceq card\left(A\right)$
+\end_inset
+
+ son sencillos y resultan de utilidad.
+\end_layout
+
+\begin_layout Itemize
+Probar que 
+\begin_inset Formula $\sim$
+\end_inset
+
+ y 
+\begin_inset Formula $\preceq$
+\end_inset
+
+ son relaciones de equivalencia y orden.
+ La idea de este ejercicio es que el alumno, en el proceso de la demostración,
+ incorpore estos conceptos para utilizarlos mas adelante.
+ Para esto, es necesario agregar a la teoría el teorema de Cantor-Schroder-Berns
+tein.
+\end_layout
+
+\begin_layout Itemize
+Probar que 
+\begin_inset Formula $\left[0,1\right]\sim\left[0,1\right)$
+\end_inset
+
+.
+ Este ejercicio tiene la intención de que el alumno no olvide el teorema
+ de Cantor-Schroder-Bernstein y de mostrar su utilidad.
+\end_layout
+
+\begin_layout Itemize
+Durante mi adscripción a la materia, noté que a los alumnos les resulta
+ complicado aplicar el teorema de unión numerable de conjuntos numerables.
+ Para solucionar este inconveniente propongo incluir un primer ejercicio
+ guiado, para facilitar la compresión de los siguientes.
+\end_layout
+
+\begin_layout Itemize
+El ejercicio que pide demostrar 
+\begin_inset Formula $\mathcal{P}\left(X\right)\sim\mathcal{F}\left(X\to\left\{ 0,1\right\} \right)$
+\end_inset
+
+ tiene una dificultad excesiva y creo su demostración no le aporta demasiado
+ al alumno.
+ Sin embargo esta claro que es necesario para poder completar los próximos
+ ejercicios.
+ Sugiero eliminarlo como ejercicio y agregarlo como hipótesis.
+\end_layout
+
+\begin_layout Section
+Inducción
+\end_layout
+
+\begin_layout Itemize
+Los últimos ejercicios de esta practica suelen representar una dificultad
+ para los alumnos, razón por la cual sugiero la previa introducción de un
+ ejercicio guiado para que el alumno comprenda como resolverlos.
+\end_layout
+
+\begin_layout Itemize
+Podría agregarse el ejercicio de probar 
+\begin_inset Formula ${\displaystyle \sum_{k=0}^{n}\binom{n}{k}=2^{n}}$
+\end_inset
+
+.
+ Este es un resultado que aplica a temas de cardinalidad.
+\end_layout
+
+\begin_layout Itemize
+También propongo agregar ejercicios de inducción sobre estructuras de datos,
+ como por ejemplo:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Demostrar que 
+\begin_inset Formula $Nil$
+\end_inset
+
+ es elemento neutro de 
+\begin_inset Formula $append$
+\end_inset
+
+ a izquierda (listas).
+\end_layout
+
+\begin_layout Itemize
+Demostrar que 
+\begin_inset Formula $Nil$
+\end_inset
+
+ es elemento neutro de 
+\begin_inset Formula $append$
+\end_inset
+
+ a derecha (listas).
+\end_layout
+
+\begin_layout Itemize
+Demostrar que 
+\begin_inset Formula $append$
+\end_inset
+
+ es asociativa (listas).
+\end_layout
+
+\begin_layout Itemize
+Demostrar que 
+\begin_inset Formula $nleafs\left(t\right)\leq nnodes\left(t\right)+1$
+\end_inset
+
+ (árboles).
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Algunas veces no solo se puede aprender de lo que esta bien, sino de lo
+ que esta mal.
+ Sugiero entonces agregar ejercicios similares a la paradoja del caballo
+ de George Polya.
+\end_layout
+
+\begin_layout Itemize
+Otros posibles ejercicios podrían ser enunciar el PIP del algún conjunto
+ y que los alumnos describan dicho conjunto.
+\end_layout
+
+\begin_layout Section
+Funciones Recursivas Primitivas
+\end_layout
+
+\begin_layout Itemize
+El operador de recursión es una cuestión que lleva tiempo entender.
+ Durante las clases de consulta pude observar como los alumnos comprendían
+ mejor su comportamiento realizando trazas de evaluación.
+ Por tal motivo sugiero agregar ejercicios de este estilo.
+\end_layout
+
+\begin_layout Itemize
+Definir funciones como 
+\begin_inset Formula $\neg E$
+\end_inset
+
+ y 
+\begin_inset Formula $Sgn$
+\end_inset
+
+ puede ser de utilidad para definir otras funciones.
+\end_layout
+
+\begin_layout Itemize
+Otro ejercicio interesante para agregar es uno que ilustre el uso de funciones
+ de proyección para realizar recursión sobre un argumento diferente al primero.
+\end_layout
+
+\begin_layout Itemize
+En algunas ocasiones, hay funciones que parecen no ser recursivas primitivas,
+ pero si lo son.
+ Para ilustrar esta situación sugiero agregar ejercicios que ejemplifiquen
+ el minimizador acotado.
+\end_layout
+
+\begin_layout Section
+Funciones recursivas
+\end_layout
+
+\begin_layout Itemize
+Sugiero agregar la función 
+\begin_inset Formula $f\left(x,y\right)=x-y$
+\end_inset
+
+, ya que es de utilidad para definir otras funciones.
+\end_layout
+
+\begin_layout Section
+Funciones de listas
+\end_layout
+
+\begin_layout Itemize
+Algunos ejercicios sencillos que pueden agregarse son funciones constantes,
+ funciones persistentes, predecesor acotado y distinguidora del 0.
+\end_layout
+
+\begin_layout Itemize
+Otro ejercicio interesante para agregar es una función que calcule el n-esimo
+ numero de Fibonacci.
+\end_layout
+
+\begin_layout Itemize
+El ejercicios 
+\begin_inset Formula $F\left[x,Y,z_{1},z_{2},\ldots,z_{n}\right]=\left[x,z_{1},z_{2},\ldots,z_{n}\right]$
+\end_inset
+
+ resulta muy complicado para los alumnos.
+ Sugiero modificarlo por una versión simplificada del mismo: 
+\begin_inset Formula $F\left[Z\right]=\left[\right]$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Algunos alumnos me consultaron si es posible definir una función if-then-else
+ en forma genérica.
+ Este ejercicio me resulto muy interesante, aunque quizás sea un poco difícil
+ como para agregarlo a la practica.
+\end_layout
+
+\begin_layout Section
+Lenguajes Formales y Gramáticas
+\end_layout
+
+\begin_layout Itemize
+Con el objetivo de simplificar el aprendizaje de materias posteriores, sugiero
+ incluir ejercicios sobre desambiguación de gramáticas.
+\end_layout
+
+\begin_layout Itemize
+Personalmente creo que esta práctica es demasiado larga.
+ Sugiero eliminar algunos ejercicios de menor importancia para que los alumnos
+ puedan concentrarse en las cuestiones mas relevantes a la hora de estudiar.
+\end_layout
+
+\begin_layout Section
+Autómatas Finitos y Expresiones regulares
+\end_layout
+
+\begin_layout Itemize
+Varias propiedades de clausura son sencillas de demostrar y muy útiles.
+ Sugiero agregarlas como ejercicios.
+\end_layout
+
+\begin_layout Section
+Autómatas de pila
+\end_layout
+
+\begin_layout Itemize
+El ejercicio 
+\begin_inset Formula $\left\{ w\circ swap\left(w\right)/w\in\left\{ a,b\right\} ^{*}\right\} $
+\end_inset
+
+ creo que no puede resolverse con autómatas de pila.
+ Ofrezco a cambio un lenguaje similar que si puede reconocerse: 
+\begin_inset Formula $\left\{ w\circ swap\left(w\right)^{R}/w\in\left\{ a,b\right\} ^{*}\right\} $
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Part
+Trabajo realizado
+\end_layout
+
+\begin_layout Standard
+Durante mi adscripción a 
+\begin_inset Quotes fld
+\end_inset
+
+Lenguajes Formales y Computabilidad
+\begin_inset Quotes frd
+\end_inset
+
+ tuve la oportunidad de asistir a las clases prácticas de la materia en
+ calidad de ayudante.
+ Esto me permitió comprender las dificultades de los alumnos y elaborar
+ las estrategias descritas anteriormente, que pretenden solucionarlas.
+\end_layout
+
+\begin_layout Standard
+También colaboré, con la ayuda de los docentes, en la confección y corrección
+ de exámenes.
+\end_layout
+
+\begin_layout Standard
+Ademas de todo esto le aporto a la cátedra, versiones en LaTeX, LyX y PDF
+ de todo el material teórico y práctico, así como también soluciones a dichos
+ ejercicios y las propuestas descritas en la parte anterior.
+\end_layout
+
+\begin_layout Standard
+Por ultimo, a modo de propuesta para un futuro, sugiero la utilización del
+ software 
+\begin_inset Quotes fld
+\end_inset
+
+Pandoc
+\begin_inset Quotes frd
+\end_inset
+
+ para la confección de diapositivas teóricas a partir de un lenguaje de
+ marcado sencillo y adjunto a modo de ejemplo las Slides de Funciones recursivas
+ tanto en formato md, como presentaciones Beamer y Reveal.js.
+\end_layout
+
+\begin_layout Standard
+Corresponde también en este informe, incluir un pedido de disculpas.
+ Los tiempos universitarios fueron mas complicados de los calculado con
+ antelación y si bien el trabajo fue presentado en forma, no fue presentado
+ dentro de los tiempos estipulados.
+\end_layout
+
+\begin_layout Part
+Agradecimientos
+\end_layout
+
+\begin_layout Standard
+Quisiera agradecer a los profesores Pablo Verdes, Alejandro Hernandez, Pamela
+ Viale y Mauro Lucci quienes no solo son responsables de los conocimientos
+ académicos que tengo, sino que también me acompañaron en todo este proceso
+ de adscripción y me permitieron seguir aprendiendo y aportando material.
+\end_layout
+
+\end_body
+\end_document

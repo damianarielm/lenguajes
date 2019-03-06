@@ -130,7 +130,7 @@
 
   $$ACK(x)=f_x(x)$$
 
-  Calculemos algunos valres en el pizarron.
+  Calculemos algunos valores en el pizarron.
 
 ---------------------------------------
 
