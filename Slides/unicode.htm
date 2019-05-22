@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="author" content="Pablo Verdes. LCC.">
+  <title>Funciones Recursivas</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="reveal.js/css/reveal.css">
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="reveal.js/css/theme/black.css" id="theme">
+  <link rel="stylesheet" href="unicode.css"/>
+  <!-- Printing and PDF exports -->
+  <script>
+    var link = document.createElement( 'link' );
+    link.rel = 'stylesheet';
+    link.type = 'text/css';
+    link.href = window.location.search.match( /print-pdf/gi ) ? 'reveal.js/css/print/pdf.css' : 'reveal.js/css/print/paper.css';
+    document.getElementsByTagName( 'head' )[0].appendChild( link );
+  </script>
+  <!--[if lt IE 9]>
+  <script src="reveal.js/lib/js/html5shiv.js"></script>
+  <![endif]-->
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide">
+  <h1 class="title">Funciones Recursivas</h1>
+  <p class="author">Pablo Verdes. LCC.</p>
+  <p class="date">9 de Abril de 2019.</p>
+</section>
+
+<section id="contenidos" class="slide level1">
+<h1>Contenidos</h1>
+<ul>
+<li class="fragment"><p><em>Motivacion</em>: Las FRP no alcanza.</p>
+<ul>
+<li class="fragment"><p>Funciones parciales y totales.</p></li>
+<li class="fragment"><p>Relacion entre FTP y funciones totales.</p></li>
+<li class="fragment"><p>La funcion de Ackermann.</p></li>
+</ul></li>
+<li class="fragment"><p><em>Nuevo operador</em>: Minimizador.</p></li>
+<li class="fragment"><p><em>Funciones recursivas</em>: Definicion.</p></li>
+<li class="fragment"><p><em>Tesis de Church</em>.</p></li>
+</ul>
+</section>
+<section class="slide level1">
+
+<h2 id="las-frp-no-alcanzan">Las FRP no alcanzan</h2>
+<ul>
+<li class="fragment"><p><em>Definicion</em>: Una funcion numerica f : ℕᵏ → ℕ se dice <em>parcial</em> si no esta definida sobre todos los elementos de ℕᵏ. Ejemplos:</p>
+<ul>
+<li class="fragment"><p>La funcion:</p>
+<table>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">f : ℕ</td>
+<td style="text-align: left;">→ ℕ</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">n</td>
+<td style="text-align: left;">↦ f(n) = n/3</td>
+</tr>
+</tbody>
+</table>
+<p>solo esta definida para n ∈ {0, 3, 6, 9, 12, 15, …}.</p></li>
+<li class="fragment"><p>La funcion:</p>
+<table>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">f : ℕ</td>
+<td style="text-align: left;">→ ℕ</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">n</td>
+<td style="text-align: left;">↦ f(n) = √n</td>
+</tr>
+</tbody>
+</table>
+<p>solo esta definida para n ∈ {0, 1, 4, 9, 16 , 25, …}.</p></li>
+<li class="fragment"><p>La funcion definida como: f(0) = 0; f(n + 2) = f(n) + 3.</p></li>
+</ul></li>
+</ul>
+</section>
+<section class="slide level1">
+
+<h2 id="las-frp-no-alcanzan-1">Las FRP no alcanzan</h2>
+<ul>
+<li class="fragment"><em>Definicion</em>: Una funcion numerica f : ℕᵏ → ℕ se dice <em>total</em> si esta definida sobre todos los elementos de ℕᵏ.</li>
+<li class="fragment"><em>Teorema</em>: Si f ∈ FRP entonces f es una funcion total. <em>Demostracion</em>: Por induccion sobre el conjunto FRP.
+<ul>
+<li class="fragment"><em>Caso base</em>: Trivial. Las funciones base c⁽ᵏ⁾, pᵢ⁽ᵏ⁾ y s⁽¹⁾ son totales.</li>
+<li class="fragment"><p><em>Composicion</em>: Supongamos que f⁽ⁿ⁾, g₁⁽ᵏ⁾, …, gₙ⁽ᵏ⁾ son totales y veamos que</p>
+<table>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">h = ϕ(f, g₁, …, gₙ) : ℕᵏ → ℕ</td>
+</tr>
+</tbody>
+</table>
+<p>tambien es total. Dado X ∈ ℕᵏ podemos calcular</p>
+<table>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">Y = (g₁(X), …, gₙ(X))</td>
+</tr>
+</tbody>
+</table>
+<p>pues cada gᵢ es total (H.I.). Como f es total en ℕⁿ, podemos tambien calcular f(Y). Por lo tanto ∃ z ∈ ℕ tal que z = F(Y) = h(X). Dado que ∀ X ∈ ℕᵏ ∃ h(X), concluimos que h es una funcion total.</p></li>
+<li class="fragment"><p><em>Recursion</em>: Ejercicio 1, Practica 4.</p></li>
+</ul></li>
+</ul>
+</section>
+<section class="slide level1">
+
+<h2 id="las-frp-no-alcanzan-2">Las FRP no alcanzan</h2>
+<ul>
+<li class="fragment"><p>En otras palabras, acabamos de probar que</p>
+<table>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">FRP ⊆ { f | f es funcion total }</td>
+</tr>
+</tbody>
+</table></li>
+<li class="fragment"><p>Es decir, las FRP no pueden representar funciones parciales.</p></li>
+<li class="fragment"><p>Consideremos la pregunta inversa. ¿Sera que todas las funcionestotales son FRP? Es decir, ¿sera cierto que f total ⇒ f ∈ FRP?</p></li>
+<li class="fragment"><p>La respuesta es no: veremos a continuacion la funcion de Ackermann, que es total pero no recursiva primitiva.</p></li>
+<li class="fragment"><p>Para demostrar que dicha funcion no es FRP, la estrategia sera demostrar que todas las FRP cumplen cierta propiedad, mientras quela funcion de Ackermann no la cumple.</p></li>
+<li class="fragment"><p>Resumiendo, las FRP no pueden representar a:</p>
+<ul>
+<li class="fragment"><p>Ninguna funcion parcial.</p></li>
+<li class="fragment"><p>Todas las funciones totales.</p></li>
+</ul></li>
+</ul>
+</section>
+<section class="slide level1">
+
+<h2 id="las-frp-no-alcanzan-3">Las FRP no alcanzan</h2>
+<ul>
+<li class="fragment"><p>Deciamos que vamos a demostrar que cierta funcion (llamada de Ackermann) no es FRP mostrando que:</p>
+<ul>
+<li class="fragment"><p>Todos los elementos del conjunto FRP satisfacen cierta propiedad.</p></li>
+<li class="fragment"><p>La funcion de Ackermann no la satisface.</p></li>
+</ul></li>
+<li class="fragment"><p>En terminos coloquiales, dicha propiedad sera la siguiente:</p></li>
+</ul>
+<div class="fragment">
+<blockquote>
+<p>Ser mayorado por algun elemento de la sucesion de Ackerman</p>
+</blockquote>
+</div>
+<div class="fragment">
+<ul>
+<li class="fragment"><p>Para formalizar este argumento, a continuacion definiremos:</p>
+<ul>
+<li class="fragment"><p>La sucesion (o serie) de Ackermann, { fₖ(x) } con k ∈ ℕ.</p></li>
+<li class="fragment"><p>La funcion de Ackemann, ACK(x).</p></li>
+<li class="fragment"><p>El concepto “f mayora a g”, que indicaremos f ↑ g.</p></li>
+</ul>
+<p>. . .</p>
+<p>y demostraremos:</p>
+<p>. . .</p>
+<ol type="1">
+<li class="fragment">g ∈ FRP ⇒ ∃ k ∈ ℕ | fₖ ↑ g</li>
+<li class="fragment">∄ k ∈ ℕ | fₖ ↑ ACK</li>
+</ol></li>
+</ul>
+</div>
+</section>
+<section class="slide level1">
+
+<h2 id="sucesion-o-serie-de-ackermann">Sucesion (o serie) de Ackermann</h2>
+<ul>
+<li class="fragment"><p>Consideremos la siguiente sucesion de funciones, que llamaremos <em>sucesion (o serie) de Ackermann</em>:</p>
+<table>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">f(x) = s(x) = x + 1</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">f(x) = f(x) = s</td>
+</tr>
+</tbody>
+</table></li>
+</ul>
+</section>
+    </div>
+  </div>
+
+  <script src="reveal.js/lib/js/head.min.js"></script>
+  <script src="reveal.js/js/reveal.js"></script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        // Push each slide change to the browser history
+        history: true,
+
+        // Optional reveal.js plugins
+        dependencies: [
+          { src: 'reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+          { src: 'reveal.js/plugin/zoom-js/zoom.js', async: true },
+          { src: 'reveal.js/plugin/notes/notes.js', async: true }
+        ]
+      });
+    </script>
+    </body>
+</html>

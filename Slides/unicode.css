@@ -1,0 +1,36 @@
+h1 { text-align: center; font-size: 18pt !importat }
+
+.author { text-align: center; }
+
+.date { text-align: center; }
+
+li { font-size: 18pt !important; }
+
+p { font-size: 18pt !important; }
+
+.reveal .slides { height: 70% !important; text-align: left !important; }
+
+.reveal blockquote {
+    border-radius: 17px;
+    background: rgba(255,255,255,0.2);
+    font-size: 15pt;
+    text-align: center;
+}
+
+.reveal ol li {
+  position: relative;
+  counter-increment: step-counter;
+  margin-left: 0;
+  padding-right: 0;
+  list-style-type: none;
+}
+
+.reveal ol li::before {
+  font-size: 80%;
+  font-weight: bold;
+  padding: 3px 10px;
+  margin-right: 15px;
+  border-radius: 3px;
+  background-color: rgb(255,255,255,0.2);
+  content: counter(step-counter);
+}
