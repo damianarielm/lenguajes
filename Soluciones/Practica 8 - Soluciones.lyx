@@ -945,7 +945,192 @@ end{tikzpicture}
 \end_layout
 
 \begin_layout Enumerate
-COMPLETAR.
+\begin_inset Preview
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{tikzpicture}[baseline=(current bounding box.center),shorten >=1pt,node
+ distance=3cm,on grid,auto]
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node[state, initial, accepting, initial text= inicio] (sigma0)   {$
+\backslash
+sigma_0$};
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node[state] (sigma1) [right=of sigma0] {$
+\backslash
+sigma_1$};
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node[state] (sigma2) [right=of sigma1] {$
+\backslash
+sigma_2$};
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node[state] (sigma3) [right=of sigma2] {$
+\backslash
+sigma_3$};
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node[state] (sigma4) [below=of sigma2] {$
+\backslash
+sigma_4$};
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node[state, accepting] (sigma5) [left=of sigma4] {$
+\backslash
+sigma_5$};
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+path[->]
+\end_layout
+
+\begin_layout Plain Layout
+
+		(sigma0)	edge  node {$
+\backslash
+lambda,
+\backslash
+lambda;
+\backslash
+#$} (sigma1)
+\end_layout
+
+\begin_layout Plain Layout
+
+		(sigma1)	edge  [loop above] node {$a,
+\backslash
+lambda;a$} ()
+\end_layout
+
+\begin_layout Plain Layout
+
+		(sigma4)	edge  [loop below] node {$
+\backslash
+lambda,a;
+\backslash
+lambda$} ()
+\end_layout
+
+\begin_layout Plain Layout
+
+		(sigma1)	edge  node {$
+\backslash
+lambda,
+\backslash
+lambda;
+\backslash
+lambda$} (sigma2)
+\end_layout
+
+\begin_layout Plain Layout
+
+		(sigma2)	edge  node [left] {$
+\backslash
+lambda,
+\backslash
+lambda;
+\backslash
+lambda$} (sigma4)
+\end_layout
+
+\begin_layout Plain Layout
+
+		(sigma2)	edge  node [below] {$b,a;
+\backslash
+lambda$} (sigma3)
+\end_layout
+
+\begin_layout Plain Layout
+
+		(sigma3)	edge  [bend left] node [right] {$
+\backslash
+lambda,
+\backslash
+lambda;
+\backslash
+lambda$} (sigma4)
+\end_layout
+
+\begin_layout Plain Layout
+
+		(sigma3)	edge [bend right]  node [above] {$b,
+\backslash
+lambda;
+\backslash
+lambda$} (sigma2)
+\end_layout
+
+\begin_layout Plain Layout
+
+		(sigma4)	edge  node {$
+\backslash
+lambda,
+\backslash
+#;
+\backslash
+lambda$} (sigma5)
+\end_layout
+
+\begin_layout Plain Layout
+
+;
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{tikzpicture}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Enumerate
@@ -1334,10 +1519,6 @@ end{tikzpicture}
 
 \end_layout
 
-\end_inset
-
-
-\begin_inset Newpage pagebreak
 \end_inset
 
 
